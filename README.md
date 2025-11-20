@@ -10,7 +10,7 @@ Examples are your friend. To get started, take a look at the following examples:
 
 ### Lua
 
-If you'd like to write and run lua mods, you'd need to add the `luajit` mod first, which allows you to then load `.lua` files in the same manner.
+If you'd like to write and run lua mods, you'd need to add the `luajit` mod (download [here](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/download/early-0/luajit.elf)) first, which allows you to then load `.lua` files in the same manner.
 
 - [2x BW switches](/lua/high-bandwidth-switches/)
 
@@ -33,7 +33,7 @@ For example, to install the `tni-mod-template` mod, place `.zig/tni-mod-template
 
 ### Lua mods
 
-If you'd like to use Lua instead, you can download the pre-built luajit.elf mod from the releases section and place it as `mods/luajit.elf` (directly in the `mods/`) directory. This enables loading of `.lua` mods.
+If you'd like to use Lua instead, you can download the [pre-built luajit.elf mod](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/download/early-0/luajit.elf) from the releases section and place it as `mods/luajit.elf` (directly in the `mods/`) directory. This enables loading of `.lua` mods.
 
 The engine will always first try to load the `luajit.elf` before all mods, so you do not need to worry about the naming.
 
