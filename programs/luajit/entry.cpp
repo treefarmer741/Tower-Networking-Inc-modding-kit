@@ -35,72 +35,85 @@ static Variant set_lua_source(String code) {
     return Nil;
 }
 
-void add_object_to_lua(const char *name, Variant obj) {
-    struct ObjWrap { Variant obj; };
-    ObjWrap *w = new ObjWrap;
-    w->obj = obj;
-    w->obj.make_permanent();
+static std::vector<Variant> temp_objects;
+static void clear_temp_objects() {
+    temp_objects.clear();
+}
+
+static void push_object_to_lua(Variant* obj_ptr, bool is_temp = false) {
+    if (is_temp) {
+        // store in stack
+        temp_objects.push_back(*obj_ptr);
+        obj_ptr = &temp_objects.back();
+    }
     
-    lua_newuserdata(L, sizeof(void*));
-    *(void**)lua_touserdata(L, -1) = w;
-    lua_newtable(L);
+    Variant** ud = (Variant**)lua_newuserdata(L, sizeof(Variant*));
+    *ud = obj_ptr;
     
-    lua_pushstring(L, "__index");
-    lua_pushlightuserdata(L, w);
-    lua_pushcclosure(L, [](lua_State *L) -> int {
-        ObjWrap *w = (ObjWrap*)lua_touserdata(L, lua_upvalueindex(1));
-        const char *method = luaL_checkstring(L, 2);
-        
-        lua_pushlightuserdata(L, w);
-        lua_pushstring(L, method);
-        lua_pushcclosure(L, [](lua_State *L) -> int {
-            ObjWrap *w = (ObjWrap*)lua_touserdata(L, lua_upvalueindex(1));
-            const char *m = lua_tostring(L, lua_upvalueindex(2));
+    if (luaL_newmetatable(L, "GodotObjectTemp")) {
+        lua_pushstring(L, "__index");
+        lua_pushcfunction(L, [](lua_State *L) -> int {
+            Variant** ud = (Variant**)luaL_checkudata(L, 1, "GodotObjectTemp");
+            Variant* obj_ptr = *ud;
+            const char *key = luaL_checkstring(L, 2);
             
-            std::array<Variant, 8> args;
-            size_t n = 0;
-            for (int i = 1; i <= lua_gettop(L) && n < 8; i++) {
-                switch (lua_type(L, i)) {
-                    case LUA_TBOOLEAN: args[n++] = bool(lua_toboolean(L, i)); break;
-                    case LUA_TNUMBER: args[n++] = double(lua_tonumber(L, i)); break;
-                    case LUA_TSTRING: args[n++] = lua_tostring(L, i); break;
+            lua_pushlightuserdata(L, obj_ptr);
+            lua_pushstring(L, key);
+            lua_pushcclosure(L, [](lua_State *L) -> int {
+                Variant* obj_ptr = (Variant*)lua_touserdata(L, lua_upvalueindex(1));
+                const char *method = lua_tostring(L, lua_upvalueindex(2));
+                
+                std::array<Variant, 8> args;
+                size_t n = 0;
+                for (int i = 1; i <= lua_gettop(L) && n < 8; i++) {
+                    switch (lua_type(L, i)) {
+                        case LUA_TBOOLEAN: args[n++] = bool(lua_toboolean(L, i)); break;
+                        case LUA_TNUMBER: args[n++] = double(lua_tonumber(L, i)); break;
+                        case LUA_TSTRING: args[n++] = lua_tostring(L, i); break;
+                    }
                 }
-            }
-            
-            Variant res = n == 0 ? w->obj(m) :
-                         n == 1 ? w->obj(m, args[0]) :
-                         n == 2 ? w->obj(m, args[0], args[1]) :
-                         n == 3 ? w->obj(m, args[0], args[1], args[2]) :
-                                 w->obj(m, args[0], args[1], args[2], args[3]);
-            
-            switch (res.get_type()) {
-                case Variant::Type::BOOL: lua_pushboolean(L, res); return 1;
-                case Variant::Type::INT:
-                case Variant::Type::FLOAT: lua_pushnumber(L, res); return 1;
-                case Variant::Type::STRING: 
-                    lua_pushstring(L, res.as_std_string().c_str()); return 1;
-                default: return 0;
-            }
-        }, 2);
-        return 1;
-    }, 1);
-    lua_settable(L, -3);
-    
+                
+                Variant res = n == 0 ? (*obj_ptr)(method) :
+                             n == 1 ? (*obj_ptr)(method, args[0]) :
+                             n == 2 ? (*obj_ptr)(method, args[0], args[1]) :
+                             n == 3 ? (*obj_ptr)(method, args[0], args[1], args[2]) :
+                                     (*obj_ptr)(method, args[0], args[1], args[2], args[3]);
+                
+                switch (res.get_type()) {
+                    case Variant::Type::BOOL: lua_pushboolean(L, res); return 1;
+                    case Variant::Type::INT:
+                    case Variant::Type::FLOAT: lua_pushnumber(L, res); return 1;
+                    case Variant::Type::STRING:
+                        lua_pushstring(L, res.as_std_string().c_str()); return 1;
+					case Variant::Type::OBJECT:
+    					push_object_to_lua(&res, true);  // mark as temporary stack
+    					return 1;
+                    default: return 0;
+                }
+            }, 2);
+            return 1;
+        });
+        lua_settable(L, -3);
+    }
     lua_setmetatable(L, -2);
-    lua_setglobal(L, name);
 }
 
 #define DEFINE_LUA_CALLBACK_0(name) \
     static Variant name(Object modding_api) { \
-		lua_getglobal(L, #name); \
-		if (!lua_isfunction(L, -1)) { \
-			lua_pop(L, 1); \
-			return Nil; \
-		} \
-		add_object_to_lua("_temp_api", modding_api); \
-		lua_getglobal(L, "_temp_api"); \
-		lua_pcall(L, 1, 0, 0); \
-    	return Nil; \
+        lua_getglobal(L, #name); \
+        if (!lua_isfunction(L, -1)) { \
+            lua_pop(L, 1); \
+            return Nil; \
+        } \
+        Variant v_api = modding_api; \
+		clear_temp_objects(); \
+        push_object_to_lua(&v_api); \
+        if (lua_pcall(L, 1, 0, 0) != 0) { \
+            const char *err = lua_tostring(L, -1); \
+            printf("Lua error: %s\n", err); \
+            lua_pop(L, 1); \
+        } \
+        return Nil; \
     }
 
 #define DEFINE_LUA_CALLBACK_1(name, type1, param1) \
@@ -110,11 +123,16 @@ void add_object_to_lua(const char *name, Variant obj) {
             lua_pop(L, 1); \
             return Nil; \
         } \
-        add_object_to_lua("_temp_api", modding_api); \
-        lua_getglobal(L, "_temp_api"); \
-        add_object_to_lua("_temp_" #param1, param1); \
-        lua_getglobal(L, "_temp_" #param1); \
-        lua_pcall(L, 2, 0, 0); \
+		clear_temp_objects(); \
+        Variant v_api = modding_api; \
+        Variant v_param = param1; \
+        push_object_to_lua(&v_api); \
+        push_object_to_lua(&v_param); \
+        if (lua_pcall(L, 2, 0, 0) != 0) { \
+            const char *err = lua_tostring(L, -1); \
+            printf("Lua error: %s\n", err); \
+            lua_pop(L, 1); \
+        } \
         return Nil; \
     }
 
