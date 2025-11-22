@@ -11,12 +11,14 @@ static constexpr bool VERBOSE = false;
 
 static int api_print(lua_State *L) {
 	const char *text = luaL_checkstring(L, 1);
-	printf("%s", text);
+    const char *opt_text = luaL_optstring(L, 2, "\n");
+	printf("%s%s", text, opt_text);
 	fflush(stdout);
 	return 0;
 }
 
-static Variant set_lua_source(String code) {
+static Variant set_lua_source(String code, String path) {
+    // TODO: do something with path?
     const std::string utf = code.utf8();
     if (luaL_loadbuffer(L, utf.c_str(), utf.size(), "@code") != 0) {
         const char *err = lua_tostring(L, -1);
@@ -137,12 +139,15 @@ static void push_object_to_lua(Variant* obj_ptr, bool is_temp = false) {
     }
 
 DEFINE_LUA_CALLBACK_0(on_engine_load)
+DEFINE_LUA_CALLBACK_0(on_mod_reload)
 DEFINE_LUA_CALLBACK_0(on_game_state_ready)
 DEFINE_LUA_CALLBACK_0(on_game_host_eod)
 
 DEFINE_LUA_CALLBACK_1(on_game_tick, double, delta)
 DEFINE_LUA_CALLBACK_1(on_player_input, InputEvent, event)
 DEFINE_LUA_CALLBACK_1(on_device_spawned, Node, device)
+DEFINE_LUA_CALLBACK_1(on_user_spawned, Node, user)
+DEFINE_LUA_CALLBACK_1(on_location_spawned, Node, location)
 
 int main() {
     L = luaL_newstate();
@@ -157,6 +162,10 @@ int main() {
     ADD_API_FUNCTION(on_game_tick, "", "", "");
     ADD_API_FUNCTION(on_player_input, "", "", "");
     ADD_API_FUNCTION(on_device_spawned, "", "", "");
+    ADD_API_FUNCTION(on_user_spawned, "", "", "");
+    ADD_API_FUNCTION(on_location_spawned, "", "", "");
+
+    ADD_API_FUNCTION(on_mod_reload, "", "", "");
     
     halt();
 }
