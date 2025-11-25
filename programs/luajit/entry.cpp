@@ -1,35 +1,43 @@
 #include <api.hpp>
 #include <cstring>
+#include <string>
+#include <iostream>
+
+// #include <lua.hpp>
 extern "C" {
-#include <lauxlib.h>
-#include <lua.h>
-#include <lualib.h>
+#include "lua.h"
+#include "lauxlib.h"
+#include "lualib.h"
+// #include "luajit.h"
 }
+
+#include "utils.hpp"
+#include "Mod.hpp"
+#include "ModApiV1.hpp"
 
 static lua_State *L;
-static constexpr bool VERBOSE = false;
-
-static int api_print(lua_State *L) {
-	const char *text = luaL_checkstring(L, 1);
-    const char *opt_text = luaL_optstring(L, 2, "\n");
-	printf("%s%s", text, opt_text);
-	fflush(stdout);
-	return 0;
-}
 
 static Variant set_lua_source(String code, String path) {
-    // TODO: do something with path?
-    const std::string utf = code.utf8();
-    if (luaL_loadbuffer(L, utf.c_str(), utf.size(), "@code") != 0) {
+    if (L == NULL) {
+        printf("`set_lua_source()` but the lua state == NULL\n");
+        fflush(stdout);
+        return Nil;
+    }
+
+    const std::string src = code.utf8();
+    const std::string name = "@" + path.utf8();
+    if (luaL_loadbuffer(L, src.c_str(), src.size(), name.c_str()) != 0) {
         const char *err = lua_tostring(L, -1);
         printf("Lua load error: %s\n", err);
+        fflush(stdout);
         lua_pop(L, 1);
         return Nil;
     }
     
-    if (lua_pcall(L, 0, 0, 0) != 0) {
+    if (pcall_stacktrace(L, 0, 0) != 0) {
         const char *err = lua_tostring(L, -1);
         printf("Lua exec error: %s\n", err);
+        fflush(stdout);
         lua_pop(L, 1);
         return Nil;
     }
@@ -37,117 +45,41 @@ static Variant set_lua_source(String code, String path) {
     return Nil;
 }
 
-static void push_object_to_lua(Variant* obj_ptr) {
-    // Copy Variant directly into Lua's memory (is_temp parameter ignored)
-    Variant* ud = (Variant*)lua_newuserdata(L, sizeof(Variant));
-    new (ud) Variant(*obj_ptr);  // Placement new for copy construction
-    
-    if (luaL_newmetatable(L, "GodotObjectTemp")) {
-        lua_pushstring(L, "__index");
-        lua_pushcfunction(L, [](lua_State *L) -> int {
-            Variant* obj_ptr = (Variant*)luaL_checkudata(L, 1, "GodotObjectTemp");
-            const char *key = luaL_checkstring(L, 2);
-            
-            lua_pushlightuserdata(L, obj_ptr);
-            lua_pushstring(L, key);
-            lua_pushcclosure(L, [](lua_State *L) -> int {
-                Variant* obj_ptr = (Variant*)lua_touserdata(L, lua_upvalueindex(1));
-                const char *method = lua_tostring(L, lua_upvalueindex(2));
-                
-                std::array<Variant, 8> args;
-                size_t n = 0;
-                for (int i = 1; i <= lua_gettop(L) && n < 8; i++) {
-                    switch (lua_type(L, i)) {
-                        case LUA_TBOOLEAN: args[n++] = bool(lua_toboolean(L, i)); break;
-                        case LUA_TNUMBER: args[n++] = double(lua_tonumber(L, i)); break;
-                        case LUA_TSTRING: args[n++] = lua_tostring(L, i); break;
-                    }
-                }
-                
-                Variant res = n == 0 ? (*obj_ptr)(method) :
-                             n == 1 ? (*obj_ptr)(method, args[0]) :
-                             n == 2 ? (*obj_ptr)(method, args[0], args[1]) :
-                             n == 3 ? (*obj_ptr)(method, args[0], args[1], args[2]) :
-                                     (*obj_ptr)(method, args[0], args[1], args[2], args[3]);
-                
-                switch (res.get_type()) {
-                    case Variant::Type::BOOL: lua_pushboolean(L, res); return 1;
-                    case Variant::Type::INT:
-                    case Variant::Type::FLOAT: lua_pushnumber(L, res); return 1;
-                    case Variant::Type::STRING:
-                        lua_pushstring(L, res.as_std_string().c_str()); return 1;
-                    case Variant::Type::OBJECT:
-                        push_object_to_lua(&res);
-                        return 1;
-                    default: return 0;
-                }
-            }, 2);
-            return 1;
-        });
-        lua_settable(L, -3);
-        
-        // Add garbage collection metamethod
-        lua_pushstring(L, "__gc");
-        lua_pushcfunction(L, [](lua_State *L) -> int {
-            Variant* obj_ptr = (Variant*)lua_touserdata(L, 1);
-            if (obj_ptr) {
-                // handle any exceptions from destructor
-                try {
-                    obj_ptr->~Variant();
-                } catch (const std::exception& e) {
-                    // don't propagate - errors in __gc are fatal
-                    printf("Warning: Exception in Variant destructor: %s\n", e.what());
-	                fflush(stdout);
-                } catch (...) {
-                    printf("Warning: Unknown exception in Variant destructor\n");
-	                fflush(stdout);
-                }
-            }
-            return 0;
-        });
-        lua_settable(L, -3);
-    }
-    lua_setmetatable(L, -2);
-}
-
 #define DEFINE_LUA_CALLBACK_0(name) \
-    static Variant name(Object modding_api) { \
+    static Variant name() { \
         lua_getglobal(L, #name); \
         if (!lua_isfunction(L, -1)) { \
             lua_pop(L, 1); \
             return Nil; \
         } \
-        Variant v_api = modding_api; \
-        push_object_to_lua(&v_api); \
-        if (lua_pcall(L, 1, 0, 0) != 0) { \
+        if (pcall_stacktrace(L, 0, 0) != 0) { \
             const char *err = lua_tostring(L, -1); \
             printf("Lua error: %s\n", err); \
+            fflush(stdout); \
             lua_pop(L, 1); \
         } \
         return Nil; \
     }
-
 #define DEFINE_LUA_CALLBACK_1(name, type1, param1) \
-    static Variant name(Object modding_api, type1 param1) { \
+    static Variant name(type1 param1) { \
         lua_getglobal(L, #name); \
         if (!lua_isfunction(L, -1)) { \
             lua_pop(L, 1); \
             return Nil; \
         } \
-        Variant v_api = modding_api; \
-        Variant v_param = param1; \
-        push_object_to_lua(&v_api); \
-        push_object_to_lua(&v_param); \
-        if (lua_pcall(L, 2, 0, 0) != 0) { \
+        Variant v_param1 = param1; \
+        int nargs = push_gd_variant(L, v_param1); \
+        if (pcall_stacktrace(L, nargs, 0) != 0) { \
             const char *err = lua_tostring(L, -1); \
             printf("Lua error: %s\n", err); \
+            fflush(stdout); \
             lua_pop(L, 1); \
         } \
         return Nil; \
     }
 
+DEFINE_LUA_CALLBACK_0(on_mod_load)
 DEFINE_LUA_CALLBACK_0(on_engine_load)
-DEFINE_LUA_CALLBACK_0(on_mod_reload)
 DEFINE_LUA_CALLBACK_0(on_game_state_ready)
 DEFINE_LUA_CALLBACK_0(on_game_host_eod)
 
@@ -157,23 +89,52 @@ DEFINE_LUA_CALLBACK_1(on_device_spawned, Node, device)
 DEFINE_LUA_CALLBACK_1(on_user_spawned, Node, user)
 DEFINE_LUA_CALLBACK_1(on_location_spawned, Node, location)
 
-int main() {
+static int print_and_flush_lua(lua_State *L) {
+    // Stack: ...args
+    // Get original print function.
+    lua_pushlightuserdata(L, (void*)print_and_flush_lua);
+    lua_gettable(L, LUA_REGISTRYINDEX);
+    // Stack: ...args, base_print
+    lua_insert(L, 1);
+    // Stack: base_print, ...args
+    lua_call(L, lua_gettop(L) - 1, LUA_MULTRET);
+    fflush(stdout);  // For some reason, newlines don't imply flush.
+	return lua_gettop(L);
+}
+
+static void setup_lua_state() {
     L = luaL_newstate();
     luaL_openlibs(L);
+
+    lua_pushlightuserdata(L, (void*)print_and_flush_lua);
+    lua_getglobal(L, "print");
+    lua_settable(L, LUA_REGISTRYINDEX);
+    lua_register(L, "print", print_and_flush_lua);
+
+    Mod mod = get_node<Mod>();
+    push_gd_variant(L, mod);
+    lua_setglobal(L, "Mod");
+
+    push_gd_variant(L, mod.get_api_v1());
+    lua_setglobal(L, "ModApiV1");
+}
+
+int main() {
+    setup_lua_state();
     
-    lua_register(L, "print", api_print);
-    
+    // Only called for luajit.elf
     ADD_API_FUNCTION(set_lua_source, "", "");
+
+    ADD_API_FUNCTION(on_mod_load, "", "", "");
     ADD_API_FUNCTION(on_engine_load, "", "", "");
     ADD_API_FUNCTION(on_game_state_ready, "", "", "");
     ADD_API_FUNCTION(on_game_host_eod, "", "", "");
+
     ADD_API_FUNCTION(on_game_tick, "", "", "");
     ADD_API_FUNCTION(on_player_input, "", "", "");
     ADD_API_FUNCTION(on_device_spawned, "", "", "");
     ADD_API_FUNCTION(on_user_spawned, "", "", "");
     ADD_API_FUNCTION(on_location_spawned, "", "", "");
 
-    ADD_API_FUNCTION(on_mod_reload, "", "", "");
-    
     halt();
 }
