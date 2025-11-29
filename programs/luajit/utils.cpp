@@ -65,7 +65,10 @@ int push_gd_object(lua_State *L, Object object) {
         lua_pushstring(L, "__index");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             int64_t* ud = lua_touserdata_t<int64_t*>(L, 1, MetaTableName);
-            Object obj = get_node<Mod>()._instance_from_id(*ud);
+            Object obj = get_node<Mod>().instance_from_id_(*ud);
+            if (!obj.is_valid()) {
+                luaL_error(L, "Attempt to index object that is no longer valid.");
+            }
             // Variant value = to_gd_variant(L, 2);
             if (lua_isstring(L, 2)) {
                 std::string value = lua_tostring(L, 2);
@@ -79,9 +82,13 @@ int push_gd_object(lua_State *L, Object object) {
         lua_pushstring(L, "__tostring");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             int64_t* ud = lua_touserdata_t<int64_t*>(L, 1, MetaTableName);
-            Object obj = get_node<Mod>()._instance_from_id(*ud);
-            String s = obj.to_string();
-            lua_pushfstring(L, "GodotObject: %s", s.utf8().c_str());
+            Object obj = get_node<Mod>().instance_from_id_(*ud);
+            if (!obj.is_valid()) {
+                lua_pushfstring(L, "GodotObject: INVALID");
+            } else {
+                String s = obj.to_string();
+                lua_pushfstring(L, "GodotObject: %s", s.utf8().c_str());
+            }
             return 1;
         });
         lua_settable(L, -3);
