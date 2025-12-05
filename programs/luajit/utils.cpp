@@ -15,41 +15,6 @@ extern "C" {
 #include "ModApiV1.hpp"
 
 
-/// Checks if the userdata at pos, has the metatable of LUA_REGISTRY[metatable_name]
-/// If it does not, NULL is returned.
-template<typename T>
-T lua_optuserdata_t(lua_State *L, int pos, const char* metatable_name) {
-    lua_getmetatable(L, pos);
-    luaL_getmetatable(L, metatable_name);
-    T ud = NULL;
-    if (lua_rawequal(L, -1, -2)) {
-        ud = (T)lua_touserdata(L, pos);
-    }
-    lua_pop(L, 2);
-    return ud;
-}
-/// Checks if the userdata at pos, has the metatable of LUA_REGISTRY[metatable_name]
-/// If it does not, a lua error is raised.
-template<typename T>
-T lua_touserdata_t(lua_State *L, int pos, const char* metatable_name) {
-    luaL_getmetatable(L, metatable_name);
-    lua_getmetatable(L, pos);
-    if (!lua_rawequal(L, -1, -2)) {
-        lua_getfield(L, -1, "__name");
-        const char* found_name = "userdata";
-        if (lua_isstring(L, -1)) {
-            found_name = lua_tostring(L, -1);
-        }
-        // We don't bother popping, we're about to get cleaned up.
-        luaL_error(L, "Expected %s but found %s", metatable_name, found_name);
-        // Unreachable
-        // We don't return to prevent possible warnings & errors.
-    }
-    T ud = (T)lua_touserdata(L, pos);
-    lua_pop(L, 2);
-    return ud;
-}
-
 int push_gd_object(lua_State *L, Object object) {
     static const char* MetaTableName = "GodotObject";
     // TODO: Handle temporary variant
@@ -64,11 +29,12 @@ int push_gd_object(lua_State *L, Object object) {
 
         lua_pushstring(L, "__index");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            int64_t* ud = lua_touserdata_t<int64_t*>(L, 1, MetaTableName);
-            Object obj = get_node<Mod>().instance_from_id_(*ud);
-            if (!obj.is_valid()) {
+            int64_t* ud = (int64_t*)luaL_checkudata(L, 1, MetaTableName);
+            Variant v = get_node<Mod>().instance_from_id_(*ud);
+            if (v.get_type() == Variant::Type::NIL || !v.as_object().is_valid()) {
                 luaL_error(L, "Attempt to index object that is no longer valid.");
             }
+            Object obj = v.as_object();
             // Variant value = to_gd_variant(L, 2);
             if (lua_isstring(L, 2)) {
                 std::string value = lua_tostring(L, 2);
@@ -81,8 +47,12 @@ int push_gd_object(lua_State *L, Object object) {
 
         lua_pushstring(L, "__tostring");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            int64_t* ud = lua_touserdata_t<int64_t*>(L, 1, MetaTableName);
-            Object obj = get_node<Mod>().instance_from_id_(*ud);
+            int64_t* ud = (int64_t*)luaL_checkudata(L, 1, MetaTableName);
+            Variant v = get_node<Mod>().instance_from_id_(*ud);
+            if (v.get_type() == Variant::Type::NIL || !v.as_object().is_valid()) {
+                luaL_error(L, "Attempt to index object that is no longer valid.");
+            }
+            Object obj = v.as_object();
             if (!obj.is_valid()) {
                 lua_pushfstring(L, "GodotObject: INVALID");
             } else {
@@ -112,7 +82,7 @@ int push_gd_callable(lua_State *L, Callable callable) {
 
         lua_pushstring(L, "__call");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            Callable* ud = lua_touserdata_t<Callable*>(L, 1, MetaTableName);
+            Callable* ud = (Callable*)luaL_checkudata(L, 1, MetaTableName);
             Variant v = Variant(*ud);
             int nargs = lua_gettop(L)-1;
             Variant result;
@@ -133,7 +103,7 @@ int push_gd_callable(lua_State *L, Callable callable) {
 
         lua_pushstring(L, "__tostring");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            Callable* ud = lua_touserdata_t<Callable*>(L, 1, MetaTableName);
+            Callable* ud = (Callable*)luaL_checkudata(L, 1, MetaTableName);
             lua_pushfstring(L, "GodotCallable: %p", ud);  // TODO: Can we get the name and/or signature?
             return 1;
         });

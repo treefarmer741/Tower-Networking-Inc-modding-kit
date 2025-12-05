@@ -12,8 +12,7 @@ extern "C" {
 }
 
 #include "utils.hpp"
-#include "Mod.hpp"
-#include "ModApiV1.hpp"
+#include "tower.hpp"
 
 static lua_State *L;
 
