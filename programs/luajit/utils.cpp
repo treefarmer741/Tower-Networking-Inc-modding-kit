@@ -119,6 +119,11 @@ int push_gd_callable(lua_State *L, Callable callable) {
             switch (nargs) {
                 case 0: result = ud->call(); break;
                 case 1: result = ud->call(to_gd_variant(L, 2)); break;
+                case 2: result = ud->call(to_gd_variant(L, 2), to_gd_variant(L, 3)); break;
+                case 3: result = ud->call(to_gd_variant(L, 2), to_gd_variant(L, 3), to_gd_variant(L, 4)); break;
+                case 4: result = ud->call(to_gd_variant(L, 2), to_gd_variant(L, 3), to_gd_variant(L, 4), to_gd_variant(L, 5)); break;
+                case 5: result = ud->call(to_gd_variant(L, 2), to_gd_variant(L, 3), to_gd_variant(L, 4), to_gd_variant(L, 5), to_gd_variant(L, 6)); break;
+                case 6: result = ud->call(to_gd_variant(L, 2), to_gd_variant(L, 3), to_gd_variant(L, 4), to_gd_variant(L, 5), to_gd_variant(L, 6), to_gd_variant(L, 7)); break;
                 default:
                     return luaL_error(L, "GodotCallable.__call Too many arguments");
             }
