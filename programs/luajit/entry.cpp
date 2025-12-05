@@ -114,7 +114,7 @@ static void setup_lua_state() {
     push_gd_variant(L, mod);
     lua_setglobal(L, "Mod");
 
-    push_gd_variant(L, mod.get_api_v1());
+    push_gd_variant(L, (ModApiV1)mod.api_v1());
     lua_setglobal(L, "ModApiV1");
 
     push_gd_variant(L, (ModFileSystem)mod.filesystem());
