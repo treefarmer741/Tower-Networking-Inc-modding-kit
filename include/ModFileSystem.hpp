@@ -11,7 +11,8 @@ struct ModFileSystem : public Node {
 	PROPERTY(mod, Variant);
 	PROPERTY(last_open_error, int64_t);
 
-	inline Variant open(String path, int64_t flags) { return operator()("open", path, flags); }
+	inline String mod_path_to_real(String path) { return operator()("mod_path_to_real", path); }
+	inline Variant open(String mod_path, int64_t flags) { return operator()("open", mod_path, flags); }
 	inline int64_t get_open_error() { return operator()("get_open_error"); }
 };
 

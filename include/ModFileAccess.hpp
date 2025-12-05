@@ -3,10 +3,11 @@
 
 #include <api.hpp>
 
-struct ModFileAccess : public RefCounted {
-	using RefCounted::RefCounted;
+struct ModFileAccess : public Object {
+	using Object::Object;
 
 	ModFileAccess(Variant variant) : ModFileAccess{variant.as_object().address()} {}
+
 
 	inline bool is_open() { return operator()("is_open"); }
 	inline bool eof_reached() { return operator()("eof_reached"); }

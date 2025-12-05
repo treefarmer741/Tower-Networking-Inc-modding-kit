@@ -6,4 +6,6 @@
 #include "MyCustomCamera.hpp"
 #include "BaseUI.hpp"
 #include "DeviceUnit.hpp"
+#include "LogicController.hpp"
+#include "PowerController.hpp"
 #include "User.hpp"
