@@ -17,7 +17,11 @@ extern "C" {
 
 int push_gd_object(lua_State *L, Object object) {
     static const char* MetaTableName = "GodotObject";
-    // TODO: Handle temporary variant
+
+    if (object.address() == 0) {
+        lua_pushnil(L);
+        return 1;
+    }
 
     int64_t* ud = (int64_t*)lua_newuserdata(L, sizeof(int64_t));
     *ud = int64_t(object("get_instance_id"));  // object.get_instance_id() wrongly returns int
