@@ -1,10 +1,13 @@
-#ifndef TN_API_HEADER_USER
-#define TN_API_HEADER_USER
+#ifndef TNI_API_HEADER_USER
+#define TNI_API_HEADER_USER
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct User : public Node {
 	using Node::Node;
+
 
 	User(Variant variant) : User{variant.as_object().address()} {}
 

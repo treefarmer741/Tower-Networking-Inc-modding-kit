@@ -1,10 +1,25 @@
-#ifndef TN_API_HEADER_LOGICCONTROLLER
-#define TN_API_HEADER_LOGICCONTROLLER
+#ifndef TNI_API_HEADER_LOGICCONTROLLER
+#define TNI_API_HEADER_LOGICCONTROLLER
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct LogicController : public Node {
 	using Node::Node;
+
+	enum TraversalHistory : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		SRC_NODE_PATH = 0,
+		PORT_PATH = 1,
+		TRAFFIC_CLASS = 2,
+		TRAFFIC_WEIGHT = 3,
+		REQUEST_DATA = 4,
+		ADDITIONAL_FLAGS = 5,
+	};
+	enum TableType : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		ROUTING = 0,
+		FIREWALL = 1,
+	};
 
 	LogicController(Variant variant) : LogicController{variant.as_object().address()} {}
 

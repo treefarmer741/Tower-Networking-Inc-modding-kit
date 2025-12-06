@@ -1,10 +1,13 @@
-#ifndef TN_API_HEADER_MODFILEACCESS
-#define TN_API_HEADER_MODFILEACCESS
+#ifndef TNI_API_HEADER_MODFILEACCESS
+#define TNI_API_HEADER_MODFILEACCESS
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct ModFileAccess : public Object {
 	using Object::Object;
+
 
 	ModFileAccess(Variant variant) : ModFileAccess{variant.as_object().address()} {}
 

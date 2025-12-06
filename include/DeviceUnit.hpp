@@ -1,10 +1,55 @@
-#ifndef TN_API_HEADER_DEVICEUNIT
-#define TN_API_HEADER_DEVICEUNIT
+#ifndef TNI_API_HEADER_DEVICEUNIT
+#define TNI_API_HEADER_DEVICEUNIT
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct DeviceUnit : public RigidBody2D {
 	using RigidBody2D::RigidBody2D;
+
+	static const int64_t ZINDEX = 200;  // NOTE: You may need to recompile your mod if this value changes!
+	static const int64_t MAX_PRICE = 1000000;  // NOTE: You may need to recompile your mod if this value changes!
+	enum Condition : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		NORMAL = 0,
+		GENERAL_FAILURE = 1,
+		OVERVOLTAGE_DAMAGE = 2,
+	};
+	enum DeviceHardwareClass : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		DEFAULT = 0,
+		NETWORK_SWITCH = 1,
+		NETWORK_ROUTER = 2,
+		NETWORK_TAP = 3,
+		NETWORK_FIREWALL = 4,
+		MEDIA_LINE_SIMPLEX = 5,
+		MEDIA_LINE_DUPLEX = 6,
+		COMPUTE_SERVER = 7,
+		DISPLAY_MONITOR = 8,
+		DEBUGGER = 9,
+		LOAD_TESTER = 10,
+		POWER_EXPANSION = 11,
+		DECENTRO_RIGS = 12,
+		SURGE_PROTECTOR = 13,
+		UPS = 14,
+		INERT = 15,
+		CCTV = 16,
+		PHONE = 17,
+		PRINTER = 18,
+		NETWORK_LOAD_BALANCER = 19,
+	};
+	enum ExtraDescriptionType : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		NODESCRIPT = 0,
+		BW_PER_TICK = 1,
+		CMSBW_BASIC = 2,
+		POWER_SUPPLY = 3,
+		CABLE_O_MATIC = 4,
+	};
+	enum MountType : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		NA = 0,
+		R500 = 1,
+		R930 = 2,
+		R550 = 3,
+	};
 
 	DeviceUnit(Variant variant) : DeviceUnit{variant.as_object().address()} {}
 

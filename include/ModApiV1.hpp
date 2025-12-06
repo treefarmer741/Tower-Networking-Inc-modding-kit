@@ -1,10 +1,13 @@
-#ifndef TN_API_HEADER_MODAPIV1
-#define TN_API_HEADER_MODAPIV1
+#ifndef TNI_API_HEADER_MODAPIV1
+#define TNI_API_HEADER_MODAPIV1
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct ModApiV1 : public Node {
 	using Node::Node;
+
 
 	ModApiV1(Variant variant) : ModApiV1{variant.as_object().address()} {}
 

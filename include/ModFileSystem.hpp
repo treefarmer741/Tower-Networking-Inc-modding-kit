@@ -1,10 +1,13 @@
-#ifndef TN_API_HEADER_MODFILESYSTEM
-#define TN_API_HEADER_MODFILESYSTEM
+#ifndef TNI_API_HEADER_MODFILESYSTEM
+#define TNI_API_HEADER_MODFILESYSTEM
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct ModFileSystem : public Node {
 	using Node::Node;
+
 
 	ModFileSystem(Variant variant) : ModFileSystem{variant.as_object().address()} {}
 

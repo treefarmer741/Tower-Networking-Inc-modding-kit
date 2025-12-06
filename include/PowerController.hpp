@@ -1,10 +1,17 @@
-#ifndef TN_API_HEADER_POWERCONTROLLER
-#define TN_API_HEADER_POWERCONTROLLER
+#ifndef TNI_API_HEADER_POWERCONTROLLER
+#define TNI_API_HEADER_POWERCONTROLLER
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct PowerController : public Node {
 	using Node::Node;
+
+	static const int64_t MAX_DEPTH = 99999;  // NOTE: You may need to recompile your mod if this value changes!
+	static const int64_t LEAKAGE = 1;  // NOTE: You may need to recompile your mod if this value changes!
+	static const double REFRESH_PERIOD_SECONDS = 0.7;  // NOTE: You may need to recompile your mod if this value changes!
+	static const double SUPP_REFRESH_SECONDS = 0.3;  // NOTE: You may need to recompile your mod if this value changes!
 
 	PowerController(Variant variant) : PowerController{variant.as_object().address()} {}
 

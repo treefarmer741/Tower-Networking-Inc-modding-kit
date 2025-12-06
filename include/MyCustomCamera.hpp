@@ -1,10 +1,16 @@
-#ifndef TN_API_HEADER_MYCUSTOMCAMERA
-#define TN_API_HEADER_MYCUSTOMCAMERA
+#ifndef TNI_API_HEADER_MYCUSTOMCAMERA
+#define TNI_API_HEADER_MYCUSTOMCAMERA
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct MyCustomCamera : public Camera2D {
 	using Camera2D::Camera2D;
+
+	static const double DEFAULT_ZOOM = 0.5;  // NOTE: You may need to recompile your mod if this value changes!
+	static const double MOVE_X_THRESHOLD = 930.0;  // NOTE: You may need to recompile your mod if this value changes!
+	static const double MOVE_Y_THRESHOLD = 500.0;  // NOTE: You may need to recompile your mod if this value changes!
 
 	MyCustomCamera(Variant variant) : MyCustomCamera{variant.as_object().address()} {}
 

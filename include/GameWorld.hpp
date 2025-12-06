@@ -1,10 +1,21 @@
-#ifndef TN_API_HEADER_GAMEWORLD
-#define TN_API_HEADER_GAMEWORLD
+#ifndef TNI_API_HEADER_GAMEWORLD
+#define TNI_API_HEADER_GAMEWORLD
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
 
 #include <api.hpp>
 
 struct GameWorld : public Node2D {
 	using Node2D::Node2D;
+
+	PROPERTY(mobile_os_scn, Variant);  // Cosnt value type was not supported.
+	enum CostStackIndice : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+		PPU = 0,
+		REG_COST = 1,
+	};
+	PROPERTY(BASE_ACCL, Variant);  // Cosnt value type was not supported.
+	PROPERTY(phctl_scn, Variant);  // Cosnt value type was not supported.
+	PROPERTY(dmctl_scn, Variant);  // Cosnt value type was not supported.
 
 	GameWorld(Variant variant) : GameWorld{variant.as_object().address()} {}
 
