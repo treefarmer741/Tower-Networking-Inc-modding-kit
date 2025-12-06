@@ -1,6 +1,6 @@
 #include <api.hpp>
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wreturn-type-c-linkage"
+
+#include "tower.hpp"
 
 /*
 TNI modding template
@@ -22,19 +22,22 @@ void print_scenario_name(Object& modding_api) {
     printf("scenario %s\n", scenario_name.utf8().c_str());
 }
 
-static Variant on_engine_load(Object modding_api) {
+static Variant on_engine_load(ModApiV1 modding_api) {
 	// this is called when the engine just loaded this mod.
 	printf("Hello from a TNI mod, %d\n", somevar);
 	somevar += 1;
+	printf("base ui type = %d\n", modding_api.get_base_ui().get_type());
+	printf("DeviceUnit::Condition::OVERVOLTAGE_DAMAGE = %ld\n", DeviceUnit::Condition::OVERVOLTAGE_DAMAGE);
+	printf("DeviceUnit::MAX_PRICE = %ld\n", DeviceUnit::MAX_PRICE);
 	return Nil;
 }
 
-static Variant on_game_tick(Object modding_api, double delta) {
+static Variant on_game_tick(ModApiV1 modding_api, double delta) {
 	// this is called every game tick.
 	return Nil;
 }
 
-static Variant on_player_input(Object modding_api, InputEvent event) {
+static Variant on_player_input(ModApiV1 modding_api, InputEvent event) {
 	// this is called when player input is received.
     if (event.get_class() == "InputEventKey") {
         InputEventKey* key = reinterpret_cast<InputEventKey*>(&event);
@@ -53,7 +56,7 @@ static Variant on_player_input(Object modding_api, InputEvent event) {
 	return Nil;
 }
 
-static Variant on_game_state_ready(Object modding_api) {
+static Variant on_game_state_ready(ModApiV1 modding_api) {
 	// this is called when the game is ready.
     Node gw(modding_api.call("get_game_world"));
     String scenario_name = gw.get("scenario_name");
@@ -61,12 +64,12 @@ static Variant on_game_state_ready(Object modding_api) {
 	return Nil;
 }
 
-static Variant on_game_host_eod(Object modding_api) {
+static Variant on_game_host_eod(ModApiV1 modding_api) {
 	// this is called when the game host's end-of-day occurs.
 	return Nil;
 }
 
-static Variant on_device_spawned(Object modding_api, Node device) {
+static Variant on_device_spawned(ModApiV1 modding_api, DeviceUnit device) {
 	// this is called when a device is spawned.
 	return Nil;
 }
