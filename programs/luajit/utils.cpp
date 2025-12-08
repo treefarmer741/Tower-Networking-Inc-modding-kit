@@ -11,8 +11,7 @@ extern "C" {
 }
 
 #include "utils.hpp"
-#include "Mod.hpp"
-#include "ModApiV1.hpp"
+#include "tower.hpp"
 
 
 int push_gd_object(lua_State *L, Object object) {

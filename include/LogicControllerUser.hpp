@@ -1,21 +1,25 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERUSER
 #define TNI_API_HEADER_LOGICCONTROLLERUSER
 // Generated API for game version 0.9.1
-// If any constants or enum's change between versions, a rebuild of your mod will with updated headers may be required!
+// If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
+#include <structs.hpp>
 
 struct LogicControllerUser : public Node {
 	using Node::Node;
 
-	enum PaymentCalculationMethod : int64_t {  // NOTE: You may need to recompile your mod if this enum changes!
+	constexpr LogicControllerUser(Node base) : Node{base} {}
+	constexpr LogicControllerUser(uint64_t addr) : Node{addr} {}
+	constexpr LogicControllerUser(Object obj) : LogicControllerUser{obj.address()} {}
+	LogicControllerUser(Variant variant) : LogicControllerUser{variant.as_object().address()} {}
+
+	enum PaymentCalculationMethod : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		USAGE_FULFILMENT_TODAY = 0,
 		LOWEST_SATIETY_TODAY = 1,
 	};
 
-	LogicControllerUser(Variant variant) : LogicControllerUser{variant.as_object().address()} {}
-
-	PROPERTY(logic_controller, Variant);
+	PROPERTY(logic_controller, LogicController);
 	PROPERTY(behaviors, Variant);
 	PROPERTY(user_application_unlocks, Variant);
 	PROPERTY(consumption_payment_scaling, double);
@@ -53,34 +57,54 @@ struct LogicControllerUser : public Node {
 	PROPERTY(active_time_float, double);
 	PROPERTY(inactive_time_float, double);
 	PROPERTY(fulfilment_penalty_factor, double);
-	PROPERTY(icon_texture, Variant);
+	PROPERTY(icon_texture, Texture2D);
 	PROPERTY(unknown_user, bool);
 	PROPERTY(satiety_ratio, double);
 	PROPERTY(is_active, bool);
 	PROPERTY(average_satiety_ratio_last_tick, double);
 	PROPERTY(lowest_satiety_ratio, double);
 	PROPERTY(usage_fulfilment_today, double);
-	PROPERTY(use_timer, Variant);
-	PROPERTY(down_timer, Variant);
+	PROPERTY(use_timer, Timer);
+	PROPERTY(down_timer, Timer);
 	PROPERTY(grace_days_left, int64_t);
-	PROPERTY(rng, Variant);
-	PROPERTY(location, Variant);
+	PROPERTY(rng, RandomNumberGenerator);
+	PROPERTY(location, Location);
 	PROPERTY(username_fixed, bool);
 	PROPERTY(username, String);
 	PROPERTY(previous_active_state, bool);
 
-	inline void push_surveyor_message(String msg) { voidcall("push_surveyor_message", msg); }
-	inline double get_manifest_roll(String release_name) { return operator()("get_manifest_roll", release_name); }
-	inline Variant debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-	inline void account_intent(Variant utc) { voidcall("account_intent", utc); }
-	inline void unaccount_intent(Variant utc) { voidcall("unaccount_intent", utc); }
-	inline void account_consumption(Variant utc, Variant _context) { voidcall("account_consumption", utc, _context); }
-	inline void account_visitation(Variant vprog, Variant context, Variant _visitor) { voidcall("account_visitation", vprog, context, _visitor); }
-	inline void time_mult_updated(double time_mult_delta) { voidcall("time_mult_updated", time_mult_delta); }
-	inline void finish_setup() { voidcall("finish_setup"); }
-	inline void first_use() { voidcall("first_use"); }
-	inline void periodic_use() { voidcall("periodic_use"); }
-	inline void down() { voidcall("down"); }
+	inline void push_surveyor_message(String msg);
+	inline double get_manifest_roll(String release_name);
+	inline Variant debug_monitor_callback();
+	inline void account_intent(UserTraversal utc);
+	inline void unaccount_intent(UserTraversal utc);
+	inline void account_consumption(UserTraversal utc, TraversalContext _context);
+	inline void account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor);
+	inline void time_mult_updated(double time_mult_delta);
+	inline void finish_setup();
+	inline void first_use();
+	inline void periodic_use();
+	inline void down();
 };
+
+#include "LogicController.hpp"
+#include "Location.hpp"
+#include "UserTraversal.hpp"
+#include "TraversalContext.hpp"
+#include "Program.hpp"
+#include "LogicControllerUser.hpp"
+
+inline void LogicControllerUser::push_surveyor_message(String msg) { voidcall("push_surveyor_message", msg); }
+inline double LogicControllerUser::get_manifest_roll(String release_name) { return operator()("get_manifest_roll", release_name); }
+inline Variant LogicControllerUser::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
+inline void LogicControllerUser::account_intent(UserTraversal utc) { voidcall("account_intent", utc); }
+inline void LogicControllerUser::unaccount_intent(UserTraversal utc) { voidcall("unaccount_intent", utc); }
+inline void LogicControllerUser::account_consumption(UserTraversal utc, TraversalContext _context) { voidcall("account_consumption", utc, _context); }
+inline void LogicControllerUser::account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor) { voidcall("account_visitation", vprog, context, _visitor); }
+inline void LogicControllerUser::time_mult_updated(double time_mult_delta) { voidcall("time_mult_updated", time_mult_delta); }
+inline void LogicControllerUser::finish_setup() { voidcall("finish_setup"); }
+inline void LogicControllerUser::first_use() { voidcall("first_use"); }
+inline void LogicControllerUser::periodic_use() { voidcall("periodic_use"); }
+inline void LogicControllerUser::down() { voidcall("down"); }
 
 #endif
