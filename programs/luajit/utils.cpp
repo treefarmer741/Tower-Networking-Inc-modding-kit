@@ -40,8 +40,12 @@ int push_gd_object(lua_State *L, Object object) {
             Object obj = v.as_object();
             // Variant value = to_gd_variant(L, 2);
             if (lua_isstring(L, 2)) {
-                std::string value = lua_tostring(L, 2);
-                return push_gd_variant(L, obj.get(value));
+                std::string name = lua_tostring(L, 2);
+                // We can't catch exceptions from the sandbox, so we check if we are allowed first.
+                if (!((Mod)get_node()).is_allowed_property(obj, name)) {
+                    luaL_error(L, "Banned property accessed: %s", name.c_str());
+                }
+                return push_gd_variant(L, obj.get(name));
             }
             lua_pushnil(L);
             return 1;
