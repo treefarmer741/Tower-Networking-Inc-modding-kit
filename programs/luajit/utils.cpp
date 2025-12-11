@@ -48,8 +48,6 @@ int push_gd_variant(lua_State *L, Variant variant) {
 }
 
 Variant to_gd_variant(lua_State *L, int pos) {
-    printf("to_gd_variant(L, %d) ", pos);
-    print_lua_stack(L);
     int ltype = lua_type(L, pos);
     switch (ltype) {
         case LUA_TNIL:
