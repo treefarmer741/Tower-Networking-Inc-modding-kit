@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(luajit)
 
 add_ci_program(luajit.elf
+	gdobject.cpp gdobject.hpp
+	gdcallable.cpp gdcallable.hpp
 	utils.cpp utils.hpp
 	entry.cpp
 )

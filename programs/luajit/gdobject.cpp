@@ -1,0 +1,79 @@
+extern "C" {
+#include <lua.h>
+#include <lauxlib.h>
+}
+
+#include "gdobject.hpp"
+#include "utils.hpp"
+#include "tower.hpp"
+
+
+Object check_gdobject(lua_State *L, int pos) {
+    uint64_t* ud = (uint64_t*)luaL_checkudata(L, pos, GDObjectMetaTable);
+    Variant v = get_node<Mod>().instance_from_id_(*ud);
+    if (v.get_type() == Variant::Type::NIL || !v.as_object().is_valid()) {
+        luaL_error(L, "Attempt to index object that is no longer valid.");
+    }
+    return v.as_object();
+}
+Object test_gdobject(lua_State *L, int pos) {
+    uint64_t* ud = (uint64_t*)luaL_testudata(L, pos, GDObjectMetaTable);
+    if (ud == NULL)
+        return Object(0);
+    Variant v = get_node<Mod>().instance_from_id_(*ud);
+    return v.as_object();
+}
+int push_gd_object(lua_State *L, Object object) {
+    if (object.address() == 0) {
+        lua_pushnil(L);
+        return 1;
+    }
+
+    uint64_t* ud = (uint64_t*)lua_newuserdata(L, sizeof(uint64_t));
+    *ud = uint64_t(object("get_instance_id"));  // object.get_instance_id() wrongly returns int
+
+    if (luaL_newmetatable(L, GDObjectMetaTable)) {
+        lua_pushstring(L, "__name");  // Was added in Lua 5.3, and not in LuaJIT, but it's nice to have anyway.
+        lua_pushstring(L, GDObjectMetaTable);
+        lua_settable(L, -3);
+
+        lua_pushstring(L, "__index");
+        lua_pushcfunction(L, [](lua_State *L) -> int {
+            Object obj = check_gdobject(L, 1);
+            // Variant value = to_gd_variant(L, 2);
+            if (lua_isstring(L, 2)) {
+                std::string name = lua_tostring(L, 2);
+                // We can't catch exceptions from the sandbox, so we check if we are allowed first.
+                if (!((Mod)get_node()).is_allowed_property(obj, name)) {
+                    luaL_error(L, "Banned property accessed: %s", name.c_str());
+                }
+                // TODO: We could temporarily cache GDCallable userdata during this VM call.
+                // TODO: GDNameCall instead of GDCallable to handle `obj:method()`, which can bypass GDCallable using obj.call/obj.callv (more performant and Lua idiomatic)
+                
+                int c = push_gd_variant(L, obj.get(name));
+                printf("GDObject.__index(%s) = #%d ", name.c_str(), c);
+                print_lua_stack(L);
+                return c;
+            }
+            lua_pushnil(L);
+            return 1;
+        });
+        lua_settable(L, -3);
+
+        lua_pushstring(L, "__tostring");
+        lua_pushcfunction(L, [](lua_State *L) -> int {
+            Object obj = test_gdobject(L, 1);
+            if (!obj.is_valid()) {
+                lua_pushfstring(L, "GodotObject: INVALID");
+            } else {
+                String s = obj.to_string();
+                lua_pushfstring(L, "GodotObject: %s", s.utf8().c_str());
+            }
+            return 1;
+        });
+        lua_settable(L, -3);
+    }
+    lua_setmetatable(L, -2);
+
+    return 1;
+}
