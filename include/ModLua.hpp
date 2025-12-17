@@ -26,7 +26,7 @@ struct ModLua : public Sandbox {
 	inline void call_if_has();
 	inline void mod_log(String s);
 	inline void handle_stdout(String s);
-	inline Variant is_allowed(Object parent, String check_name);
+	inline Variant callable_args_to_array(Variant c);
 	inline Variant instance_from_id_(int64_t id);
 	inline String error_string_(int64_t e);
 };
@@ -38,7 +38,7 @@ inline void ModLua::reload() { voidcall("reload"); }
 inline void ModLua::call_if_has() { voidcall("call_if_has"); }
 inline void ModLua::mod_log(String s) { voidcall("mod_log", s); }
 inline void ModLua::handle_stdout(String s) { voidcall("handle_stdout", s); }
-inline Variant ModLua::is_allowed(Object parent, String check_name) { return operator()("is_allowed", parent, check_name); }
+inline Variant ModLua::callable_args_to_array(Variant c) { return operator()("callable_args_to_array", c); }
 inline Variant ModLua::instance_from_id_(int64_t id) { return operator()("instance_from_id_", id); }
 inline String ModLua::error_string_(int64_t e) { return operator()("error_string_", e); }
 

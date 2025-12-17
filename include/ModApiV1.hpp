@@ -3,6 +3,7 @@
 // Generated API for game version 0.9.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
+#include <optional>
 #include <api.hpp>
 #include <structs.hpp>
 
@@ -17,8 +18,8 @@ struct ModApiV1 : public Node {
 
 
 	inline void sanity();
-	inline GameWorld get_game_world();
-	inline MyCustomCamera get_player_camera();
+	inline std::optional<GameWorld> get_game_world();
+	inline std::optional<MyCustomCamera> get_player_camera();
 	inline BaseUI get_base_ui();
 	inline Variant get_devices();
 	inline Variant get_users();
@@ -29,8 +30,8 @@ struct ModApiV1 : public Node {
 #include "BaseUI.hpp"
 
 inline void ModApiV1::sanity() { voidcall("sanity"); }
-inline GameWorld ModApiV1::get_game_world() { return GameWorld(operator()("get_game_world").as_object().address()); }
-inline MyCustomCamera ModApiV1::get_player_camera() { return MyCustomCamera(operator()("get_player_camera").as_object().address()); }
+inline std::optional<GameWorld> ModApiV1::get_game_world() { Variant value = operator()("get_game_world"); return value == Nil ? std::nullopt : std::optional(GameWorld(value.as_object().address())); }
+inline std::optional<MyCustomCamera> ModApiV1::get_player_camera() { Variant value = operator()("get_player_camera"); return value == Nil ? std::nullopt : std::optional(MyCustomCamera(value.as_object().address())); }
 inline BaseUI ModApiV1::get_base_ui() { return BaseUI(operator()("get_base_ui").as_object().address()); }
 inline Variant ModApiV1::get_devices() { return operator()("get_devices"); }
 inline Variant ModApiV1::get_users() { return operator()("get_users"); }
