@@ -9,9 +9,6 @@ extern "C" {
 #include <api.hpp>
 
 
-#define DEBUG(...) printf(__VA_ARGS__); fflush(stdout)
-
-
 int push_gd_variant(lua_State *L, Variant variant);
 
 Variant to_gd_variant(lua_State *L, int pos);

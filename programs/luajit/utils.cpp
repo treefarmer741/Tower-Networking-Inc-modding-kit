@@ -43,7 +43,6 @@ int push_gd_variant(lua_State *L, Variant variant) {
             return push_gd_callable(L, variant.as_callable());
         default:
             printf("push_gd_type() Unhandled variant type %d\n", variant.get_type());
-            fflush(stdout);
             return 0;
     }
 }
@@ -63,7 +62,6 @@ static Variant gd_callable_lua(uint64_t Lptr, Array args) {
         // Stack: function, err_str
         const char *err = lua_tostring(L, -1);
         printf("Lua exec error: %s\n", err);
-        fflush(stdout);
         lua_pop(L, 1);
         // Stack: function
         throw std::runtime_error("Lua exec error");  // Hopefully propagate the error through godot.
@@ -155,7 +153,6 @@ Variant to_gd_variant(lua_State *L, int pos) {
         // Omitted LUA_TTHREAD, no use for it.
         default:
             printf("to_gd_variant() Unhandled lua type: %s", lua_typename(L, ltype));
-            fflush(stdout);
             break;
     }
     return Nil;
@@ -230,5 +227,4 @@ void print_lua_stack(lua_State *L) {
                 break;
         }
     }
-    fflush(stdout);
 }

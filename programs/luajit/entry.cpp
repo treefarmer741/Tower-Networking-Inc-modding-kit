@@ -19,7 +19,6 @@ static lua_State *L;
 static Variant set_lua_source(String code, String path) {
     if (L == NULL) {
         printf("`set_lua_source()` but the lua state == NULL\n");
-        fflush(stdout);
         return Nil;
     }
 
@@ -28,7 +27,6 @@ static Variant set_lua_source(String code, String path) {
     if (luaL_loadbuffer(L, src.c_str(), src.size(), name.c_str()) != 0) {
         const char *err = lua_tostring(L, -1);
         printf("Lua load error: %s\n", err);
-        fflush(stdout);
         lua_pop(L, 1);
         return Nil;
     }
@@ -36,7 +34,6 @@ static Variant set_lua_source(String code, String path) {
     if (pcall_stacktrace(L, 0, 0) != 0) {
         const char *err = lua_tostring(L, -1);
         printf("Lua exec error: %s\n", err);
-        fflush(stdout);
         lua_pop(L, 1);
         return Nil;
     }
@@ -54,7 +51,6 @@ static Variant set_lua_source(String code, String path) {
         if (pcall_stacktrace(L, 0, 0) != 0) { \
             const char *err = lua_tostring(L, -1); \
             printf("Lua error: %s\n", err); \
-            fflush(stdout); \
             lua_pop(L, 1); \
         } \
         return Nil; \
@@ -71,7 +67,6 @@ static Variant set_lua_source(String code, String path) {
         if (pcall_stacktrace(L, nargs, 0) != 0) { \
             const char *err = lua_tostring(L, -1); \
             printf("Lua error: %s\n", err); \
-            fflush(stdout); \
             lua_pop(L, 1); \
         } \
         return Nil; \
@@ -88,27 +83,9 @@ DEFINE_LUA_CALLBACK_1(on_device_spawned, Node, device)
 DEFINE_LUA_CALLBACK_1(on_user_spawned, Node, user)
 DEFINE_LUA_CALLBACK_1(on_location_spawned, Node, location)
 
-static int print_and_flush_lua(lua_State *L) {
-    // Stack: ...args
-    // Get original print function.
-    lua_pushlightuserdata(L, (void*)print_and_flush_lua);
-    lua_gettable(L, LUA_REGISTRYINDEX);
-    // Stack: ...args, base_print
-    lua_insert(L, 1);
-    // Stack: base_print, ...args
-    lua_call(L, lua_gettop(L) - 1, LUA_MULTRET);
-    fflush(stdout);  // For some reason, newlines don't imply flush.
-	return lua_gettop(L);
-}
-
 static void setup_lua_state() {
     L = luaL_newstate();
     luaL_openlibs(L);
-
-    lua_pushlightuserdata(L, (void*)print_and_flush_lua);
-    lua_getglobal(L, "print");
-    lua_settable(L, LUA_REGISTRYINDEX);
-    lua_register(L, "print", print_and_flush_lua);
 
     Mod mod = get_node<Mod>();
     push_gd_variant(L, mod);
@@ -122,6 +99,9 @@ static void setup_lua_state() {
 }
 
 int main() {
+    // stdout line buffering, to match TNI mod output buffering.
+    setvbuf(stdout, NULL, _IOLBF, BUFSIZ);
+
     setup_lua_state();
     
     // Only called for luajit.elf
