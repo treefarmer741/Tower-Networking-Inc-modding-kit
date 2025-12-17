@@ -43,6 +43,7 @@ static Variant set_lua_source(String code, String path) {
 
 #define DEFINE_LUA_CALLBACK_0(name) \
     static Variant name() { \
+        lua_settop(L, 0); \
         lua_getglobal(L, #name); \
         if (!lua_isfunction(L, -1)) { \
             lua_pop(L, 1); \
@@ -57,13 +58,13 @@ static Variant set_lua_source(String code, String path) {
     }
 #define DEFINE_LUA_CALLBACK_1(name, type1, param1) \
     static Variant name(type1 param1) { \
+        lua_settop(L, 0); \
         lua_getglobal(L, #name); \
         if (!lua_isfunction(L, -1)) { \
             lua_pop(L, 1); \
             return Nil; \
         } \
-        Variant v_param1 = param1; \
-        int nargs = push_gd_variant(L, v_param1); \
+        int nargs = push_gd_variant(L, Variant(param1)); \
         if (pcall_stacktrace(L, nargs, 0) != 0) { \
             const char *err = lua_tostring(L, -1); \
             printf("Lua error: %s\n", err); \
