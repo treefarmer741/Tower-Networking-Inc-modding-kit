@@ -50,10 +50,7 @@ int push_gd_object(lua_State *L, Object object) {
                 // TODO: We could temporarily cache GDCallable userdata during this VM call.
                 // TODO: GDNameCall instead of GDCallable to handle `obj:method()`, which can bypass GDCallable using obj.call/obj.callv (more performant and Lua idiomatic)
                 
-                int c = push_gd_variant(L, obj.get(name));
-                printf("GDObject.__index(%s) = #%d ", name.c_str(), c);
-                print_lua_stack(L);
-                return c;
+                return push_gd_variant(L, obj.get(name));
             }
             lua_pushnil(L);
             return 1;
