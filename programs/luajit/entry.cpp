@@ -89,13 +89,16 @@ static void setup_lua_state() {
     luaL_openlibs(L);
 
     Mod mod = get_node<Mod>();
-    push_gd_variant(L, mod);
+    if (push_gd_variant(L, mod) != 1)
+        luaL_error(L, "Failed to push Mod object.");
     lua_setglobal(L, "Mod");
 
-    push_gd_variant(L, (ModApiV1)mod.api_v1());
+    if (push_gd_variant(L, (ModApiV1)mod.api_v1()) != 1)
+        luaL_error(L, "Failed to push ModApiV1 object.");
     lua_setglobal(L, "ModApiV1");
 
-    push_gd_variant(L, (ModFileSystem)mod.filesystem());
+    if (push_gd_variant(L, (ModFileSystem)mod.filesystem()) != 1)
+        luaL_error(L, "Failed to push ModFileSystem object.");
     lua_setglobal(L, "ModFileSystem");
 }
 
