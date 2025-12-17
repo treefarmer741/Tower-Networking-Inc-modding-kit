@@ -11,8 +11,9 @@ extern "C" {
 // #include "luajit.h"
 }
 
-#include "utils.hpp"
 #include "tower.hpp"
+#include "utils.hpp"
+#include "luamodpackage.hpp"
 
 static lua_State *L;
 
@@ -100,6 +101,27 @@ static void setup_lua_state() {
     if (push_gd_variant(L, (ModFileSystem)mod.filesystem()) != 1)
         luaL_error(L, "Failed to push ModFileSystem object.");
     lua_setglobal(L, "ModFileSystem");
+
+    lua_getglobal(L, "package");
+    // Stack: package
+    lua_pushstring(L, "mod://?.lua;mod://?/init.lua");
+    // Stack: package, string
+    lua_setfield(L, -2, "path");
+    // Stack: package
+    lua_pushcfunction(L, lua_modsearchpath);
+    // Stack: package, lua_modsearchpath
+    lua_setfield(L, -2, "searchpath");
+    // Stack: package
+    lua_newtable(L);
+    // Stack: package, table
+    lua_pushcfunction(L, lua_modsearcher_lua);
+    // Stack: package, table, lua_modsearcher_lua
+    lua_rawseti(L, -2, lua_objlen(L, -2) + 1);
+    // Stack: package, table
+    lua_setfield(L, -2, "loaders");
+    // Stack: package
+    lua_pop(L, 1);
+    // Stack:
 }
 
 int main() {
