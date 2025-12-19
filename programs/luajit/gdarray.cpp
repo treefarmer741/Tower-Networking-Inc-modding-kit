@@ -71,8 +71,7 @@ void push_gd_array_metatable(lua_State *L) {
                     luaL_argerror(L, 2, "expected integer but got number");  // Never returns.
                 int i = (int)n;
                 int size = array->size();
-                if (i < -size || i >= size) {
-                    luaL_error(L, "GDArray index (%d) out of bounds (%d elements)", i, size-1);  // Never returns.
+                    return luaL_error(L, "GDArray index (%d) out of bounds (%d elements)", i, size-1);  // Never returns.
                 }
                 ArrayProxy elem = array->operator[](i);
                 return push_gd_variant(L, elem.get());
@@ -102,7 +101,7 @@ void push_gd_array_metatable(lua_State *L) {
             int size = array->size();
 
             if (i < 0 || i > size)
-                luaL_error(L, "GDArray new index (%d) out of bounds (0-%d+1)", i, size-1);  // Never returns.
+                return luaL_error(L, "GDArray new index (%d) out of bounds (0-%d+1)", i, size-1);  // Never returns.
             if (i == size) {
                 array->push_back(value);
             } else {

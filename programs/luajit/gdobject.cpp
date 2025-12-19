@@ -10,6 +10,7 @@ Object check_gdobject(lua_State *L, int pos) {
     Variant v = get_node<Mod>().instance_from_id_(*ud);
     if (v.get_type() == Variant::Type::NIL || !v.as_object().is_valid()) {
         luaL_error(L, "Attempt to index object that is no longer valid.");  // luaL_error never returns.
+        return Nil;
     }
     return v.as_object();
 }
@@ -42,7 +43,7 @@ int push_gd_object(lua_State *L, Object object) {
                 std::string name = lua_tostring(L, 2);
                 // We can't catch exceptions from the sandbox, so we check if we are allowed first.
                 if (!((Mod)get_node()).is_allowed_property(obj, name)) {
-                    luaL_error(L, "Banned property accessed: %s", name.c_str());  // This does not return!
+                    return luaL_error(L, "Banned property accessed: %s", name.c_str());  // This does not return!
                 }
                 // TODO: We could temporarily cache GDCallable userdata during this VM call.
                 // TODO: GDNameCall instead of GDCallable to handle `obj:method()`, which can bypass GDCallable using obj.call/obj.callv (more performant and Lua idiomatic)

@@ -30,7 +30,7 @@ int variant_self_call(lua_State *L) {
     const int args_pos = 2;  // Position on stack where arguments start.
     int nargs = lua_gettop(L) - (args_pos-1);
     if (nargs > 8)
-        luaL_error(L, "godot-sandbox only supports up to 8 arguments");
+        return luaL_error(L, "godot-sandbox only supports up to 8 arguments");
 
     if (nargs == 0) {
 		Variant result;
