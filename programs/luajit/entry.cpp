@@ -102,6 +102,10 @@ static void setup_lua_state() {
         luaL_error(L, "Failed to push ModFileSystem object.");
     lua_setglobal(L, "ModFileSystem");
 
+    if (push_gd_variant(L, (Engine)Engine::get_singleton()) != 1)
+        luaL_error(L, "Failed to push Engine object.");
+    lua_setglobal(L, "Engine");
+
     lua_getglobal(L, "package");
     // Stack: package
     lua_pushstring(L, "mod://?.lua;mod://?/init.lua");
