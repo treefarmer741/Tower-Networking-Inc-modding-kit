@@ -1,7 +1,4 @@
-extern "C" {
-#include <lua.h>
-#include <lauxlib.h>
-}
+#include <lua.hpp>
 
 #include "gdcallable.hpp"
 #include "utils.hpp"

@@ -1,12 +1,6 @@
 #pragma once
 
-// #include <lua.hpp>
-extern "C" {
-#include "lua.h"
-#include "lauxlib.h"
-#include "lualib.h"
-// #include "luajit.h"
-}
+#include <lua.hpp>
 
 
 int lua_modsearcher_lua(lua_State *L);
