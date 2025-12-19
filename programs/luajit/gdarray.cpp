@@ -39,20 +39,21 @@ void push_gd_array_metatable(lua_State *L) {
             lua_pushcfunction(L, [](lua_State *L) -> int {
                 // Stack: gdarray, i
                 Array* array = check_gdarray(L, 1);
-                int i = lua_tointeger(L, 2);
+                int i = lua_tointeger(L, 2) + 1;
                 if (i >= array->size())
                     return 0;
-                lua_pushinteger(L, i+1);
+                lua_pushinteger(L, i);
                 // Stack: gdarray, i, i+1
-                push_gd_variant(L, array->at(i));
+                Variant value = array->at(i);
+                int nvalue = push_gd_variant(L, value);
                 // Stack: gdarray, i, i+1, value
-                return 2;
+                return 1+nvalue;
             });
             // Stack: gdarray, iterator
             lua_insert(L, -2);
             // Stack: iterator, gdarray
-            lua_pushinteger(L, 0);
-            // Stack: iterator, gdarray, 0
+            lua_pushinteger(L, -1);
+            // Stack: iterator, gdarray, -1
             return 3;
         });
         lua_settable(L, -3);
