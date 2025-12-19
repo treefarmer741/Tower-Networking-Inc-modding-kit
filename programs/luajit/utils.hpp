@@ -3,6 +3,8 @@
 #include <lua.hpp>
 #include <api.hpp>
 
+/// @brief Expects method name as string to be sole upvalue
+int variant_self_call(lua_State *L) ;
 
 int push_gd_variant(lua_State *L, Variant variant);
 

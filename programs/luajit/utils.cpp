@@ -8,7 +8,50 @@
 #include "tower.hpp"
 #include "gdobject.hpp"
 #include "gdcallable.hpp"
+#include "gdarray.hpp"
 
+
+int variant_self_call(lua_State *L) {
+    // FIXME: There is no way to know with `v.callp` if the method actually exist or not...
+    //        Can we find a way?
+
+    // Stack: Variant, args...
+    if (lua_type(L, 1) != LUA_TUSERDATA) {
+        luaL_argerror(L, 1, "no indexable godot value was provided (did you use `.` instead of `:`?)");
+    }
+
+    Variant v = to_gd_variant(L, 1);
+    if (v == Nil) {
+        luaL_argerror(L, 1, "no indexable godot value was provided (did you use `.` instead of `:`?)");
+    }
+
+    const char* method = lua_tostring(L, lua_upvalueindex(1));
+
+    const int args_pos = 2;  // Position on stack where arguments start.
+    int nargs = lua_gettop(L) - (args_pos-1);
+    if (nargs > 8)
+        luaL_error(L, "godot-sandbox only supports up to 8 arguments");
+
+    if (nargs == 0) {
+		Variant result;
+		v.callp(method, nullptr, 0, result);
+	    return push_gd_variant(L, result);
+	}
+	std::array<Variant,8> vargs;
+    for (int i = 0; i < nargs; i++) {
+        vargs[i] = to_gd_variant(L, args_pos+i);
+    }
+	Variant result;
+	v.callp(method, vargs.data(), nargs, result);
+	return push_gd_variant(L, result);
+
+    // Array args = Array::Create();
+    // for (int i = 0; i < nargs; i++) {
+    //     args.push_back(to_gd_variant(L, args_pos+i));
+    // }
+    
+    // return push_gd_variant(L, v.method_call(name, args));
+}
 
 int push_gd_variant(lua_State *L, Variant variant) {
     switch (variant.get_type()) {
@@ -35,6 +78,8 @@ int push_gd_variant(lua_State *L, Variant variant) {
             return push_gd_object(L, variant.as_object());
         case Variant::Type::CALLABLE:
             return push_gd_callable(L, variant.as_callable());
+        case Variant::Type::ARRAY:
+            return push_gd_array(L, variant.as_array());
         default:
             printf("push_gd_type() Unhandled variant type %d\n", variant.get_type());
             return 0;
@@ -73,13 +118,13 @@ static Variant gd_callable_lua(uint64_t Lptr, Array args) {
 
 Callable to_gd_callable(lua_State *L, int pos) {
     if (!lua_isfunction(L, pos)) {
-        luaL_error(L, "Expected function");  // This does not return!
+        luaL_error(L, "Expected function");  // luaL_error never returns.
         return Nil;
     }
 
     // FIXME: There is no clean-up, as the lifetime of a Callable is unknown.
     //        We are at least caching so it's not as bad.
-    //        But there are cases that this doesn't cache, eg `some_gd_func(function() end)`
+    //        But there are cases that cache doesn't work, eg `some_gd_func(function() end)`
 
     lua_getregistry(L);
     // Stack: ..., LUA_REGISTRY
@@ -141,12 +186,18 @@ Variant to_gd_variant(lua_State *L, int pos) {
 
             if (Callable* ud = test_gdcallable(L, pos))
                 return *ud;
+
+            if (Array* ud = test_gdarray(L, pos))
+                return *ud;
             
-            luaL_error(L, "Can not convert userdata to godot variant.");  // This never returns!
+            luaL_error(L, "Can not convert userdata to godot variant.");  // luaL_error never returns.
             return Nil;
         // Omitted LUA_TTHREAD, no use for it.
         default:
-            printf("to_gd_variant() Unhandled lua type: %s", lua_typename(L, ltype));
+            luaL_traceback(L, L, NULL, 0);
+            const char* tb = lua_tostring(L, -1);
+            lua_pop(L, 1);
+            printf("to_gd_variant() Unhandled lua type: %s\n%s\n", lua_typename(L, ltype), tb);
             break;
     }
     return Nil;
@@ -214,6 +265,8 @@ void print_lua_stack(lua_State *L) {
                     printf("\tGDObject: %p", (void*)obj.address());
                 if (Callable* ud = test_gdcallable(L, i))
                     printf("\tGDCallable: %d @ %p", ud->get_variant_index(), ud);
+                if (Array* ud = test_gdarray(L, i))
+                    printf("\tGDArray: %d @ %p", ud->get_variant_index(), ud);
                 printf("\n");
                 break;
             default:

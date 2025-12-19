@@ -7,6 +7,7 @@
 
 #include "tower.hpp"
 #include "utils.hpp"
+#include "gdarray.hpp"
 #include "luamodpackage.hpp"
 
 static lua_State *L;
@@ -99,6 +100,9 @@ static void setup_lua_state() {
     if (push_gd_variant(L, (Engine)Engine::get_singleton()) != 1)
         luaL_error(L, "Failed to push Engine object.");
     lua_setglobal(L, "Engine");
+
+    push_gd_array_metatable(L);
+    lua_setglobal(L, "Array");
 
     lua_getglobal(L, "package");
     // Stack: package

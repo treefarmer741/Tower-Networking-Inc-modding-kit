@@ -4,6 +4,7 @@ project(luajit)
 add_ci_program(luajit.elf
 	gdobject.cpp gdobject.hpp
 	gdcallable.cpp gdcallable.hpp
+	gdarray.cpp gdarray.hpp
 	utils.cpp utils.hpp
 	luamodpackage.cpp luamodpackage.hpp
 	entry.cpp
