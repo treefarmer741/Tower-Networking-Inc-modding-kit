@@ -58,10 +58,10 @@ int push_gd_object(lua_State *L, Object object) {
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Object obj = test_gdobject(L, 1);
             if (!obj.is_valid()) {
-                lua_pushfstring(L, "GodotObject: INVALID");
+                lua_pushfstring(L, "GDObject: INVALID");
             } else {
                 String s = obj.to_string();
-                lua_pushfstring(L, "GodotObject: %s", s.utf8().c_str());
+                lua_pushfstring(L, "GDObject: '%s'", s.utf8().c_str());
             }
             return 1;
         });

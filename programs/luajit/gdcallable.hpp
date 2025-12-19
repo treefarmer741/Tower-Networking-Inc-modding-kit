@@ -4,7 +4,7 @@
 #include <api.hpp>
 
 
-static const char* GDCallableMetaTable = "GodotCallable";
+static const char* GDCallableMetaTable = "GDCallable";
 
 Callable* check_gdcallable(lua_State *L, int pos);
 Callable* test_gdcallable(lua_State *L, int pos);

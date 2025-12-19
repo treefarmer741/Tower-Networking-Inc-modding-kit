@@ -4,7 +4,7 @@
 #include <api.hpp>
 
 
-static const char* GDArrayMetaTable = "GodotArray";
+static const char* GDArrayMetaTable = "GDArray";
 
 Array* check_gdarray(lua_State *L, int pos);
 Array* test_gdarray(lua_State *L, int pos);

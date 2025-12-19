@@ -4,7 +4,7 @@
 #include <api.hpp>
 
 
-static const char* GDObjectMetaTable = "GodotObject";
+static const char* GDObjectMetaTable = "GDObject";
 
 Object check_gdobject(lua_State *L, int pos);
 Object test_gdobject(lua_State *L, int pos);

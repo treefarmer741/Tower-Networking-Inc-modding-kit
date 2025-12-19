@@ -43,7 +43,7 @@ int push_gd_callable(lua_State *L, Callable callable) {
                 // https://github.com/libriscv/godot-sandbox/blob/1553c9f988f9e174e843143a932f5ba488c9ccdc/src/sandbox_syscalls.cpp#L105
                 // We could get around this by creating a godot array and using `ud->call("callv", args)`
                 default:
-                    return luaL_error(L, "GodotCallable.__call Too many arguments");  // luaL_error never returns.
+                    return luaL_error(L, "GDCallable.__call Too many arguments");  // luaL_error never returns.
             }
             return push_gd_variant(L, result);
         });
@@ -53,9 +53,9 @@ int push_gd_callable(lua_State *L, Callable callable) {
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Callable* ud = test_gdcallable(L, 1);
             if (ud == NULL) {
-                lua_pushfstring(L, "GodotCallable: INVALID");
+                lua_pushfstring(L, "GDCallable: INVALID");
             } else {
-                lua_pushfstring(L, "GodotCallable: %d @ %p", ud->get_variant_index(), ud);  // TODO: Can we get the name and/or signature?
+                lua_pushfstring(L, "GDCallable: %d@%p", ud->get_variant_index(), ud);  // TODO: Can we get the name and/or signature?
             }
             return 1;
         });

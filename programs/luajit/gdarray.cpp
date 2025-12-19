@@ -72,7 +72,7 @@ void push_gd_array_metatable(lua_State *L) {
                 int i = (int)n;
                 int size = array->size();
                 if (i < -size || i >= size) {
-                    luaL_error(L, "GodotArray index (%d) out of bounds (%d elements)", i, size-1);  // Never returns.
+                    luaL_error(L, "GDArray index (%d) out of bounds (%d elements)", i, size-1);  // Never returns.
                 }
                 ArrayProxy elem = array->operator[](i);
                 return push_gd_variant(L, elem.get());
@@ -102,7 +102,7 @@ void push_gd_array_metatable(lua_State *L) {
             int size = array->size();
 
             if (i < 0 || i > size)
-                luaL_error(L, "GodotArray new index (%d) out of bounds (0-%d+1)", i, size-1);  // Never returns.
+                luaL_error(L, "GDArray new index (%d) out of bounds (0-%d+1)", i, size-1);  // Never returns.
             if (i == size) {
                 array->push_back(value);
             } else {
@@ -126,9 +126,9 @@ void push_gd_array_metatable(lua_State *L) {
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Array* array = test_gdarray(L, 1);
             if (array == NULL) {
-                lua_pushfstring(L, "GodotArray: INVALID");
+                lua_pushfstring(L, "GDArray: INVALID");
             } else {
-                lua_pushfstring(L, "GodotArray: %d @ %p %s", array->get_variant_index(), array, array->is_permanent() ? "(perm)" : "(temp)");
+                lua_pushfstring(L, "GDArray: %d@%p-%s", array->get_variant_index(), array, array->is_permanent() ? "perm" : "temp");
             }
             return 1;
         });
