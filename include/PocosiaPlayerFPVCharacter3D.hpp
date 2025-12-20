@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct PocosiaPlayerFPVCharacter3D : public CharacterBody3D {
 	using CharacterBody3D::CharacterBody3D;

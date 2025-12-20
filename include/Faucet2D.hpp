@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct Faucet2D : public Fluid2D {
 	using Fluid2D::Fluid2D;
@@ -15,9 +15,9 @@ struct Faucet2D : public Fluid2D {
 	Faucet2D(Variant variant) : Faucet2D{variant.as_object().address()} {}
 
 
-	PROPERTY(points_new, Variant);
+	PROPERTY(points_new, PackedArray<Vector2>);
 	PROPERTY(interval, double);
-	PROPERTY(velocities_new, Variant);
+	PROPERTY(velocities_new, PackedArray<Vector2>);
 	PROPERTY(max_particles, int64_t);
 	PROPERTY(width, int64_t);
 	PROPERTY(height, int64_t);

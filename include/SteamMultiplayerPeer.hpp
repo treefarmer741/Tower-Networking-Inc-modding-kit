@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct SteamMultiplayerPeer : public MultiplayerPeerExtension {
 	using MultiplayerPeerExtension::MultiplayerPeerExtension;
@@ -34,7 +34,7 @@ struct SteamMultiplayerPeer : public MultiplayerPeerExtension {
 	PROPERTY(async_compression_mode, int64_t);
 	PROPERTY(send_buffer, Variant);
 	PROPERTY(receive_buffer, Variant);
-	PROPERTY(newpeerid_buffer, Variant);
+	PROPERTY(newpeerid_buffer, PackedArray<int32_t>);
 	PROPERTY(last_ping_ts_ms, int64_t);
 	PROPERTY(is_public_lobby, bool);
 
@@ -45,8 +45,8 @@ struct SteamMultiplayerPeer : public MultiplayerPeerExtension {
 	inline Variant get_lobby_members_steam_ids();
 	inline void send_lobby_pings();
 	inline void send_p2p_ping(int64_t remote_steam_id);
-	inline void send_p2p_packet(int64_t remote_steam_id, Variant packet_data, int64_t send_flags, int64_t channel);
-	inline void queue_message_for_send(int64_t remote_steam_id, Variant payload);
+	inline void send_p2p_packet(int64_t remote_steam_id, PackedArray<uint8_t> packet_data, int64_t send_flags, int64_t channel);
+	inline void queue_message_for_send(int64_t remote_steam_id, PackedArray<uint8_t> payload);
 	inline void leave_lobby();
 };
 
@@ -58,8 +58,8 @@ inline int64_t SteamMultiplayerPeer::try_join_lobby(int64_t steam_lobby_id) { re
 inline Variant SteamMultiplayerPeer::get_lobby_members_steam_ids() { return operator()("get_lobby_members_steam_ids"); }
 inline void SteamMultiplayerPeer::send_lobby_pings() { voidcall("send_lobby_pings"); }
 inline void SteamMultiplayerPeer::send_p2p_ping(int64_t remote_steam_id) { voidcall("send_p2p_ping", remote_steam_id); }
-inline void SteamMultiplayerPeer::send_p2p_packet(int64_t remote_steam_id, Variant packet_data, int64_t send_flags, int64_t channel) { voidcall("send_p2p_packet", remote_steam_id, packet_data, send_flags, channel); }
-inline void SteamMultiplayerPeer::queue_message_for_send(int64_t remote_steam_id, Variant payload) { voidcall("queue_message_for_send", remote_steam_id, payload); }
+inline void SteamMultiplayerPeer::send_p2p_packet(int64_t remote_steam_id, PackedArray<uint8_t> packet_data, int64_t send_flags, int64_t channel) { voidcall("send_p2p_packet", remote_steam_id, packet_data, send_flags, channel); }
+inline void SteamMultiplayerPeer::queue_message_for_send(int64_t remote_steam_id, PackedArray<uint8_t> payload) { voidcall("queue_message_for_send", remote_steam_id, payload); }
 inline void SteamMultiplayerPeer::leave_lobby() { voidcall("leave_lobby"); }
 
 #endif

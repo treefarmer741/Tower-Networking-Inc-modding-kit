@@ -5,7 +5,7 @@
 
 #include <optional>
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct ModApiV1 : public Node {
 	using Node::Node;

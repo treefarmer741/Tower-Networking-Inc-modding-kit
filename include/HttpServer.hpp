@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct HttpServer : public Node {
 	using Node::Node;
@@ -28,7 +28,7 @@ struct HttpServer : public Node {
 	inline void register_router(HttpRouter router);
 	inline void start();
 	inline void stop();
-	inline void enable_cors(Variant allowed_origins, String access_control_allowed_methods, String access_control_allowed_headers);
+	inline void enable_cors(PackedArray<std::string> allowed_origins, String access_control_allowed_methods, String access_control_allowed_headers);
 };
 
 #include "HttpRouter.hpp"
@@ -36,6 +36,6 @@ struct HttpServer : public Node {
 inline void HttpServer::register_router(HttpRouter router) { voidcall("register_router", router); }
 inline void HttpServer::start() { voidcall("start"); }
 inline void HttpServer::stop() { voidcall("stop"); }
-inline void HttpServer::enable_cors(Variant allowed_origins, String access_control_allowed_methods, String access_control_allowed_headers) { voidcall("enable_cors", allowed_origins, access_control_allowed_methods, access_control_allowed_headers); }
+inline void HttpServer::enable_cors(PackedArray<std::string> allowed_origins, String access_control_allowed_methods, String access_control_allowed_headers) { voidcall("enable_cors", allowed_origins, access_control_allowed_methods, access_control_allowed_headers); }
 
 #endif

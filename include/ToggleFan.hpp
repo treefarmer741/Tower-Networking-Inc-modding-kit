@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct ToggleFan : public Node2D {
 	using Node2D::Node2D;

@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct CableSlot : public Area2D {
 	using Area2D::Area2D;
@@ -23,7 +23,7 @@ struct CableSlot : public Area2D {
 	PROPERTY(coiled_cable, Variant);
 	PROPERTY(coil_offsets, Variant);
 	PROPERTY(free_end, Plug);
-	PROPERTY(coil_points, Variant);
+	PROPERTY(coil_points, PackedArray<Vector2>);
 	PROPERTY(connection, Variant);
 	PROPERTY(opposite_socket, Socket);
 	PROPERTY(type, int64_t);

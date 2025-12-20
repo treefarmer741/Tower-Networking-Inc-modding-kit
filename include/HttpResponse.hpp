@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct HttpResponse : public RefCounted {
 	using RefCounted::RefCounted;
@@ -23,8 +23,8 @@ struct HttpResponse : public RefCounted {
 	PROPERTY(access_control_allowed_methods, Variant);
 	PROPERTY(access_control_allowed_headers, Variant);
 
-	inline void send_raw(int64_t status_code, Variant data, String content_type, String extra_header);
-	inline void send_partial(int64_t status_code, Variant data, String content_type, String extra_header);
+	inline void send_raw(int64_t status_code, PackedArray<uint8_t> data, String content_type, String extra_header);
+	inline void send_partial(int64_t status_code, PackedArray<uint8_t> data, String content_type, String extra_header);
 	inline void send(int64_t status_code, String data, Variant content_type);
 	inline void json(int64_t status_code, Variant data);
 	inline void set_header_field(String field, Variant value);
@@ -32,8 +32,8 @@ struct HttpResponse : public RefCounted {
 };
 
 
-inline void HttpResponse::send_raw(int64_t status_code, Variant data, String content_type, String extra_header) { voidcall("send_raw", status_code, data, content_type, extra_header); }
-inline void HttpResponse::send_partial(int64_t status_code, Variant data, String content_type, String extra_header) { voidcall("send_partial", status_code, data, content_type, extra_header); }
+inline void HttpResponse::send_raw(int64_t status_code, PackedArray<uint8_t> data, String content_type, String extra_header) { voidcall("send_raw", status_code, data, content_type, extra_header); }
+inline void HttpResponse::send_partial(int64_t status_code, PackedArray<uint8_t> data, String content_type, String extra_header) { voidcall("send_partial", status_code, data, content_type, extra_header); }
 inline void HttpResponse::send(int64_t status_code, String data, Variant content_type) { voidcall("send", status_code, data, content_type); }
 inline void HttpResponse::json(int64_t status_code, Variant data) { voidcall("json", status_code, data); }
 inline void HttpResponse::set_header_field(String field, Variant value) { voidcall("set_header_field", field, value); }

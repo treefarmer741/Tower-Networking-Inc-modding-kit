@@ -4,7 +4,7 @@
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
-#include <structs.hpp>
+#include "structs.hpp"
 
 struct HttpFileRouter : public RefCounted {
 	using RefCounted::RefCounted;
@@ -18,8 +18,8 @@ struct HttpFileRouter : public RefCounted {
 	PROPERTY(localpath, String);
 	PROPERTY(index_page, String);
 	PROPERTY(fallback_page, String);
-	PROPERTY(extensions, Variant);
-	PROPERTY(exclude_extensions, Variant);
+	PROPERTY(extensions, PackedArray<std::string>);
+	PROPERTY(exclude_extensions, PackedArray<std::string>);
 	PROPERTY(listfiles, bool);
 	PROPERTY(weekdays, Variant);
 	PROPERTY(monthnames, Variant);
