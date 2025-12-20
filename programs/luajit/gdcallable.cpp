@@ -16,6 +16,13 @@ int push_gd_callable(lua_State *L, Callable callable) {
     Callable* ud = (Callable*)lua_newuserdata(L, sizeof(Callable));
     *ud = callable;
 
+    push_gd_callable_metatable(L);
+    lua_setmetatable(L, -2);
+
+    return 1;
+}
+
+void push_gd_callable_metatable(lua_State *L) {
     if (luaL_newmetatable(L, GDCallableMetaTable)) {
         lua_pushstring(L, "__name");  // Was added in Lua 5.3, and not in LuaJIT, but it's nice to have anyway.
         lua_pushstring(L, GDCallableMetaTable);
@@ -61,7 +68,4 @@ int push_gd_callable(lua_State *L, Callable callable) {
         });
         lua_settable(L, -3);
     }
-    lua_setmetatable(L, -2);
-
-    return 1;
 }

@@ -30,6 +30,13 @@ int push_gd_object(lua_State *L, Object object) {
     uint64_t* ud = (uint64_t*)lua_newuserdata(L, sizeof(uint64_t));
     *ud = uint64_t(object("get_instance_id"));  // object.get_instance_id() wrongly returns int
 
+    push_gd_object_metatable(L);
+    lua_setmetatable(L, -2);
+
+    return 1;
+}
+
+void push_gd_object_metatable(lua_State *L) {
     if (luaL_newmetatable(L, GDObjectMetaTable)) {
         lua_pushstring(L, "__name");  // Was added in Lua 5.3, and not in LuaJIT, but it's nice to have anyway.
         lua_pushstring(L, GDObjectMetaTable);
@@ -68,7 +75,4 @@ int push_gd_object(lua_State *L, Object object) {
         });
         lua_settable(L, -3);
     }
-    lua_setmetatable(L, -2);
-
-    return 1;
 }
