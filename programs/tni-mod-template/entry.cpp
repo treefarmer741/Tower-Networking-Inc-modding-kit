@@ -10,6 +10,8 @@ https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cppapi
 
 */
 
+EXTERN_SYSCALL(uint64_t, sys_node_create, Node_Create_Shortlist, const char *, size_t, const char *, size_t);
+
 static Mod mod = Mod(0);
 static ModApiV1 api_v1 = ModApiV1(0);
 
@@ -40,6 +42,21 @@ static Variant on_mod_load() {
 static Variant on_engine_load() {
 	fetch_mod_api();
 	printf("All mods have been loaded...\n");
+
+	std::string classname = "AcceptDialog";
+	std::string path = "";
+	AcceptDialog diag = sys_node_create(Node_Create_Shortlist::CREATE_CLASSDB, classname.data(), classname.size(), path.data(), path.size());
+	diag.title() = "Testing a dialog.";
+	diag.dialog_text() = "Hello from a tni mod!";
+	Callable close_fn = Callable::Create<Variant(AcceptDialog)>([](AcceptDialog diag) -> Variant {
+		diag.queue_free();
+		return Nil;
+	}, Variant(diag));
+	diag.get("confirmed")("connect", close_fn);  // godot-sandbox has no type for Signal :/
+	diag.get("canceled")("connect", close_fn);  // godot-sandbox has no type for Signal :/
+	get_node().add_child(diag);
+	diag.popup_centered();
+
 	return Nil;
 }
 
