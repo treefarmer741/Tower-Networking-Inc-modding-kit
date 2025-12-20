@@ -65,18 +65,21 @@ void push_gd_array_metatable(lua_State *L) {
         lua_pushstring(L, "__index");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             // Stack: gdarray, index
-            Array* array = check_gdarray(L, 1);
+            Array array = *check_gdarray(L, 1);
             if (lua_isnumber(L, 2)) {
                 lua_Number n = lua_tonumber(L, 2);
                 if (std::fmod(n, 1) > 0)
                     luaL_argerror(L, 2, "expected integer but got number");  // Never returns.
                 int i = (int)n;
-                int size = array->size();
+                int size = array.size();
                 int iabs = i < 0 ? size + i : i;  // array gets weird after trying to use negative indicies, godot-sandbox things ¯\_(ツ)_/¯
                 if (iabs < 0 || iabs >= size) {
                     return luaL_error(L, "GDArray index (%d) out of bounds (%d elements)", i, size-1);  // Never returns.
                 }
-                ArrayProxy elem = array->operator[](iabs);
+                if (!((Mod)get_node()).array_value_allowed(array, iabs)) {
+                    return luaL_error(L, "Object is not allowed: GDArray[%d]", iabs);  // This does not return!
+                }
+                ArrayProxy elem = array.operator[](iabs);
                 return push_gd_variant(L, elem.get());
             } else if (lua_isstring(L, 2)) {
                 const char* key = luaL_checkstring(L, 2);
