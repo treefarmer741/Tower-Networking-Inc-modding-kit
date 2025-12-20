@@ -62,6 +62,21 @@ void push_gd_object_metatable(lua_State *L) {
         });
         lua_settable(L, -3);
 
+        lua_pushstring(L, "__newindex");
+        lua_pushcfunction(L, [](lua_State *L) -> int {
+            // Stack: GDObject, index, value
+            Object obj = check_gdobject(L, 1);
+            // Variant value = to_gd_variant(L, 2);
+            if (lua_isstring(L, 2)) {
+                std::string name = lua_tostring(L, 2);
+                Variant value = to_gd_variant(L, 3);
+                obj.set(name, value);
+                return 0;
+            }
+            return luaL_error(L, "GDObject.__newindex only supports string keys but got %s", luaL_typename(L, 2));
+        });
+        lua_settable(L, -3);
+
         lua_pushstring(L, "__tostring");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Object obj = test_gdobject(L, 1);
