@@ -101,8 +101,14 @@ static void setup_lua_state() {
         luaL_error(L, "Failed to push Engine object.");
     lua_setglobal(L, "Engine");
 
+    push_gd_object_metatable(L);
+    lua_setglobal(L, "Object");
+
     push_gd_array_metatable(L);
     lua_setglobal(L, "Array");
+
+    push_gd_callable_metatable(L);
+    lua_setglobal(L, "Callable");
 
     lua_getglobal(L, "package");
     // Stack: package
