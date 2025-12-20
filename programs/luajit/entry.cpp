@@ -7,8 +7,14 @@
 
 #include "tower.hpp"
 #include "utils.hpp"
+#include "gdobject.hpp"
 #include "gdarray.hpp"
+#include "gdcallable.hpp"
 #include "luamodpackage.hpp"
+
+
+EXTERN_SYSCALL(uint64_t, sys_node_create, Node_Create_Shortlist, const char *, size_t, const char *, size_t);
+
 
 static lua_State *L;
 
@@ -109,6 +115,13 @@ static void setup_lua_state() {
 
     push_gd_callable_metatable(L);
     lua_setglobal(L, "Callable");
+
+    lua_pushcfunction(L, [](lua_State *L) -> int {
+        std::string classname = luaL_checkstring(L, 1);
+        std::string path = luaL_checkstring(L, 2);
+        return push_gd_object(L, Object(sys_node_create(Node_Create_Shortlist::CREATE_CLASSDB, classname.data(), classname.size(), path.data(), path.size())));
+    });
+    lua_setglobal(L, "create_node");
 
     lua_getglobal(L, "package");
     // Stack: package
