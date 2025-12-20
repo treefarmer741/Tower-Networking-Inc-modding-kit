@@ -22,11 +22,10 @@ static bool modreadable(const char *path)
 {
     Mod mod = get_node<Mod>();
     ModFileSystem mfs = (ModFileSystem)mod.filesystem();
-    Variant mfa_v = mfs.open(String(std::string_view(path)), 1);
-    if (mfa_v == Nil)
+    std::optional<ModFileAccess> mfa = mfs.open(String(std::string_view(path)), 1);
+    if (!mfa.has_value())
         return false;
-    ModFileAccess mfa = mfa_v;
-    mfa.close();
+    mfa.value().close();
     return true;
 }
 
@@ -72,7 +71,7 @@ int lua_modsearcher_lua(lua_State *L) {
     if (filename == NULL) return 1;  /* library not found in this path */
     Mod mod = get_node<Mod>();
     ModFileSystem mfs = (ModFileSystem)mod.filesystem();
-	ModFileAccess mfa = mfs.open(String(std::string_view(filename)), 1);
+	ModFileAccess mfa = mfs.open(String(std::string_view(filename)), 1).value();
 	String src = mfa.get_as_text(mfa.get_length());
 	std::string src_name = std::string() + "@" + name;
     if (luaL_loadbuffer(L, src.utf8().c_str(), src.size(), src_name.c_str()) != 0) {
