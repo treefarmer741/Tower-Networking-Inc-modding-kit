@@ -1,0 +1,29 @@
+---@meta _
+-- Generated API for game version 0.9.1
+
+---@class PocosiaPlayerOverseerCharacter3D : CharacterBody3D
+---@field smooth_speed number
+---@field rot_control_key MouseButton
+---@field rotation_speed number
+---@field max_tilt_from_horizontal number
+---@field wasd_control_enabled boolean
+---@field vertical_control_enabled boolean
+---@field rise_control_key Key
+---@field fall_control_key Key
+---@field translation_base_speed number
+---@field translation_accel_curve Curve
+---@field scroll_zoom_enabled boolean
+---@field scroll_base_speed number
+---@field scroll_distance_ratio number
+---@field scroll_distance_min number
+---@field scroll_in_key MouseButton
+---@field scroll_out_key MouseButton
+---@field scroll_hit_mask integer
+---@field mouse_pan_enabled boolean
+---@field pan_control_key MouseButton
+---@field pan_speed_scaling string
+---@field pan_speed_factor number
+---@field camera_path string
+---@field pan_ctl_enabled boolean
+---@field rot_ctl_enabled boolean
+local PocosiaPlayerOverseerCharacter3D = {}
