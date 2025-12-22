@@ -2,7 +2,7 @@
 -- Generated API for game version 0.9.1
 
 ---@class ClipboardItem : PanelContainer
----@field copier_item_scn Object # Constant value: <PackedScene#-9223355863064790828>
+---@field copier_item_scn string # Constant value: <PackedScene>
 ---@field item Object
 ---@field schild Container
 ---@field sparent Container

@@ -1,0 +1,22 @@
+---@meta _
+-- Generated API for game version 0.9.1
+
+---@class OverseerCamera3d : Camera3D
+---@field rotation_speed number
+---@field max_tilt_from_horizontal number
+---@field zoom_speed_base number
+---@field zoom_speed_height_ratio number
+---@field max_zoom_speed number
+---@field speed_factor number
+---@field global_min_height number
+---@field global_max_height number
+---@field pan_control_key MouseButton
+---@field rot_control_key MouseButton
+---@field surface_pan_speed number
+---@field mouse_pan_enabled boolean
+---@field wasd_control_enabled boolean
+---@field pan_ctl_enabled boolean
+---@field rot_ctl_enabled boolean
+---@field height_ratio_f number
+---@field curr_zoom_speed number
+local OverseerCamera3d = {}

@@ -2,8 +2,8 @@
 -- Generated API for game version 0.9.1
 
 ---@class VirtualMachine : Node
----@field LGCTLSCN Object # Constant value: <PackedScene#-9223369181338972871>
----@field VSSCN Object # Constant value: <PackedScene#-9223369181154423581>
+---@field LGCTLSCN string # Constant value: <PackedScene>
+---@field VSSCN string # Constant value: <PackedScene>
 ---@field vmname string
 ---@field virtual_machine_controller LogicController
 ---@field host_device DeviceUnit

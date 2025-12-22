@@ -13,8 +13,7 @@ struct ProjectUtils : public Object {
 	constexpr ProjectUtils(uint64_t addr) : Object{addr} {}
 	ProjectUtils(Variant variant) : ProjectUtils{variant.as_object().address()} {}
 
-	enum POCOSIA_PROJECT_DEFAULTS : int64_t {  // NOTE: You should recompile your mod if this enum changes!
-	};
+	PROPERTY(POCOSIA_PROJECT_DEFAULTS, Dictionary);  // enum of non-integer type
 
 
 	inline void export_pocosia_defaults(String exported_cfg_path, bool force_override, Variant skip_defaults);

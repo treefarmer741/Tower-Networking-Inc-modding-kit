@@ -2,7 +2,7 @@
 -- Generated API for game version 0.9.1
 
 ---@class AppEntryItem : Container
----@field SAL_scene Object # Constant value: <PackedScene#-9223369225177838553>
+---@field SAL_scene string # Constant value: <PackedScene>
 ---@field app_scene PackedScene
 ---@field icon_texture Texture2D
 ---@field title string

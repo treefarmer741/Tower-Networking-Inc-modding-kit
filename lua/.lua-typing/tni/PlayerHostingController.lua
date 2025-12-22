@@ -2,7 +2,7 @@
 -- Generated API for game version 0.9.1
 
 ---@class PlayerHostingController : Node
----@field ph_scn Object # Constant value: <PackedScene#-9223369064686989374>
+---@field ph_scn string # Constant value: <PackedScene>
 ---@field mpspawn MultiplayerSpawner
 ---@field registered_fqdns Array<string>
 ---@field player_hostings Array<PlayerHosting>

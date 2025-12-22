@@ -2,10 +2,10 @@
 -- Generated API for game version 0.9.1
 
 ---@class GameWorld : Node2D
----@field mobile_os_scn Object # Constant value: <PackedScene#-9223369066398265336>
+---@field mobile_os_scn string # Constant value: <PackedScene>
 ---@field BASE_ACCL Array<any> # Constant value: ["using", "from", "with", "rename", "traffic", "/etc/routes.conf", "/etc/dhcpd.conf", "/etc/nftables.conf", "/etc/dns.zone", "/etc/vlan.tags", "/bin/rtkernel", "/bin/vlanfirm", "/bin/wirerat", "/bin/firewatcher"]
----@field phctl_scn Object # Constant value: <PackedScene#-9223369064535995374>
----@field dmctl_scn Object # Constant value: <PackedScene#-9223369064032678877>
+---@field phctl_scn string # Constant value: <PackedScene>
+---@field dmctl_scn string # Constant value: <PackedScene>
 ---@field is_state_restored boolean
 ---@field play_options PlayOptions
 ---@field game_stats GameStatistics

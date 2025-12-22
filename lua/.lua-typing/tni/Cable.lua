@@ -4,10 +4,10 @@
 ---@class Cable : Node2D
 ---@field ZINDEX integer # Constant value: 1000
 ---@field TOUT_TICK_TOLERANCE integer # Constant value: 10
----@field CablePieceScene10 Object # Constant value: <PackedScene#-9223369205263283006>
----@field CablePieceScene30 Object # Constant value: <PackedScene#-9223369205061956411>
----@field CablePieceScene50 Object # Constant value: <PackedScene#-9223369204860629816>
----@field CablePieceScene25 Object # Constant value: <PackedScene#-9223369204659303221>
+---@field CablePieceScene10 string # Constant value: <PackedScene>
+---@field CablePieceScene30 string # Constant value: <PackedScene>
+---@field CablePieceScene50 string # Constant value: <PackedScene>
+---@field CablePieceScene25 string # Constant value: <PackedScene>
 ---@field DELAY_TIMER_FLT number # Constant value: 0.3
 ---@field LINVELT number # Constant value: 5.0
 ---@field with_mouse_stretch_factor Object

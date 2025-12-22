@@ -1641,19 +1641,9 @@ function create_node(classname, param) end
 ---@return EditorProperty
 function create_node(classname, param) end
 
----@param classname "EditorPropertyArrayObject"
----@param param string
----@return EditorPropertyArrayObject
-function create_node(classname, param) end
-
 ---@param classname "EditorPropertyDictionaryObject"
 ---@param param string
 ---@return EditorPropertyDictionaryObject
-function create_node(classname, param) end
-
----@param classname "EditorPropertyLayersGrid"
----@param param string
----@return EditorPropertyLayersGrid
 function create_node(classname, param) end
 
 ---@param classname "EditorPropertyNameProcessor"
@@ -1804,11 +1794,6 @@ function create_node(classname, param) end
 ---@param classname "EditorVariantTypeOptionButton"
 ---@param param string
 ---@return EditorVariantTypeOptionButton
-function create_node(classname, param) end
-
----@param classname "EditorVariantTypePopupMenu"
----@param param string
----@return EditorVariantTypePopupMenu
 function create_node(classname, param) end
 
 ---@param classname "EditorVersionButton"
