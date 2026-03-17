@@ -1,0 +1,61 @@
+# TODO: Can we remove the duplication with `-pr` workflows?
+
+name: Build with GNU RISC-V toolchain on Linux and update continuous release
+
+on:
+  push:
+    branches: [ "**" ]
+    paths-ignore:
+      - "lua/"
+      - "*.md"
+  # NOTE: This is privileged, do not run pull_requests.
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+    - uses: actions/checkout@v6.0.1
+      with:
+        submodules: recursive
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y g++-14-riscv64-linux-gnu
+
+    - name: Build luajit support mod and C++ examples
+      working-directory: ${{github.workspace}}
+      run: ./build.sh
+
+    - name: Collect Artifact
+      shell: bash
+      run: |
+        mkdir ./artifact
+        # For every directory containing a .elf file, zip it into ./artifact
+        find ./.build -name '*.elf' -execdir bash -c "zip -r \"${PWD}/artifact/\$(basename \$(realpath .)).zip\" ." \;
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v6
+      with:
+        name: artifact
+        path: ./artifact/**/*
+
+    - name: Create/Update continuous release
+      shell: bash
+      run: |
+        RELEASE_TAG="continuous-gnu-${{github.ref_name}}"
+        RELEASE_NAME="Continuous (gnu) - ${{github.ref_name}}"
+        RELEASE_NOTES_PATH=".github/workflows/continuous-gnu-release-notes.md"
+        if gh release list --json tagName | grep -q "$RELEASE_TAG"; then
+          gh release edit --target "${{github.sha}}" --title "$RELEASE_NAME" --notes-file "$RELEASE_NOTES_PATH" --draft --prerelease "$RELEASE_TAG"
+        else
+          gh release create --target "${{github.sha}}" --title "$RELEASE_NAME" --notes-file "$RELEASE_NOTES_PATH" --draft --prerelease "$RELEASE_TAG"
+        fi
+        find ./artifact -name '*.zip' -exec gh release upload "$RELEASE_TAG" "{}" \;
+        gh release edit "$RELEASE_TAG" --draft=false

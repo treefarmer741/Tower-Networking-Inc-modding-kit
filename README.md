@@ -1,26 +1,40 @@
 # Tower Networking Inc. Modding Kit
 
-This repository is a modding kit that can be used to create mods for the game [Tower Networking Inc](https://store.steampowered.com/app/2939600/Tower_Networking_Inc/). Mods are currently written in C/C++. Modding support for the game is currently implemented with [Godot Sandbox](https://github.com/libriscv/godot-sandbox) using [libriscv](https://libriscv.no/).
+This repository is a modding kit that can be used to create mods for the game [Tower Networking Inc](https://store.steampowered.com/app/2939600/Tower_Networking_Inc/). Modding support for the game is implemented with [Godot Sandbox](https://github.com/libriscv/godot-sandbox) using [libriscv](https://libriscv.no/).
+
+Mods are created in C/C++, however this repository also contains the official LuaJIT support mod. Lua mods are preferred as they are easier to develop and are naturally source-available.
 
 Note that modding for the game is still in early design/implementation stage, and any feedback/suggestions is encouraged to make modding the game fun!
 
-## BETA
+## Using Lua based mods
 
-Checkout the beta branch, which has improved modding support and is now usable with the beta build of the game on steam.
+If you want to use a Lua based mods, you will need to manually add the `luajit` support mod first. This may be improved in the future.
+
+You can find the mod in the github releases, or [click here](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/early-0) for the latest stable release. Download the luajit file and place it in your mods folder. Refer to [Loading the mod](#loading-the-mod) for further instructions.
+
+If you are using the `beta` branch of the game, you'll likely want to use the ["Continuous (gnu) - beta"](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/tag/continuous-gnu-beta) release instead.
+
+## Beta branch
+
+There is a `beta` github branch which should work with the game's `beta` branch on steam.
+
+Changes to the modding-kit go through the beta branch first.
 
 ## Example mods
 
 Examples are your friend. To get started, take a look at the following examples:
 
-### Lua
+### 2x BW switches (Lua)
 
-If you'd like to write and run lua mods, you'd need to add the `luajit` mod (download [here](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/download/early-0/luajit.elf)) first, which allows you to then load `.lua` files in the same manner.
-
-- [2x BW switches](/lua/high-bandwidth-switches/)
+The [2x BW switches](/lua/2x-bandwidth-switches/) mod doubles the bandwidth of every switch when spawned in. The store display the original value!
 
 ### Template mod (C/C++)
 
 The [Template mod](/programs/tni-mod-template) is a template that contains the common use scenario for writing a mod in c/c++.
+
+### LuaJIT support mod (C/C++)
+
+The [LuaJIT support mod](/programs/luajit) adds Lua based mods. It is much more complex but may help with things the template doesn't have.
 
 ---
 
@@ -46,11 +60,13 @@ The engine will always first try to load the `luajit.elf` before all mods, so yo
 
 ## Building C/C++ mods
 
-Check out the [docs](https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cmake#cmake-setup) on librisc-v for more information
+Check out the [librisc-v docs](https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cmake#cmake-setup) for more information.
 
-You should initialize the submodules first
+To clone and initialize the repository locally;
 
 ```sh
+# Ensure you have `git` installed.
+git clone https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit.git --branch main
 git submodule update --init --recursive
 ```
 
@@ -58,14 +74,35 @@ git submodule update --init --recursive
 
 Make sure the following is installed:
 
-1. Install [CMake](https://cmake.org/download/).
-2. Install [Ninja](https://ninja-build.org/) (recommended for fast builds).
-3. Install [Zig](https://ziglang.org/download/) (required for RISC-V cross-compilation).
+1. [git](https://git-scm.com/install/windows) (version control system, used to clone the repo locally)
+2. [CMake](https://cmake.org/download/) (generator for build systems)
+3. [Ninja](https://ninja-build.org/) (build system)
+4. [ZIG](https://ziglang.org/download/) (RISC-V cross-compilation)
 
-On the root of this project, run the command:
+Then in the root of this project, run the command:
 
 ```
 zig.cmd
 ```
 
 The built output (a .elf file) will be in the `.zig/<name-of-your-mod>/entry.elf` directory.
+
+### Linux (and WSL2)
+
+Make sure the following is installed:
+
+1. `git` (version control system, used to clone the repo locally)
+2. `CMake` (generator for build systems)
+3. `Ninja` (build system)
+4. `g++-riscv64-linux-gnu-14` (GNU RISC-V compiler)
+
+```sh
+# For Debian based systems like Ubuntu;
+sudo apt install git cmake ninja-build g++-riscv64-linux-gnu-14
+```
+
+Then in the root of this project, run the command:
+
+```sh
+./build.cmd
+```

@@ -1,0 +1,41 @@
+name: Build with GNU RISC-V toolchain on Linux
+
+on:
+  pull_request:
+    branches: [ "**" ]
+    paths-ignore:
+      - "lua/"
+      - "*.md"
+
+jobs:
+  build:
+    permissions:
+      contents: read
+    runs-on: ubuntu-24.04
+
+    steps:
+    - uses: actions/checkout@v6.0.1
+      with:
+        submodules: recursive
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y g++-14-riscv64-linux-gnu
+
+    - name: Build luajit support mod and C++ examples
+      working-directory: ${{github.workspace}}
+      run: ./build.sh
+
+    - name: Collect Artifact
+      shell: bash
+      run: |
+        mkdir ./artifact
+        find ./.build -name '*.elf' -exec cp "{}" ./artifact \;
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v6
+      with:
+        name: artifact
+        path: ./artifact/**/*

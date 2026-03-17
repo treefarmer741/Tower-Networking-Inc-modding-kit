@@ -13,6 +13,7 @@ FetchContent_MakeAvailable(godot-sandbox)
 
 function (add_ci_program name)
 	add_sandbox_program(${name} ${ARGN})
+	target_include_directories(${name} PUBLIC "${CMAKE_SOURCE_DIR}/include/tni")
 	set_target_properties(${name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
 endfunction()
 

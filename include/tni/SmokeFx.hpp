@@ -1,0 +1,28 @@
+#ifndef TNI_API_HEADER_SMOKEFX
+#define TNI_API_HEADER_SMOKEFX
+// Generated API for game version 0.9.1
+// If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
+
+#include <api.hpp>
+#include "structs.hpp"
+
+struct SmokeFx : public Node2D {
+	using Node2D::Node2D;
+
+	constexpr SmokeFx(Node2D base) : Node2D{base} {}
+	constexpr SmokeFx(uint64_t addr) : Node2D{addr} {}
+	constexpr SmokeFx(Object obj) : SmokeFx{obj.address()} {}
+	SmokeFx(Variant variant) : SmokeFx{variant.as_object().address()} {}
+
+
+	PROPERTY(effects_group, int64_t);
+
+	inline void trigger();
+	inline void stop();
+};
+
+
+inline void SmokeFx::trigger() { voidcall("trigger"); }
+inline void SmokeFx::stop() { voidcall("stop"); }
+
+#endif
