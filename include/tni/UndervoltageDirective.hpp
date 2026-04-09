@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_UNDERVOLTAGEDIRECTIVE
 #define TNI_API_HEADER_UNDERVOLTAGEDIRECTIVE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "OutageSurgePropMod.hpp"
 
-struct UndervoltageDirective : public Node {
-	using Node::Node;
+struct UndervoltageDirective : public OutageSurgePropMod {
+	using OutageSurgePropMod::OutageSurgePropMod;
 
-	constexpr UndervoltageDirective(Node base) : Node{base} {}
-	constexpr UndervoltageDirective(uint64_t addr) : Node{addr} {}
+	constexpr UndervoltageDirective(OutageSurgePropMod base) : OutageSurgePropMod{base} {}
+	constexpr UndervoltageDirective(uint64_t addr) : OutageSurgePropMod{addr} {}
 	constexpr UndervoltageDirective(Object obj) : UndervoltageDirective{obj.address()} {}
 	UndervoltageDirective(Variant variant) : UndervoltageDirective{variant.as_object().address()} {}
 
@@ -43,13 +44,13 @@ struct UndervoltageDirective : public Node {
 
 #include "PropMod.hpp"
 
-inline String UndervoltageDirective::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String UndervoltageDirective::get_lore() { return operator()("get_lore"); }
-inline void UndervoltageDirective::apply_mod() { voidcall("apply_mod"); }
-inline void UndervoltageDirective::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String UndervoltageDirective::get_description() { return operator()("get_description"); }
-inline Variant UndervoltageDirective::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void UndervoltageDirective::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void UndervoltageDirective::update_state() { voidcall("update_state"); }
+inline String UndervoltageDirective::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String UndervoltageDirective::get_lore() { return this->operator()("get_lore"); }
+inline void UndervoltageDirective::apply_mod() { this->voidcall("apply_mod"); }
+inline void UndervoltageDirective::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String UndervoltageDirective::get_description() { return this->operator()("get_description"); }
+inline Variant UndervoltageDirective::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void UndervoltageDirective::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void UndervoltageDirective::update_state() { this->voidcall("update_state"); }
 
 #endif

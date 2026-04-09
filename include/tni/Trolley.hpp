@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TROLLEY
 #define TNI_API_HEADER_TROLLEY
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Trolley : public Area2D {
@@ -39,14 +39,14 @@ struct Trolley : public Area2D {
 };
 
 
-inline void Trolley::stop_dragging() { voidcall("stop_dragging"); }
-inline void Trolley::update_drag(Variant mpos) { voidcall("update_drag", mpos); }
-inline void Trolley::adjust_height_by_location() { voidcall("adjust_height_by_location"); }
-inline void Trolley::accept_body(Variant body) { voidcall("accept_body", body); }
-inline void Trolley::start_dragging(Variant mouse_position) { voidcall("start_dragging", mouse_position); }
-inline void Trolley::elevator_move(Variant new_pos) { voidcall("elevator_move", new_pos); }
-inline void Trolley::do_mv(Variant new_pos) { voidcall("do_mv", new_pos); }
-inline Variant Trolley::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline void Trolley::remove_and_free_object() { voidcall("remove_and_free_object"); }
+inline void Trolley::stop_dragging() { this->voidcall("stop_dragging"); }
+inline void Trolley::update_drag(Variant mpos) { this->voidcall("update_drag", mpos); }
+inline void Trolley::adjust_height_by_location() { this->voidcall("adjust_height_by_location"); }
+inline void Trolley::accept_body(Variant body) { this->voidcall("accept_body", body); }
+inline void Trolley::start_dragging(Variant mouse_position) { this->voidcall("start_dragging", mouse_position); }
+inline void Trolley::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
+inline void Trolley::do_mv(Variant new_pos) { this->voidcall("do_mv", new_pos); }
+inline Variant Trolley::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void Trolley::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
 
 #endif

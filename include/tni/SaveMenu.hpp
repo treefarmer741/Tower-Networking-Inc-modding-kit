@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SAVEMENU
 #define TNI_API_HEADER_SAVEMENU
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SaveMenu : public Container {
@@ -27,14 +27,20 @@ struct SaveMenu : public Container {
 	PROPERTY(scon, SaveController);
 	PROPERTY(mphost_button, Button);
 	PROPERTY(filter_textin, TextEdit);
+	PROPERTY(schooser, ItemList);
 	PROPERTY(current_selected_save, String);
+	PROPERTY(current_selected_savegroup, String);
 	PROPERTY(existing_saves, Variant);
 
-	inline void rescan_saves(String contain_s);
+	inline void populate_group_saves(String group_name);
+	inline void enum_save_groups(String contain_s);
+	inline void refresh_ui(String contain_s);
 };
 
 #include "SaveController.hpp"
 
-inline void SaveMenu::rescan_saves(String contain_s) { voidcall("rescan_saves", contain_s); }
+inline void SaveMenu::populate_group_saves(String group_name) { this->voidcall("populate_group_saves", group_name); }
+inline void SaveMenu::enum_save_groups(String contain_s) { this->voidcall("enum_save_groups", contain_s); }
+inline void SaveMenu::refresh_ui(String contain_s) { this->voidcall("refresh_ui", contain_s); }
 
 #endif

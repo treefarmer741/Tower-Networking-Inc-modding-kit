@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DASHBOARDAPPLAUNCHER
 #define TNI_API_HEADER_DASHBOARDAPPLAUNCHER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DashboardAppLauncher : public Control {
@@ -27,6 +27,6 @@ struct DashboardAppLauncher : public Control {
 };
 
 
-inline Variant DashboardAppLauncher::init_app() { return operator()("init_app"); }
+inline Variant DashboardAppLauncher::init_app() { return this->operator()("init_app"); }
 
 #endif

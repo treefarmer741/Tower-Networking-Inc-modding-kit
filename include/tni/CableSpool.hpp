@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CABLESPOOL
 #define TNI_API_HEADER_CABLESPOOL
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct CableSpool : public Area2D {
@@ -15,8 +15,9 @@ struct CableSpool : public Area2D {
 	CableSpool(Variant variant) : CableSpool{variant.as_object().address()} {}
 
 
-	PROPERTY(spooled_pieces, Variant);
-	PROPERTY(spool_points, PackedArray<Vector2>);
+	PROPERTY(hook_joints, Variant);
+	PROPERTY(max_capacity, int64_t);
+	PROPERTY(hooked_pieces, Variant);
 
 };
 

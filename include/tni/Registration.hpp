@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_REGISTRATION
 #define TNI_API_HEADER_REGISTRATION
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Registration : public VBoxContainer {
@@ -32,6 +32,6 @@ struct Registration : public VBoxContainer {
 };
 
 
-inline void Registration::reset() { voidcall("reset"); }
+inline void Registration::reset() { this->voidcall("reset"); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_APPENTRYITEM
 #define TNI_API_HEADER_APPENTRYITEM
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct AppEntryItem : public Container {
@@ -29,6 +29,6 @@ struct AppEntryItem : public Container {
 
 #include "MainPane.hpp"
 
-inline void AppEntryItem::update_status() { voidcall("update_status"); }
+inline void AppEntryItem::update_status() { this->voidcall("update_status"); }
 
 #endif

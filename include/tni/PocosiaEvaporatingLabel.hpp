@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIAEVAPORATINGLABEL
 #define TNI_API_HEADER_POCOSIAEVAPORATINGLABEL
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaEvaporatingLabel : public Label {
@@ -24,8 +24,8 @@ struct PocosiaEvaporatingLabel : public Label {
 };
 
 
-inline void PocosiaEvaporatingLabel::sample_add(Node node, String msg) { voidcall("sample_add", node, msg); }
-inline void PocosiaEvaporatingLabel::dealloc() { voidcall("dealloc"); }
-inline void PocosiaEvaporatingLabel::ensure_upright(double relative_global_rotation) { voidcall("ensure_upright", relative_global_rotation); }
+inline void PocosiaEvaporatingLabel::sample_add(Node node, String msg) { this->voidcall("sample_add", node, msg); }
+inline void PocosiaEvaporatingLabel::dealloc() { this->voidcall("dealloc"); }
+inline void PocosiaEvaporatingLabel::ensure_upright(double relative_global_rotation) { this->voidcall("ensure_upright", relative_global_rotation); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_FIRSTPERSONCAMERA3D
 #define TNI_API_HEADER_FIRSTPERSONCAMERA3D
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct FirstPersonCamera3d : public Camera3D {
@@ -28,6 +28,6 @@ struct FirstPersonCamera3d : public Camera3D {
 };
 
 
-inline void FirstPersonCamera3d::set_mouse_input_captured(bool val) { voidcall("set_mouse_input_captured", val); }
+inline void FirstPersonCamera3d::set_mouse_input_captured(bool val) { this->voidcall("set_mouse_input_captured", val); }
 
 #endif

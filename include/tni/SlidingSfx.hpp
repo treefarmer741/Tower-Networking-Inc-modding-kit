@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SLIDINGSFX
 #define TNI_API_HEADER_SLIDINGSFX
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SlidingSfx : public Node2D {
@@ -23,7 +23,7 @@ struct SlidingSfx : public Node2D {
 };
 
 
-inline void SlidingSfx::play_slide_in() { voidcall("play_slide_in"); }
-inline void SlidingSfx::play_slide_out() { voidcall("play_slide_out"); }
+inline void SlidingSfx::play_slide_in() { this->voidcall("play_slide_in"); }
+inline void SlidingSfx::play_slide_out() { this->voidcall("play_slide_out"); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_V2CARTITEM
 #define TNI_API_HEADER_V2CARTITEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct V2CartItem : public PanelContainer {
@@ -28,6 +28,6 @@ struct V2CartItem : public PanelContainer {
 #include "DeviceMerchant.hpp"
 #include "DeviceCheckout.hpp"
 
-inline void V2CartItem::update_cart_count() { voidcall("update_cart_count"); }
+inline void V2CartItem::update_cart_count() { this->voidcall("update_cart_count"); }
 
 #endif

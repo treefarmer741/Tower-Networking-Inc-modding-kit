@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_UNLOCKABLEFLOORITEM
 #define TNI_API_HEADER_UNLOCKABLEFLOORITEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct UnlockableFloorItem : public PanelContainer {
@@ -22,6 +22,6 @@ struct UnlockableFloorItem : public PanelContainer {
 };
 
 
-inline void UnlockableFloorItem::refresh_lock_state(bool hide_known_or_unlocked) { voidcall("refresh_lock_state", hide_known_or_unlocked); }
+inline void UnlockableFloorItem::refresh_lock_state(bool hide_known_or_unlocked) { this->voidcall("refresh_lock_state", hide_known_or_unlocked); }
 
 #endif

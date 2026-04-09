@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TRAVERSALHISTORYPRODUCE
 #define TNI_API_HEADER_TRAVERSALHISTORYPRODUCE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "AlwaysProduce.hpp"
 
-struct TraversalHistoryProduce : public Node {
-	using Node::Node;
+struct TraversalHistoryProduce : public AlwaysProduce {
+	using AlwaysProduce::AlwaysProduce;
 
-	constexpr TraversalHistoryProduce(Node base) : Node{base} {}
-	constexpr TraversalHistoryProduce(uint64_t addr) : Node{addr} {}
+	constexpr TraversalHistoryProduce(AlwaysProduce base) : AlwaysProduce{base} {}
+	constexpr TraversalHistoryProduce(uint64_t addr) : AlwaysProduce{addr} {}
 	constexpr TraversalHistoryProduce(Object obj) : TraversalHistoryProduce{obj.address()} {}
 	TraversalHistoryProduce(Variant variant) : TraversalHistoryProduce{variant.as_object().address()} {}
 
@@ -39,29 +40,31 @@ struct TraversalHistoryProduce : public Node {
 
 	inline Variant filter_required_traffic(Variant thist);
 	inline void tick();
-	inline Variant get_produce_limit(int64_t limit_type, int64_t lfact, LogicController node, int64_t pfact);
-	inline Variant compute_produce_limit(LogicController node);
+	inline Variant get_produce_limit(int64_t limit_type, int64_t lfact, const LogicController& node, int64_t pfact);
+	inline Variant compute_produce_limit(const LogicController& node);
 	inline String colorize_description(String ds);
 	inline void start();
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "UseConfig.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline Variant TraversalHistoryProduce::filter_required_traffic(Variant thist) { return operator()("filter_required_traffic", thist); }
-inline void TraversalHistoryProduce::tick() { voidcall("tick"); }
-inline Variant TraversalHistoryProduce::get_produce_limit(int64_t limit_type, int64_t lfact, LogicController node, int64_t pfact) { return operator()("get_produce_limit", limit_type, lfact, node, pfact); }
-inline Variant TraversalHistoryProduce::compute_produce_limit(LogicController node) { return operator()("compute_produce_limit", node); }
-inline String TraversalHistoryProduce::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void TraversalHistoryProduce::start() { voidcall("start"); }
-inline void TraversalHistoryProduce::stop() { voidcall("stop"); }
-inline void TraversalHistoryProduce::uninstall() { voidcall("uninstall"); }
-inline void TraversalHistoryProduce::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline bool TraversalHistoryProduce::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline Variant TraversalHistoryProduce::filter_required_traffic(Variant thist) { return this->operator()("filter_required_traffic", thist); }
+inline void TraversalHistoryProduce::tick() { this->voidcall("tick"); }
+inline Variant TraversalHistoryProduce::get_produce_limit(int64_t limit_type, int64_t lfact, const LogicController& node, int64_t pfact) { return this->operator()("get_produce_limit", limit_type, lfact, Object(reinterpret_cast<const Object*>(&node)->address()), pfact); }
+inline Variant TraversalHistoryProduce::compute_produce_limit(const LogicController& node) { return this->operator()("compute_produce_limit", Object(reinterpret_cast<const Object*>(&node)->address())); }
+inline String TraversalHistoryProduce::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void TraversalHistoryProduce::start() { this->voidcall("start"); }
+inline void TraversalHistoryProduce::stop() { this->voidcall("stop"); }
+inline void TraversalHistoryProduce::uninstall() { this->voidcall("uninstall"); }
+inline void TraversalHistoryProduce::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline bool TraversalHistoryProduce::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool TraversalHistoryProduce::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

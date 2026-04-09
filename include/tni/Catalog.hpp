@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CATALOG
 #define TNI_API_HEADER_CATALOG
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Catalog : public Control {
@@ -35,8 +35,8 @@ struct Catalog : public Control {
 };
 
 
-inline void Catalog::cache_ulfinfo() { voidcall("cache_ulfinfo"); }
-inline void Catalog::fade_out() { voidcall("fade_out"); }
-inline void Catalog::fade_in() { voidcall("fade_in"); }
+inline void Catalog::cache_ulfinfo() { this->voidcall("cache_ulfinfo"); }
+inline void Catalog::fade_out() { this->voidcall("fade_out"); }
+inline void Catalog::fade_in() { this->voidcall("fade_in"); }
 
 #endif

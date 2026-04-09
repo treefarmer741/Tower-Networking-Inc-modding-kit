@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_LAYOUTUTILS
 #define TNI_API_HEADER_LAYOUTUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct LayoutUtils : public Object {
@@ -30,6 +30,6 @@ struct LayoutUtils : public Object {
 };
 
 
-inline Variant LayoutUtils::apply_anchor_mode(Variant original_vec, int64_t anchor_mode, Variant rect_size) { return operator()("apply_anchor_mode", original_vec, anchor_mode, rect_size); }
+inline Variant LayoutUtils::apply_anchor_mode(Variant original_vec, int64_t anchor_mode, Variant rect_size) { return this->operator()("apply_anchor_mode", original_vec, anchor_mode, rect_size); }
 
 #endif

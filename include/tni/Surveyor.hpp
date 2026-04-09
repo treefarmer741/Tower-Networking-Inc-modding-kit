@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_SURVEYOR
 #define TNI_API_HEADER_SURVEYOR
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Surveyor : public Container {
-	using Container::Container;
+struct Surveyor : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Surveyor(Container base) : Container{base} {}
-	constexpr Surveyor(uint64_t addr) : Container{addr} {}
+	constexpr Surveyor(ScreenApp base) : ScreenApp{base} {}
+	constexpr Surveyor(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Surveyor(Object obj) : Surveyor{obj.address()} {}
 	Surveyor(Variant variant) : Surveyor{variant.as_object().address()} {}
 
@@ -40,12 +41,12 @@ struct Surveyor : public Container {
 
 #include "MainPane.hpp"
 
-inline Variant Surveyor::get_color_on_satiety(double test_sat_ratio, double min_sat_ratio) { return operator()("get_color_on_satiety", test_sat_ratio, min_sat_ratio); }
-inline void Surveyor::launch() { voidcall("launch"); }
-inline void Surveyor::show_survey_page() { voidcall("show_survey_page"); }
-inline void Surveyor::minimize() { voidcall("minimize"); }
-inline void Surveyor::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Surveyor::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Surveyor::get_main_pane() { return operator()("get_main_pane"); }
+inline Variant Surveyor::get_color_on_satiety(double test_sat_ratio, double min_sat_ratio) { return this->operator()("get_color_on_satiety", test_sat_ratio, min_sat_ratio); }
+inline void Surveyor::launch() { this->voidcall("launch"); }
+inline void Surveyor::show_survey_page() { this->voidcall("show_survey_page"); }
+inline void Surveyor::minimize() { this->voidcall("minimize"); }
+inline void Surveyor::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Surveyor::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Surveyor::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

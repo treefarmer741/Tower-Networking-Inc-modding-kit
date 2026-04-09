@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIAMOTENTRIGID3D
 #define TNI_API_HEADER_POCOSIAMOTENTRIGID3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaMotEntRigid3D : public RigidBody3D {
@@ -52,13 +52,13 @@ struct PocosiaMotEntRigid3D : public RigidBody3D {
 };
 
 
-inline void PocosiaMotEntRigid3D::set_motion_target(Variant new_target) { voidcall("set_motion_target", new_target); }
-inline void PocosiaMotEntRigid3D::stop_motion() { voidcall("stop_motion"); }
-inline void PocosiaMotEntRigid3D::set_look_follow_target(Variant new_target) { voidcall("set_look_follow_target", new_target); }
-inline void PocosiaMotEntRigid3D::stop_look_follow() { voidcall("stop_look_follow"); }
-inline Variant PocosiaMotEntRigid3D::test_motion(PhysicsDirectSpaceState3D space_state, Variant ray_dir_uv) { return operator()("test_motion", space_state, ray_dir_uv); }
-inline Variant PocosiaMotEntRigid3D::get_additional_obstacle_exclusion() { return operator()("get_additional_obstacle_exclusion"); }
-inline Variant PocosiaMotEntRigid3D::test_ray_hit(PhysicsDirectSpaceState3D space_state, Variant ray_dir_uv, double ray_height_adjust) { return operator()("test_ray_hit", space_state, ray_dir_uv, ray_height_adjust); }
-inline void PocosiaMotEntRigid3D::look_follow(PhysicsDirectBodyState3D state, Variant current_transform, Variant target_position) { voidcall("look_follow", state, current_transform, target_position); }
+inline void PocosiaMotEntRigid3D::set_motion_target(Variant new_target) { this->voidcall("set_motion_target", new_target); }
+inline void PocosiaMotEntRigid3D::stop_motion() { this->voidcall("stop_motion"); }
+inline void PocosiaMotEntRigid3D::set_look_follow_target(Variant new_target) { this->voidcall("set_look_follow_target", new_target); }
+inline void PocosiaMotEntRigid3D::stop_look_follow() { this->voidcall("stop_look_follow"); }
+inline Variant PocosiaMotEntRigid3D::test_motion(PhysicsDirectSpaceState3D space_state, Variant ray_dir_uv) { return this->operator()("test_motion", space_state, ray_dir_uv); }
+inline Variant PocosiaMotEntRigid3D::get_additional_obstacle_exclusion() { return this->operator()("get_additional_obstacle_exclusion"); }
+inline Variant PocosiaMotEntRigid3D::test_ray_hit(PhysicsDirectSpaceState3D space_state, Variant ray_dir_uv, double ray_height_adjust) { return this->operator()("test_ray_hit", space_state, ray_dir_uv, ray_height_adjust); }
+inline void PocosiaMotEntRigid3D::look_follow(PhysicsDirectBodyState3D state, Variant current_transform, Variant target_position) { this->voidcall("look_follow", state, current_transform, target_position); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIAANIMATEDTEXTURERECT
 #define TNI_API_HEADER_POCOSIAANIMATEDTEXTURERECT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaAnimatedTextureRect : public TextureRect {
@@ -30,7 +30,7 @@ struct PocosiaAnimatedTextureRect : public TextureRect {
 };
 
 
-inline void PocosiaAnimatedTextureRect::play(int64_t from_frame) { voidcall("play", from_frame); }
-inline void PocosiaAnimatedTextureRect::pause() { voidcall("pause"); }
+inline void PocosiaAnimatedTextureRect::play(int64_t from_frame) { this->voidcall("play", from_frame); }
+inline void PocosiaAnimatedTextureRect::pause() { this->voidcall("pause"); }
 
 #endif

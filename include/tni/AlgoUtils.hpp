@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_ALGOUTILS
 #define TNI_API_HEADER_ALGOUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct AlgoUtils : public Object {
@@ -20,7 +20,7 @@ struct AlgoUtils : public Object {
 };
 
 
-inline Variant AlgoUtils::uniq_only(Variant a) { return operator()("uniq_only", a); }
-inline Variant AlgoUtils::get_top_n_from_dict(Variant d, int64_t n) { return operator()("get_top_n_from_dict", d, n); }
+inline Variant AlgoUtils::uniq_only(Variant a) { return this->operator()("uniq_only", a); }
+inline Variant AlgoUtils::get_top_n_from_dict(Variant d, int64_t n) { return this->operator()("get_top_n_from_dict", d, n); }
 
 #endif

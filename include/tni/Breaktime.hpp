@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_BREAKTIME
 #define TNI_API_HEADER_BREAKTIME
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Breaktime : public Container {
-	using Container::Container;
+struct Breaktime : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Breaktime(Container base) : Container{base} {}
-	constexpr Breaktime(uint64_t addr) : Container{addr} {}
+	constexpr Breaktime(ScreenApp base) : ScreenApp{base} {}
+	constexpr Breaktime(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Breaktime(Object obj) : Breaktime{obj.address()} {}
 	Breaktime(Variant variant) : Breaktime{variant.as_object().address()} {}
 
@@ -33,10 +34,10 @@ struct Breaktime : public Container {
 
 #include "MainPane.hpp"
 
-inline void Breaktime::launch() { voidcall("launch"); }
-inline void Breaktime::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Breaktime::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Breaktime::get_main_pane() { return operator()("get_main_pane"); }
-inline void Breaktime::minimize() { voidcall("minimize"); }
+inline void Breaktime::launch() { this->voidcall("launch"); }
+inline void Breaktime::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Breaktime::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Breaktime::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void Breaktime::minimize() { this->voidcall("minimize"); }
 
 #endif

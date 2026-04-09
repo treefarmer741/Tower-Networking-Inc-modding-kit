@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_VERSIONUTILS
 #define TNI_API_HEADER_VERSIONUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct VersionUtils : public Object {
@@ -29,19 +29,21 @@ struct VersionUtils : public Object {
 	inline String get_semantic_version();
 	inline int64_t get_semantic_version_part_number(String semvs, int64_t part_n);
 	inline String test_version_incompatibility(String semvs, int64_t min_major_version, int64_t min_minor_version);
+	inline Variant onetime_todo_valid(String onetime_key);
 };
 
 
-inline String VersionUtils::get_build_features() { return operator()("get_build_features"); }
-inline bool VersionUtils::export_elevation_detected() { return operator()("export_elevation_detected"); }
-inline bool VersionUtils::is_editor_build() { return operator()("is_editor_build"); }
-inline bool VersionUtils::is_exported_build() { return operator()("is_exported_build"); }
-inline bool VersionUtils::is_multiplayer_build() { return operator()("is_multiplayer_build"); }
-inline bool VersionUtils::is_lan_build() { return operator()("is_lan_build"); }
-inline bool VersionUtils::is_demo_build() { return operator()("is_demo_build"); }
-inline String VersionUtils::get_build_version() { return operator()("get_build_version"); }
-inline String VersionUtils::get_semantic_version() { return operator()("get_semantic_version"); }
-inline int64_t VersionUtils::get_semantic_version_part_number(String semvs, int64_t part_n) { return operator()("get_semantic_version_part_number", semvs, part_n); }
-inline String VersionUtils::test_version_incompatibility(String semvs, int64_t min_major_version, int64_t min_minor_version) { return operator()("test_version_incompatibility", semvs, min_major_version, min_minor_version); }
+inline String VersionUtils::get_build_features() { return this->operator()("get_build_features"); }
+inline bool VersionUtils::export_elevation_detected() { return this->operator()("export_elevation_detected"); }
+inline bool VersionUtils::is_editor_build() { return this->operator()("is_editor_build"); }
+inline bool VersionUtils::is_exported_build() { return this->operator()("is_exported_build"); }
+inline bool VersionUtils::is_multiplayer_build() { return this->operator()("is_multiplayer_build"); }
+inline bool VersionUtils::is_lan_build() { return this->operator()("is_lan_build"); }
+inline bool VersionUtils::is_demo_build() { return this->operator()("is_demo_build"); }
+inline String VersionUtils::get_build_version() { return this->operator()("get_build_version"); }
+inline String VersionUtils::get_semantic_version() { return this->operator()("get_semantic_version"); }
+inline int64_t VersionUtils::get_semantic_version_part_number(String semvs, int64_t part_n) { return this->operator()("get_semantic_version_part_number", semvs, part_n); }
+inline String VersionUtils::test_version_incompatibility(String semvs, int64_t min_major_version, int64_t min_minor_version) { return this->operator()("test_version_incompatibility", semvs, min_major_version, min_minor_version); }
+inline Variant VersionUtils::onetime_todo_valid(String onetime_key) { return this->operator()("onetime_todo_valid", onetime_key); }
 
 #endif

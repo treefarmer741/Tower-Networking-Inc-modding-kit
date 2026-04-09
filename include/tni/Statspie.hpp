@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_STATSPIE
 #define TNI_API_HEADER_STATSPIE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "DashboardApp.hpp"
 
-struct Statspie : public Container {
-	using Container::Container;
+struct Statspie : public DashboardApp {
+	using DashboardApp::DashboardApp;
 
-	constexpr Statspie(Container base) : Container{base} {}
-	constexpr Statspie(uint64_t addr) : Container{addr} {}
+	constexpr Statspie(DashboardApp base) : DashboardApp{base} {}
+	constexpr Statspie(uint64_t addr) : DashboardApp{addr} {}
 	constexpr Statspie(Object obj) : Statspie{obj.address()} {}
 	Statspie(Variant variant) : Statspie{variant.as_object().address()} {}
 
@@ -41,12 +42,12 @@ struct Statspie : public Container {
 
 #include "MainDashboard.hpp"
 
-inline void Statspie::launch() { voidcall("launch"); }
-inline void Statspie::collect_domain_data() { voidcall("collect_domain_data"); }
-inline void Statspie::update_display() { voidcall("update_display"); }
-inline void Statspie::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Statspie::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Statspie::get_main_pane() { return operator()("get_main_pane"); }
-inline void Statspie::minimize() { voidcall("minimize"); }
+inline void Statspie::launch() { this->voidcall("launch"); }
+inline void Statspie::collect_domain_data() { this->voidcall("collect_domain_data"); }
+inline void Statspie::update_display() { this->voidcall("update_display"); }
+inline void Statspie::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Statspie::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Statspie::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void Statspie::minimize() { this->voidcall("minimize"); }
 
 #endif

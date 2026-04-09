@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TOWERLINKITEMDISPLAY
 #define TNI_API_HEADER_TOWERLINKITEMDISPLAY
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TowerLinkItemDisplay : public Container {
@@ -47,7 +47,7 @@ struct TowerLinkItemDisplay : public Container {
 
 #include "TowerNetworkLink.hpp"
 
-inline void TowerLinkItemDisplay::update_labels() { voidcall("update_labels"); }
-inline String TowerLinkItemDisplay::get_load_color(double ld_ratio) { return operator()("get_load_color", ld_ratio); }
+inline void TowerLinkItemDisplay::update_labels() { this->voidcall("update_labels"); }
+inline String TowerLinkItemDisplay::get_load_color(double ld_ratio) { return this->operator()("get_load_color", ld_ratio); }
 
 #endif

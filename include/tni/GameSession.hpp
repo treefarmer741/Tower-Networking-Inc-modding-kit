@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GAMESESSION
 #define TNI_API_HEADER_GAMESESSION
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GameSession : public Node {
@@ -55,6 +55,7 @@ struct GameSession : public Node {
 	inline void start_master_timer();
 	inline void start_s5_timer();
 	inline void init_game_cursors();
+	inline void init_bgm_players();
 	inline Location get_floor_ref_from_path(String rpath);
 	inline void cleanup();
 	inline void pause_bgm();
@@ -77,29 +78,30 @@ struct GameSession : public Node {
 #include "MyCustomCamera.hpp"
 #include "Location.hpp"
 
-inline void GameSession::done_loading() { voidcall("done_loading"); }
-inline Variant GameSession::get_time_str(int64_t dayc, double time_float) { return operator()("get_time_str", dayc, time_float); }
-inline Variant GameSession::get_time_str_ts(int64_t igtc) { return operator()("get_time_str_ts", igtc); }
-inline void GameSession::set_game_arrow_cursor(bool alt_arrow) { voidcall("set_game_arrow_cursor", alt_arrow); }
-inline void GameSession::set_game_cursors() { voidcall("set_game_cursors"); }
-inline void GameSession::start_artifact_timer() { voidcall("start_artifact_timer"); }
-inline void GameSession::start_master_timer() { voidcall("start_master_timer"); }
-inline void GameSession::start_s5_timer() { voidcall("start_s5_timer"); }
-inline void GameSession::init_game_cursors() { voidcall("init_game_cursors"); }
-inline Location GameSession::get_floor_ref_from_path(String rpath) { return Location(operator()("get_floor_ref_from_path", rpath).as_object().address()); }
-inline void GameSession::cleanup() { voidcall("cleanup"); }
-inline void GameSession::pause_bgm() { voidcall("pause_bgm"); }
-inline void GameSession::resume_bgm() { voidcall("resume_bgm"); }
-inline void GameSession::start_bgm() { voidcall("start_bgm"); }
-inline void GameSession::decide_bgm(int64_t heat) { voidcall("decide_bgm", heat); }
-inline void GameSession::stop_bgm(double duration) { voidcall("stop_bgm", duration); }
-inline void GameSession::set_link_ghost_point_a(Variant new_point_a) { voidcall("set_link_ghost_point_a", new_point_a); }
-inline void GameSession::set_link_ghost_point_b(Variant new_point_b) { voidcall("set_link_ghost_point_b", new_point_b); }
-inline Variant GameSession::find_active_debuggers(Variant deb_addr) { return operator()("find_active_debuggers", deb_addr); }
-inline Variant GameSession::find_devices(Variant test_func) { return operator()("find_devices", test_func); }
-inline Variant GameSession::find_all_devices(Variant test_func) { return operator()("find_all_devices", test_func); }
-inline void GameSession::activate_achievement(String skey) { voidcall("activate_achievement", skey); }
-inline void GameSession::send_chat_msg(String sender_name, String msg) { voidcall("send_chat_msg", sender_name, msg); }
-inline void GameSession::try_unlock_new_floors() { voidcall("try_unlock_new_floors"); }
+inline void GameSession::done_loading() { this->voidcall("done_loading"); }
+inline Variant GameSession::get_time_str(int64_t dayc, double time_float) { return this->operator()("get_time_str", dayc, time_float); }
+inline Variant GameSession::get_time_str_ts(int64_t igtc) { return this->operator()("get_time_str_ts", igtc); }
+inline void GameSession::set_game_arrow_cursor(bool alt_arrow) { this->voidcall("set_game_arrow_cursor", alt_arrow); }
+inline void GameSession::set_game_cursors() { this->voidcall("set_game_cursors"); }
+inline void GameSession::start_artifact_timer() { this->voidcall("start_artifact_timer"); }
+inline void GameSession::start_master_timer() { this->voidcall("start_master_timer"); }
+inline void GameSession::start_s5_timer() { this->voidcall("start_s5_timer"); }
+inline void GameSession::init_game_cursors() { this->voidcall("init_game_cursors"); }
+inline void GameSession::init_bgm_players() { this->voidcall("init_bgm_players"); }
+inline Location GameSession::get_floor_ref_from_path(String rpath) { return Location(this->operator()("get_floor_ref_from_path", rpath).as_object().address()); }
+inline void GameSession::cleanup() { this->voidcall("cleanup"); }
+inline void GameSession::pause_bgm() { this->voidcall("pause_bgm"); }
+inline void GameSession::resume_bgm() { this->voidcall("resume_bgm"); }
+inline void GameSession::start_bgm() { this->voidcall("start_bgm"); }
+inline void GameSession::decide_bgm(int64_t heat) { this->voidcall("decide_bgm", heat); }
+inline void GameSession::stop_bgm(double duration) { this->voidcall("stop_bgm", duration); }
+inline void GameSession::set_link_ghost_point_a(Variant new_point_a) { this->voidcall("set_link_ghost_point_a", new_point_a); }
+inline void GameSession::set_link_ghost_point_b(Variant new_point_b) { this->voidcall("set_link_ghost_point_b", new_point_b); }
+inline Variant GameSession::find_active_debuggers(Variant deb_addr) { return this->operator()("find_active_debuggers", deb_addr); }
+inline Variant GameSession::find_devices(Variant test_func) { return this->operator()("find_devices", test_func); }
+inline Variant GameSession::find_all_devices(Variant test_func) { return this->operator()("find_all_devices", test_func); }
+inline void GameSession::activate_achievement(String skey) { this->voidcall("activate_achievement", skey); }
+inline void GameSession::send_chat_msg(String sender_name, String msg) { this->voidcall("send_chat_msg", sender_name, msg); }
+inline void GameSession::try_unlock_new_floors() { this->voidcall("try_unlock_new_floors"); }
 
 #endif

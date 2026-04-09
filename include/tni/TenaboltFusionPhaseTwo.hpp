@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TENABOLTFUSIONPHASETWO
 #define TNI_API_HEADER_TENABOLTFUSIONPHASETWO
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct TenaboltFusionPhaseTwo : public Node {
-	using Node::Node;
+struct TenaboltFusionPhaseTwo : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr TenaboltFusionPhaseTwo(Node base) : Node{base} {}
-	constexpr TenaboltFusionPhaseTwo(uint64_t addr) : Node{addr} {}
+	constexpr TenaboltFusionPhaseTwo(PropMod base) : PropMod{base} {}
+	constexpr TenaboltFusionPhaseTwo(uint64_t addr) : PropMod{addr} {}
 	constexpr TenaboltFusionPhaseTwo(Object obj) : TenaboltFusionPhaseTwo{obj.address()} {}
 	TenaboltFusionPhaseTwo(Variant variant) : TenaboltFusionPhaseTwo{variant.as_object().address()} {}
 
@@ -43,13 +44,13 @@ struct TenaboltFusionPhaseTwo : public Node {
 
 #include "PropMod.hpp"
 
-inline void TenaboltFusionPhaseTwo::apply_mod() { voidcall("apply_mod"); }
-inline void TenaboltFusionPhaseTwo::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String TenaboltFusionPhaseTwo::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String TenaboltFusionPhaseTwo::get_lore() { return operator()("get_lore"); }
-inline String TenaboltFusionPhaseTwo::get_description() { return operator()("get_description"); }
-inline Variant TenaboltFusionPhaseTwo::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void TenaboltFusionPhaseTwo::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void TenaboltFusionPhaseTwo::update_state() { voidcall("update_state"); }
+inline void TenaboltFusionPhaseTwo::apply_mod() { this->voidcall("apply_mod"); }
+inline void TenaboltFusionPhaseTwo::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String TenaboltFusionPhaseTwo::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String TenaboltFusionPhaseTwo::get_lore() { return this->operator()("get_lore"); }
+inline String TenaboltFusionPhaseTwo::get_description() { return this->operator()("get_description"); }
+inline Variant TenaboltFusionPhaseTwo::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void TenaboltFusionPhaseTwo::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void TenaboltFusionPhaseTwo::update_state() { this->voidcall("update_state"); }
 
 #endif

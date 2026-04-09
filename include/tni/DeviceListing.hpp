@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DEVICELISTING
 #define TNI_API_HEADER_DEVICELISTING
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DeviceListing : public Node {
@@ -46,9 +46,9 @@ struct DeviceListing : public Node {
 
 #include "DeviceMerchant.hpp"
 
-inline void DeviceListing::update_availability(Variant eval_day) { voidcall("update_availability", eval_day); }
-inline Variant DeviceListing::destock(int64_t n) { return operator()("destock", n); }
-inline void DeviceListing::restock(int64_t n) { voidcall("restock", n); }
-inline void DeviceListing::apply_variants(Variant items, String variantkey) { voidcall("apply_variants", items, variantkey); }
+inline void DeviceListing::update_availability(Variant eval_day) { this->voidcall("update_availability", eval_day); }
+inline Variant DeviceListing::destock(int64_t n) { return this->operator()("destock", n); }
+inline void DeviceListing::restock(int64_t n) { this->voidcall("restock", n); }
+inline void DeviceListing::apply_variants(Variant items, String variantkey) { this->voidcall("apply_variants", items, variantkey); }
 
 #endif

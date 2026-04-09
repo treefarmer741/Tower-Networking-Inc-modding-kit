@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_LOCATIONSPAWNREQUIREMENT
 #define TNI_API_HEADER_LOCATIONSPAWNREQUIREMENT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct LocationSpawnRequirement : public Resource {
@@ -22,6 +22,6 @@ struct LocationSpawnRequirement : public Resource {
 };
 
 
-inline Variant LocationSpawnRequirement::is_satisfied(Variant locations) { return operator()("is_satisfied", locations); }
+inline Variant LocationSpawnRequirement::is_satisfied(Variant locations) { return this->operator()("is_satisfied", locations); }
 
 #endif

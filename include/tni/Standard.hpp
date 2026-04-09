@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_STANDARD
 #define TNI_API_HEADER_STANDARD
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropModController.hpp"
 
-struct Standard : public Node {
-	using Node::Node;
+struct Standard : public PropModController {
+	using PropModController::PropModController;
 
-	constexpr Standard(Node base) : Node{base} {}
-	constexpr Standard(uint64_t addr) : Node{addr} {}
+	constexpr Standard(PropModController base) : PropModController{base} {}
+	constexpr Standard(uint64_t addr) : PropModController{addr} {}
 	constexpr Standard(Object obj) : Standard{obj.address()} {}
 	Standard(Variant variant) : Standard{variant.as_object().address()} {}
 
@@ -33,10 +34,10 @@ struct Standard : public Node {
 
 #include "PropMod.hpp"
 
-inline void Standard::new_proposals_updated() { voidcall("new_proposals_updated"); }
-inline void Standard::ex_proposals_updated() { voidcall("ex_proposals_updated"); }
-inline void Standard::reroll_proposals() { voidcall("reroll_proposals"); }
-inline void Standard::submit(Variant mod_path) { voidcall("submit", mod_path); }
-inline void Standard::lock(Variant mod_path) { voidcall("lock", mod_path); }
+inline void Standard::new_proposals_updated() { this->voidcall("new_proposals_updated"); }
+inline void Standard::ex_proposals_updated() { this->voidcall("ex_proposals_updated"); }
+inline void Standard::reroll_proposals() { this->voidcall("reroll_proposals"); }
+inline void Standard::submit(Variant mod_path) { this->voidcall("submit", mod_path); }
+inline void Standard::lock(Variant mod_path) { this->voidcall("lock", mod_path); }
 
 #endif

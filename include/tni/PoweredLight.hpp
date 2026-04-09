@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POWEREDLIGHT
 #define TNI_API_HEADER_POWEREDLIGHT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PoweredLight : public Node2D {
@@ -15,7 +15,7 @@ struct PoweredLight : public Node2D {
 	PoweredLight(Variant variant) : PoweredLight{variant.as_object().address()} {}
 
 
-	PROPERTY(pointlight2d, PointLight2D);
+	PROPERTY(pointlight2d, Variant);
 	PROPERTY(physical_state, bool);
 	PROPERTY(energy, double);
 	PROPERTY(current_load, int64_t);

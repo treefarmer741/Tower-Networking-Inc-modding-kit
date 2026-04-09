@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RELXZDISTMARKINGCIRCLE
 #define TNI_API_HEADER_RELXZDISTMARKINGCIRCLE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct RelxzdistMarkingCircle : public MeshInstance3D {
@@ -38,14 +38,14 @@ struct RelxzdistMarkingCircle : public MeshInstance3D {
 };
 
 
-inline void RelxzdistMarkingCircle::mark_x_axis(double line_width, Variant line_color) { voidcall("mark_x_axis", line_width, line_color); }
-inline void RelxzdistMarkingCircle::mark_z_axis(double line_width, Variant line_color) { voidcall("mark_z_axis", line_width, line_color); }
-inline void RelxzdistMarkingCircle::mark_2drel_line(Variant start, Variant end, BaseMaterial3D line_material_override, double width, Variant color) { voidcall("mark_2drel_line", start, end, line_material_override, width, color); }
-inline void RelxzdistMarkingCircle::mark_abs_line(Variant start, Variant end, BaseMaterial3D line_material_override, double width, Variant color) { voidcall("mark_abs_line", start, end, line_material_override, width, color); }
-inline void RelxzdistMarkingCircle::clear() { voidcall("clear"); }
-inline void RelxzdistMarkingCircle::update_marked_point(int64_t point_id, Variant real_origin, Variant real_point, double real_maxdist) { voidcall("update_marked_point", point_id, real_origin, real_point, real_maxdist); }
-inline Node3D RelxzdistMarkingCircle::mark_point(int64_t point_id, Variant real_origin, Variant real_point, double real_maxdist, Node3D point_node_override, double point_radius, Variant point_color) { return Node3D(operator()("mark_point", point_id, real_origin, real_point, real_maxdist, point_node_override, point_radius, point_color).as_object().address()); }
-inline MeshInstance3D RelxzdistMarkingCircle::mark_ring(double ring_floatpos, BaseMaterial3D ring_material_override, double ring_width, Variant ring_color) { return MeshInstance3D(operator()("mark_ring", ring_floatpos, ring_material_override, ring_width, ring_color).as_object().address()); }
-inline void RelxzdistMarkingCircle::play_ringwave_animation(double wave_period, bool wave_fading, BaseMaterial3D ring_material_override, Variant ringf_method_cb, double ring_width, Variant ring_color) { voidcall("play_ringwave_animation", wave_period, wave_fading, ring_material_override, ringf_method_cb, ring_width, ring_color); }
+inline void RelxzdistMarkingCircle::mark_x_axis(double line_width, Variant line_color) { this->voidcall("mark_x_axis", line_width, line_color); }
+inline void RelxzdistMarkingCircle::mark_z_axis(double line_width, Variant line_color) { this->voidcall("mark_z_axis", line_width, line_color); }
+inline void RelxzdistMarkingCircle::mark_2drel_line(Variant start, Variant end, BaseMaterial3D line_material_override, double width, Variant color) { this->voidcall("mark_2drel_line", start, end, line_material_override, width, color); }
+inline void RelxzdistMarkingCircle::mark_abs_line(Variant start, Variant end, BaseMaterial3D line_material_override, double width, Variant color) { this->voidcall("mark_abs_line", start, end, line_material_override, width, color); }
+inline void RelxzdistMarkingCircle::clear() { this->voidcall("clear"); }
+inline void RelxzdistMarkingCircle::update_marked_point(int64_t point_id, Variant real_origin, Variant real_point, double real_maxdist) { this->voidcall("update_marked_point", point_id, real_origin, real_point, real_maxdist); }
+inline Node3D RelxzdistMarkingCircle::mark_point(int64_t point_id, Variant real_origin, Variant real_point, double real_maxdist, Node3D point_node_override, double point_radius, Variant point_color) { return Node3D(this->operator()("mark_point", point_id, real_origin, real_point, real_maxdist, point_node_override, point_radius, point_color).as_object().address()); }
+inline MeshInstance3D RelxzdistMarkingCircle::mark_ring(double ring_floatpos, BaseMaterial3D ring_material_override, double ring_width, Variant ring_color) { return MeshInstance3D(this->operator()("mark_ring", ring_floatpos, ring_material_override, ring_width, ring_color).as_object().address()); }
+inline void RelxzdistMarkingCircle::play_ringwave_animation(double wave_period, bool wave_fading, BaseMaterial3D ring_material_override, Variant ringf_method_cb, double ring_width, Variant ring_color) { this->voidcall("play_ringwave_animation", wave_period, wave_fading, ring_material_override, ringf_method_cb, ring_width, ring_color); }
 
 #endif

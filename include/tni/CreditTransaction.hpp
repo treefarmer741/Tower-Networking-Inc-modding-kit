@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CREDITTRANSACTION
 #define TNI_API_HEADER_CREDITTRANSACTION
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct CreditTransaction : public Object {
@@ -40,7 +40,7 @@ struct CreditTransaction : public Object {
 
 #include "CreditTransaction.hpp"
 
-inline String CreditTransaction::serialize() { return operator()("serialize"); }
-inline CreditTransaction CreditTransaction::from_json(String jsonstr) { return CreditTransaction(operator()("from_json", jsonstr).as_object().address()); }
+inline String CreditTransaction::serialize() { return this->operator()("serialize"); }
+inline CreditTransaction CreditTransaction::from_json(String jsonstr) { return CreditTransaction(this->operator()("from_json", jsonstr).as_object().address()); }
 
 #endif

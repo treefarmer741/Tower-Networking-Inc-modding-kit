@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_ELEVATOR
 #define TNI_API_HEADER_ELEVATOR
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Elevator : public Area2D {
@@ -39,12 +39,12 @@ struct Elevator : public Area2D {
 
 #include "DevicePlacer.hpp"
 
-inline void Elevator::time_mult_updated(double _time_mult_delta) { voidcall("time_mult_updated", _time_mult_delta); }
-inline Variant Elevator::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline void Elevator::instant_summon(int64_t dst_idx) { voidcall("instant_summon", dst_idx); }
-inline void Elevator::add_delivery_backlog(Variant pd) { voidcall("add_delivery_backlog", pd); }
-inline void Elevator::receive_delivery() { voidcall("receive_delivery"); }
-inline void Elevator::retry_delivery_attempt() { voidcall("retry_delivery_attempt"); }
-inline void Elevator::spawn_delivery_backlog() { voidcall("spawn_delivery_backlog"); }
+inline void Elevator::time_mult_updated(double _time_mult_delta) { this->voidcall("time_mult_updated", _time_mult_delta); }
+inline Variant Elevator::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void Elevator::instant_summon(int64_t dst_idx) { this->voidcall("instant_summon", dst_idx); }
+inline void Elevator::add_delivery_backlog(Variant pd) { this->voidcall("add_delivery_backlog", pd); }
+inline void Elevator::receive_delivery() { this->voidcall("receive_delivery"); }
+inline void Elevator::retry_delivery_attempt() { this->voidcall("retry_delivery_attempt"); }
+inline void Elevator::spawn_delivery_backlog() { this->voidcall("spawn_delivery_backlog"); }
 
 #endif

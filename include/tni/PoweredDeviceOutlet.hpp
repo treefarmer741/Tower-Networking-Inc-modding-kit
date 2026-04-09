@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_POWEREDDEVICEOUTLET
 #define TNI_API_HEADER_POWEREDDEVICEOUTLET
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "DeviceOutlet.hpp"
 
-struct PoweredDeviceOutlet : public Area2D {
-	using Area2D::Area2D;
+struct PoweredDeviceOutlet : public DeviceOutlet {
+	using DeviceOutlet::DeviceOutlet;
 
-	constexpr PoweredDeviceOutlet(Area2D base) : Area2D{base} {}
-	constexpr PoweredDeviceOutlet(uint64_t addr) : Area2D{addr} {}
+	constexpr PoweredDeviceOutlet(DeviceOutlet base) : DeviceOutlet{base} {}
+	constexpr PoweredDeviceOutlet(uint64_t addr) : DeviceOutlet{addr} {}
 	constexpr PoweredDeviceOutlet(Object obj) : PoweredDeviceOutlet{obj.address()} {}
 	PoweredDeviceOutlet(Variant variant) : PoweredDeviceOutlet{variant.as_object().address()} {}
 
@@ -19,6 +20,7 @@ struct PoweredDeviceOutlet : public Area2D {
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(device_hardware_class, int64_t);
 	PROPERTY(socket, Socket);
+	PROPERTY(floor_num, int64_t);
 
 	inline Variant debug_monitor_callback();
 };
@@ -26,6 +28,6 @@ struct PoweredDeviceOutlet : public Area2D {
 #include "LogicController.hpp"
 #include "Socket.hpp"
 
-inline Variant PoweredDeviceOutlet::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
+inline Variant PoweredDeviceOutlet::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
 
 #endif

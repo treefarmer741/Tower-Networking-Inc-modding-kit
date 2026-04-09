@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GUIDECONTROLLER
 #define TNI_API_HEADER_GUIDECONTROLLER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GuideController : public Node {
@@ -23,7 +23,7 @@ struct GuideController : public Node {
 };
 
 
-inline void GuideController::cleanup() { voidcall("cleanup"); }
-inline void GuideController::mark_guide_complete(String guide_name) { voidcall("mark_guide_complete", guide_name); }
+inline void GuideController::cleanup() { this->voidcall("cleanup"); }
+inline void GuideController::mark_guide_complete(String guide_name) { this->voidcall("mark_guide_complete", guide_name); }
 
 #endif

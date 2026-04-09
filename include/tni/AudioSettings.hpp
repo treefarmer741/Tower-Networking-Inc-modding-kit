@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_AUDIOSETTINGS
 #define TNI_API_HEADER_AUDIOSETTINGS
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct AudioSettings : public VBoxContainer {
@@ -23,6 +23,6 @@ struct AudioSettings : public VBoxContainer {
 };
 
 
-inline Variant AudioSettings::map_float_to_volume_db(double inp) { return operator()("map_float_to_volume_db", inp); }
+inline Variant AudioSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_POWERSURGECONTROLLER
 #define TNI_API_HEADER_POWERSURGECONTROLLER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "RandomEvent.hpp"
 
-struct PowerSurgeController : public Node {
-	using Node::Node;
+struct PowerSurgeController : public RandomEvent {
+	using RandomEvent::RandomEvent;
 
-	constexpr PowerSurgeController(Node base) : Node{base} {}
-	constexpr PowerSurgeController(uint64_t addr) : Node{addr} {}
+	constexpr PowerSurgeController(RandomEvent base) : RandomEvent{base} {}
+	constexpr PowerSurgeController(uint64_t addr) : RandomEvent{addr} {}
 	constexpr PowerSurgeController(Object obj) : PowerSurgeController{obj.address()} {}
 	PowerSurgeController(Variant variant) : PowerSurgeController{variant.as_object().address()} {}
 
@@ -26,15 +27,15 @@ struct PowerSurgeController : public Node {
 	PROPERTY(enabled, bool);
 	PROPERTY(trial_timer, Timer);
 
-	inline void notify_surge_warning(Location loc, int64_t start_ts, int64_t end_ts);
+	inline void notify_surge_warning(const Location& loc, int64_t start_ts, int64_t end_ts);
 	inline void start();
 	inline void pause();
 };
 
 #include "Location.hpp"
 
-inline void PowerSurgeController::notify_surge_warning(Location loc, int64_t start_ts, int64_t end_ts) { voidcall("notify_surge_warning", loc, start_ts, end_ts); }
-inline void PowerSurgeController::start() { voidcall("start"); }
-inline void PowerSurgeController::pause() { voidcall("pause"); }
+inline void PowerSurgeController::notify_surge_warning(const Location& loc, int64_t start_ts, int64_t end_ts) { this->voidcall("notify_surge_warning", Object(reinterpret_cast<const Object*>(&loc)->address()), start_ts, end_ts); }
+inline void PowerSurgeController::start() { this->voidcall("start"); }
+inline void PowerSurgeController::pause() { this->voidcall("pause"); }
 
 #endif

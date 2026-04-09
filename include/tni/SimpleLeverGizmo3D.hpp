@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SIMPLELEVERGIZMO3D
 #define TNI_API_HEADER_SIMPLELEVERGIZMO3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SimpleLeverGizmo3D : public Area3D {
@@ -30,6 +30,6 @@ struct SimpleLeverGizmo3D : public Area3D {
 };
 
 
-inline void SimpleLeverGizmo3D::set_gizmo_value(int64_t lpos, double _unused_normal_factor) { voidcall("set_gizmo_value", lpos, _unused_normal_factor); }
+inline void SimpleLeverGizmo3D::set_gizmo_value(int64_t lpos, double _unused_normal_factor) { this->voidcall("set_gizmo_value", lpos, _unused_normal_factor); }
 
 #endif

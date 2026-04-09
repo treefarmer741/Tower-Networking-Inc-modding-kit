@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CRONCONTROLLER
 #define TNI_API_HEADER_CRONCONTROLLER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct CronController : public Node {
@@ -32,22 +32,24 @@ struct CronController : public Node {
 	inline void print_error(Variant s);
 	inline void print_warn(Variant s);
 	inline void print_highlight(Variant s);
+	inline void put_s(Variant _c);
 	inline void print_line(Variant s);
 	inline void rotate_output();
 	inline void clear_display();
 };
 
 
-inline void CronController::wipe(bool everything) { voidcall("wipe", everything); }
-inline void CronController::remove_expr_cmd(int64_t ti) { voidcall("remove_expr_cmd", ti); }
-inline void CronController::add_expr_cmd(String c_expr, String c_cmd) { voidcall("add_expr_cmd", c_expr, c_cmd); }
-inline void CronController::print_horizontal_sep() { voidcall("print_horizontal_sep"); }
-inline void CronController::print_success(Variant s) { voidcall("print_success", s); }
-inline void CronController::print_error(Variant s) { voidcall("print_error", s); }
-inline void CronController::print_warn(Variant s) { voidcall("print_warn", s); }
-inline void CronController::print_highlight(Variant s) { voidcall("print_highlight", s); }
-inline void CronController::print_line(Variant s) { voidcall("print_line", s); }
-inline void CronController::rotate_output() { voidcall("rotate_output"); }
-inline void CronController::clear_display() { voidcall("clear_display"); }
+inline void CronController::wipe(bool everything) { this->voidcall("wipe", everything); }
+inline void CronController::remove_expr_cmd(int64_t ti) { this->voidcall("remove_expr_cmd", ti); }
+inline void CronController::add_expr_cmd(String c_expr, String c_cmd) { this->voidcall("add_expr_cmd", c_expr, c_cmd); }
+inline void CronController::print_horizontal_sep() { this->voidcall("print_horizontal_sep"); }
+inline void CronController::print_success(Variant s) { this->voidcall("print_success", s); }
+inline void CronController::print_error(Variant s) { this->voidcall("print_error", s); }
+inline void CronController::print_warn(Variant s) { this->voidcall("print_warn", s); }
+inline void CronController::print_highlight(Variant s) { this->voidcall("print_highlight", s); }
+inline void CronController::put_s(Variant _c) { this->voidcall("put_s", _c); }
+inline void CronController::print_line(Variant s) { this->voidcall("print_line", s); }
+inline void CronController::rotate_output() { this->voidcall("rotate_output"); }
+inline void CronController::clear_display() { this->voidcall("clear_display"); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_INTERNETEXCHANGEPOINTONE
 #define TNI_API_HEADER_INTERNETEXCHANGEPOINTONE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct InternetExchangePointOne : public Node {
-	using Node::Node;
+struct InternetExchangePointOne : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr InternetExchangePointOne(Node base) : Node{base} {}
-	constexpr InternetExchangePointOne(uint64_t addr) : Node{addr} {}
+	constexpr InternetExchangePointOne(PropMod base) : PropMod{base} {}
+	constexpr InternetExchangePointOne(uint64_t addr) : PropMod{addr} {}
 	constexpr InternetExchangePointOne(Object obj) : InternetExchangePointOne{obj.address()} {}
 	InternetExchangePointOne(Variant variant) : InternetExchangePointOne{variant.as_object().address()} {}
 
@@ -40,13 +41,13 @@ struct InternetExchangePointOne : public Node {
 
 #include "PropMod.hpp"
 
-inline void InternetExchangePointOne::apply_mod() { voidcall("apply_mod"); }
-inline String InternetExchangePointOne::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String InternetExchangePointOne::get_lore() { return operator()("get_lore"); }
-inline String InternetExchangePointOne::get_description() { return operator()("get_description"); }
-inline Variant InternetExchangePointOne::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void InternetExchangePointOne::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void InternetExchangePointOne::update_state() { voidcall("update_state"); }
-inline void InternetExchangePointOne::activate_local_effects() { voidcall("activate_local_effects"); }
+inline void InternetExchangePointOne::apply_mod() { this->voidcall("apply_mod"); }
+inline String InternetExchangePointOne::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String InternetExchangePointOne::get_lore() { return this->operator()("get_lore"); }
+inline String InternetExchangePointOne::get_description() { return this->operator()("get_description"); }
+inline Variant InternetExchangePointOne::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void InternetExchangePointOne::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void InternetExchangePointOne::update_state() { this->voidcall("update_state"); }
+inline void InternetExchangePointOne::activate_local_effects() { this->voidcall("activate_local_effects"); }
 
 #endif

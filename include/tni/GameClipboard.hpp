@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GAMECLIPBOARD
 #define TNI_API_HEADER_GAMECLIPBOARD
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GameClipboard : public Control {
@@ -45,13 +45,13 @@ struct GameClipboard : public Control {
 };
 
 
-inline void GameClipboard::set_clipboard_contexts(Variant ctx, int64_t typ) { voidcall("set_clipboard_contexts", ctx, typ); }
-inline void GameClipboard::cleanup() { voidcall("cleanup"); }
-inline void GameClipboard::fade_out() { voidcall("fade_out"); }
-inline void GameClipboard::fade_in() { voidcall("fade_in"); }
-inline void GameClipboard::refresh() { voidcall("refresh"); }
-inline void GameClipboard::register_item(Variant a, int64_t mode) { voidcall("register_item", a, mode); }
-inline void GameClipboard::pull_up() { voidcall("pull_up"); }
-inline void GameClipboard::pull_down() { voidcall("pull_down"); }
+inline void GameClipboard::set_clipboard_contexts(Variant ctx, int64_t typ) { this->voidcall("set_clipboard_contexts", ctx, typ); }
+inline void GameClipboard::cleanup() { this->voidcall("cleanup"); }
+inline void GameClipboard::fade_out() { this->voidcall("fade_out"); }
+inline void GameClipboard::fade_in() { this->voidcall("fade_in"); }
+inline void GameClipboard::refresh() { this->voidcall("refresh"); }
+inline void GameClipboard::register_item(Variant a, int64_t mode) { this->voidcall("register_item", a, mode); }
+inline void GameClipboard::pull_up() { this->voidcall("pull_up"); }
+inline void GameClipboard::pull_down() { this->voidcall("pull_down"); }
 
 #endif

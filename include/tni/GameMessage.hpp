@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GAMEMESSAGE
 #define TNI_API_HEADER_GAMEMESSAGE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GameMessage : public Object {
@@ -26,7 +26,7 @@ struct GameMessage : public Object {
 
 #include "GameMessage.hpp"
 
-inline String GameMessage::serialize() { return operator()("serialize"); }
-inline GameMessage GameMessage::from_json(String jsonstr) { return GameMessage(operator()("from_json", jsonstr).as_object().address()); }
+inline String GameMessage::serialize() { return this->operator()("serialize"); }
+inline GameMessage GameMessage::from_json(String jsonstr) { return GameMessage(this->operator()("from_json", jsonstr).as_object().address()); }
 
 #endif

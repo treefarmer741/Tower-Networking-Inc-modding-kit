@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_AVR
 #define TNI_API_HEADER_AVR
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "DeviceUnit.hpp"
 
-struct Avr : public RigidBody2D {
-	using RigidBody2D::RigidBody2D;
+struct Avr : public DeviceUnit {
+	using DeviceUnit::DeviceUnit;
 
-	constexpr Avr(RigidBody2D base) : RigidBody2D{base} {}
-	constexpr Avr(uint64_t addr) : RigidBody2D{addr} {}
+	constexpr Avr(DeviceUnit base) : DeviceUnit{base} {}
+	constexpr Avr(uint64_t addr) : DeviceUnit{addr} {}
 	constexpr Avr(Object obj) : Avr{obj.address()} {}
 	Avr(Variant variant) : Avr{variant.as_object().address()} {}
 
@@ -41,6 +42,7 @@ struct Avr : public RigidBody2D {
 	PROPERTY(auto_servicing_enabled, bool);
 	PROPERTY(auto_replacement_cost, int64_t);
 	PROPERTY(current_floor_num, int64_t);
+	PROPERTY(device_application_unlocks, Variant);
 	PROPERTY(device_hardware_class, int64_t);
 	PROPERTY(condition, int64_t);
 	PROPERTY(mount_type, int64_t);
@@ -69,6 +71,9 @@ struct Avr : public RigidBody2D {
 	inline void apply_autoconfig();
 	inline void reposition(Variant new_pos);
 	inline void elevator_move(Variant new_pos);
+	inline double get_device_bounding_height();
+	inline Variant get_global_y_range();
+	inline Variant get_local_y_range();
 	inline Variant debug_monitor_callback();
 	inline Variant debug_mux_setup();
 	inline Variant update_in_trolley_state();
@@ -86,22 +91,25 @@ struct Avr : public RigidBody2D {
 #include "LogicController.hpp"
 #include "PowerController.hpp"
 
-inline void Avr::play_surge_effects() { voidcall("play_surge_effects"); }
-inline void Avr::set_disp(String disptext) { voidcall("set_disp", disptext); }
-inline void Avr::apply_autoconfig() { voidcall("apply_autoconfig"); }
-inline void Avr::reposition(Variant new_pos) { voidcall("reposition", new_pos); }
-inline void Avr::elevator_move(Variant new_pos) { voidcall("elevator_move", new_pos); }
-inline Variant Avr::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline Variant Avr::debug_mux_setup() { return operator()("debug_mux_setup"); }
-inline Variant Avr::update_in_trolley_state() { return operator()("update_in_trolley_state"); }
-inline bool Avr::pickup(Variant new_picker) { return operator()("pickup", new_picker); }
-inline bool Avr::drop(Variant impulse) { return operator()("drop", impulse); }
-inline void Avr::reset_child_z_index() { voidcall("reset_child_z_index"); }
-inline void Avr::set_autosvc(bool new_state) { voidcall("set_autosvc", new_state); }
-inline void Avr::update_user_note(String new_value) { voidcall("update_user_note", new_value); }
-inline void Avr::remove_and_free_object() { voidcall("remove_and_free_object"); }
-inline void Avr::lift_child_z_index(int64_t base_val) { voidcall("lift_child_z_index", base_val); }
-inline Variant Avr::get_picker_type(Variant test_picker) { return operator()("get_picker_type", test_picker); }
-inline void Avr::setup_teleport(Variant gpos) { voidcall("setup_teleport", gpos); }
+inline void Avr::play_surge_effects() { this->voidcall("play_surge_effects"); }
+inline void Avr::set_disp(String disptext) { this->voidcall("set_disp", disptext); }
+inline void Avr::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
+inline void Avr::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
+inline void Avr::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
+inline double Avr::get_device_bounding_height() { return this->operator()("get_device_bounding_height"); }
+inline Variant Avr::get_global_y_range() { return this->operator()("get_global_y_range"); }
+inline Variant Avr::get_local_y_range() { return this->operator()("get_local_y_range"); }
+inline Variant Avr::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline Variant Avr::debug_mux_setup() { return this->operator()("debug_mux_setup"); }
+inline Variant Avr::update_in_trolley_state() { return this->operator()("update_in_trolley_state"); }
+inline bool Avr::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
+inline bool Avr::drop(Variant impulse) { return this->operator()("drop", impulse); }
+inline void Avr::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void Avr::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void Avr::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void Avr::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
+inline void Avr::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline Variant Avr::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
+inline void Avr::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
 
 #endif

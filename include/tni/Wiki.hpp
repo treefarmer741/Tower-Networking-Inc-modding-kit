@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_WIKI
 #define TNI_API_HEADER_WIKI
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Wiki : public Control {
@@ -32,7 +32,7 @@ struct Wiki : public Control {
 
 #include "WikiEntryItem.hpp"
 
-inline void Wiki::fade_out() { voidcall("fade_out"); }
-inline void Wiki::fade_in() { voidcall("fade_in"); }
+inline void Wiki::fade_out() { this->voidcall("fade_out"); }
+inline void Wiki::fade_in() { this->voidcall("fade_in"); }
 
 #endif

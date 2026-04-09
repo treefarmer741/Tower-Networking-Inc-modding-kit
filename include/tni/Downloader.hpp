@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DOWNLOADER
 #define TNI_API_HEADER_DOWNLOADER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Downloader : public Window {
@@ -29,6 +29,6 @@ struct Downloader : public Window {
 };
 
 
-inline void Downloader::extract_all_from_zip(String path, String dest) { voidcall("extract_all_from_zip", path, dest); }
+inline void Downloader::extract_all_from_zip(String path, String dest) { this->voidcall("extract_all_from_zip", path, dest); }
 
 #endif

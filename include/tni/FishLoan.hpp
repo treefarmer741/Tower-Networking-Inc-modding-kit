@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_FISHLOAN
 #define TNI_API_HEADER_FISHLOAN
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct FishLoan : public Container {
-	using Container::Container;
+struct FishLoan : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr FishLoan(Container base) : Container{base} {}
-	constexpr FishLoan(uint64_t addr) : Container{addr} {}
+	constexpr FishLoan(ScreenApp base) : ScreenApp{base} {}
+	constexpr FishLoan(uint64_t addr) : ScreenApp{addr} {}
 	constexpr FishLoan(Object obj) : FishLoan{obj.address()} {}
 	FishLoan(Variant variant) : FishLoan{variant.as_object().address()} {}
 
@@ -33,11 +34,11 @@ struct FishLoan : public Container {
 
 #include "MainPane.hpp"
 
-inline void FishLoan::launch() { voidcall("launch"); }
-inline void FishLoan::minimize() { voidcall("minimize"); }
-inline void FishLoan::show_pingback(String msg, Variant on_confirm) { voidcall("show_pingback", msg, on_confirm); }
-inline void FishLoan::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void FishLoan::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant FishLoan::get_main_pane() { return operator()("get_main_pane"); }
+inline void FishLoan::launch() { this->voidcall("launch"); }
+inline void FishLoan::minimize() { this->voidcall("minimize"); }
+inline void FishLoan::show_pingback(String msg, Variant on_confirm) { this->voidcall("show_pingback", msg, on_confirm); }
+inline void FishLoan::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void FishLoan::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant FishLoan::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

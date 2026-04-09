@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIATRACKINGCHUNKEDTERRAIN3D
 #define TNI_API_HEADER_POCOSIATRACKINGCHUNKEDTERRAIN3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaTrackingChunkedTerrain3D : public Node3D {
@@ -29,9 +29,9 @@ struct PocosiaTrackingChunkedTerrain3D : public Node3D {
 };
 
 
-inline void PocosiaTrackingChunkedTerrain3D::enable() { voidcall("enable"); }
-inline void PocosiaTrackingChunkedTerrain3D::disable() { voidcall("disable"); }
-inline Variant PocosiaTrackingChunkedTerrain3D::get_chunk_coordinates(Node3D n3d, int64_t layer) { return operator()("get_chunk_coordinates", n3d, layer); }
-inline Variant PocosiaTrackingChunkedTerrain3D::get_chunk_size(int64_t layer) { return operator()("get_chunk_size", layer); }
+inline void PocosiaTrackingChunkedTerrain3D::enable() { this->voidcall("enable"); }
+inline void PocosiaTrackingChunkedTerrain3D::disable() { this->voidcall("disable"); }
+inline Variant PocosiaTrackingChunkedTerrain3D::get_chunk_coordinates(Node3D n3d, int64_t layer) { return this->operator()("get_chunk_coordinates", n3d, layer); }
+inline Variant PocosiaTrackingChunkedTerrain3D::get_chunk_size(int64_t layer) { return this->operator()("get_chunk_size", layer); }
 
 #endif

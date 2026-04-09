@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER__9FIREWALLCONFIGURATIONWORLD
 #define TNI_API_HEADER__9FIREWALLCONFIGURATIONWORLD
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "GameWorld.hpp"
 
-struct _9FirewallConfigurationWorld : public Node2D {
-	using Node2D::Node2D;
+struct _9FirewallConfigurationWorld : public GameWorld {
+	using GameWorld::GameWorld;
 
-	constexpr _9FirewallConfigurationWorld(Node2D base) : Node2D{base} {}
-	constexpr _9FirewallConfigurationWorld(uint64_t addr) : Node2D{addr} {}
+	constexpr _9FirewallConfigurationWorld(GameWorld base) : GameWorld{base} {}
+	constexpr _9FirewallConfigurationWorld(uint64_t addr) : GameWorld{addr} {}
 	constexpr _9FirewallConfigurationWorld(Object obj) : _9FirewallConfigurationWorld{obj.address()} {}
 	_9FirewallConfigurationWorld(Variant variant) : _9FirewallConfigurationWorld{variant.as_object().address()} {}
 
@@ -27,6 +28,7 @@ struct _9FirewallConfigurationWorld : public Node2D {
 	PROPERTY(default_application_unlocks, Variant);
 	PROPERTY(netsh_default_always, bool);
 	PROPERTY(autosave_enabled, bool);
+	PROPERTY(consumer_goes_easy_due_to_producer_grace, bool);
 	PROPERTY(main_scon, SaveController);
 	PROPERTY(time_mult, double);
 	PROPERTY(dns_lookup, Variant);
@@ -41,8 +43,8 @@ struct _9FirewallConfigurationWorld : public Node2D {
 	PROPERTY(app_licenses, Variant);
 	PROPERTY(day_opening_balance, int64_t);
 	PROPERTY(auto_complete_candidate_list, Variant);
-	PROPERTY(just_loaded_in_on_this_day, bool);
 	PROPERTY(migration_srack_c, int64_t);
+	PROPERTY(fbcntr, int64_t);
 	PROPERTY(difficulty_hash, int64_t);
 	PROPERTY(unlocks_or_achievements_allowed, bool);
 	PROPERTY(difficulty_level, String);
@@ -81,7 +83,6 @@ struct _9FirewallConfigurationWorld : public Node2D {
 	PROPERTY(menuconf, Variant);
 	PROPERTY(base_engine_tsms, int64_t);
 	PROPERTY(engine_tsms_since_base, int64_t);
-	PROPERTY(msand, Sandbox);
 	PROPERTY(payment_due_today, int64_t);
 	PROPERTY(base_payment_breakdown, Variant);
 	PROPERTY(admin_fee_mult, double);
@@ -101,16 +102,16 @@ struct _9FirewallConfigurationWorld : public Node2D {
 	PROPERTY(acquired_techs, Variant);
 
 	inline void recompute_diff_hash();
-	inline void update_player_msg(Variant msg_id, GameMessage gm);
+	inline void update_player_msg(Variant msg_id, const GameMessage& gm);
 	inline Variant get_player_msg(Variant msg_id);
 	inline Variant get_transactional_sum(Variant n_date, Variant count_map);
 	inline Variant lookup_domain(Variant domain);
 	inline Variant test_merchant_existence(Variant merchant_sfp);
 	inline void try_add_merchant(Variant merchant_sfp);
-	inline void try_release_program(PackedScene prog_scene);
+	inline void try_release_program(PackedScene prog_scene, Variant notifprogstack);
 	inline void add_autocomplete_candidate(String candid);
 	inline void remove_autocomplete_candidate(String candid);
-	inline Variant get_loc_index(Location loc);
+	inline Variant get_loc_index(const Location& loc);
 	inline void add_location(String sfp);
 	inline MultiplayerMouse add_player(int64_t peer_id);
 	inline void try_resume_daycycle();
@@ -122,7 +123,7 @@ struct _9FirewallConfigurationWorld : public Node2D {
 	inline Variant calculate_payment_due_breakdown(bool itemized);
 	inline Variant get_full_savepath(String subname);
 	inline void trigger_game_over(Variant msg, bool by_force);
-	inline void submit_user_complaint(User failing_user);
+	inline void submit_user_complaint(const User& failing_user);
 	inline void sync_ptrans_delta(Variant s_ptrans);
 	inline void sync_pmsg_delta(Variant s_pmsg);
 	inline void update_last_node_spawn_ts_now();
@@ -158,43 +159,43 @@ struct _9FirewallConfigurationWorld : public Node2D {
 #include "MultiplayerMouse.hpp"
 #include "User.hpp"
 
-inline void _9FirewallConfigurationWorld::recompute_diff_hash() { voidcall("recompute_diff_hash"); }
-inline void _9FirewallConfigurationWorld::update_player_msg(Variant msg_id, GameMessage gm) { voidcall("update_player_msg", msg_id, gm); }
-inline Variant _9FirewallConfigurationWorld::get_player_msg(Variant msg_id) { return operator()("get_player_msg", msg_id); }
-inline Variant _9FirewallConfigurationWorld::get_transactional_sum(Variant n_date, Variant count_map) { return operator()("get_transactional_sum", n_date, count_map); }
-inline Variant _9FirewallConfigurationWorld::lookup_domain(Variant domain) { return operator()("lookup_domain", domain); }
-inline Variant _9FirewallConfigurationWorld::test_merchant_existence(Variant merchant_sfp) { return operator()("test_merchant_existence", merchant_sfp); }
-inline void _9FirewallConfigurationWorld::try_add_merchant(Variant merchant_sfp) { voidcall("try_add_merchant", merchant_sfp); }
-inline void _9FirewallConfigurationWorld::try_release_program(PackedScene prog_scene) { voidcall("try_release_program", prog_scene); }
-inline void _9FirewallConfigurationWorld::add_autocomplete_candidate(String candid) { voidcall("add_autocomplete_candidate", candid); }
-inline void _9FirewallConfigurationWorld::remove_autocomplete_candidate(String candid) { voidcall("remove_autocomplete_candidate", candid); }
-inline Variant _9FirewallConfigurationWorld::get_loc_index(Location loc) { return operator()("get_loc_index", loc); }
-inline void _9FirewallConfigurationWorld::add_location(String sfp) { voidcall("add_location", sfp); }
-inline MultiplayerMouse _9FirewallConfigurationWorld::add_player(int64_t peer_id) { return MultiplayerMouse(operator()("add_player", peer_id).as_object().address()); }
-inline void _9FirewallConfigurationWorld::try_resume_daycycle() { voidcall("try_resume_daycycle"); }
-inline void _9FirewallConfigurationWorld::master_timeout() { voidcall("master_timeout"); }
-inline void _9FirewallConfigurationWorld::second_elapsed() { voidcall("second_elapsed"); }
-inline void _9FirewallConfigurationWorld::artifact_timeout() { voidcall("artifact_timeout"); }
-inline void _9FirewallConfigurationWorld::remove_player(int64_t peer_id) { voidcall("remove_player", peer_id); }
-inline Variant _9FirewallConfigurationWorld::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline Variant _9FirewallConfigurationWorld::calculate_payment_due_breakdown(bool itemized) { return operator()("calculate_payment_due_breakdown", itemized); }
-inline Variant _9FirewallConfigurationWorld::get_full_savepath(String subname) { return operator()("get_full_savepath", subname); }
-inline void _9FirewallConfigurationWorld::trigger_game_over(Variant msg, bool by_force) { voidcall("trigger_game_over", msg, by_force); }
-inline void _9FirewallConfigurationWorld::submit_user_complaint(User failing_user) { voidcall("submit_user_complaint", failing_user); }
-inline void _9FirewallConfigurationWorld::sync_ptrans_delta(Variant s_ptrans) { voidcall("sync_ptrans_delta", s_ptrans); }
-inline void _9FirewallConfigurationWorld::sync_pmsg_delta(Variant s_pmsg) { voidcall("sync_pmsg_delta", s_pmsg); }
-inline void _9FirewallConfigurationWorld::update_last_node_spawn_ts_now() { voidcall("update_last_node_spawn_ts_now"); }
-inline void _9FirewallConfigurationWorld::trigger_day_elapse(Variant curr_day) { voidcall("trigger_day_elapse", curr_day); }
-inline void _9FirewallConfigurationWorld::acquire_app_license(String title, int64_t license_cost) { voidcall("acquire_app_license", title, license_cost); }
-inline void _9FirewallConfigurationWorld::modify_player_cash(Variant amount, Variant details, int64_t category) { voidcall("modify_player_cash", amount, details, category); }
-inline void _9FirewallConfigurationWorld::send_player_message(Variant title, Variant msg, int64_t tone_enum) { voidcall("send_player_message", title, msg, tone_enum); }
-inline void _9FirewallConfigurationWorld::add_player_hosting(String fqdn, String use_spec_csv, double ppu) { voidcall("add_player_hosting", fqdn, use_spec_csv, ppu); }
-inline void _9FirewallConfigurationWorld::remove_player_hosting(String fqdn) { voidcall("remove_player_hosting", fqdn); }
-inline void _9FirewallConfigurationWorld::put_dns_entry(Variant fqdn, Variant netaddr) { voidcall("put_dns_entry", fqdn, netaddr); }
-inline void _9FirewallConfigurationWorld::update_server_timescale(double timescale_arg) { voidcall("update_server_timescale", timescale_arg); }
-inline void _9FirewallConfigurationWorld::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg) { voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg); }
-inline void _9FirewallConfigurationWorld::acquire_all_tech() { voidcall("acquire_all_tech"); }
-inline void _9FirewallConfigurationWorld::enable_all_listings() { voidcall("enable_all_listings"); }
-inline void _9FirewallConfigurationWorld::enable_all_tech_and_listings() { voidcall("enable_all_tech_and_listings"); }
+inline void _9FirewallConfigurationWorld::recompute_diff_hash() { this->voidcall("recompute_diff_hash"); }
+inline void _9FirewallConfigurationWorld::update_player_msg(Variant msg_id, const GameMessage& gm) { this->voidcall("update_player_msg", msg_id, Object(reinterpret_cast<const Object*>(&gm)->address())); }
+inline Variant _9FirewallConfigurationWorld::get_player_msg(Variant msg_id) { return this->operator()("get_player_msg", msg_id); }
+inline Variant _9FirewallConfigurationWorld::get_transactional_sum(Variant n_date, Variant count_map) { return this->operator()("get_transactional_sum", n_date, count_map); }
+inline Variant _9FirewallConfigurationWorld::lookup_domain(Variant domain) { return this->operator()("lookup_domain", domain); }
+inline Variant _9FirewallConfigurationWorld::test_merchant_existence(Variant merchant_sfp) { return this->operator()("test_merchant_existence", merchant_sfp); }
+inline void _9FirewallConfigurationWorld::try_add_merchant(Variant merchant_sfp) { this->voidcall("try_add_merchant", merchant_sfp); }
+inline void _9FirewallConfigurationWorld::try_release_program(PackedScene prog_scene, Variant notifprogstack) { this->voidcall("try_release_program", prog_scene, notifprogstack); }
+inline void _9FirewallConfigurationWorld::add_autocomplete_candidate(String candid) { this->voidcall("add_autocomplete_candidate", candid); }
+inline void _9FirewallConfigurationWorld::remove_autocomplete_candidate(String candid) { this->voidcall("remove_autocomplete_candidate", candid); }
+inline Variant _9FirewallConfigurationWorld::get_loc_index(const Location& loc) { return this->operator()("get_loc_index", Object(reinterpret_cast<const Object*>(&loc)->address())); }
+inline void _9FirewallConfigurationWorld::add_location(String sfp) { this->voidcall("add_location", sfp); }
+inline MultiplayerMouse _9FirewallConfigurationWorld::add_player(int64_t peer_id) { return MultiplayerMouse(this->operator()("add_player", peer_id).as_object().address()); }
+inline void _9FirewallConfigurationWorld::try_resume_daycycle() { this->voidcall("try_resume_daycycle"); }
+inline void _9FirewallConfigurationWorld::master_timeout() { this->voidcall("master_timeout"); }
+inline void _9FirewallConfigurationWorld::second_elapsed() { this->voidcall("second_elapsed"); }
+inline void _9FirewallConfigurationWorld::artifact_timeout() { this->voidcall("artifact_timeout"); }
+inline void _9FirewallConfigurationWorld::remove_player(int64_t peer_id) { this->voidcall("remove_player", peer_id); }
+inline Variant _9FirewallConfigurationWorld::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline Variant _9FirewallConfigurationWorld::calculate_payment_due_breakdown(bool itemized) { return this->operator()("calculate_payment_due_breakdown", itemized); }
+inline Variant _9FirewallConfigurationWorld::get_full_savepath(String subname) { return this->operator()("get_full_savepath", subname); }
+inline void _9FirewallConfigurationWorld::trigger_game_over(Variant msg, bool by_force) { this->voidcall("trigger_game_over", msg, by_force); }
+inline void _9FirewallConfigurationWorld::submit_user_complaint(const User& failing_user) { this->voidcall("submit_user_complaint", Object(reinterpret_cast<const Object*>(&failing_user)->address())); }
+inline void _9FirewallConfigurationWorld::sync_ptrans_delta(Variant s_ptrans) { this->voidcall("sync_ptrans_delta", s_ptrans); }
+inline void _9FirewallConfigurationWorld::sync_pmsg_delta(Variant s_pmsg) { this->voidcall("sync_pmsg_delta", s_pmsg); }
+inline void _9FirewallConfigurationWorld::update_last_node_spawn_ts_now() { this->voidcall("update_last_node_spawn_ts_now"); }
+inline void _9FirewallConfigurationWorld::trigger_day_elapse(Variant curr_day) { this->voidcall("trigger_day_elapse", curr_day); }
+inline void _9FirewallConfigurationWorld::acquire_app_license(String title, int64_t license_cost) { this->voidcall("acquire_app_license", title, license_cost); }
+inline void _9FirewallConfigurationWorld::modify_player_cash(Variant amount, Variant details, int64_t category) { this->voidcall("modify_player_cash", amount, details, category); }
+inline void _9FirewallConfigurationWorld::send_player_message(Variant title, Variant msg, int64_t tone_enum) { this->voidcall("send_player_message", title, msg, tone_enum); }
+inline void _9FirewallConfigurationWorld::add_player_hosting(String fqdn, String use_spec_csv, double ppu) { this->voidcall("add_player_hosting", fqdn, use_spec_csv, ppu); }
+inline void _9FirewallConfigurationWorld::remove_player_hosting(String fqdn) { this->voidcall("remove_player_hosting", fqdn); }
+inline void _9FirewallConfigurationWorld::put_dns_entry(Variant fqdn, Variant netaddr) { this->voidcall("put_dns_entry", fqdn, netaddr); }
+inline void _9FirewallConfigurationWorld::update_server_timescale(double timescale_arg) { this->voidcall("update_server_timescale", timescale_arg); }
+inline void _9FirewallConfigurationWorld::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg); }
+inline void _9FirewallConfigurationWorld::acquire_all_tech() { this->voidcall("acquire_all_tech"); }
+inline void _9FirewallConfigurationWorld::enable_all_listings() { this->voidcall("enable_all_listings"); }
+inline void _9FirewallConfigurationWorld::enable_all_tech_and_listings() { this->voidcall("enable_all_tech_and_listings"); }
 
 #endif

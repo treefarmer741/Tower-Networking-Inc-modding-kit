@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PHYBOD3DBINDERLINK
 #define TNI_API_HEADER_PHYBOD3DBINDERLINK
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Phybod3dBinderLink : public RigidBody3D {
@@ -29,10 +29,10 @@ struct Phybod3dBinderLink : public RigidBody3D {
 };
 
 
-inline void Phybod3dBinderLink::point_towards(Variant towards) { voidcall("point_towards", towards); }
-inline void Phybod3dBinderLink::clear_binds() { voidcall("clear_binds"); }
-inline void Phybod3dBinderLink::bind(Variant node) { voidcall("bind", node); }
-inline void Phybod3dBinderLink::adjust_length(double new_length) { voidcall("adjust_length", new_length); }
-inline void Phybod3dBinderLink::bind_base(Variant base_node) { voidcall("bind_base", base_node); }
+inline void Phybod3dBinderLink::point_towards(Variant towards) { this->voidcall("point_towards", towards); }
+inline void Phybod3dBinderLink::clear_binds() { this->voidcall("clear_binds"); }
+inline void Phybod3dBinderLink::bind(Variant node) { this->voidcall("bind", node); }
+inline void Phybod3dBinderLink::adjust_length(double new_length) { this->voidcall("adjust_length", new_length); }
+inline void Phybod3dBinderLink::bind_base(Variant base_node) { this->voidcall("bind_base", base_node); }
 
 #endif

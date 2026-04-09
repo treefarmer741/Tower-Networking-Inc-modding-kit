@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_VISITORSCALEDUSERHOSTING
 #define TNI_API_HEADER_VISITORSCALEDUSERHOSTING
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "UserHosting.hpp"
 
-struct VisitorScaledUserHosting : public Node {
-	using Node::Node;
+struct VisitorScaledUserHosting : public UserHosting {
+	using UserHosting::UserHosting;
 
-	constexpr VisitorScaledUserHosting(Node base) : Node{base} {}
-	constexpr VisitorScaledUserHosting(uint64_t addr) : Node{addr} {}
+	constexpr VisitorScaledUserHosting(UserHosting base) : UserHosting{base} {}
+	constexpr VisitorScaledUserHosting(uint64_t addr) : UserHosting{addr} {}
 	constexpr VisitorScaledUserHosting(Object obj) : VisitorScaledUserHosting{obj.address()} {}
 	VisitorScaledUserHosting(Variant variant) : VisitorScaledUserHosting{variant.as_object().address()} {}
 
@@ -59,7 +60,8 @@ struct VisitorScaledUserHosting : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "LogicControllerUser.hpp"
@@ -68,17 +70,18 @@ struct VisitorScaledUserHosting : public Node {
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline void VisitorScaledUserHosting::tick() { voidcall("tick"); }
-inline int64_t VisitorScaledUserHosting::count_possible_users_from_surveys(bool exclude_inactive) { return operator()("count_possible_users_from_surveys", exclude_inactive); }
-inline Variant VisitorScaledUserHosting::try_roll_fqdn(int64_t mix) { return operator()("try_roll_fqdn", mix); }
-inline Variant VisitorScaledUserHosting::get_fqdn() { return operator()("get_fqdn"); }
-inline void VisitorScaledUserHosting::force_fqdn_reroll() { voidcall("force_fqdn_reroll"); }
-inline void VisitorScaledUserHosting::do_self_produce() { voidcall("do_self_produce"); }
-inline String VisitorScaledUserHosting::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void VisitorScaledUserHosting::start() { voidcall("start"); }
-inline void VisitorScaledUserHosting::stop() { voidcall("stop"); }
-inline void VisitorScaledUserHosting::uninstall() { voidcall("uninstall"); }
-inline void VisitorScaledUserHosting::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline bool VisitorScaledUserHosting::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline void VisitorScaledUserHosting::tick() { this->voidcall("tick"); }
+inline int64_t VisitorScaledUserHosting::count_possible_users_from_surveys(bool exclude_inactive) { return this->operator()("count_possible_users_from_surveys", exclude_inactive); }
+inline Variant VisitorScaledUserHosting::try_roll_fqdn(int64_t mix) { return this->operator()("try_roll_fqdn", mix); }
+inline Variant VisitorScaledUserHosting::get_fqdn() { return this->operator()("get_fqdn"); }
+inline void VisitorScaledUserHosting::force_fqdn_reroll() { this->voidcall("force_fqdn_reroll"); }
+inline void VisitorScaledUserHosting::do_self_produce() { this->voidcall("do_self_produce"); }
+inline String VisitorScaledUserHosting::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void VisitorScaledUserHosting::start() { this->voidcall("start"); }
+inline void VisitorScaledUserHosting::stop() { this->voidcall("stop"); }
+inline void VisitorScaledUserHosting::uninstall() { this->voidcall("uninstall"); }
+inline void VisitorScaledUserHosting::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline bool VisitorScaledUserHosting::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool VisitorScaledUserHosting::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

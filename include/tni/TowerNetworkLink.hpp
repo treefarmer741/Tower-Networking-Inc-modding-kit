@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TOWERNETWORKLINK
 #define TNI_API_HEADER_TOWERNETWORKLINK
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TowerNetworkLink : public Node {
@@ -33,8 +33,8 @@ struct TowerNetworkLink : public Node {
 	PROPERTY(installed_nbw, int64_t);
 	PROPERTY(will_decom, bool);
 
-	inline void link_socket_neighbour_if_graphcable(LogicControllerSocket socket);
-	inline void unlink_socket_neighbour_if_graphcable(LogicControllerSocket socket);
+	inline void link_socket_neighbour_if_graphcable(const LogicControllerSocket& socket);
+	inline void unlink_socket_neighbour_if_graphcable(const LogicControllerSocket& socket);
 	inline void activate();
 	inline void deactivate();
 	inline void decomission();
@@ -47,12 +47,12 @@ struct TowerNetworkLink : public Node {
 #include "LogicController.hpp"
 #include "LogicControllerSocket.hpp"
 
-inline void TowerNetworkLink::link_socket_neighbour_if_graphcable(LogicControllerSocket socket) { voidcall("link_socket_neighbour_if_graphcable", socket); }
-inline void TowerNetworkLink::unlink_socket_neighbour_if_graphcable(LogicControllerSocket socket) { voidcall("unlink_socket_neighbour_if_graphcable", socket); }
-inline void TowerNetworkLink::activate() { voidcall("activate"); }
-inline void TowerNetworkLink::deactivate() { voidcall("deactivate"); }
-inline void TowerNetworkLink::decomission() { voidcall("decomission"); }
-inline void TowerNetworkLink::upgrade(Variant new_bw, Variant new_setup, Variant new_daily) { voidcall("upgrade", new_bw, new_setup, new_daily); }
-inline void TowerNetworkLink::teardown_all() { voidcall("teardown_all"); }
+inline void TowerNetworkLink::link_socket_neighbour_if_graphcable(const LogicControllerSocket& socket) { this->voidcall("link_socket_neighbour_if_graphcable", Object(reinterpret_cast<const Object*>(&socket)->address())); }
+inline void TowerNetworkLink::unlink_socket_neighbour_if_graphcable(const LogicControllerSocket& socket) { this->voidcall("unlink_socket_neighbour_if_graphcable", Object(reinterpret_cast<const Object*>(&socket)->address())); }
+inline void TowerNetworkLink::activate() { this->voidcall("activate"); }
+inline void TowerNetworkLink::deactivate() { this->voidcall("deactivate"); }
+inline void TowerNetworkLink::decomission() { this->voidcall("decomission"); }
+inline void TowerNetworkLink::upgrade(Variant new_bw, Variant new_setup, Variant new_daily) { this->voidcall("upgrade", new_bw, new_setup, new_daily); }
+inline void TowerNetworkLink::teardown_all() { this->voidcall("teardown_all"); }
 
 #endif

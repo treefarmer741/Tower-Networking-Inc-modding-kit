@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_NPCEMAILSYSTEM
 #define TNI_API_HEADER_NPCEMAILSYSTEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct NpcEmailSystem : public Control {
@@ -22,7 +22,7 @@ struct NpcEmailSystem : public Control {
 };
 
 
-inline void NpcEmailSystem::display(String msg) { voidcall("display", msg); }
-inline void NpcEmailSystem::clear_emails() { voidcall("clear_emails"); }
+inline void NpcEmailSystem::display(String msg) { this->voidcall("display", msg); }
+inline void NpcEmailSystem::clear_emails() { this->voidcall("clear_emails"); }
 
 #endif

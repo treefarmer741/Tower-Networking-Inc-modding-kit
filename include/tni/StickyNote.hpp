@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_STICKYNOTE
 #define TNI_API_HEADER_STICKYNOTE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct StickyNote : public Area2D {
@@ -39,12 +39,12 @@ struct StickyNote : public Area2D {
 };
 
 
-inline Variant StickyNote::get_color_map() { return operator()("get_color_map"); }
-inline Variant StickyNote::clone() { return operator()("clone"); }
-inline void StickyNote::tear(bool destroy) { voidcall("tear", destroy); }
-inline void StickyNote::update_note(String c, int64_t nc) { voidcall("update_note", c, nc); }
-inline void StickyNote::disable_collision() { voidcall("disable_collision"); }
-inline void StickyNote::enable_collision() { voidcall("enable_collision"); }
-inline void StickyNote::stick_to_pos(Variant global_mouse_pos) { voidcall("stick_to_pos", global_mouse_pos); }
+inline Variant StickyNote::get_color_map() { return this->operator()("get_color_map"); }
+inline Variant StickyNote::clone() { return this->operator()("clone"); }
+inline void StickyNote::tear(bool destroy) { this->voidcall("tear", destroy); }
+inline void StickyNote::update_note(String c, int64_t nc) { this->voidcall("update_note", c, nc); }
+inline void StickyNote::disable_collision() { this->voidcall("disable_collision"); }
+inline void StickyNote::enable_collision() { this->voidcall("enable_collision"); }
+inline void StickyNote::stick_to_pos(Variant global_mouse_pos) { this->voidcall("stick_to_pos", global_mouse_pos); }
 
 #endif

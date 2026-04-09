@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_DMARKETV2
 #define TNI_API_HEADER_DMARKETV2
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Dmarketv2 : public Container {
-	using Container::Container;
+struct Dmarketv2 : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Dmarketv2(Container base) : Container{base} {}
-	constexpr Dmarketv2(uint64_t addr) : Container{addr} {}
+	constexpr Dmarketv2(ScreenApp base) : ScreenApp{base} {}
+	constexpr Dmarketv2(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Dmarketv2(Object obj) : Dmarketv2{obj.address()} {}
 	Dmarketv2(Variant variant) : Dmarketv2{variant.as_object().address()} {}
 
@@ -30,6 +31,7 @@ struct Dmarketv2 : public Container {
 	PROPERTY(fwd_button, Button);
 	PROPERTY(clr_button, Button);
 	PROPERTY(current_local_cart, Variant);
+	PROPERTY(dlist, Variant);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);
 	PROPERTY(dynamic_container, Container);
@@ -44,10 +46,10 @@ struct Dmarketv2 : public Container {
 
 #include "MainPane.hpp"
 
-inline void Dmarketv2::launch() { voidcall("launch"); }
-inline void Dmarketv2::minimize() { voidcall("minimize"); }
-inline void Dmarketv2::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Dmarketv2::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Dmarketv2::get_main_pane() { return operator()("get_main_pane"); }
+inline void Dmarketv2::launch() { this->voidcall("launch"); }
+inline void Dmarketv2::minimize() { this->voidcall("minimize"); }
+inline void Dmarketv2::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Dmarketv2::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Dmarketv2::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

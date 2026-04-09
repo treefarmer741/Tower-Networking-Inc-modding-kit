@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_MOBILEOSLAYER
 #define TNI_API_HEADER_MOBILEOSLAYER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct MobileOSLayer : public CanvasLayer {
@@ -51,12 +51,12 @@ struct MobileOSLayer : public CanvasLayer {
 
 #include "Screen.hpp"
 
-inline void MobileOSLayer::internal_captured_event_propagate(InputEvent event) { voidcall("internal_captured_event_propagate", event); }
-inline void MobileOSLayer::left_click() { voidcall("left_click"); }
-inline void MobileOSLayer::right_click() { voidcall("right_click"); }
-inline void MobileOSLayer::middle_click() { voidcall("middle_click"); }
-inline void MobileOSLayer::play_coffee_animation() { voidcall("play_coffee_animation"); }
-inline void MobileOSLayer::play_tea_animation() { voidcall("play_tea_animation"); }
-inline void MobileOSLayer::play_water_animation() { voidcall("play_water_animation"); }
+inline void MobileOSLayer::internal_captured_event_propagate(InputEvent event) { this->voidcall("internal_captured_event_propagate", event); }
+inline void MobileOSLayer::left_click() { this->voidcall("left_click"); }
+inline void MobileOSLayer::right_click() { this->voidcall("right_click"); }
+inline void MobileOSLayer::middle_click() { this->voidcall("middle_click"); }
+inline void MobileOSLayer::play_coffee_animation() { this->voidcall("play_coffee_animation"); }
+inline void MobileOSLayer::play_tea_animation() { this->voidcall("play_tea_animation"); }
+inline void MobileOSLayer::play_water_animation() { this->voidcall("play_water_animation"); }
 
 #endif

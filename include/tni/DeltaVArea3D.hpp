@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DELTAVAREA3D
 #define TNI_API_HEADER_DELTAVAREA3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DeltaVArea3D : public Area3D {
@@ -21,6 +21,6 @@ struct DeltaVArea3D : public Area3D {
 };
 
 
-inline void DeltaVArea3D::affect_rigid_body(RigidBody3D body, double time_delta) { voidcall("affect_rigid_body", body, time_delta); }
+inline void DeltaVArea3D::affect_rigid_body(RigidBody3D body, double time_delta) { this->voidcall("affect_rigid_body", body, time_delta); }
 
 #endif

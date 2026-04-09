@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DEMOMESSAGE
 #define TNI_API_HEADER_DEMOMESSAGE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DemoMessage : public Window {
@@ -25,7 +25,7 @@ struct DemoMessage : public Window {
 };
 
 
-inline void DemoMessage::refresh_tutorial(Variant filename) { voidcall("refresh_tutorial", filename); }
-inline Variant DemoMessage::load_tutorial_txt(Variant filename) { return operator()("load_tutorial_txt", filename); }
+inline void DemoMessage::refresh_tutorial(Variant filename) { this->voidcall("refresh_tutorial", filename); }
+inline Variant DemoMessage::load_tutorial_txt(Variant filename) { return this->operator()("load_tutorial_txt", filename); }
 
 #endif

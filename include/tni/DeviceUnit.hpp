@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_DEVICEUNIT
 #define TNI_API_HEADER_DEVICEUNIT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PickableDevice.hpp"
 
-struct DeviceUnit : public RigidBody2D {
-	using RigidBody2D::RigidBody2D;
+struct DeviceUnit : public PickableDevice {
+	using PickableDevice::PickableDevice;
 
-	constexpr DeviceUnit(RigidBody2D base) : RigidBody2D{base} {}
-	constexpr DeviceUnit(uint64_t addr) : RigidBody2D{addr} {}
+	constexpr DeviceUnit(PickableDevice base) : PickableDevice{base} {}
+	constexpr DeviceUnit(uint64_t addr) : PickableDevice{addr} {}
 	constexpr DeviceUnit(Object obj) : DeviceUnit{obj.address()} {}
 	DeviceUnit(Variant variant) : DeviceUnit{variant.as_object().address()} {}
 
@@ -42,6 +43,7 @@ struct DeviceUnit : public RigidBody2D {
 		PHONE = 17,
 		PRINTER = 18,
 		NETWORK_LOAD_BALANCER = 19,
+		NETWORK_STORAGE = 20,
 	};
 	enum ExtraDescriptionType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NODESCRIPT = 0,
@@ -56,6 +58,7 @@ struct DeviceUnit : public RigidBody2D {
 		R930 = 2,
 		R630 = 3,
 	};
+	static constexpr double SNAP_MARGIN = 2.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(product_name, String);
 	PROPERTY(description, String);
@@ -81,6 +84,7 @@ struct DeviceUnit : public RigidBody2D {
 	PROPERTY(auto_servicing_enabled, bool);
 	PROPERTY(auto_replacement_cost, int64_t);
 	PROPERTY(current_floor_num, int64_t);
+	PROPERTY(device_application_unlocks, Variant);
 	PROPERTY(device_hardware_class, int64_t);
 	PROPERTY(condition, int64_t);
 	PROPERTY(mount_type, int64_t);
@@ -107,6 +111,9 @@ struct DeviceUnit : public RigidBody2D {
 	inline void apply_autoconfig();
 	inline void reposition(Variant new_pos);
 	inline void elevator_move(Variant new_pos);
+	inline double get_device_bounding_height();
+	inline Variant get_global_y_range();
+	inline Variant get_local_y_range();
 	inline Variant debug_monitor_callback();
 	inline Variant debug_mux_setup();
 	inline Variant update_in_trolley_state();
@@ -124,20 +131,23 @@ struct DeviceUnit : public RigidBody2D {
 #include "LogicController.hpp"
 #include "PowerController.hpp"
 
-inline void DeviceUnit::apply_autoconfig() { voidcall("apply_autoconfig"); }
-inline void DeviceUnit::reposition(Variant new_pos) { voidcall("reposition", new_pos); }
-inline void DeviceUnit::elevator_move(Variant new_pos) { voidcall("elevator_move", new_pos); }
-inline Variant DeviceUnit::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline Variant DeviceUnit::debug_mux_setup() { return operator()("debug_mux_setup"); }
-inline Variant DeviceUnit::update_in_trolley_state() { return operator()("update_in_trolley_state"); }
-inline bool DeviceUnit::pickup(Variant new_picker) { return operator()("pickup", new_picker); }
-inline bool DeviceUnit::drop(Variant impulse) { return operator()("drop", impulse); }
-inline void DeviceUnit::reset_child_z_index() { voidcall("reset_child_z_index"); }
-inline void DeviceUnit::set_autosvc(bool new_state) { voidcall("set_autosvc", new_state); }
-inline void DeviceUnit::update_user_note(String new_value) { voidcall("update_user_note", new_value); }
-inline void DeviceUnit::remove_and_free_object() { voidcall("remove_and_free_object"); }
-inline void DeviceUnit::lift_child_z_index(int64_t base_val) { voidcall("lift_child_z_index", base_val); }
-inline Variant DeviceUnit::get_picker_type(Variant test_picker) { return operator()("get_picker_type", test_picker); }
-inline void DeviceUnit::setup_teleport(Variant gpos) { voidcall("setup_teleport", gpos); }
+inline void DeviceUnit::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
+inline void DeviceUnit::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
+inline void DeviceUnit::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
+inline double DeviceUnit::get_device_bounding_height() { return this->operator()("get_device_bounding_height"); }
+inline Variant DeviceUnit::get_global_y_range() { return this->operator()("get_global_y_range"); }
+inline Variant DeviceUnit::get_local_y_range() { return this->operator()("get_local_y_range"); }
+inline Variant DeviceUnit::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline Variant DeviceUnit::debug_mux_setup() { return this->operator()("debug_mux_setup"); }
+inline Variant DeviceUnit::update_in_trolley_state() { return this->operator()("update_in_trolley_state"); }
+inline bool DeviceUnit::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
+inline bool DeviceUnit::drop(Variant impulse) { return this->operator()("drop", impulse); }
+inline void DeviceUnit::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void DeviceUnit::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void DeviceUnit::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void DeviceUnit::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
+inline void DeviceUnit::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline Variant DeviceUnit::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
+inline void DeviceUnit::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
 
 #endif

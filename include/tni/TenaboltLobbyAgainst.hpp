@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TENABOLTLOBBYAGAINST
 #define TNI_API_HEADER_TENABOLTLOBBYAGAINST
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "MerchantListingMod.hpp"
 
-struct TenaboltLobbyAgainst : public Node {
-	using Node::Node;
+struct TenaboltLobbyAgainst : public MerchantListingMod {
+	using MerchantListingMod::MerchantListingMod;
 
-	constexpr TenaboltLobbyAgainst(Node base) : Node{base} {}
-	constexpr TenaboltLobbyAgainst(uint64_t addr) : Node{addr} {}
+	constexpr TenaboltLobbyAgainst(MerchantListingMod base) : MerchantListingMod{base} {}
+	constexpr TenaboltLobbyAgainst(uint64_t addr) : MerchantListingMod{addr} {}
 	constexpr TenaboltLobbyAgainst(Object obj) : TenaboltLobbyAgainst{obj.address()} {}
 	TenaboltLobbyAgainst(Variant variant) : TenaboltLobbyAgainst{variant.as_object().address()} {}
 
@@ -48,13 +49,13 @@ struct TenaboltLobbyAgainst : public Node {
 
 #include "PropMod.hpp"
 
-inline void TenaboltLobbyAgainst::activate_local_effects() { voidcall("activate_local_effects"); }
-inline void TenaboltLobbyAgainst::apply_mod() { voidcall("apply_mod"); }
-inline String TenaboltLobbyAgainst::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String TenaboltLobbyAgainst::get_lore() { return operator()("get_lore"); }
-inline String TenaboltLobbyAgainst::get_description() { return operator()("get_description"); }
-inline Variant TenaboltLobbyAgainst::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void TenaboltLobbyAgainst::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void TenaboltLobbyAgainst::update_state() { voidcall("update_state"); }
+inline void TenaboltLobbyAgainst::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline void TenaboltLobbyAgainst::apply_mod() { this->voidcall("apply_mod"); }
+inline String TenaboltLobbyAgainst::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String TenaboltLobbyAgainst::get_lore() { return this->operator()("get_lore"); }
+inline String TenaboltLobbyAgainst::get_description() { return this->operator()("get_description"); }
+inline Variant TenaboltLobbyAgainst::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void TenaboltLobbyAgainst::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void TenaboltLobbyAgainst::update_state() { this->voidcall("update_state"); }
 
 #endif

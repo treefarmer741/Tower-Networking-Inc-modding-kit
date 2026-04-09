@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_BINDERORIGIN
 #define TNI_API_HEADER_BINDERORIGIN
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct BinderOrigin : public Node3D {
@@ -35,14 +35,14 @@ struct BinderOrigin : public Node3D {
 };
 
 
-inline Variant BinderOrigin::make_link() { return operator()("make_link"); }
-inline void BinderOrigin::unspool(double time_f) { voidcall("unspool", time_f); }
-inline void BinderOrigin::spool(double time_f) { voidcall("spool", time_f); }
-inline void BinderOrigin::bind_object_to_head(PhysicsBody3D phyb3do, Variant global_bind_point) { voidcall("bind_object_to_head", phyb3do, global_bind_point); }
-inline void BinderOrigin::unbind_head() { voidcall("unbind_head"); }
-inline void BinderOrigin::free_links() { voidcall("free_links"); }
-inline void BinderOrigin::unbind_anchor() { voidcall("unbind_anchor"); }
-inline void BinderOrigin::bind_anchor(PhysicsBody3D phyb3do) { voidcall("bind_anchor", phyb3do); }
-inline void BinderOrigin::make_and_bind_segments_instantly(PhysicsBody3D p3b, Variant global_dst_point) { voidcall("make_and_bind_segments_instantly", p3b, global_dst_point); }
+inline Variant BinderOrigin::make_link() { return this->operator()("make_link"); }
+inline void BinderOrigin::unspool(double time_f) { this->voidcall("unspool", time_f); }
+inline void BinderOrigin::spool(double time_f) { this->voidcall("spool", time_f); }
+inline void BinderOrigin::bind_object_to_head(PhysicsBody3D phyb3do, Variant global_bind_point) { this->voidcall("bind_object_to_head", phyb3do, global_bind_point); }
+inline void BinderOrigin::unbind_head() { this->voidcall("unbind_head"); }
+inline void BinderOrigin::free_links() { this->voidcall("free_links"); }
+inline void BinderOrigin::unbind_anchor() { this->voidcall("unbind_anchor"); }
+inline void BinderOrigin::bind_anchor(PhysicsBody3D phyb3do) { this->voidcall("bind_anchor", phyb3do); }
+inline void BinderOrigin::make_and_bind_segments_instantly(PhysicsBody3D p3b, Variant global_dst_point) { this->voidcall("make_and_bind_segments_instantly", p3b, global_dst_point); }
 
 #endif

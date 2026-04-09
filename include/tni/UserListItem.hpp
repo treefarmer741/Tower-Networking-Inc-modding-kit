@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_USERLISTITEM
 #define TNI_API_HEADER_USERLISTITEM
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct UserListItem : public HBoxContainer {
@@ -30,6 +30,6 @@ struct UserListItem : public HBoxContainer {
 
 #include "User.hpp"
 
-inline void UserListItem::refresh_label() { voidcall("refresh_label"); }
+inline void UserListItem::refresh_label() { this->voidcall("refresh_label"); }
 
 #endif

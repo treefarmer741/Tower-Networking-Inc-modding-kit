@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_MOUSEWORLD3DMAPPER
 #define TNI_API_HEADER_MOUSEWORLD3DMAPPER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct MouseWorld3dMapper : public Node3D {
@@ -31,8 +31,8 @@ struct MouseWorld3dMapper : public Node3D {
 };
 
 
-inline void MouseWorld3dMapper::clear_prev_click_contexts() { voidcall("clear_prev_click_contexts"); }
-inline void MouseWorld3dMapper::handle_input(InputEvent event) { voidcall("handle_input", event); }
-inline Variant MouseWorld3dMapper::get_adjusted_gridmap_position(GridMap gm, Variant collipos) { return operator()("get_adjusted_gridmap_position", gm, collipos); }
+inline void MouseWorld3dMapper::clear_prev_click_contexts() { this->voidcall("clear_prev_click_contexts"); }
+inline void MouseWorld3dMapper::handle_input(InputEvent event) { this->voidcall("handle_input", event); }
+inline Variant MouseWorld3dMapper::get_adjusted_gridmap_position(GridMap gm, Variant collipos) { return this->operator()("get_adjusted_gridmap_position", gm, collipos); }
 
 #endif

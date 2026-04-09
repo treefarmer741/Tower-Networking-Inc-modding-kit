@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_REDUCEBASEEXPENSES
 #define TNI_API_HEADER_REDUCEBASEEXPENSES
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct ReduceBaseExpenses : public Node {
-	using Node::Node;
+struct ReduceBaseExpenses : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr ReduceBaseExpenses(Node base) : Node{base} {}
-	constexpr ReduceBaseExpenses(uint64_t addr) : Node{addr} {}
+	constexpr ReduceBaseExpenses(PropMod base) : PropMod{base} {}
+	constexpr ReduceBaseExpenses(uint64_t addr) : PropMod{addr} {}
 	constexpr ReduceBaseExpenses(Object obj) : ReduceBaseExpenses{obj.address()} {}
 	ReduceBaseExpenses(Variant variant) : ReduceBaseExpenses{variant.as_object().address()} {}
 
@@ -42,13 +43,13 @@ struct ReduceBaseExpenses : public Node {
 
 #include "PropMod.hpp"
 
-inline void ReduceBaseExpenses::apply_mod() { voidcall("apply_mod"); }
-inline void ReduceBaseExpenses::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String ReduceBaseExpenses::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String ReduceBaseExpenses::get_lore() { return operator()("get_lore"); }
-inline String ReduceBaseExpenses::get_description() { return operator()("get_description"); }
-inline Variant ReduceBaseExpenses::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void ReduceBaseExpenses::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void ReduceBaseExpenses::update_state() { voidcall("update_state"); }
+inline void ReduceBaseExpenses::apply_mod() { this->voidcall("apply_mod"); }
+inline void ReduceBaseExpenses::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String ReduceBaseExpenses::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String ReduceBaseExpenses::get_lore() { return this->operator()("get_lore"); }
+inline String ReduceBaseExpenses::get_description() { return this->operator()("get_description"); }
+inline Variant ReduceBaseExpenses::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void ReduceBaseExpenses::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void ReduceBaseExpenses::update_state() { this->voidcall("update_state"); }
 
 #endif

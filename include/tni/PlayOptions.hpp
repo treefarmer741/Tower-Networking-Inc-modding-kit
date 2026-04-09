@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PLAYOPTIONS
 #define TNI_API_HEADER_PLAYOPTIONS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PlayOptions : public Resource {
@@ -57,6 +57,8 @@ struct PlayOptions : public Resource {
 	PROPERTY(floor_build_period_multiplier, double);
 	PROPERTY(tenabolt_penalty, int64_t);
 	PROPERTY(start_amount_override, int64_t);
+	PROPERTY(tower_wide_user_dhcp_default, String);
+	PROPERTY(tower_wide_device_dhcp_default, String);
 
 	inline void set_vals_from_dict(Variant pod);
 	inline int64_t get_difficulty_hash();
@@ -68,12 +70,12 @@ struct PlayOptions : public Resource {
 };
 
 
-inline void PlayOptions::set_vals_from_dict(Variant pod) { voidcall("set_vals_from_dict", pod); }
-inline int64_t PlayOptions::get_difficulty_hash() { return operator()("get_difficulty_hash"); }
-inline void PlayOptions::set_easy_mode() { voidcall("set_easy_mode"); }
-inline void PlayOptions::set_hard_mode() { voidcall("set_hard_mode"); }
-inline void PlayOptions::set_mp_mode() { voidcall("set_mp_mode"); }
-inline void PlayOptions::set_zen_mode() { voidcall("set_zen_mode"); }
-inline void PlayOptions::set_hard_zen_mode() { voidcall("set_hard_zen_mode"); }
+inline void PlayOptions::set_vals_from_dict(Variant pod) { this->voidcall("set_vals_from_dict", pod); }
+inline int64_t PlayOptions::get_difficulty_hash() { return this->operator()("get_difficulty_hash"); }
+inline void PlayOptions::set_easy_mode() { this->voidcall("set_easy_mode"); }
+inline void PlayOptions::set_hard_mode() { this->voidcall("set_hard_mode"); }
+inline void PlayOptions::set_mp_mode() { this->voidcall("set_mp_mode"); }
+inline void PlayOptions::set_zen_mode() { this->voidcall("set_zen_mode"); }
+inline void PlayOptions::set_hard_zen_mode() { this->voidcall("set_hard_zen_mode"); }
 
 #endif

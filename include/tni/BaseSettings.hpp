@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_BASESETTINGS
 #define TNI_API_HEADER_BASESETTINGS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct BaseSettings : public Object {
@@ -28,7 +28,7 @@ struct BaseSettings : public Object {
 };
 
 
-inline Variant BaseSettings::map_float_to_volume_db(double inp) { return operator()("map_float_to_volume_db", inp); }
-inline void BaseSettings::apply() { voidcall("apply"); }
+inline Variant BaseSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
+inline void BaseSettings::apply() { this->voidcall("apply"); }
 
 #endif

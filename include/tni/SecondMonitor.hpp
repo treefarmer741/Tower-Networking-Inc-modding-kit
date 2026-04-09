@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_SECONDMONITOR
 #define TNI_API_HEADER_SECONDMONITOR
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct SecondMonitor : public Node {
-	using Node::Node;
+struct SecondMonitor : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr SecondMonitor(Node base) : Node{base} {}
-	constexpr SecondMonitor(uint64_t addr) : Node{addr} {}
+	constexpr SecondMonitor(PropMod base) : PropMod{base} {}
+	constexpr SecondMonitor(uint64_t addr) : PropMod{addr} {}
 	constexpr SecondMonitor(Object obj) : SecondMonitor{obj.address()} {}
 	SecondMonitor(Variant variant) : SecondMonitor{variant.as_object().address()} {}
 
@@ -42,13 +43,13 @@ struct SecondMonitor : public Node {
 
 #include "PropMod.hpp"
 
-inline void SecondMonitor::apply_mod() { voidcall("apply_mod"); }
-inline void SecondMonitor::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String SecondMonitor::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String SecondMonitor::get_lore() { return operator()("get_lore"); }
-inline String SecondMonitor::get_description() { return operator()("get_description"); }
-inline Variant SecondMonitor::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void SecondMonitor::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void SecondMonitor::update_state() { voidcall("update_state"); }
+inline void SecondMonitor::apply_mod() { this->voidcall("apply_mod"); }
+inline void SecondMonitor::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String SecondMonitor::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String SecondMonitor::get_lore() { return this->operator()("get_lore"); }
+inline String SecondMonitor::get_description() { return this->operator()("get_description"); }
+inline Variant SecondMonitor::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void SecondMonitor::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void SecondMonitor::update_state() { this->voidcall("update_state"); }
 
 #endif

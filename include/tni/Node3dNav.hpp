@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_NODE3DNAV
 #define TNI_API_HEADER_NODE3DNAV
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Node3dNav : public NavigationAgent3D {
@@ -29,7 +29,7 @@ struct Node3dNav : public NavigationAgent3D {
 };
 
 
-inline void Node3dNav::issue_move_order(Variant target) { voidcall("issue_move_order", target); }
-inline void Node3dNav::stop_move() { voidcall("stop_move"); }
+inline void Node3dNav::issue_move_order(Variant target) { this->voidcall("issue_move_order", target); }
+inline void Node3dNav::stop_move() { this->voidcall("stop_move"); }
 
 #endif

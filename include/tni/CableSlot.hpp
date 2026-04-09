@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_CABLESLOT
 #define TNI_API_HEADER_CABLESLOT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "Socket.hpp"
 
-struct CableSlot : public Area2D {
-	using Area2D::Area2D;
+struct CableSlot : public Socket {
+	using Socket::Socket;
 
-	constexpr CableSlot(Area2D base) : Area2D{base} {}
-	constexpr CableSlot(uint64_t addr) : Area2D{addr} {}
+	constexpr CableSlot(Socket base) : Socket{base} {}
+	constexpr CableSlot(uint64_t addr) : Socket{addr} {}
 	constexpr CableSlot(Object obj) : CableSlot{obj.address()} {}
 	CableSlot(Variant variant) : CableSlot{variant.as_object().address()} {}
 
@@ -40,7 +41,7 @@ struct CableSlot : public Area2D {
 	inline void emove(Variant _newpos);
 	inline void block();
 	inline void unblock();
-	inline Variant compatible_with(Plug plug);
+	inline Variant compatible_with(const Plug& plug);
 	inline void show_hint(String msg);
 };
 
@@ -48,10 +49,10 @@ struct CableSlot : public Area2D {
 #include "Socket.hpp"
 #include "GraphController.hpp"
 
-inline void CableSlot::emove(Variant _newpos) { voidcall("emove", _newpos); }
-inline void CableSlot::block() { voidcall("block"); }
-inline void CableSlot::unblock() { voidcall("unblock"); }
-inline Variant CableSlot::compatible_with(Plug plug) { return operator()("compatible_with", plug); }
-inline void CableSlot::show_hint(String msg) { voidcall("show_hint", msg); }
+inline void CableSlot::emove(Variant _newpos) { this->voidcall("emove", _newpos); }
+inline void CableSlot::block() { this->voidcall("block"); }
+inline void CableSlot::unblock() { this->voidcall("unblock"); }
+inline Variant CableSlot::compatible_with(const Plug& plug) { return this->operator()("compatible_with", Object(reinterpret_cast<const Object*>(&plug)->address())); }
+inline void CableSlot::show_hint(String msg) { this->voidcall("show_hint", msg); }
 
 #endif

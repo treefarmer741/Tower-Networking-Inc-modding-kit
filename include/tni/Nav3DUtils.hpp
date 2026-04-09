@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_NAV3DUTILS
 #define TNI_API_HEADER_NAV3DUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Nav3DUtils : public Node {
@@ -20,6 +20,6 @@ struct Nav3DUtils : public Node {
 };
 
 
-inline Variant Nav3DUtils::get_stochastic_point(Variant region_rid, Variant target_pos, double accuracy) { return operator()("get_stochastic_point", region_rid, target_pos, accuracy); }
+inline Variant Nav3DUtils::get_stochastic_point(Variant region_rid, Variant target_pos, double accuracy) { return this->operator()("get_stochastic_point", region_rid, target_pos, accuracy); }
 
 #endif

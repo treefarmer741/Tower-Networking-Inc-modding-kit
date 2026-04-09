@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_MEMENTODEVICEITEM
 #define TNI_API_HEADER_MEMENTODEVICEITEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct MementoDeviceItem : public PanelContainer {
@@ -22,6 +22,6 @@ struct MementoDeviceItem : public PanelContainer {
 
 #include "DeviceUnit.hpp"
 
-inline void MementoDeviceItem::refresh() { voidcall("refresh"); }
+inline void MementoDeviceItem::refresh() { this->voidcall("refresh"); }
 
 #endif

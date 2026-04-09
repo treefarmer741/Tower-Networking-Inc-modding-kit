@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DASHBOARDSCREEN
 #define TNI_API_HEADER_DASHBOARDSCREEN
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DashboardScreen : public Container {
@@ -25,8 +25,8 @@ struct DashboardScreen : public Container {
 };
 
 
-inline void DashboardScreen::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline void DashboardScreen::on_power_off() { voidcall("on_power_off"); }
-inline void DashboardScreen::on_power_on() { voidcall("on_power_on"); }
+inline void DashboardScreen::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline void DashboardScreen::on_power_off() { this->voidcall("on_power_off"); }
+inline void DashboardScreen::on_power_on() { this->voidcall("on_power_on"); }
 
 #endif

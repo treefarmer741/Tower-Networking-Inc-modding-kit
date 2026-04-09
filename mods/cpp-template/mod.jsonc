@@ -1,0 +1,21 @@
+{
+	"id": "cpp-template-example",
+	"name": "C++ Template (example mod)",
+	"authors": [ "modding-kit" ],
+	"version": "0.1.1",
+	"description": [
+		"Example for a C++ based mod.",
+		"Doesn't actually make any changes to the gameplay."
+	],
+	"links": {
+		"github": "https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit"
+	},
+	"dependencies": {
+		// See https://devhints.io/semver for syntax.
+		"tower-networking-inc": "^0.10.7"
+	},
+	"dependencies_optional": {
+	},
+	"incompatibilities": {
+	}
+}

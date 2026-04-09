@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_PICKABLEDEVICE
 #define TNI_API_HEADER_PICKABLEDEVICE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PickableRigidBody2D.hpp"
 
-struct PickableDevice : public RigidBody2D {
-	using RigidBody2D::RigidBody2D;
+struct PickableDevice : public PickableRigidBody2D {
+	using PickableRigidBody2D::PickableRigidBody2D;
 
-	constexpr PickableDevice(RigidBody2D base) : RigidBody2D{base} {}
-	constexpr PickableDevice(uint64_t addr) : RigidBody2D{addr} {}
+	constexpr PickableDevice(PickableRigidBody2D base) : PickableRigidBody2D{base} {}
+	constexpr PickableDevice(uint64_t addr) : PickableRigidBody2D{addr} {}
 	constexpr PickableDevice(Object obj) : PickableDevice{obj.address()} {}
 	PickableDevice(Variant variant) : PickableDevice{variant.as_object().address()} {}
 
@@ -36,11 +37,11 @@ struct PickableDevice : public RigidBody2D {
 };
 
 
-inline void PickableDevice::reset_child_z_index() { voidcall("reset_child_z_index"); }
-inline void PickableDevice::lift_child_z_index(int64_t base_val) { voidcall("lift_child_z_index", base_val); }
-inline Variant PickableDevice::get_picker_type(Variant test_picker) { return operator()("get_picker_type", test_picker); }
-inline bool PickableDevice::pickup(Variant new_picker) { return operator()("pickup", new_picker); }
-inline bool PickableDevice::drop(Variant impulse) { return operator()("drop", impulse); }
-inline void PickableDevice::setup_teleport(Variant gpos) { voidcall("setup_teleport", gpos); }
+inline void PickableDevice::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void PickableDevice::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline Variant PickableDevice::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
+inline bool PickableDevice::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
+inline bool PickableDevice::drop(Variant impulse) { return this->operator()("drop", impulse); }
+inline void PickableDevice::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
 
 #endif

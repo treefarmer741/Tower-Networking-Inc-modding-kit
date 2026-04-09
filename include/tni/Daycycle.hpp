@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DAYCYCLE
 #define TNI_API_HEADER_DAYCYCLE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Daycycle : public Node {
@@ -31,7 +31,7 @@ struct Daycycle : public Node {
 };
 
 
-inline void Daycycle::set_day_float(double new_float) { voidcall("set_day_float", new_float); }
-inline void Daycycle::start_day_cycle() { voidcall("start_day_cycle"); }
+inline void Daycycle::set_day_float(double new_float) { this->voidcall("set_day_float", new_float); }
+inline void Daycycle::start_day_cycle() { this->voidcall("start_day_cycle"); }
 
 #endif

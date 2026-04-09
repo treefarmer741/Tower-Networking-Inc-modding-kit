@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RECYCLER
 #define TNI_API_HEADER_RECYCLER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Recycler : public Node2D {
@@ -30,8 +30,8 @@ struct Recycler : public Node2D {
 };
 
 
-inline void Recycler::update_trolley_devices(Variant tcar) { voidcall("update_trolley_devices", tcar); }
-inline void Recycler::recycle_objects_in_cargo() { voidcall("recycle_objects_in_cargo"); }
-inline Variant Recycler::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
+inline void Recycler::update_trolley_devices(Variant tcar) { this->voidcall("update_trolley_devices", tcar); }
+inline void Recycler::recycle_objects_in_cargo() { this->voidcall("recycle_objects_in_cargo"); }
+inline Variant Recycler::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
 
 #endif

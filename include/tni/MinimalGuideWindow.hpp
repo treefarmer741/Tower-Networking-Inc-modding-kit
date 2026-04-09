@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_MINIMALGUIDEWINDOW
 #define TNI_API_HEADER_MINIMALGUIDEWINDOW
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct MinimalGuideWindow : public Control {
@@ -29,7 +29,7 @@ struct MinimalGuideWindow : public Control {
 };
 
 
-inline void MinimalGuideWindow::update_tutorial_details() { voidcall("update_tutorial_details"); }
-inline void MinimalGuideWindow::update_tutorial_status() { voidcall("update_tutorial_status"); }
+inline void MinimalGuideWindow::update_tutorial_details() { this->voidcall("update_tutorial_details"); }
+inline void MinimalGuideWindow::update_tutorial_status() { this->voidcall("update_tutorial_status"); }
 
 #endif

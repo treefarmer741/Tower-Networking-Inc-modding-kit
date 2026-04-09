@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PLAYMENU
 #define TNI_API_HEADER_PLAYMENU
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PlayMenu : public Control {
@@ -42,9 +42,9 @@ struct PlayMenu : public Control {
 };
 
 
-inline void PlayMenu::show_lan_joining_options() { voidcall("show_lan_joining_options"); }
-inline void PlayMenu::hide_lan_joining_options() { voidcall("hide_lan_joining_options"); }
-inline void PlayMenu::reroll_seed() { voidcall("reroll_seed"); }
-inline void PlayMenu::diffsel(int64_t index, bool update_last_sel) { voidcall("diffsel", index, update_last_sel); }
+inline void PlayMenu::show_lan_joining_options() { this->voidcall("show_lan_joining_options"); }
+inline void PlayMenu::hide_lan_joining_options() { this->voidcall("hide_lan_joining_options"); }
+inline void PlayMenu::reroll_seed() { this->voidcall("reroll_seed"); }
+inline void PlayMenu::diffsel(int64_t index, bool update_last_sel) { this->voidcall("diffsel", index, update_last_sel); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_AUTOGRAPH
 #define TNI_API_HEADER_AUTOGRAPH
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Autograph : public Container {
-	using Container::Container;
+struct Autograph : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Autograph(Container base) : Container{base} {}
-	constexpr Autograph(uint64_t addr) : Container{addr} {}
+	constexpr Autograph(ScreenApp base) : ScreenApp{base} {}
+	constexpr Autograph(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Autograph(Object obj) : Autograph{obj.address()} {}
 	Autograph(Variant variant) : Autograph{variant.as_object().address()} {}
 
@@ -32,6 +33,8 @@ struct Autograph : public Container {
 	PROPERTY(gd2, OptionButton);
 	PROPERTY(gd1, OptionButton);
 	PROPERTY(scnex, OptionButton);
+	PROPERTY(lblpg, Container);
+	PROPERTY(lblpg_lbl, Label);
 	PROPERTY(selected_dbg, DeviceUnit);
 	PROPERTY(autoscan_state, bool);
 	PROPERTY(graph_node_data, Variant);
@@ -50,10 +53,10 @@ struct Autograph : public Container {
 #include "DeviceUnit.hpp"
 #include "MainPane.hpp"
 
-inline void Autograph::launch() { voidcall("launch"); }
-inline void Autograph::minimize() { voidcall("minimize"); }
-inline void Autograph::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Autograph::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Autograph::get_main_pane() { return operator()("get_main_pane"); }
+inline void Autograph::launch() { this->voidcall("launch"); }
+inline void Autograph::minimize() { this->voidcall("minimize"); }
+inline void Autograph::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Autograph::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Autograph::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

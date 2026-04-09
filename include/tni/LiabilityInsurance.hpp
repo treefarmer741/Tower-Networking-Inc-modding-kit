@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_LIABILITYINSURANCE
 #define TNI_API_HEADER_LIABILITYINSURANCE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct LiabilityInsurance : public Node {
-	using Node::Node;
+struct LiabilityInsurance : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr LiabilityInsurance(Node base) : Node{base} {}
-	constexpr LiabilityInsurance(uint64_t addr) : Node{addr} {}
+	constexpr LiabilityInsurance(PropMod base) : PropMod{base} {}
+	constexpr LiabilityInsurance(uint64_t addr) : PropMod{addr} {}
 	constexpr LiabilityInsurance(Object obj) : LiabilityInsurance{obj.address()} {}
 	LiabilityInsurance(Variant variant) : LiabilityInsurance{variant.as_object().address()} {}
 
@@ -43,13 +44,13 @@ struct LiabilityInsurance : public Node {
 
 #include "PropMod.hpp"
 
-inline void LiabilityInsurance::activate_local_effects() { voidcall("activate_local_effects"); }
-inline void LiabilityInsurance::apply_mod() { voidcall("apply_mod"); }
-inline String LiabilityInsurance::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String LiabilityInsurance::get_lore() { return operator()("get_lore"); }
-inline String LiabilityInsurance::get_description() { return operator()("get_description"); }
-inline Variant LiabilityInsurance::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void LiabilityInsurance::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void LiabilityInsurance::update_state() { voidcall("update_state"); }
+inline void LiabilityInsurance::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline void LiabilityInsurance::apply_mod() { this->voidcall("apply_mod"); }
+inline String LiabilityInsurance::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String LiabilityInsurance::get_lore() { return this->operator()("get_lore"); }
+inline String LiabilityInsurance::get_description() { return this->operator()("get_description"); }
+inline Variant LiabilityInsurance::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void LiabilityInsurance::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void LiabilityInsurance::update_state() { this->voidcall("update_state"); }
 
 #endif

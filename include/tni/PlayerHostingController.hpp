@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PLAYERHOSTINGCONTROLLER
 #define TNI_API_HEADER_PLAYERHOSTINGCONTROLLER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PlayerHostingController : public Node {
@@ -30,11 +30,11 @@ struct PlayerHostingController : public Node {
 
 #include "PlayerHosting.hpp"
 
-inline PlayerHosting PlayerHostingController::get_ph(String fqdn) { return PlayerHosting(operator()("get_ph", fqdn).as_object().address()); }
-inline void PlayerHostingController::reset_for_day() { voidcall("reset_for_day"); }
-inline void PlayerHostingController::populate_bill_breakdown(Variant breakdown) { voidcall("populate_bill_breakdown", breakdown); }
-inline int64_t PlayerHostingController::get_projected_domain_registration_cost(double _ppu, String use_spec_csv) { return operator()("get_projected_domain_registration_cost", _ppu, use_spec_csv); }
-inline void PlayerHostingController::register_player_hosting(String fqdn, String use_spec_csv, double ppu) { voidcall("register_player_hosting", fqdn, use_spec_csv, ppu); }
-inline void PlayerHostingController::deregister_player_hosting(Variant fqdn) { voidcall("deregister_player_hosting", fqdn); }
+inline PlayerHosting PlayerHostingController::get_ph(String fqdn) { return PlayerHosting(this->operator()("get_ph", fqdn).as_object().address()); }
+inline void PlayerHostingController::reset_for_day() { this->voidcall("reset_for_day"); }
+inline void PlayerHostingController::populate_bill_breakdown(Variant breakdown) { this->voidcall("populate_bill_breakdown", breakdown); }
+inline int64_t PlayerHostingController::get_projected_domain_registration_cost(double _ppu, String use_spec_csv) { return this->operator()("get_projected_domain_registration_cost", _ppu, use_spec_csv); }
+inline void PlayerHostingController::register_player_hosting(String fqdn, String use_spec_csv, double ppu) { this->voidcall("register_player_hosting", fqdn, use_spec_csv, ppu); }
+inline void PlayerHostingController::deregister_player_hosting(Variant fqdn) { this->voidcall("deregister_player_hosting", fqdn); }
 
 #endif

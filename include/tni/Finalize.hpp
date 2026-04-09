@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_FINALIZE
 #define TNI_API_HEADER_FINALIZE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Finalize : public VBoxContainer {
@@ -28,6 +28,6 @@ struct Finalize : public VBoxContainer {
 };
 
 
-inline void Finalize::set_domain_item(Variant di, bool is_registration) { voidcall("set_domain_item", di, is_registration); }
+inline void Finalize::set_domain_item(Variant di, bool is_registration) { this->voidcall("set_domain_item", di, is_registration); }
 
 #endif

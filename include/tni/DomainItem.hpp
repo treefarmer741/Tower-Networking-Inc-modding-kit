@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DOMAINITEM
 #define TNI_API_HEADER_DOMAINITEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DomainItem : public MarginContainer {
@@ -33,7 +33,7 @@ struct DomainItem : public MarginContainer {
 
 #include "PlayerHosting.hpp"
 
-inline void DomainItem::update_phdisp_with_phref() { voidcall("update_phdisp_with_phref"); }
-inline void DomainItem::update_use_d() { voidcall("update_use_d"); }
+inline void DomainItem::update_phdisp_with_phref() { this->voidcall("update_phdisp_with_phref"); }
+inline void DomainItem::update_use_d() { this->voidcall("update_use_d"); }
 
 #endif

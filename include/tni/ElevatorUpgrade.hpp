@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_ELEVATORUPGRADE
 #define TNI_API_HEADER_ELEVATORUPGRADE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct ElevatorUpgrade : public Node {
-	using Node::Node;
+struct ElevatorUpgrade : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr ElevatorUpgrade(Node base) : Node{base} {}
-	constexpr ElevatorUpgrade(uint64_t addr) : Node{addr} {}
+	constexpr ElevatorUpgrade(PropMod base) : PropMod{base} {}
+	constexpr ElevatorUpgrade(uint64_t addr) : PropMod{addr} {}
 	constexpr ElevatorUpgrade(Object obj) : ElevatorUpgrade{obj.address()} {}
 	ElevatorUpgrade(Variant variant) : ElevatorUpgrade{variant.as_object().address()} {}
 
@@ -42,13 +43,13 @@ struct ElevatorUpgrade : public Node {
 
 #include "PropMod.hpp"
 
-inline void ElevatorUpgrade::apply_mod() { voidcall("apply_mod"); }
-inline void ElevatorUpgrade::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String ElevatorUpgrade::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String ElevatorUpgrade::get_lore() { return operator()("get_lore"); }
-inline String ElevatorUpgrade::get_description() { return operator()("get_description"); }
-inline Variant ElevatorUpgrade::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void ElevatorUpgrade::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void ElevatorUpgrade::update_state() { voidcall("update_state"); }
+inline void ElevatorUpgrade::apply_mod() { this->voidcall("apply_mod"); }
+inline void ElevatorUpgrade::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String ElevatorUpgrade::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String ElevatorUpgrade::get_lore() { return this->operator()("get_lore"); }
+inline String ElevatorUpgrade::get_description() { return this->operator()("get_description"); }
+inline Variant ElevatorUpgrade::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void ElevatorUpgrade::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void ElevatorUpgrade::update_state() { this->voidcall("update_state"); }
 
 #endif

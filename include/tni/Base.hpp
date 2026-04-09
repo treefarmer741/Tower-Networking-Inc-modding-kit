@@ -1,22 +1,25 @@
 #ifndef TNI_API_HEADER_BASE
 #define TNI_API_HEADER_BASE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "LogicControllerUser.hpp"
 
-struct Base : public Node {
-	using Node::Node;
+struct Base : public LogicControllerUser {
+	using LogicControllerUser::LogicControllerUser;
 
-	constexpr Base(Node base) : Node{base} {}
-	constexpr Base(uint64_t addr) : Node{addr} {}
+	constexpr Base(LogicControllerUser base) : LogicControllerUser{base} {}
+	constexpr Base(uint64_t addr) : LogicControllerUser{addr} {}
 	constexpr Base(Object obj) : Base{obj.address()} {}
 	Base(Variant variant) : Base{variant.as_object().address()} {}
 
 
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(behaviors, Variant);
+	PROPERTY(hosting_behaviors, Variant);
+	PROPERTY(public_client_behaviors, Variant);
 	PROPERTY(user_application_unlocks, Variant);
 	PROPERTY(consumption_payment_scaling, double);
 	PROPERTY(allow_hwreset, bool);
@@ -40,6 +43,7 @@ struct Base : public Node {
 	PROPERTY(vsr, double);
 	PROPERTY(visitor_reset_modulo_n, int64_t);
 	PROPERTY(consumption_total_last_tick, int64_t);
+	PROPERTY(consumption_satiety_last_tick, int64_t);
 	PROPERTY(description, String);
 	PROPERTY(user_profile_name, String);
 	PROPERTY(base_use_period, double);
@@ -72,10 +76,10 @@ struct Base : public Node {
 	inline void push_surveyor_message(String msg);
 	inline double get_manifest_roll(String release_name);
 	inline Variant debug_monitor_callback();
-	inline void account_intent(UserTraversal utc);
-	inline void unaccount_intent(UserTraversal utc);
-	inline void account_consumption(UserTraversal utc, TraversalContext _context);
-	inline void account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor);
+	inline void account_intent(const UserTraversal& utc);
+	inline void unaccount_intent(const UserTraversal& utc);
+	inline void account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt);
+	inline void account_visitation(const Program& vprog, Variant ctx_or_pkt, const LogicControllerUser& _visitor);
 	inline void time_mult_updated(double time_mult_delta);
 	inline void finish_setup();
 	inline void first_use();
@@ -86,21 +90,20 @@ struct Base : public Node {
 #include "LogicController.hpp"
 #include "Location.hpp"
 #include "UserTraversal.hpp"
-#include "TraversalContext.hpp"
 #include "Program.hpp"
 #include "LogicControllerUser.hpp"
 
-inline void Base::push_surveyor_message(String msg) { voidcall("push_surveyor_message", msg); }
-inline double Base::get_manifest_roll(String release_name) { return operator()("get_manifest_roll", release_name); }
-inline Variant Base::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
-inline void Base::account_intent(UserTraversal utc) { voidcall("account_intent", utc); }
-inline void Base::unaccount_intent(UserTraversal utc) { voidcall("unaccount_intent", utc); }
-inline void Base::account_consumption(UserTraversal utc, TraversalContext _context) { voidcall("account_consumption", utc, _context); }
-inline void Base::account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor) { voidcall("account_visitation", vprog, context, _visitor); }
-inline void Base::time_mult_updated(double time_mult_delta) { voidcall("time_mult_updated", time_mult_delta); }
-inline void Base::finish_setup() { voidcall("finish_setup"); }
-inline void Base::first_use() { voidcall("first_use"); }
-inline void Base::periodic_use() { voidcall("periodic_use"); }
-inline void Base::down() { voidcall("down"); }
+inline void Base::push_surveyor_message(String msg) { this->voidcall("push_surveyor_message", msg); }
+inline double Base::get_manifest_roll(String release_name) { return this->operator()("get_manifest_roll", release_name); }
+inline Variant Base::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void Base::account_intent(const UserTraversal& utc) { this->voidcall("account_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
+inline void Base::unaccount_intent(const UserTraversal& utc) { this->voidcall("unaccount_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
+inline void Base::account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt) { this->voidcall("account_consumption", Object(reinterpret_cast<const Object*>(&utc)->address()), _ctx_or_pkt); }
+inline void Base::account_visitation(const Program& vprog, Variant ctx_or_pkt, const LogicControllerUser& _visitor) { this->voidcall("account_visitation", Object(reinterpret_cast<const Object*>(&vprog)->address()), ctx_or_pkt, Object(reinterpret_cast<const Object*>(&_visitor)->address())); }
+inline void Base::time_mult_updated(double time_mult_delta) { this->voidcall("time_mult_updated", time_mult_delta); }
+inline void Base::finish_setup() { this->voidcall("finish_setup"); }
+inline void Base::first_use() { this->voidcall("first_use"); }
+inline void Base::periodic_use() { this->voidcall("periodic_use"); }
+inline void Base::down() { this->voidcall("down"); }
 
 #endif
