@@ -56,10 +56,28 @@ void push_gd_object_metatable(lua_State *L) {
                 if (!((Mod)get_node()).is_allowed_property(obj, name)) {
                     return luaL_error(L, "Banned property accessed: %s", name.c_str());  // This does not return!
                 }
+
                 // TODO: We could temporarily cache GDCallable userdata during this VM call.
                 // TODO: GDNameCall instead of GDCallable to handle `obj:method()`, which can bypass GDCallable using obj.call/obj.callv (more performant and Lua idiomatic)
-                
-                return push_gd_variant(L, obj.get(name));
+
+                // Try property access first. If the property exists and has a non-nil value,
+                // return it directly.
+                Variant value = obj.get(name);
+                if (value.get_type() != Variant::Type::NIL) {
+                    return push_gd_variant(L, value);
+                }
+
+                // Property not found (nil) fall back to method call.
+                // This mirrors the GDArray.__index fallback on gdarray.cpp
+                // obj:method() work for Godot built-in methods like get_class() is_class()
+                //
+                // Godot properties that legitimately hold a nil value will be misidentified as methods
+                // Only is_allowed_property is checked above, not is_allowed_method
+                // enforcement relies on the sandbox-side restriction inside ECALL_OBJ_CALLP
+                // if callp throws c++ exception inside the sandbox, lua's pcall cannot catch it, unlike luaL_error
+                lua_pushvalue(L, 2);  // push the name string as the upvalue for variant_self_call
+                lua_pushcclosure(L, variant_self_call, 1);
+                return 1;
             }
             lua_pushnil(L);
             return 1;
