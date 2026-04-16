@@ -10,7 +10,7 @@ Note that modding for the game is still in early design/implementation stage, an
 
 If you want to use a Lua based mods, you will need to manually add the `luajit-support` mod first. This process will be improved in the future.
 
-You can find the mod in the [github releases](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases). Find the correct version and download `luajit-support.zip`, open it and place the `luajit-support/` folder in your mods folder. Refer to [Loading the mod](#loading-the-mod) for further instructions.
+You can find the mod in the github releases, or [click here](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/tag/continuous-gnu-main) for the latest stable release. Download the luajit file and place it in your mods folder. Refer to [Loading the mod](#loading-the-mod) for further instructions.
 
 If you are using the `beta` branch of the game, you'll likely want to use the ["Continuous (gnu) - beta"](https://github.com/treefarmer741/Tower-Networking-Inc-modding-kit/releases/tag/continuous-gnu-beta) release instead.
 
