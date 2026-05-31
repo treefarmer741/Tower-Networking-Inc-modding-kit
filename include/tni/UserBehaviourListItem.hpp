@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_USERBEHAVIOURLISTITEM
 #define TNI_API_HEADER_USERBEHAVIOURLISTITEM
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct UserBehaviourListItem : public Container {
@@ -36,6 +36,6 @@ struct UserBehaviourListItem : public Container {
 #include "LogicControllerUser.hpp"
 #include "UserTraversal.hpp"
 
-inline String UserBehaviourListItem::format_nbr(int64_t val, String zval) { return operator()("format_nbr", val, zval); }
+inline String UserBehaviourListItem::format_nbr(int64_t val, String zval) { return this->operator()("format_nbr", val, zval); }
 
 #endif

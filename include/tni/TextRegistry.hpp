@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TEXTREGISTRY
 #define TNI_API_HEADER_TEXTREGISTRY
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TextRegistry : public Node {
@@ -24,6 +24,6 @@ struct TextRegistry : public Node {
 };
 
 
-inline Variant TextRegistry::get_random_player_name(bool call_randomize) { return operator()("get_random_player_name", call_randomize); }
+inline Variant TextRegistry::get_random_player_name(bool call_randomize) { return this->operator()("get_random_player_name", call_randomize); }
 
 #endif

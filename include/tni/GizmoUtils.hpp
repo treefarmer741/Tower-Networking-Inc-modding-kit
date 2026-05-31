@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GIZMOUTILS
 #define TNI_API_HEADER_GIZMOUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GizmoUtils : public Object {
@@ -28,9 +28,9 @@ struct GizmoUtils : public Object {
 };
 
 
-inline Variant GizmoUtils::is_gizmo_input(Node3D g) { return operator()("is_gizmo_input", g); }
-inline Variant GizmoUtils::is_gizmo_output(Node3D g) { return operator()("is_gizmo_output", g); }
-inline void GizmoUtils::register_gizmo_signals(Node3D p, Variant callback, Variant inputs, Variant outputs) { voidcall("register_gizmo_signals", p, callback, inputs, outputs); }
-inline void GizmoUtils::ensure_gizmos(Variant inputs, Variant outputs, Variant ensure_inputs, Variant ensure_outputs) { voidcall("ensure_gizmos", inputs, outputs, ensure_inputs, ensure_outputs); }
+inline Variant GizmoUtils::is_gizmo_input(Node3D g) { return this->operator()("is_gizmo_input", g); }
+inline Variant GizmoUtils::is_gizmo_output(Node3D g) { return this->operator()("is_gizmo_output", g); }
+inline void GizmoUtils::register_gizmo_signals(Node3D p, Variant callback, Variant inputs, Variant outputs) { this->voidcall("register_gizmo_signals", p, callback, inputs, outputs); }
+inline void GizmoUtils::ensure_gizmos(Variant inputs, Variant outputs, Variant ensure_inputs, Variant ensure_outputs) { this->voidcall("ensure_gizmos", inputs, outputs, ensure_inputs, ensure_outputs); }
 
 #endif

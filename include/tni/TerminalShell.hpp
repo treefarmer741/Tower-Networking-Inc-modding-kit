@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TERMINALSHELL
 #define TNI_API_HEADER_TERMINALSHELL
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct TerminalShell : public Container {
-	using Container::Container;
+struct TerminalShell : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr TerminalShell(Container base) : Container{base} {}
-	constexpr TerminalShell(uint64_t addr) : Container{addr} {}
+	constexpr TerminalShell(ScreenApp base) : ScreenApp{base} {}
+	constexpr TerminalShell(uint64_t addr) : ScreenApp{addr} {}
 	constexpr TerminalShell(Object obj) : TerminalShell{obj.address()} {}
 	TerminalShell(Variant variant) : TerminalShell{variant.as_object().address()} {}
 
@@ -24,7 +25,7 @@ struct TerminalShell : public Container {
 	PROPERTY(minimize_button, BaseButton);
 
 	inline void interrupt();
-	inline void run_in_foreground(TerminalRoutine _termr);
+	inline void run_in_foreground(const TerminalRoutine& _termr);
 	inline void print_connectivity_help(Variant stdout_, Variant src_s, Variant dst_s, Variant tc);
 	inline void print_connectivity_troubleshoot_guide(Variant stdout_, Variant src_s, Variant dst_s, Variant tc);
 	inline bool has_terminal_routine(String routine_name);
@@ -40,16 +41,16 @@ struct TerminalShell : public Container {
 #include "MainPane.hpp"
 #include "TerminalRoutine.hpp"
 
-inline void TerminalShell::interrupt() { voidcall("interrupt"); }
-inline void TerminalShell::run_in_foreground(TerminalRoutine _termr) { voidcall("run_in_foreground", _termr); }
-inline void TerminalShell::print_connectivity_help(Variant stdout_, Variant src_s, Variant dst_s, Variant tc) { voidcall("print_connectivity_help", stdout_, src_s, dst_s, tc); }
-inline void TerminalShell::print_connectivity_troubleshoot_guide(Variant stdout_, Variant src_s, Variant dst_s, Variant tc) { voidcall("print_connectivity_troubleshoot_guide", stdout_, src_s, dst_s, tc); }
-inline bool TerminalShell::has_terminal_routine(String routine_name) { return operator()("has_terminal_routine", routine_name); }
-inline TerminalRoutine TerminalShell::get_terminal_routine(String routine_name) { return TerminalRoutine(operator()("get_terminal_routine", routine_name).as_object().address()); }
-inline void TerminalShell::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void TerminalShell::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant TerminalShell::get_main_pane() { return operator()("get_main_pane"); }
-inline void TerminalShell::minimize() { voidcall("minimize"); }
-inline void TerminalShell::launch() { voidcall("launch"); }
+inline void TerminalShell::interrupt() { this->voidcall("interrupt"); }
+inline void TerminalShell::run_in_foreground(const TerminalRoutine& _termr) { this->voidcall("run_in_foreground", Object(reinterpret_cast<const Object*>(&_termr)->address())); }
+inline void TerminalShell::print_connectivity_help(Variant stdout_, Variant src_s, Variant dst_s, Variant tc) { this->voidcall("print_connectivity_help", stdout_, src_s, dst_s, tc); }
+inline void TerminalShell::print_connectivity_troubleshoot_guide(Variant stdout_, Variant src_s, Variant dst_s, Variant tc) { this->voidcall("print_connectivity_troubleshoot_guide", stdout_, src_s, dst_s, tc); }
+inline bool TerminalShell::has_terminal_routine(String routine_name) { return this->operator()("has_terminal_routine", routine_name); }
+inline TerminalRoutine TerminalShell::get_terminal_routine(String routine_name) { return TerminalRoutine(this->operator()("get_terminal_routine", routine_name).as_object().address()); }
+inline void TerminalShell::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void TerminalShell::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant TerminalShell::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void TerminalShell::minimize() { this->voidcall("minimize"); }
+inline void TerminalShell::launch() { this->voidcall("launch"); }
 
 #endif

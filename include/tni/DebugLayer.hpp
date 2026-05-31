@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DEBUGLAYER
 #define TNI_API_HEADER_DEBUGLAYER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DebugLayer : public CanvasLayer {
@@ -34,9 +34,9 @@ struct DebugLayer : public CanvasLayer {
 };
 
 
-inline void DebugLayer::clear_all_monitors() { voidcall("clear_all_monitors"); }
-inline void DebugLayer::register_cmd(String cmd_name, Variant cmd_func, bool warn_overwrite) { voidcall("register_cmd", cmd_name, cmd_func, warn_overwrite); }
-inline void DebugLayer::print_console(String msg, String end) { voidcall("print_console", msg, end); }
-inline void DebugLayer::monitor_obj(Object target_obj) { voidcall("monitor_obj", target_obj); }
+inline void DebugLayer::clear_all_monitors() { this->voidcall("clear_all_monitors"); }
+inline void DebugLayer::register_cmd(String cmd_name, Variant cmd_func, bool warn_overwrite) { this->voidcall("register_cmd", cmd_name, cmd_func, warn_overwrite); }
+inline void DebugLayer::print_console(String msg, String end) { this->voidcall("print_console", msg, end); }
+inline void DebugLayer::monitor_obj(Object target_obj) { this->voidcall("monitor_obj", target_obj); }
 
 #endif

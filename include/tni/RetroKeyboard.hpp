@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RETROKEYBOARD
 #define TNI_API_HEADER_RETROKEYBOARD
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct RetroKeyboard : public Node2D {
@@ -35,7 +35,7 @@ struct RetroKeyboard : public Node2D {
 };
 
 
-inline void RetroKeyboard::press_key_from_event(InputEventKey inpev) { voidcall("press_key_from_event", inpev); }
-inline void RetroKeyboard::press_key(int64_t kc) { voidcall("press_key", kc); }
+inline void RetroKeyboard::press_key_from_event(InputEventKey inpev) { this->voidcall("press_key_from_event", inpev); }
+inline void RetroKeyboard::press_key(int64_t kc) { this->voidcall("press_key", kc); }
 
 #endif

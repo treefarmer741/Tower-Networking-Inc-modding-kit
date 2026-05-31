@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TUTORIALBOARD
 #define TNI_API_HEADER_TUTORIALBOARD
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TutorialBoard : public Control {
@@ -44,12 +44,12 @@ struct TutorialBoard : public Control {
 };
 
 
-inline void TutorialBoard::handle_scrollbar_changed() { voidcall("handle_scrollbar_changed"); }
-inline void TutorialBoard::cleanup() { voidcall("cleanup"); }
-inline void TutorialBoard::refresh() { voidcall("refresh"); }
-inline void TutorialBoard::refresh_items_status_by_action(String step) { voidcall("refresh_items_status_by_action", step); }
-inline void TutorialBoard::register_item(Variant title, Variant des, Variant step, Variant fulfill) { voidcall("register_item", title, des, step, fulfill); }
-inline void TutorialBoard::pull_right() { voidcall("pull_right"); }
-inline void TutorialBoard::pull_left() { voidcall("pull_left"); }
+inline void TutorialBoard::handle_scrollbar_changed() { this->voidcall("handle_scrollbar_changed"); }
+inline void TutorialBoard::cleanup() { this->voidcall("cleanup"); }
+inline void TutorialBoard::refresh() { this->voidcall("refresh"); }
+inline void TutorialBoard::refresh_items_status_by_action(String step) { this->voidcall("refresh_items_status_by_action", step); }
+inline void TutorialBoard::register_item(Variant title, Variant des, Variant step, Variant fulfill) { this->voidcall("register_item", title, des, step, fulfill); }
+inline void TutorialBoard::pull_right() { this->voidcall("pull_right"); }
+inline void TutorialBoard::pull_left() { this->voidcall("pull_left"); }
 
 #endif

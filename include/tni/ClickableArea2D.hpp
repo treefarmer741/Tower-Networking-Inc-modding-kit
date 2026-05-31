@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CLICKABLEAREA2D
 #define TNI_API_HEADER_CLICKABLEAREA2D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct ClickableArea2D : public Area2D {
@@ -17,11 +17,11 @@ struct ClickableArea2D : public Area2D {
 
 	PROPERTY(tooltip_text, String);
 
-	inline void click(MultiplayerMouse src);
+	inline void click(const MultiplayerMouse& src);
 };
 
 #include "MultiplayerMouse.hpp"
 
-inline void ClickableArea2D::click(MultiplayerMouse src) { voidcall("click", src); }
+inline void ClickableArea2D::click(const MultiplayerMouse& src) { this->voidcall("click", Object(reinterpret_cast<const Object*>(&src)->address())); }
 
 #endif

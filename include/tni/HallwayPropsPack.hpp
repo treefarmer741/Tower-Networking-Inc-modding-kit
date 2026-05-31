@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_HALLWAYPROPSPACK
 #define TNI_API_HEADER_HALLWAYPROPSPACK
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct HallwayPropsPack : public Node2D {
@@ -21,6 +21,6 @@ struct HallwayPropsPack : public Node2D {
 };
 
 
-inline void HallwayPropsPack::set_asset_shaders() { voidcall("set_asset_shaders"); }
+inline void HallwayPropsPack::set_asset_shaders() { this->voidcall("set_asset_shaders"); }
 
 #endif

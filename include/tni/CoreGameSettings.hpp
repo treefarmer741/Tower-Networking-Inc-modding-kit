@@ -1,16 +1,18 @@
 #ifndef TNI_API_HEADER_COREGAMESETTINGS
 #define TNI_API_HEADER_COREGAMESETTINGS
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "BaseSettings.hpp"
 
-struct CoreGameSettings : public Object {
-	using Object::Object;
+struct CoreGameSettings : public BaseSettings {
+	using BaseSettings::BaseSettings;
 
-	constexpr CoreGameSettings(Object base) : Object{base} {}
-	constexpr CoreGameSettings(uint64_t addr) : Object{addr} {}
+	constexpr CoreGameSettings(BaseSettings base) : BaseSettings{base} {}
+	constexpr CoreGameSettings(uint64_t addr) : BaseSettings{addr} {}
+	constexpr CoreGameSettings(Object obj) : CoreGameSettings{obj.address()} {}
 	CoreGameSettings(Variant variant) : CoreGameSettings{variant.as_object().address()} {}
 
 
@@ -18,6 +20,8 @@ struct CoreGameSettings : public Object {
 	PROPERTY(keyboard_pan_speed, double);
 	PROPERTY(drag_pan_speed, double);
 	PROPERTY(rgb_shift_factor, double);
+	PROPERTY(autosave_freq_min, double);
+	PROPERTY(autosave_retention, int64_t);
 	PROPERTY(perf_phy_sim_mode, int64_t);
 	PROPERTY(show_announcements, bool);
 	PROPERTY(shift_panning_enabled, bool);
@@ -28,6 +32,8 @@ struct CoreGameSettings : public Object {
 	PROPERTY(show_username, bool);
 	PROPERTY(show_help_guides, bool);
 	PROPERTY(player_set_name, String);
+	PROPERTY(show_packet_animations, bool);
+	PROPERTY(addr_copy_mode, int64_t);
 	PROPERTY(last_sel_diffindex, int64_t);
 	PROPERTY(has_shown_difficulty_sel, bool);
 	PROPERTY(cmd_alias, Variant);
@@ -48,8 +54,8 @@ struct CoreGameSettings : public Object {
 };
 
 
-inline void CoreGameSettings::apply() { voidcall("apply"); }
-inline void CoreGameSettings::engine_perfpar_sync() { voidcall("engine_perfpar_sync"); }
-inline Variant CoreGameSettings::map_float_to_volume_db(double inp) { return operator()("map_float_to_volume_db", inp); }
+inline void CoreGameSettings::apply() { this->voidcall("apply"); }
+inline void CoreGameSettings::engine_perfpar_sync() { this->voidcall("engine_perfpar_sync"); }
+inline Variant CoreGameSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
 
 #endif

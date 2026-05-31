@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RANDOMLOCATIONPIECE
 #define TNI_API_HEADER_RANDOMLOCATIONPIECE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct RandomLocationPiece : public Node2D {
@@ -25,7 +25,7 @@ struct RandomLocationPiece : public Node2D {
 
 #include "LocationPiece.hpp"
 
-inline Variant RandomLocationPiece::get_possible_upn() { return operator()("get_possible_upn"); }
-inline LocationPiece RandomLocationPiece::choose_piece() { return LocationPiece(operator()("choose_piece").as_object().address()); }
+inline Variant RandomLocationPiece::get_possible_upn() { return this->operator()("get_possible_upn"); }
+inline LocationPiece RandomLocationPiece::choose_piece() { return LocationPiece(this->operator()("choose_piece").as_object().address()); }
 
 #endif

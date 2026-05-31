@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_MSGBOX
 #define TNI_API_HEADER_MSGBOX
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct MsgBox : public Container {
-	using Container::Container;
+struct MsgBox : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr MsgBox(Container base) : Container{base} {}
-	constexpr MsgBox(uint64_t addr) : Container{addr} {}
+	constexpr MsgBox(ScreenApp base) : ScreenApp{base} {}
+	constexpr MsgBox(uint64_t addr) : ScreenApp{addr} {}
 	constexpr MsgBox(Object obj) : MsgBox{obj.address()} {}
 	MsgBox(Variant variant) : MsgBox{variant.as_object().address()} {}
 
@@ -34,12 +35,12 @@ struct MsgBox : public Container {
 
 #include "MainPane.hpp"
 
-inline void MsgBox::launch() { voidcall("launch"); }
-inline void MsgBox::minimize() { voidcall("minimize"); }
-inline void MsgBox::hide_ctlbutton() { voidcall("hide_ctlbutton"); }
-inline void MsgBox::show_ctlbutton() { voidcall("show_ctlbutton"); }
-inline void MsgBox::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void MsgBox::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant MsgBox::get_main_pane() { return operator()("get_main_pane"); }
+inline void MsgBox::launch() { this->voidcall("launch"); }
+inline void MsgBox::minimize() { this->voidcall("minimize"); }
+inline void MsgBox::hide_ctlbutton() { this->voidcall("hide_ctlbutton"); }
+inline void MsgBox::show_ctlbutton() { this->voidcall("show_ctlbutton"); }
+inline void MsgBox::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void MsgBox::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant MsgBox::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

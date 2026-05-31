@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SIMPLETERRAIN
 #define TNI_API_HEADER_SIMPLETERRAIN
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SimpleTerrain : public Node3D {
@@ -38,8 +38,8 @@ struct SimpleTerrain : public Node3D {
 };
 
 
-inline Variant SimpleTerrain::get_terrain_hash() { return operator()("get_terrain_hash"); }
-inline void SimpleTerrain::generate_terrain() { voidcall("generate_terrain"); }
-inline double SimpleTerrain::get_height_at_position(double world_x, double world_z) { return operator()("get_height_at_position", world_x, world_z); }
+inline Variant SimpleTerrain::get_terrain_hash() { return this->operator()("get_terrain_hash"); }
+inline void SimpleTerrain::generate_terrain() { this->voidcall("generate_terrain"); }
+inline double SimpleTerrain::get_height_at_position(double world_x, double world_z) { return this->operator()("get_height_at_position", world_x, world_z); }
 
 #endif

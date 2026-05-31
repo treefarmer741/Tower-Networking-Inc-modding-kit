@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_STICKYPRINT
 #define TNI_API_HEADER_STICKYPRINT
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Stickyprint : public Container {
-	using Container::Container;
+struct Stickyprint : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Stickyprint(Container base) : Container{base} {}
-	constexpr Stickyprint(uint64_t addr) : Container{addr} {}
+	constexpr Stickyprint(ScreenApp base) : ScreenApp{base} {}
+	constexpr Stickyprint(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Stickyprint(Object obj) : Stickyprint{obj.address()} {}
 	Stickyprint(Variant variant) : Stickyprint{variant.as_object().address()} {}
 
@@ -38,11 +39,11 @@ struct Stickyprint : public Container {
 
 #include "MainPane.hpp"
 
-inline void Stickyprint::launch() { voidcall("launch"); }
-inline void Stickyprint::minimize() { voidcall("minimize"); }
-inline void Stickyprint::spawn_sticky(Variant lblc, Variant nc, Variant global_pos, Variant parent_path) { voidcall("spawn_sticky", lblc, nc, global_pos, parent_path); }
-inline void Stickyprint::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Stickyprint::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Stickyprint::get_main_pane() { return operator()("get_main_pane"); }
+inline void Stickyprint::launch() { this->voidcall("launch"); }
+inline void Stickyprint::minimize() { this->voidcall("minimize"); }
+inline void Stickyprint::spawn_sticky(Variant lblc, Variant nc, Variant global_pos, Variant parent_path) { this->voidcall("spawn_sticky", lblc, nc, global_pos, parent_path); }
+inline void Stickyprint::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Stickyprint::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Stickyprint::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

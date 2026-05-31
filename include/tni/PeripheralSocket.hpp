@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_PERIPHERALSOCKET
 #define TNI_API_HEADER_PERIPHERALSOCKET
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "Socket.hpp"
 
-struct PeripheralSocket : public Area2D {
-	using Area2D::Area2D;
+struct PeripheralSocket : public Socket {
+	using Socket::Socket;
 
-	constexpr PeripheralSocket(Area2D base) : Area2D{base} {}
-	constexpr PeripheralSocket(uint64_t addr) : Area2D{addr} {}
+	constexpr PeripheralSocket(Socket base) : Socket{base} {}
+	constexpr PeripheralSocket(uint64_t addr) : Socket{addr} {}
 	constexpr PeripheralSocket(Object obj) : PeripheralSocket{obj.address()} {}
 	PeripheralSocket(Variant variant) : PeripheralSocket{variant.as_object().address()} {}
 
@@ -31,7 +32,7 @@ struct PeripheralSocket : public Area2D {
 
 	inline void block();
 	inline void unblock();
-	inline Variant compatible_with(Plug plug);
+	inline Variant compatible_with(const Plug& plug);
 	inline void show_hint(String msg);
 };
 
@@ -40,9 +41,9 @@ struct PeripheralSocket : public Area2D {
 #include "GraphController.hpp"
 #include "Plug.hpp"
 
-inline void PeripheralSocket::block() { voidcall("block"); }
-inline void PeripheralSocket::unblock() { voidcall("unblock"); }
-inline Variant PeripheralSocket::compatible_with(Plug plug) { return operator()("compatible_with", plug); }
-inline void PeripheralSocket::show_hint(String msg) { voidcall("show_hint", msg); }
+inline void PeripheralSocket::block() { this->voidcall("block"); }
+inline void PeripheralSocket::unblock() { this->voidcall("unblock"); }
+inline Variant PeripheralSocket::compatible_with(const Plug& plug) { return this->operator()("compatible_with", Object(reinterpret_cast<const Object*>(&plug)->address())); }
+inline void PeripheralSocket::show_hint(String msg) { this->voidcall("show_hint", msg); }
 
 #endif

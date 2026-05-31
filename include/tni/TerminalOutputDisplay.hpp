@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TERMINALOUTPUTDISPLAY
 #define TNI_API_HEADER_TERMINALOUTPUTDISPLAY
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TerminalOutputDisplay : public RichTextLabel {
@@ -28,14 +28,14 @@ struct TerminalOutputDisplay : public RichTextLabel {
 };
 
 
-inline void TerminalOutputDisplay::print_horizontal_sep() { voidcall("print_horizontal_sep"); }
-inline void TerminalOutputDisplay::print_success(Variant s) { voidcall("print_success", s); }
-inline void TerminalOutputDisplay::print_warn(Variant s) { voidcall("print_warn", s); }
-inline void TerminalOutputDisplay::print_error(Variant s) { voidcall("print_error", s); }
-inline void TerminalOutputDisplay::print_highlight(Variant s) { voidcall("print_highlight", s); }
-inline void TerminalOutputDisplay::print_line(Variant s) { voidcall("print_line", s); }
-inline void TerminalOutputDisplay::put_s(Variant c) { voidcall("put_s", c); }
-inline void TerminalOutputDisplay::rotate_output() { voidcall("rotate_output"); }
-inline void TerminalOutputDisplay::clear_display() { voidcall("clear_display"); }
+inline void TerminalOutputDisplay::print_horizontal_sep() { this->voidcall("print_horizontal_sep"); }
+inline void TerminalOutputDisplay::print_success(Variant s) { this->voidcall("print_success", s); }
+inline void TerminalOutputDisplay::print_warn(Variant s) { this->voidcall("print_warn", s); }
+inline void TerminalOutputDisplay::print_error(Variant s) { this->voidcall("print_error", s); }
+inline void TerminalOutputDisplay::print_highlight(Variant s) { this->voidcall("print_highlight", s); }
+inline void TerminalOutputDisplay::print_line(Variant s) { this->voidcall("print_line", s); }
+inline void TerminalOutputDisplay::put_s(Variant c) { this->voidcall("put_s", c); }
+inline void TerminalOutputDisplay::rotate_output() { this->voidcall("rotate_output"); }
+inline void TerminalOutputDisplay::clear_display() { this->voidcall("clear_display"); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GAMESTATISTICS
 #define TNI_API_HEADER_GAMESTATISTICS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GameStatistics : public RefCounted {
@@ -42,15 +42,15 @@ struct GameStatistics : public RefCounted {
 
 	inline void add_stat(Variant k, int64_t val);
 	inline Variant ggs(Variant k);
-	inline void daily_stat_update(GameWorld gw);
-	inline void update_stats(GameWorld gw);
+	inline void daily_stat_update(const GameWorld& gw);
+	inline void update_stats(const GameWorld& gw);
 };
 
 #include "GameWorld.hpp"
 
-inline void GameStatistics::add_stat(Variant k, int64_t val) { voidcall("add_stat", k, val); }
-inline Variant GameStatistics::ggs(Variant k) { return operator()("ggs", k); }
-inline void GameStatistics::daily_stat_update(GameWorld gw) { voidcall("daily_stat_update", gw); }
-inline void GameStatistics::update_stats(GameWorld gw) { voidcall("update_stats", gw); }
+inline void GameStatistics::add_stat(Variant k, int64_t val) { this->voidcall("add_stat", k, val); }
+inline Variant GameStatistics::ggs(Variant k) { return this->operator()("ggs", k); }
+inline void GameStatistics::daily_stat_update(const GameWorld& gw) { this->voidcall("daily_stat_update", Object(reinterpret_cast<const Object*>(&gw)->address())); }
+inline void GameStatistics::update_stats(const GameWorld& gw) { this->voidcall("update_stats", Object(reinterpret_cast<const Object*>(&gw)->address())); }
 
 #endif

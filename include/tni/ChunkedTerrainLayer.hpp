@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CHUNKEDTERRAINLAYER
 #define TNI_API_HEADER_CHUNKEDTERRAINLAYER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct ChunkedTerrainLayer : public Node3D {
@@ -40,17 +40,17 @@ struct ChunkedTerrainLayer : public Node3D {
 };
 
 
-inline Variant ChunkedTerrainLayer::get_coordinates_matching_state(int64_t match_state) { return operator()("get_coordinates_matching_state", match_state); }
-inline void ChunkedTerrainLayer::set_state(Variant c_coord, int64_t new_state) { voidcall("set_state", c_coord, new_state); }
-inline int64_t ChunkedTerrainLayer::get_state(Variant c_coord) { return operator()("get_state", c_coord); }
-inline bool ChunkedTerrainLayer::is_loaded(Variant c_coord) { return operator()("is_loaded", c_coord); }
-inline bool ChunkedTerrainLayer::is_loading(Variant c_coord) { return operator()("is_loading", c_coord); }
-inline bool ChunkedTerrainLayer::is_unloaded(Variant c_coord) { return operator()("is_unloaded", c_coord); }
-inline void ChunkedTerrainLayer::mark_as_loading(Variant c_coord) { voidcall("mark_as_loading", c_coord); }
-inline void ChunkedTerrainLayer::mark_as_unloading(Variant c_coord) { voidcall("mark_as_unloading", c_coord); }
-inline void ChunkedTerrainLayer::mark_as_loaded(Variant c_coord) { voidcall("mark_as_loaded", c_coord); }
-inline void ChunkedTerrainLayer::mark_as_unloaded(Variant c_coord) { voidcall("mark_as_unloaded", c_coord); }
-inline void ChunkedTerrainLayer::begin_load(Variant c_coord) { voidcall("begin_load", c_coord); }
-inline void ChunkedTerrainLayer::begin_unload(Variant c_coord) { voidcall("begin_unload", c_coord); }
+inline Variant ChunkedTerrainLayer::get_coordinates_matching_state(int64_t match_state) { return this->operator()("get_coordinates_matching_state", match_state); }
+inline void ChunkedTerrainLayer::set_state(Variant c_coord, int64_t new_state) { this->voidcall("set_state", c_coord, new_state); }
+inline int64_t ChunkedTerrainLayer::get_state(Variant c_coord) { return this->operator()("get_state", c_coord); }
+inline bool ChunkedTerrainLayer::is_loaded(Variant c_coord) { return this->operator()("is_loaded", c_coord); }
+inline bool ChunkedTerrainLayer::is_loading(Variant c_coord) { return this->operator()("is_loading", c_coord); }
+inline bool ChunkedTerrainLayer::is_unloaded(Variant c_coord) { return this->operator()("is_unloaded", c_coord); }
+inline void ChunkedTerrainLayer::mark_as_loading(Variant c_coord) { this->voidcall("mark_as_loading", c_coord); }
+inline void ChunkedTerrainLayer::mark_as_unloading(Variant c_coord) { this->voidcall("mark_as_unloading", c_coord); }
+inline void ChunkedTerrainLayer::mark_as_loaded(Variant c_coord) { this->voidcall("mark_as_loaded", c_coord); }
+inline void ChunkedTerrainLayer::mark_as_unloaded(Variant c_coord) { this->voidcall("mark_as_unloaded", c_coord); }
+inline void ChunkedTerrainLayer::begin_load(Variant c_coord) { this->voidcall("begin_load", c_coord); }
+inline void ChunkedTerrainLayer::begin_unload(Variant c_coord) { this->voidcall("begin_unload", c_coord); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_BINARYUTILS
 #define TNI_API_HEADER_BINARYUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct BinaryUtils : public Object {
@@ -23,10 +23,10 @@ struct BinaryUtils : public Object {
 };
 
 
-inline int64_t BinaryUtils::get_binval(Variant layers) { return operator()("get_binval", layers); }
-inline int64_t BinaryUtils::set_bit(int64_t value, int64_t layer) { return operator()("set_bit", value, layer); }
-inline int64_t BinaryUtils::unset_bit(int64_t value, int64_t layer) { return operator()("unset_bit", value, layer); }
-inline int64_t BinaryUtils::toggle_bit(int64_t value, int64_t layer) { return operator()("toggle_bit", value, layer); }
-inline bool BinaryUtils::get_bit(int64_t value, int64_t layer) { return operator()("get_bit", value, layer); }
+inline int64_t BinaryUtils::get_binval(Variant layers) { return this->operator()("get_binval", layers); }
+inline int64_t BinaryUtils::set_bit(int64_t value, int64_t layer) { return this->operator()("set_bit", value, layer); }
+inline int64_t BinaryUtils::unset_bit(int64_t value, int64_t layer) { return this->operator()("unset_bit", value, layer); }
+inline int64_t BinaryUtils::toggle_bit(int64_t value, int64_t layer) { return this->operator()("toggle_bit", value, layer); }
+inline bool BinaryUtils::get_bit(int64_t value, int64_t layer) { return this->operator()("get_bit", value, layer); }
 
 #endif

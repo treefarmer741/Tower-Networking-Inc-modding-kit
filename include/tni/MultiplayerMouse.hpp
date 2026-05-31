@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_MULTIPLAYERMOUSE
 #define TNI_API_HEADER_MULTIPLAYERMOUSE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct MultiplayerMouse : public Node2D {
@@ -44,13 +44,13 @@ struct MultiplayerMouse : public Node2D {
 
 #include "MultiplayerInput.hpp"
 
-inline void MultiplayerMouse::click_selection(NodePath np) { voidcall("click_selection", np); }
-inline void MultiplayerMouse::pick_selection(NodePath np) { voidcall("pick_selection", np); }
-inline void MultiplayerMouse::drop_curr_picked() { voidcall("drop_curr_picked"); }
-inline void MultiplayerMouse::show_redcross() { voidcall("show_redcross"); }
-inline void MultiplayerMouse::hide_redcross() { voidcall("hide_redcross"); }
-inline Variant MultiplayerMouse::cast_and_detect_from_self_radius() { return operator()("cast_and_detect_from_self_radius"); }
-inline Variant MultiplayerMouse::cast_and_detect_from_self_position() { return operator()("cast_and_detect_from_self_position"); }
-inline void MultiplayerMouse::show_hint(String msg, Variant fontcol) { voidcall("show_hint", msg, fontcol); }
+inline void MultiplayerMouse::click_selection(NodePath np) { this->voidcall("click_selection", np); }
+inline void MultiplayerMouse::pick_selection(NodePath np) { this->voidcall("pick_selection", np); }
+inline void MultiplayerMouse::drop_curr_picked() { this->voidcall("drop_curr_picked"); }
+inline void MultiplayerMouse::show_redcross() { this->voidcall("show_redcross"); }
+inline void MultiplayerMouse::hide_redcross() { this->voidcall("hide_redcross"); }
+inline Variant MultiplayerMouse::cast_and_detect_from_self_radius() { return this->operator()("cast_and_detect_from_self_radius"); }
+inline Variant MultiplayerMouse::cast_and_detect_from_self_position() { return this->operator()("cast_and_detect_from_self_position"); }
+inline void MultiplayerMouse::show_hint(String msg, Variant fontcol) { this->voidcall("show_hint", msg, fontcol); }
 
 #endif

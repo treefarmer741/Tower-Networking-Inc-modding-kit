@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TNIPANEL
 #define TNI_API_HEADER_TNIPANEL
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TniPanel : public PanelContainer {
@@ -26,7 +26,7 @@ struct TniPanel : public PanelContainer {
 };
 
 
-inline void TniPanel::play(double elapsed_s) { voidcall("play", elapsed_s); }
-inline void TniPanel::pause() { voidcall("pause"); }
+inline void TniPanel::play(double elapsed_s) { this->voidcall("play", elapsed_s); }
+inline void TniPanel::pause() { this->voidcall("pause"); }
 
 #endif

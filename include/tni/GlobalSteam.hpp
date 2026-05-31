@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GLOBALSTEAM
 #define TNI_API_HEADER_GLOBALSTEAM
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GlobalSteam : public Node {
@@ -33,11 +33,11 @@ struct GlobalSteam : public Node {
 };
 
 
-inline void GlobalSteam::shutdown() { voidcall("shutdown"); }
-inline void GlobalSteam::initialize(bool autoquit_on_fail, int64_t steam_app_id) { voidcall("initialize", autoquit_on_fail, steam_app_id); }
-inline bool GlobalSteam::test_steamlib_file_tampering() { return operator()("test_steamlib_file_tampering"); }
-inline bool GlobalSteam::test_online_fix() { return operator()("test_online_fix"); }
-inline bool GlobalSteam::test_gbe_loader() { return operator()("test_gbe_loader"); }
-inline Variant GlobalSteam::get_parent_process_name() { return operator()("get_parent_process_name"); }
+inline void GlobalSteam::shutdown() { this->voidcall("shutdown"); }
+inline void GlobalSteam::initialize(bool autoquit_on_fail, int64_t steam_app_id) { this->voidcall("initialize", autoquit_on_fail, steam_app_id); }
+inline bool GlobalSteam::test_steamlib_file_tampering() { return this->operator()("test_steamlib_file_tampering"); }
+inline bool GlobalSteam::test_online_fix() { return this->operator()("test_online_fix"); }
+inline bool GlobalSteam::test_gbe_loader() { return this->operator()("test_gbe_loader"); }
+inline Variant GlobalSteam::get_parent_process_name() { return this->operator()("get_parent_process_name"); }
 
 #endif

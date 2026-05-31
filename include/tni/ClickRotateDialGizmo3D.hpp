@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CLICKROTATEDIALGIZMO3D
 #define TNI_API_HEADER_CLICKROTATEDIALGIZMO3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct ClickRotateDialGizmo3D : public Area3D {
@@ -32,6 +32,6 @@ struct ClickRotateDialGizmo3D : public Area3D {
 };
 
 
-inline void ClickRotateDialGizmo3D::set_gizmo_value(double value_f, double _unused_normal_factor) { voidcall("set_gizmo_value", value_f, _unused_normal_factor); }
+inline void ClickRotateDialGizmo3D::set_gizmo_value(double value_f, double _unused_normal_factor) { this->voidcall("set_gizmo_value", value_f, _unused_normal_factor); }
 
 #endif

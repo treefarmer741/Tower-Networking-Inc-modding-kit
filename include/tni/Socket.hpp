@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SOCKET
 #define TNI_API_HEADER_SOCKET
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Socket : public Area2D {
@@ -31,6 +31,7 @@ struct Socket : public Area2D {
 		DDR3_SLOT = 110,
 		DDR4_SLOT = 111,
 		STORAGE_SLOT = 200,
+		SPOOL_HOOK = 250,
 	};
 
 	PROPERTY(connection, Variant);
@@ -48,7 +49,7 @@ struct Socket : public Area2D {
 
 	inline void block();
 	inline void unblock();
-	inline Variant compatible_with(Plug plug);
+	inline Variant compatible_with(const Plug& plug);
 	inline void show_hint(String msg);
 };
 
@@ -56,9 +57,9 @@ struct Socket : public Area2D {
 #include "GraphController.hpp"
 #include "Plug.hpp"
 
-inline void Socket::block() { voidcall("block"); }
-inline void Socket::unblock() { voidcall("unblock"); }
-inline Variant Socket::compatible_with(Plug plug) { return operator()("compatible_with", plug); }
-inline void Socket::show_hint(String msg) { voidcall("show_hint", msg); }
+inline void Socket::block() { this->voidcall("block"); }
+inline void Socket::unblock() { this->voidcall("unblock"); }
+inline Variant Socket::compatible_with(const Plug& plug) { return this->operator()("compatible_with", Object(reinterpret_cast<const Object*>(&plug)->address())); }
+inline void Socket::show_hint(String msg) { this->voidcall("show_hint", msg); }
 
 #endif

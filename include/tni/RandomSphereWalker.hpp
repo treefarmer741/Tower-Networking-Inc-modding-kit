@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RANDOMSPHEREWALKER
 #define TNI_API_HEADER_RANDOMSPHEREWALKER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct RandomSphereWalker : public Node3D {
@@ -27,6 +27,6 @@ struct RandomSphereWalker : public Node3D {
 };
 
 
-inline void RandomSphereWalker::trigger_random_walk() { voidcall("trigger_random_walk"); }
+inline void RandomSphereWalker::trigger_random_walk() { this->voidcall("trigger_random_walk"); }
 
 #endif

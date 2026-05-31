@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GUIDENODE2D
 #define TNI_API_HEADER_GUIDENODE2D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GuideNode2D : public Node2D {
@@ -42,12 +42,12 @@ struct GuideNode2D : public Node2D {
 
 #include "GuideNode2D.hpp"
 
-inline void GuideNode2D::set_input_target(Variant t) { voidcall("set_input_target", t); }
-inline void GuideNode2D::mark_complete() { voidcall("mark_complete"); }
-inline void GuideNode2D::mark_fulfill() { voidcall("mark_fulfill"); }
-inline void GuideNode2D::mark_previous_incomplete() { voidcall("mark_previous_incomplete"); }
-inline void GuideNode2D::activate_guide() { voidcall("activate_guide"); }
-inline void GuideNode2D::handle_gui_input(InputEvent event) { voidcall("handle_gui_input", event); }
-inline void GuideNode2D::handle_collision_input(Node _n, InputEvent event, int64_t _shape_idx) { voidcall("handle_collision_input", _n, event, _shape_idx); }
+inline void GuideNode2D::set_input_target(Variant t) { this->voidcall("set_input_target", t); }
+inline void GuideNode2D::mark_complete() { this->voidcall("mark_complete"); }
+inline void GuideNode2D::mark_fulfill() { this->voidcall("mark_fulfill"); }
+inline void GuideNode2D::mark_previous_incomplete() { this->voidcall("mark_previous_incomplete"); }
+inline void GuideNode2D::activate_guide() { this->voidcall("activate_guide"); }
+inline void GuideNode2D::handle_gui_input(InputEvent event) { this->voidcall("handle_gui_input", event); }
+inline void GuideNode2D::handle_collision_input(Node _n, InputEvent event, int64_t _shape_idx) { this->voidcall("handle_collision_input", _n, event, _shape_idx); }
 
 #endif

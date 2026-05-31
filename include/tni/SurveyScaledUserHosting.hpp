@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_SURVEYSCALEDUSERHOSTING
 #define TNI_API_HEADER_SURVEYSCALEDUSERHOSTING
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "UserHosting.hpp"
 
-struct SurveyScaledUserHosting : public Node {
-	using Node::Node;
+struct SurveyScaledUserHosting : public UserHosting {
+	using UserHosting::UserHosting;
 
-	constexpr SurveyScaledUserHosting(Node base) : Node{base} {}
-	constexpr SurveyScaledUserHosting(uint64_t addr) : Node{addr} {}
+	constexpr SurveyScaledUserHosting(UserHosting base) : UserHosting{base} {}
+	constexpr SurveyScaledUserHosting(uint64_t addr) : UserHosting{addr} {}
 	constexpr SurveyScaledUserHosting(Object obj) : SurveyScaledUserHosting{obj.address()} {}
 	SurveyScaledUserHosting(Variant variant) : SurveyScaledUserHosting{variant.as_object().address()} {}
 
@@ -58,7 +59,8 @@ struct SurveyScaledUserHosting : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "LogicControllerUser.hpp"
@@ -67,17 +69,18 @@ struct SurveyScaledUserHosting : public Node {
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline int64_t SurveyScaledUserHosting::count_possible_users_from_surveys(bool exclude_inactive) { return operator()("count_possible_users_from_surveys", exclude_inactive); }
-inline Variant SurveyScaledUserHosting::try_roll_fqdn(int64_t mix) { return operator()("try_roll_fqdn", mix); }
-inline Variant SurveyScaledUserHosting::get_fqdn() { return operator()("get_fqdn"); }
-inline void SurveyScaledUserHosting::force_fqdn_reroll() { voidcall("force_fqdn_reroll"); }
-inline void SurveyScaledUserHosting::do_self_produce() { voidcall("do_self_produce"); }
-inline void SurveyScaledUserHosting::tick() { voidcall("tick"); }
-inline String SurveyScaledUserHosting::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void SurveyScaledUserHosting::start() { voidcall("start"); }
-inline void SurveyScaledUserHosting::stop() { voidcall("stop"); }
-inline void SurveyScaledUserHosting::uninstall() { voidcall("uninstall"); }
-inline void SurveyScaledUserHosting::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline bool SurveyScaledUserHosting::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline int64_t SurveyScaledUserHosting::count_possible_users_from_surveys(bool exclude_inactive) { return this->operator()("count_possible_users_from_surveys", exclude_inactive); }
+inline Variant SurveyScaledUserHosting::try_roll_fqdn(int64_t mix) { return this->operator()("try_roll_fqdn", mix); }
+inline Variant SurveyScaledUserHosting::get_fqdn() { return this->operator()("get_fqdn"); }
+inline void SurveyScaledUserHosting::force_fqdn_reroll() { this->voidcall("force_fqdn_reroll"); }
+inline void SurveyScaledUserHosting::do_self_produce() { this->voidcall("do_self_produce"); }
+inline void SurveyScaledUserHosting::tick() { this->voidcall("tick"); }
+inline String SurveyScaledUserHosting::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void SurveyScaledUserHosting::start() { this->voidcall("start"); }
+inline void SurveyScaledUserHosting::stop() { this->voidcall("stop"); }
+inline void SurveyScaledUserHosting::uninstall() { this->voidcall("uninstall"); }
+inline void SurveyScaledUserHosting::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline bool SurveyScaledUserHosting::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool SurveyScaledUserHosting::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

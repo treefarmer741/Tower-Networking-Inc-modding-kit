@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_GUIDESTAGE
 #define TNI_API_HEADER_GUIDESTAGE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct GuideStage : public Resource {
@@ -24,16 +24,16 @@ struct GuideStage : public Resource {
 	PROPERTY(stage_idx, int64_t);
 
 	inline void mark_complete();
-	inline void setup_stage(GuideNode2D origin, int64_t stage_id);
+	inline void setup_stage(const GuideNode2D& origin, int64_t stage_id);
 	inline void handle_target_ready(String key, CanvasItem _target_n);
 	inline void overwrite_origin_draw_settings();
 };
 
 #include "GuideNode2D.hpp"
 
-inline void GuideStage::mark_complete() { voidcall("mark_complete"); }
-inline void GuideStage::setup_stage(GuideNode2D origin, int64_t stage_id) { voidcall("setup_stage", origin, stage_id); }
-inline void GuideStage::handle_target_ready(String key, CanvasItem _target_n) { voidcall("handle_target_ready", key, _target_n); }
-inline void GuideStage::overwrite_origin_draw_settings() { voidcall("overwrite_origin_draw_settings"); }
+inline void GuideStage::mark_complete() { this->voidcall("mark_complete"); }
+inline void GuideStage::setup_stage(const GuideNode2D& origin, int64_t stage_id) { this->voidcall("setup_stage", Object(reinterpret_cast<const Object*>(&origin)->address()), stage_id); }
+inline void GuideStage::handle_target_ready(String key, CanvasItem _target_n) { this->voidcall("handle_target_ready", key, _target_n); }
+inline void GuideStage::overwrite_origin_draw_settings() { this->voidcall("overwrite_origin_draw_settings"); }
 
 #endif

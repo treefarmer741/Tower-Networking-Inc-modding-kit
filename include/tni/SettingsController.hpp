@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SETTINGSCONTROLLER
 #define TNI_API_HEADER_SETTINGSCONTROLLER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SettingsController : public Node {
@@ -27,10 +27,10 @@ struct SettingsController : public Node {
 
 #include "BaseSettings.hpp"
 
-inline void SettingsController::initialize_and_configure_settings(String settings_class_path, String settings_file_path) { voidcall("initialize_and_configure_settings", settings_class_path, settings_file_path); }
-inline void SettingsController::persist_settings_to_file() { voidcall("persist_settings_to_file"); }
-inline void SettingsController::restore_or_create_settings_from_file() { voidcall("restore_or_create_settings_from_file"); }
-inline void SettingsController::reset_defaults(bool persist) { voidcall("reset_defaults", persist); }
-inline void SettingsController::apply(bool persist) { voidcall("apply", persist); }
+inline void SettingsController::initialize_and_configure_settings(String settings_class_path, String settings_file_path) { this->voidcall("initialize_and_configure_settings", settings_class_path, settings_file_path); }
+inline void SettingsController::persist_settings_to_file() { this->voidcall("persist_settings_to_file"); }
+inline void SettingsController::restore_or_create_settings_from_file() { this->voidcall("restore_or_create_settings_from_file"); }
+inline void SettingsController::reset_defaults(bool persist) { this->voidcall("reset_defaults", persist); }
+inline void SettingsController::apply(bool persist) { this->voidcall("apply", persist); }
 
 #endif

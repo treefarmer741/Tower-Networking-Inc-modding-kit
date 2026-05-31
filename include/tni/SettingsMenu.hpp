@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_SETTINGSMENU
 #define TNI_API_HEADER_SETTINGSMENU
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SettingsMenu : public Control {
@@ -26,7 +26,7 @@ struct SettingsMenu : public Control {
 };
 
 
-inline Variant SettingsMenu::get_loaded_langs() { return operator()("get_loaded_langs"); }
-inline String SettingsMenu::get_locale_from_lang(String langname) { return operator()("get_locale_from_lang", langname); }
+inline Variant SettingsMenu::get_loaded_langs() { return this->operator()("get_loaded_langs"); }
+inline String SettingsMenu::get_locale_from_lang(String langname) { return this->operator()("get_locale_from_lang", langname); }
 
 #endif

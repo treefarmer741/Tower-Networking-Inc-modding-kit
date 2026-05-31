@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_NEWSBOX
 #define TNI_API_HEADER_NEWSBOX
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct NewsBox : public VBoxContainer {
@@ -21,6 +21,6 @@ struct NewsBox : public VBoxContainer {
 };
 
 
-inline void NewsBox::cycle_news() { voidcall("cycle_news"); }
+inline void NewsBox::cycle_news() { this->voidcall("cycle_news"); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_WORMBASE
 #define TNI_API_HEADER_WORMBASE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "TraversalBase.hpp"
 
-struct WormBase : public Node {
-	using Node::Node;
+struct WormBase : public TraversalBase {
+	using TraversalBase::TraversalBase;
 
-	constexpr WormBase(Node base) : Node{base} {}
-	constexpr WormBase(uint64_t addr) : Node{addr} {}
+	constexpr WormBase(TraversalBase base) : TraversalBase{base} {}
+	constexpr WormBase(uint64_t addr) : TraversalBase{addr} {}
 	constexpr WormBase(Object obj) : WormBase{obj.address()} {}
 	WormBase(Variant variant) : WormBase{variant.as_object().address()} {}
 
@@ -39,38 +40,32 @@ struct WormBase : public Node {
 	PROPERTY(host_controller, LogicController);
 
 	inline NetworkPacketRoot make_packet_root();
-	inline Variant make_traversal_packet(NetworkPacketRoot proot);
-	inline bool check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context);
-	inline Variant check_filter_passage(LogicController next_node, TraversalContext context);
-	inline bool check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth);
-	inline int64_t precallback_process(TraversalContext context, LogicController node, Variant via_port, Variant current_index, Variant current_depth);
+	inline Variant make_traversal_packet(const NetworkPacketRoot& proot);
 	inline void tick();
+	inline void client_sim();
 	inline String colorize_description(String ds);
 	inline void start();
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "LogicController.hpp"
 #include "NetworkPacketRoot.hpp"
-#include "LogicControllerSocket.hpp"
-#include "TraversalContext.hpp"
 #include "PacketControlModule.hpp"
 
-inline NetworkPacketRoot WormBase::make_packet_root() { return NetworkPacketRoot(operator()("make_packet_root").as_object().address()); }
-inline Variant WormBase::make_traversal_packet(NetworkPacketRoot proot) { return operator()("make_traversal_packet", proot); }
-inline bool WormBase::check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context) { return operator()("check_routability", from_node, via_port, context); }
-inline Variant WormBase::check_filter_passage(LogicController next_node, TraversalContext context) { return operator()("check_filter_passage", next_node, context); }
-inline bool WormBase::check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth) { return operator()("check_traversibility", context, from_node, via_port, current_depth); }
-inline int64_t WormBase::precallback_process(TraversalContext context, LogicController node, Variant via_port, Variant current_index, Variant current_depth) { return operator()("precallback_process", context, node, via_port, current_index, current_depth); }
-inline void WormBase::tick() { voidcall("tick"); }
-inline String WormBase::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void WormBase::start() { voidcall("start"); }
-inline void WormBase::stop() { voidcall("stop"); }
-inline void WormBase::uninstall() { voidcall("uninstall"); }
-inline void WormBase::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline bool WormBase::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline NetworkPacketRoot WormBase::make_packet_root() { return NetworkPacketRoot(this->operator()("make_packet_root").as_object().address()); }
+inline Variant WormBase::make_traversal_packet(const NetworkPacketRoot& proot) { return this->operator()("make_traversal_packet", Object(reinterpret_cast<const Object*>(&proot)->address())); }
+inline void WormBase::tick() { this->voidcall("tick"); }
+inline void WormBase::client_sim() { this->voidcall("client_sim"); }
+inline String WormBase::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void WormBase::start() { this->voidcall("start"); }
+inline void WormBase::stop() { this->voidcall("stop"); }
+inline void WormBase::uninstall() { this->voidcall("uninstall"); }
+inline void WormBase::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline bool WormBase::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool WormBase::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

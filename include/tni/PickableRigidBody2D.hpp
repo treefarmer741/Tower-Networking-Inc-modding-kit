@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PICKABLERIGIDBODY2D
 #define TNI_API_HEADER_PICKABLERIGIDBODY2D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PickableRigidBody2D : public RigidBody2D {
@@ -42,11 +42,11 @@ struct PickableRigidBody2D : public RigidBody2D {
 };
 
 
-inline void PickableRigidBody2D::reset_child_z_index() { voidcall("reset_child_z_index"); }
-inline void PickableRigidBody2D::lift_child_z_index(int64_t base_val) { voidcall("lift_child_z_index", base_val); }
-inline Variant PickableRigidBody2D::get_picker_type(Variant test_picker) { return operator()("get_picker_type", test_picker); }
-inline bool PickableRigidBody2D::pickup(Variant new_picker) { return operator()("pickup", new_picker); }
-inline bool PickableRigidBody2D::drop(Variant impulse) { return operator()("drop", impulse); }
-inline void PickableRigidBody2D::setup_teleport(Variant gpos) { voidcall("setup_teleport", gpos); }
+inline void PickableRigidBody2D::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void PickableRigidBody2D::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline Variant PickableRigidBody2D::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
+inline bool PickableRigidBody2D::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
+inline bool PickableRigidBody2D::drop(Variant impulse) { return this->operator()("drop", impulse); }
+inline void PickableRigidBody2D::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_SCANNINGRESEARCH
 #define TNI_API_HEADER_SCANNINGRESEARCH
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "PropMod.hpp"
 
-struct ScanningResearch : public Node {
-	using Node::Node;
+struct ScanningResearch : public PropMod {
+	using PropMod::PropMod;
 
-	constexpr ScanningResearch(Node base) : Node{base} {}
-	constexpr ScanningResearch(uint64_t addr) : Node{addr} {}
+	constexpr ScanningResearch(PropMod base) : PropMod{base} {}
+	constexpr ScanningResearch(uint64_t addr) : PropMod{addr} {}
 	constexpr ScanningResearch(Object obj) : ScanningResearch{obj.address()} {}
 	ScanningResearch(Variant variant) : ScanningResearch{variant.as_object().address()} {}
 
@@ -42,13 +43,13 @@ struct ScanningResearch : public Node {
 
 #include "PropMod.hpp"
 
-inline void ScanningResearch::apply_mod() { voidcall("apply_mod"); }
-inline void ScanningResearch::activate_local_effects() { voidcall("activate_local_effects"); }
-inline String ScanningResearch::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String ScanningResearch::get_lore() { return operator()("get_lore"); }
-inline String ScanningResearch::get_description() { return operator()("get_description"); }
-inline Variant ScanningResearch::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void ScanningResearch::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void ScanningResearch::update_state() { voidcall("update_state"); }
+inline void ScanningResearch::apply_mod() { this->voidcall("apply_mod"); }
+inline void ScanningResearch::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String ScanningResearch::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String ScanningResearch::get_lore() { return this->operator()("get_lore"); }
+inline String ScanningResearch::get_description() { return this->operator()("get_description"); }
+inline Variant ScanningResearch::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void ScanningResearch::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void ScanningResearch::update_state() { this->voidcall("update_state"); }
 
 #endif

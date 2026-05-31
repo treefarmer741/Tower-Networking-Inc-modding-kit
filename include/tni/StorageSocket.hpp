@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_STORAGESOCKET
 #define TNI_API_HEADER_STORAGESOCKET
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "Socket.hpp"
 
-struct StorageSocket : public Area2D {
-	using Area2D::Area2D;
+struct StorageSocket : public Socket {
+	using Socket::Socket;
 
-	constexpr StorageSocket(Area2D base) : Area2D{base} {}
-	constexpr StorageSocket(uint64_t addr) : Area2D{addr} {}
+	constexpr StorageSocket(Socket base) : Socket{base} {}
+	constexpr StorageSocket(uint64_t addr) : Socket{addr} {}
 	constexpr StorageSocket(Object obj) : StorageSocket{obj.address()} {}
 	StorageSocket(Variant variant) : StorageSocket{variant.as_object().address()} {}
 
@@ -30,7 +31,7 @@ struct StorageSocket : public Area2D {
 
 	inline void block();
 	inline void unblock();
-	inline Variant compatible_with(Plug plug);
+	inline Variant compatible_with(const Plug& plug);
 	inline void show_hint(String msg);
 };
 
@@ -38,9 +39,9 @@ struct StorageSocket : public Area2D {
 #include "GraphController.hpp"
 #include "Plug.hpp"
 
-inline void StorageSocket::block() { voidcall("block"); }
-inline void StorageSocket::unblock() { voidcall("unblock"); }
-inline Variant StorageSocket::compatible_with(Plug plug) { return operator()("compatible_with", plug); }
-inline void StorageSocket::show_hint(String msg) { voidcall("show_hint", msg); }
+inline void StorageSocket::block() { this->voidcall("block"); }
+inline void StorageSocket::unblock() { this->voidcall("unblock"); }
+inline Variant StorageSocket::compatible_with(const Plug& plug) { return this->operator()("compatible_with", Object(reinterpret_cast<const Object*>(&plug)->address())); }
+inline void StorageSocket::show_hint(String msg) { this->voidcall("show_hint", msg); }
 
 #endif

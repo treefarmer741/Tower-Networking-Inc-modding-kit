@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_CAMERA
 #define TNI_API_HEADER_CAMERA
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Camera : public Container {
-	using Container::Container;
+struct Camera : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Camera(Container base) : Container{base} {}
-	constexpr Camera(uint64_t addr) : Container{addr} {}
+	constexpr Camera(ScreenApp base) : ScreenApp{base} {}
+	constexpr Camera(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Camera(Object obj) : Camera{obj.address()} {}
 	Camera(Variant variant) : Camera{variant.as_object().address()} {}
 
@@ -44,15 +45,15 @@ struct Camera : public Container {
 
 #include "MainPane.hpp"
 
-inline Variant Camera::capture_right_portion() { return operator()("capture_right_portion"); }
-inline void Camera::hide_all() { voidcall("hide_all"); }
-inline void Camera::launch() { voidcall("launch"); }
-inline void Camera::minimize() { voidcall("minimize"); }
-inline void Camera::submit_screenshots() { voidcall("submit_screenshots"); }
-inline void Camera::display_camera_viewport() { voidcall("display_camera_viewport"); }
-inline void Camera::store_latest_pic_in_gallery() { voidcall("store_latest_pic_in_gallery"); }
-inline void Camera::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Camera::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Camera::get_main_pane() { return operator()("get_main_pane"); }
+inline Variant Camera::capture_right_portion() { return this->operator()("capture_right_portion"); }
+inline void Camera::hide_all() { this->voidcall("hide_all"); }
+inline void Camera::launch() { this->voidcall("launch"); }
+inline void Camera::minimize() { this->voidcall("minimize"); }
+inline void Camera::submit_screenshots() { this->voidcall("submit_screenshots"); }
+inline void Camera::display_camera_viewport() { this->voidcall("display_camera_viewport"); }
+inline void Camera::store_latest_pic_in_gallery() { this->voidcall("store_latest_pic_in_gallery"); }
+inline void Camera::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Camera::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Camera::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

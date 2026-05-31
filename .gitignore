@@ -1,5 +1,4 @@
 **/.build/
-**/.embedded/
 **/.zig/
 *.o
 *.a
@@ -8,5 +7,7 @@
 
 changes.diff
 
-!programs/luajit/libluajit.a
-!programs/luajit/zig-libluajit.a
+mods/**/*.elf
+
+!programs/luajit-support/libluajit.a
+!programs/luajit-support/zig-libluajit.a

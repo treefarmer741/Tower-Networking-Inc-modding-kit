@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TOWERLINK
 #define TNI_API_HEADER_TOWERLINK
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct TowerLink : public Container {
-	using Container::Container;
+struct TowerLink : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr TowerLink(Container base) : Container{base} {}
-	constexpr TowerLink(uint64_t addr) : Container{addr} {}
+	constexpr TowerLink(ScreenApp base) : ScreenApp{base} {}
+	constexpr TowerLink(uint64_t addr) : ScreenApp{addr} {}
 	constexpr TowerLink(Object obj) : TowerLink{obj.address()} {}
 	TowerLink(Variant variant) : TowerLink{variant.as_object().address()} {}
 
@@ -57,10 +58,10 @@ struct TowerLink : public Container {
 #include "LinkOutlet.hpp"
 #include "MainPane.hpp"
 
-inline void TowerLink::launch() { voidcall("launch"); }
-inline void TowerLink::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void TowerLink::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant TowerLink::get_main_pane() { return operator()("get_main_pane"); }
-inline void TowerLink::minimize() { voidcall("minimize"); }
+inline void TowerLink::launch() { this->voidcall("launch"); }
+inline void TowerLink::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void TowerLink::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant TowerLink::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void TowerLink::minimize() { this->voidcall("minimize"); }
 
 #endif

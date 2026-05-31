@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_LINKOUTLET
 #define TNI_API_HEADER_LINKOUTLET
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "FixtureOutlet.hpp"
 
-struct LinkOutlet : public Area2D {
-	using Area2D::Area2D;
+struct LinkOutlet : public FixtureOutlet {
+	using FixtureOutlet::FixtureOutlet;
 
-	constexpr LinkOutlet(Area2D base) : Area2D{base} {}
-	constexpr LinkOutlet(uint64_t addr) : Area2D{addr} {}
+	constexpr LinkOutlet(FixtureOutlet base) : FixtureOutlet{base} {}
+	constexpr LinkOutlet(uint64_t addr) : FixtureOutlet{addr} {}
 	constexpr LinkOutlet(Object obj) : LinkOutlet{obj.address()} {}
 	LinkOutlet(Variant variant) : LinkOutlet{variant.as_object().address()} {}
 
@@ -24,12 +25,12 @@ struct LinkOutlet : public Area2D {
 	PROPERTY(tower_link, TowerNetworkLink);
 	PROPERTY(serial_num, String);
 	PROPERTY(linked, bool);
-	PROPERTY(floor_num, int64_t);
 	PROPERTY(socket, Socket);
+	PROPERTY(floor_num, int64_t);
 
-	inline void get_link_type_string(LinkOutlet lo);
+	inline void get_link_type_string(const LinkOutlet& lo);
 	inline void update_link_outlet_labels();
-	inline void link_setup(TowerNetworkLink lnk);
+	inline void link_setup(const TowerNetworkLink& lnk);
 	inline void remove();
 	inline Variant debug_monitor_callback();
 };
@@ -38,10 +39,10 @@ struct LinkOutlet : public Area2D {
 #include "Socket.hpp"
 #include "LinkOutlet.hpp"
 
-inline void LinkOutlet::get_link_type_string(LinkOutlet lo) { voidcall("get_link_type_string", lo); }
-inline void LinkOutlet::update_link_outlet_labels() { voidcall("update_link_outlet_labels"); }
-inline void LinkOutlet::link_setup(TowerNetworkLink lnk) { voidcall("link_setup", lnk); }
-inline void LinkOutlet::remove() { voidcall("remove"); }
-inline Variant LinkOutlet::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
+inline void LinkOutlet::get_link_type_string(const LinkOutlet& lo) { this->voidcall("get_link_type_string", Object(reinterpret_cast<const Object*>(&lo)->address())); }
+inline void LinkOutlet::update_link_outlet_labels() { this->voidcall("update_link_outlet_labels"); }
+inline void LinkOutlet::link_setup(const TowerNetworkLink& lnk) { this->voidcall("link_setup", Object(reinterpret_cast<const Object*>(&lnk)->address())); }
+inline void LinkOutlet::remove() { this->voidcall("remove"); }
+inline Variant LinkOutlet::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
 
 #endif

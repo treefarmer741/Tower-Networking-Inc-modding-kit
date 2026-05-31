@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PROGRAM
 #define TNI_API_HEADER_PROGRAM
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Program : public Node {
@@ -30,6 +30,7 @@ struct Program : public Node {
 		ALLOW_VLAN_TAGGING = 10,
 		ALLOW_TRAFFIC_SPLITTING = 11,
 		ALLOW_STP_PORT_CONTROL = 12,
+		ALLOW_PACKET_TRANSLATION = 13,
 	};
 
 	PROPERTY(cpu_load, int64_t);
@@ -53,18 +54,20 @@ struct Program : public Node {
 	inline void uninstall();
 	inline void install(Variant _install_opts);
 	inline void tick();
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline String Program::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void Program::start() { voidcall("start"); }
-inline void Program::stop() { voidcall("stop"); }
-inline void Program::uninstall() { voidcall("uninstall"); }
-inline void Program::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void Program::tick() { voidcall("tick"); }
-inline bool Program::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline String Program::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void Program::start() { this->voidcall("start"); }
+inline void Program::stop() { this->voidcall("stop"); }
+inline void Program::uninstall() { this->voidcall("uninstall"); }
+inline void Program::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline void Program::tick() { this->voidcall("tick"); }
+inline bool Program::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool Program::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

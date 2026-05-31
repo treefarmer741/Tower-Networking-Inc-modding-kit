@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_VERTICALLINKVIZ
 #define TNI_API_HEADER_VERTICALLINKVIZ
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct VerticalLinkviz : public ScrollContainer {
@@ -28,8 +28,8 @@ struct VerticalLinkviz : public ScrollContainer {
 };
 
 
-inline Variant VerticalLinkviz::set_link_data(Variant link_data) { return operator()("set_link_data", link_data); }
-inline void VerticalLinkviz::make_link_displays() { voidcall("make_link_displays"); }
-inline void VerticalLinkviz::refresh() { voidcall("refresh"); }
+inline Variant VerticalLinkviz::set_link_data(Variant link_data) { return this->operator()("set_link_data", link_data); }
+inline void VerticalLinkviz::make_link_displays() { this->voidcall("make_link_displays"); }
+inline void VerticalLinkviz::refresh() { this->voidcall("refresh"); }
 
 #endif

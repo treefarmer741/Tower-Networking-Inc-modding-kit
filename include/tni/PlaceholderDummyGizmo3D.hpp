@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_PLACEHOLDERDUMMYGIZMO3D
 #define TNI_API_HEADER_PLACEHOLDERDUMMYGIZMO3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PlaceholderDummyGizmo3D : public Object {
@@ -20,6 +20,6 @@ struct PlaceholderDummyGizmo3D : public Object {
 };
 
 
-inline void PlaceholderDummyGizmo3D::set_gizmo_value(Variant v, double _unused_normal_factor) { voidcall("set_gizmo_value", v, _unused_normal_factor); }
+inline void PlaceholderDummyGizmo3D::set_gizmo_value(Variant v, double _unused_normal_factor) { this->voidcall("set_gizmo_value", v, _unused_normal_factor); }
 
 #endif

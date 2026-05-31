@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_ALWAYSPRODUCE
 #define TNI_API_HEADER_ALWAYSPRODUCE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "Program.hpp"
 
-struct AlwaysProduce : public Node {
-	using Node::Node;
+struct AlwaysProduce : public Program {
+	using Program::Program;
 
-	constexpr AlwaysProduce(Node base) : Node{base} {}
-	constexpr AlwaysProduce(uint64_t addr) : Node{addr} {}
+	constexpr AlwaysProduce(Program base) : Program{base} {}
+	constexpr AlwaysProduce(uint64_t addr) : Program{addr} {}
 	constexpr AlwaysProduce(Object obj) : AlwaysProduce{obj.address()} {}
 	AlwaysProduce(Variant variant) : AlwaysProduce{variant.as_object().address()} {}
 
@@ -43,29 +44,31 @@ struct AlwaysProduce : public Node {
 	PROPERTY(is_running, bool);
 	PROPERTY(host_controller, LogicController);
 
-	inline Variant get_produce_limit(int64_t limit_type, int64_t lfact, LogicController node, int64_t pfact);
-	inline Variant compute_produce_limit(LogicController node);
+	inline Variant get_produce_limit(int64_t limit_type, int64_t lfact, const LogicController& node, int64_t pfact);
+	inline Variant compute_produce_limit(const LogicController& node);
 	inline void tick();
 	inline String colorize_description(String ds);
 	inline void start();
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline bool is_pkt_for_self(Variant packet);
 };
 
 #include "UseConfig.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline Variant AlwaysProduce::get_produce_limit(int64_t limit_type, int64_t lfact, LogicController node, int64_t pfact) { return operator()("get_produce_limit", limit_type, lfact, node, pfact); }
-inline Variant AlwaysProduce::compute_produce_limit(LogicController node) { return operator()("compute_produce_limit", node); }
-inline void AlwaysProduce::tick() { voidcall("tick"); }
-inline String AlwaysProduce::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void AlwaysProduce::start() { voidcall("start"); }
-inline void AlwaysProduce::stop() { voidcall("stop"); }
-inline void AlwaysProduce::uninstall() { voidcall("uninstall"); }
-inline void AlwaysProduce::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline bool AlwaysProduce::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
+inline Variant AlwaysProduce::get_produce_limit(int64_t limit_type, int64_t lfact, const LogicController& node, int64_t pfact) { return this->operator()("get_produce_limit", limit_type, lfact, Object(reinterpret_cast<const Object*>(&node)->address()), pfact); }
+inline Variant AlwaysProduce::compute_produce_limit(const LogicController& node) { return this->operator()("compute_produce_limit", Object(reinterpret_cast<const Object*>(&node)->address())); }
+inline void AlwaysProduce::tick() { this->voidcall("tick"); }
+inline String AlwaysProduce::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
+inline void AlwaysProduce::start() { this->voidcall("start"); }
+inline void AlwaysProduce::stop() { this->voidcall("stop"); }
+inline void AlwaysProduce::uninstall() { this->voidcall("uninstall"); }
+inline void AlwaysProduce::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
+inline bool AlwaysProduce::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline bool AlwaysProduce::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
 
 #endif

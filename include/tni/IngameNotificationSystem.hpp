@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_INGAMENOTIFICATIONSYSTEM
 #define TNI_API_HEADER_INGAMENOTIFICATIONSYSTEM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct IngameNotificationSystem : public Control {
@@ -22,7 +22,7 @@ struct IngameNotificationSystem : public Control {
 };
 
 
-inline void IngameNotificationSystem::display(String msg, int64_t linger_seconds, String style_type) { voidcall("display", msg, linger_seconds, style_type); }
-inline void IngameNotificationSystem::clear_notifications() { voidcall("clear_notifications"); }
+inline void IngameNotificationSystem::display(String msg, int64_t linger_seconds, String style_type) { this->voidcall("display", msg, linger_seconds, style_type); }
+inline void IngameNotificationSystem::clear_notifications() { this->voidcall("clear_notifications"); }
 
 #endif

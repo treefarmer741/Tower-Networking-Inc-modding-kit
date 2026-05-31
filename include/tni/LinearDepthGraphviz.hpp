@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_LINEARDEPTHGRAPHVIZ
 #define TNI_API_HEADER_LINEARDEPTHGRAPHVIZ
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct LinearDepthGraphviz : public ScrollContainer {
@@ -46,8 +46,8 @@ struct LinearDepthGraphviz : public ScrollContainer {
 };
 
 
-inline void LinearDepthGraphviz::clear() { voidcall("clear"); }
-inline Variant LinearDepthGraphviz::get_element(int64_t element_id) { return operator()("get_element", element_id); }
-inline Variant LinearDepthGraphviz::add_element(int64_t parent_id) { return operator()("add_element", parent_id); }
+inline void LinearDepthGraphviz::clear() { this->voidcall("clear"); }
+inline Variant LinearDepthGraphviz::get_element(int64_t element_id) { return this->operator()("get_element", element_id); }
+inline Variant LinearDepthGraphviz::add_element(int64_t parent_id) { return this->operator()("add_element", parent_id); }
 
 #endif

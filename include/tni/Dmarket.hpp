@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_DMARKET
 #define TNI_API_HEADER_DMARKET
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Dmarket : public Container {
-	using Container::Container;
+struct Dmarket : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Dmarket(Container base) : Container{base} {}
-	constexpr Dmarket(uint64_t addr) : Container{addr} {}
+	constexpr Dmarket(ScreenApp base) : ScreenApp{base} {}
+	constexpr Dmarket(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Dmarket(Object obj) : Dmarket{obj.address()} {}
 	Dmarket(Variant variant) : Dmarket{variant.as_object().address()} {}
 
@@ -41,15 +42,15 @@ struct Dmarket : public Container {
 #include "DeviceMerchant.hpp"
 #include "MainPane.hpp"
 
-inline void Dmarket::launch() { voidcall("launch"); }
-inline void Dmarket::display_merchants() { voidcall("display_merchants"); }
-inline void Dmarket::display_listings() { voidcall("display_listings"); }
-inline void Dmarket::renew_cart_state() { voidcall("renew_cart_state"); }
-inline void Dmarket::show_final_screen() { voidcall("show_final_screen"); }
-inline void Dmarket::show_pingback(Variant msg) { voidcall("show_pingback", msg); }
-inline void Dmarket::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Dmarket::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Dmarket::get_main_pane() { return operator()("get_main_pane"); }
-inline void Dmarket::minimize() { voidcall("minimize"); }
+inline void Dmarket::launch() { this->voidcall("launch"); }
+inline void Dmarket::display_merchants() { this->voidcall("display_merchants"); }
+inline void Dmarket::display_listings() { this->voidcall("display_listings"); }
+inline void Dmarket::renew_cart_state() { this->voidcall("renew_cart_state"); }
+inline void Dmarket::show_final_screen() { this->voidcall("show_final_screen"); }
+inline void Dmarket::show_pingback(Variant msg) { this->voidcall("show_pingback", msg); }
+inline void Dmarket::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Dmarket::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Dmarket::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void Dmarket::minimize() { this->voidcall("minimize"); }
 
 #endif

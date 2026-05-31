@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_ELEVATORPANELA
 #define TNI_API_HEADER_ELEVATORPANELA
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct ElevatorPanelA : public Area2D {
@@ -27,6 +27,6 @@ struct ElevatorPanelA : public Area2D {
 
 #include "Location.hpp"
 
-inline void ElevatorPanelA::time_mult_updated(double time_mult_delta) { voidcall("time_mult_updated", time_mult_delta); }
+inline void ElevatorPanelA::time_mult_updated(double time_mult_delta) { this->voidcall("time_mult_updated", time_mult_delta); }
 
 #endif

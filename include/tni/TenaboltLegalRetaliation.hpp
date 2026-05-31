@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TENABOLTLEGALRETALIATION
 #define TNI_API_HEADER_TENABOLTLEGALRETALIATION
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "MerchantListingMod.hpp"
 
-struct TenaboltLegalRetaliation : public Node {
-	using Node::Node;
+struct TenaboltLegalRetaliation : public MerchantListingMod {
+	using MerchantListingMod::MerchantListingMod;
 
-	constexpr TenaboltLegalRetaliation(Node base) : Node{base} {}
-	constexpr TenaboltLegalRetaliation(uint64_t addr) : Node{addr} {}
+	constexpr TenaboltLegalRetaliation(MerchantListingMod base) : MerchantListingMod{base} {}
+	constexpr TenaboltLegalRetaliation(uint64_t addr) : MerchantListingMod{addr} {}
 	constexpr TenaboltLegalRetaliation(Object obj) : TenaboltLegalRetaliation{obj.address()} {}
 	TenaboltLegalRetaliation(Variant variant) : TenaboltLegalRetaliation{variant.as_object().address()} {}
 
@@ -48,13 +49,13 @@ struct TenaboltLegalRetaliation : public Node {
 
 #include "PropMod.hpp"
 
-inline void TenaboltLegalRetaliation::activate_local_effects() { voidcall("activate_local_effects"); }
-inline void TenaboltLegalRetaliation::apply_mod() { voidcall("apply_mod"); }
-inline String TenaboltLegalRetaliation::get_proposal_name() { return operator()("get_proposal_name"); }
-inline String TenaboltLegalRetaliation::get_lore() { return operator()("get_lore"); }
-inline String TenaboltLegalRetaliation::get_description() { return operator()("get_description"); }
-inline Variant TenaboltLegalRetaliation::test_adhoc_requirements() { return operator()("test_adhoc_requirements"); }
-inline void TenaboltLegalRetaliation::submit_and_apply() { voidcall("submit_and_apply"); }
-inline void TenaboltLegalRetaliation::update_state() { voidcall("update_state"); }
+inline void TenaboltLegalRetaliation::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline void TenaboltLegalRetaliation::apply_mod() { this->voidcall("apply_mod"); }
+inline String TenaboltLegalRetaliation::get_proposal_name() { return this->operator()("get_proposal_name"); }
+inline String TenaboltLegalRetaliation::get_lore() { return this->operator()("get_lore"); }
+inline String TenaboltLegalRetaliation::get_description() { return this->operator()("get_description"); }
+inline Variant TenaboltLegalRetaliation::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline void TenaboltLegalRetaliation::submit_and_apply() { this->voidcall("submit_and_apply"); }
+inline void TenaboltLegalRetaliation::update_state() { this->voidcall("update_state"); }
 
 #endif

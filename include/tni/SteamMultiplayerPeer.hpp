@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_STEAMMULTIPLAYERPEER
 #define TNI_API_HEADER_STEAMMULTIPLAYERPEER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct SteamMultiplayerPeer : public MultiplayerPeerExtension {
@@ -51,15 +51,15 @@ struct SteamMultiplayerPeer : public MultiplayerPeerExtension {
 };
 
 
-inline void SteamMultiplayerPeer::try_authenticate_with_steam() { voidcall("try_authenticate_with_steam"); }
-inline int64_t SteamMultiplayerPeer::set_public_lobby(bool enable) { return operator()("set_public_lobby", enable); }
-inline int64_t SteamMultiplayerPeer::try_setup_lobby(Variant lobby_data, int64_t max_peers, int64_t lobby_type) { return operator()("try_setup_lobby", lobby_data, max_peers, lobby_type); }
-inline int64_t SteamMultiplayerPeer::try_join_lobby(int64_t steam_lobby_id) { return operator()("try_join_lobby", steam_lobby_id); }
-inline Variant SteamMultiplayerPeer::get_lobby_members_steam_ids() { return operator()("get_lobby_members_steam_ids"); }
-inline void SteamMultiplayerPeer::send_lobby_pings() { voidcall("send_lobby_pings"); }
-inline void SteamMultiplayerPeer::send_p2p_ping(int64_t remote_steam_id) { voidcall("send_p2p_ping", remote_steam_id); }
-inline void SteamMultiplayerPeer::send_p2p_packet(int64_t remote_steam_id, PackedArray<uint8_t> packet_data, int64_t send_flags, int64_t channel) { voidcall("send_p2p_packet", remote_steam_id, packet_data, send_flags, channel); }
-inline void SteamMultiplayerPeer::queue_message_for_send(int64_t remote_steam_id, PackedArray<uint8_t> payload) { voidcall("queue_message_for_send", remote_steam_id, payload); }
-inline void SteamMultiplayerPeer::leave_lobby() { voidcall("leave_lobby"); }
+inline void SteamMultiplayerPeer::try_authenticate_with_steam() { this->voidcall("try_authenticate_with_steam"); }
+inline int64_t SteamMultiplayerPeer::set_public_lobby(bool enable) { return this->operator()("set_public_lobby", enable); }
+inline int64_t SteamMultiplayerPeer::try_setup_lobby(Variant lobby_data, int64_t max_peers, int64_t lobby_type) { return this->operator()("try_setup_lobby", lobby_data, max_peers, lobby_type); }
+inline int64_t SteamMultiplayerPeer::try_join_lobby(int64_t steam_lobby_id) { return this->operator()("try_join_lobby", steam_lobby_id); }
+inline Variant SteamMultiplayerPeer::get_lobby_members_steam_ids() { return this->operator()("get_lobby_members_steam_ids"); }
+inline void SteamMultiplayerPeer::send_lobby_pings() { this->voidcall("send_lobby_pings"); }
+inline void SteamMultiplayerPeer::send_p2p_ping(int64_t remote_steam_id) { this->voidcall("send_p2p_ping", remote_steam_id); }
+inline void SteamMultiplayerPeer::send_p2p_packet(int64_t remote_steam_id, PackedArray<uint8_t> packet_data, int64_t send_flags, int64_t channel) { this->voidcall("send_p2p_packet", remote_steam_id, packet_data, send_flags, channel); }
+inline void SteamMultiplayerPeer::queue_message_for_send(int64_t remote_steam_id, PackedArray<uint8_t> payload) { this->voidcall("queue_message_for_send", remote_steam_id, payload); }
+inline void SteamMultiplayerPeer::leave_lobby() { this->voidcall("leave_lobby"); }
 
 #endif

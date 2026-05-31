@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_MEMENTO
 #define TNI_API_HEADER_MEMENTO
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Memento : public Container {
-	using Container::Container;
+struct Memento : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Memento(Container base) : Container{base} {}
-	constexpr Memento(uint64_t addr) : Container{addr} {}
+	constexpr Memento(ScreenApp base) : ScreenApp{base} {}
+	constexpr Memento(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Memento(Object obj) : Memento{obj.address()} {}
 	Memento(Variant variant) : Memento{variant.as_object().address()} {}
 
@@ -19,6 +20,7 @@ struct Memento : public Container {
 	PROPERTY(dns_entries_ctl, Container);
 	PROPERTY(netaddr_assigns, Container);
 	PROPERTY(devunit_tracker, Container);
+	PROPERTY(cntop, OptionButton);
 	PROPERTY(ri_scn, PackedScene);
 	PROPERTY(dut_scn, PackedScene);
 	PROPERTY(main_pane, MainPane);
@@ -35,10 +37,10 @@ struct Memento : public Container {
 
 #include "MainPane.hpp"
 
-inline void Memento::launch() { voidcall("launch"); }
-inline void Memento::minimize() { voidcall("minimize"); }
-inline void Memento::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Memento::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Memento::get_main_pane() { return operator()("get_main_pane"); }
+inline void Memento::launch() { this->voidcall("launch"); }
+inline void Memento::minimize() { this->voidcall("minimize"); }
+inline void Memento::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Memento::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Memento::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

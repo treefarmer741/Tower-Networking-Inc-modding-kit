@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_DEVICESPAWNER
 #define TNI_API_HEADER_DEVICESPAWNER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct DeviceSpawner : public Node2D {
@@ -16,11 +16,11 @@ struct DeviceSpawner : public Node2D {
 
 
 
-	inline void add_device(DeviceUnit newnode);
+	inline void add_device(const DeviceUnit& newnode);
 };
 
 #include "DeviceUnit.hpp"
 
-inline void DeviceSpawner::add_device(DeviceUnit newnode) { voidcall("add_device", newnode); }
+inline void DeviceSpawner::add_device(const DeviceUnit& newnode) { this->voidcall("add_device", Object(reinterpret_cast<const Object*>(&newnode)->address())); }
 
 #endif

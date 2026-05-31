@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_WFCCELL
 #define TNI_API_HEADER_WFCCELL
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct WFCCell : public Object {
@@ -24,6 +24,6 @@ struct WFCCell : public Object {
 };
 
 
-inline void WFCCell::collapse() { voidcall("collapse"); }
+inline void WFCCell::collapse() { this->voidcall("collapse"); }
 
 #endif

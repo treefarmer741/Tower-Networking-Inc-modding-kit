@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_DECENTROMETER
 #define TNI_API_HEADER_DECENTROMETER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ScreenApp.hpp"
 
-struct Decentrometer : public Container {
-	using Container::Container;
+struct Decentrometer : public ScreenApp {
+	using ScreenApp::ScreenApp;
 
-	constexpr Decentrometer(Container base) : Container{base} {}
-	constexpr Decentrometer(uint64_t addr) : Container{addr} {}
+	constexpr Decentrometer(ScreenApp base) : ScreenApp{base} {}
+	constexpr Decentrometer(uint64_t addr) : ScreenApp{addr} {}
 	constexpr Decentrometer(Object obj) : Decentrometer{obj.address()} {}
 	Decentrometer(Variant variant) : Decentrometer{variant.as_object().address()} {}
 
@@ -28,8 +29,10 @@ struct Decentrometer : public Container {
 	PROPERTY(ex_amt_slider, HSlider);
 	PROPERTY(ex_refresh_tim, Timer);
 	PROPERTY(ex_ordcd_tim, Timer);
+	PROPERTY(ex_sell_intent_tim, Timer);
 	PROPERTY(ndsel_button, OptionButton);
 	PROPERTY(ndtot_label, Label);
+	PROPERTY(ex_status_label, Label);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);
 	PROPERTY(dynamic_container, Container);
@@ -44,10 +47,10 @@ struct Decentrometer : public Container {
 
 #include "MainPane.hpp"
 
-inline void Decentrometer::launch() { voidcall("launch"); }
-inline void Decentrometer::minimize() { voidcall("minimize"); }
-inline void Decentrometer::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Decentrometer::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Decentrometer::get_main_pane() { return operator()("get_main_pane"); }
+inline void Decentrometer::launch() { this->voidcall("launch"); }
+inline void Decentrometer::minimize() { this->voidcall("minimize"); }
+inline void Decentrometer::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Decentrometer::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Decentrometer::get_main_pane() { return this->operator()("get_main_pane"); }
 
 #endif

@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_WINDOWANDLIGHTRAY
 #define TNI_API_HEADER_WINDOWANDLIGHTRAY
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ParallaxWindow.hpp"
 
-struct WindowAndLightRay : public Node2D {
-	using Node2D::Node2D;
+struct WindowAndLightRay : public ParallaxWindow {
+	using ParallaxWindow::ParallaxWindow;
 
-	constexpr WindowAndLightRay(Node2D base) : Node2D{base} {}
-	constexpr WindowAndLightRay(uint64_t addr) : Node2D{addr} {}
+	constexpr WindowAndLightRay(ParallaxWindow base) : ParallaxWindow{base} {}
+	constexpr WindowAndLightRay(uint64_t addr) : ParallaxWindow{addr} {}
 	constexpr WindowAndLightRay(Object obj) : WindowAndLightRay{obj.address()} {}
 	WindowAndLightRay(Variant variant) : WindowAndLightRay{variant.as_object().address()} {}
 

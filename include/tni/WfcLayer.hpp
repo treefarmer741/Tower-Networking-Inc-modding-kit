@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_WFCLAYER
 #define TNI_API_HEADER_WFCLAYER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "ChunkedTerrainLayer.hpp"
 
-struct WfcLayer : public Node3D {
-	using Node3D::Node3D;
+struct WfcLayer : public ChunkedTerrainLayer {
+	using ChunkedTerrainLayer::ChunkedTerrainLayer;
 
-	constexpr WfcLayer(Node3D base) : Node3D{base} {}
-	constexpr WfcLayer(uint64_t addr) : Node3D{addr} {}
+	constexpr WfcLayer(ChunkedTerrainLayer base) : ChunkedTerrainLayer{base} {}
+	constexpr WfcLayer(uint64_t addr) : ChunkedTerrainLayer{addr} {}
 	constexpr WfcLayer(Object obj) : WfcLayer{obj.address()} {}
 	WfcLayer(Variant variant) : WfcLayer{variant.as_object().address()} {}
 
@@ -43,18 +44,18 @@ struct WfcLayer : public Node3D {
 };
 
 
-inline Variant WfcLayer::get_shuffled_wfc_options(Variant c_coord) { return operator()("get_shuffled_wfc_options", c_coord); }
-inline void WfcLayer::begin_load(Variant c_coord) { voidcall("begin_load", c_coord); }
-inline void WfcLayer::begin_unload(Variant c_coord) { voidcall("begin_unload", c_coord); }
-inline Variant WfcLayer::get_coordinates_matching_state(int64_t match_state) { return operator()("get_coordinates_matching_state", match_state); }
-inline void WfcLayer::set_state(Variant c_coord, int64_t new_state) { voidcall("set_state", c_coord, new_state); }
-inline int64_t WfcLayer::get_state(Variant c_coord) { return operator()("get_state", c_coord); }
-inline bool WfcLayer::is_loaded(Variant c_coord) { return operator()("is_loaded", c_coord); }
-inline bool WfcLayer::is_loading(Variant c_coord) { return operator()("is_loading", c_coord); }
-inline bool WfcLayer::is_unloaded(Variant c_coord) { return operator()("is_unloaded", c_coord); }
-inline void WfcLayer::mark_as_loading(Variant c_coord) { voidcall("mark_as_loading", c_coord); }
-inline void WfcLayer::mark_as_unloading(Variant c_coord) { voidcall("mark_as_unloading", c_coord); }
-inline void WfcLayer::mark_as_loaded(Variant c_coord) { voidcall("mark_as_loaded", c_coord); }
-inline void WfcLayer::mark_as_unloaded(Variant c_coord) { voidcall("mark_as_unloaded", c_coord); }
+inline Variant WfcLayer::get_shuffled_wfc_options(Variant c_coord) { return this->operator()("get_shuffled_wfc_options", c_coord); }
+inline void WfcLayer::begin_load(Variant c_coord) { this->voidcall("begin_load", c_coord); }
+inline void WfcLayer::begin_unload(Variant c_coord) { this->voidcall("begin_unload", c_coord); }
+inline Variant WfcLayer::get_coordinates_matching_state(int64_t match_state) { return this->operator()("get_coordinates_matching_state", match_state); }
+inline void WfcLayer::set_state(Variant c_coord, int64_t new_state) { this->voidcall("set_state", c_coord, new_state); }
+inline int64_t WfcLayer::get_state(Variant c_coord) { return this->operator()("get_state", c_coord); }
+inline bool WfcLayer::is_loaded(Variant c_coord) { return this->operator()("is_loaded", c_coord); }
+inline bool WfcLayer::is_loading(Variant c_coord) { return this->operator()("is_loading", c_coord); }
+inline bool WfcLayer::is_unloaded(Variant c_coord) { return this->operator()("is_unloaded", c_coord); }
+inline void WfcLayer::mark_as_loading(Variant c_coord) { this->voidcall("mark_as_loading", c_coord); }
+inline void WfcLayer::mark_as_unloading(Variant c_coord) { this->voidcall("mark_as_unloading", c_coord); }
+inline void WfcLayer::mark_as_loaded(Variant c_coord) { this->voidcall("mark_as_loaded", c_coord); }
+inline void WfcLayer::mark_as_unloaded(Variant c_coord) { this->voidcall("mark_as_unloaded", c_coord); }
 
 #endif

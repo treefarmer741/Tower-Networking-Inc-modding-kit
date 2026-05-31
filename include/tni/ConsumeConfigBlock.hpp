@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CONSUMECONFIGBLOCK
 #define TNI_API_HEADER_CONSUMECONFIGBLOCK
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct ConsumeConfigBlock : public Resource {
@@ -24,7 +24,7 @@ struct ConsumeConfigBlock : public Resource {
 };
 
 
-inline Variant ConsumeConfigBlock::test_compatibility(Variant use_da, bool and_compat, Variant _split) { return operator()("test_compatibility", use_da, and_compat, _split); }
-inline Variant ConsumeConfigBlock::is_compatible(Variant use_str_a) { return operator()("is_compatible", use_str_a); }
+inline Variant ConsumeConfigBlock::test_compatibility(Variant use_da, bool and_compat, Variant _split) { return this->operator()("test_compatibility", use_da, and_compat, _split); }
+inline Variant ConsumeConfigBlock::is_compatible(Variant use_str_a) { return this->operator()("is_compatible", use_str_a); }
 
 #endif

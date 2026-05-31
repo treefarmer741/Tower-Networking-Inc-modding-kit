@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CABLEPIECE
 #define TNI_API_HEADER_CABLEPIECE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct CablePiece : public RigidBody2D {
@@ -23,7 +23,7 @@ struct CablePiece : public RigidBody2D {
 };
 
 
-inline void CablePiece::reset_collision() { voidcall("reset_collision"); }
-inline void CablePiece::disable_collision() { voidcall("disable_collision"); }
+inline void CablePiece::reset_collision() { this->voidcall("reset_collision"); }
+inline void CablePiece::disable_collision() { this->voidcall("disable_collision"); }
 
 #endif

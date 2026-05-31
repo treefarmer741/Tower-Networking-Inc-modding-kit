@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_FIXTURESPAWNER
 #define TNI_API_HEADER_FIXTURESPAWNER
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct FixtureSpawner : public Node2D {
@@ -21,6 +21,6 @@ struct FixtureSpawner : public Node2D {
 };
 
 
-inline void FixtureSpawner::add_fixture(Variant new_rack, Variant rackpos) { voidcall("add_fixture", new_rack, rackpos); }
+inline void FixtureSpawner::add_fixture(Variant new_rack, Variant rackpos) { this->voidcall("add_fixture", new_rack, rackpos); }
 
 #endif

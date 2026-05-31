@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TOAST
 #define TNI_API_HEADER_TOAST
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Toast : public PanelContainer {
@@ -21,7 +21,7 @@ struct Toast : public PanelContainer {
 };
 
 
-inline void Toast::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline void Toast::clear_toast() { voidcall("clear_toast"); }
+inline void Toast::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline void Toast::clear_toast() { this->voidcall("clear_toast"); }
 
 #endif

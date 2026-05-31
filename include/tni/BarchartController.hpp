@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_BARCHARTCONTROLLER
 #define TNI_API_HEADER_BARCHARTCONTROLLER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct BarchartController : public Control {
@@ -30,6 +30,6 @@ struct BarchartController : public Control {
 };
 
 
-inline void BarchartController::set_data(Variant new_categories, Variant new_values, Variant new_colors) { voidcall("set_data", new_categories, new_values, new_colors); }
+inline void BarchartController::set_data(Variant new_categories, Variant new_values, Variant new_colors) { this->voidcall("set_data", new_categories, new_values, new_colors); }
 
 #endif

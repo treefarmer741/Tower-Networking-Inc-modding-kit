@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TRAVERSALCONTEXT
 #define TNI_API_HEADER_TRAVERSALCONTEXT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TraversalContext : public RefCounted {
@@ -52,7 +52,7 @@ struct TraversalContext : public RefCounted {
 	PROPERTY(traversal_target_host, Variant);
 	PROPERTY(add_bw_consumed, int64_t);
 	PROPERTY(last_visited_port, LogicControllerSocket);
-//	PROPERTY(stdout, Variant);
+	// PROPERTY(stdout, Variant);  // Property name is same as C++ keyword!
 	PROPERTY(failed, bool);
 	PROPERTY(cached_src_hwaddr, String);
 	PROPERTY(cached_src_nwaddr, String);
@@ -60,15 +60,15 @@ struct TraversalContext : public RefCounted {
 	PROPERTY(ttl, int64_t);
 	PROPERTY(hop1_interfaces, Variant);
 
-	inline void record_visit(LogicController node, String on_tag);
-	inline Variant has_traversed_before(LogicController node, String on_tag);
+	inline void record_visit(const LogicController& node, String on_tag);
+	inline Variant has_traversed_before(const LogicController& node, String on_tag);
 };
 
 #include "LogicController.hpp"
 #include "UseConfig.hpp"
 #include "LogicControllerSocket.hpp"
 
-inline void TraversalContext::record_visit(LogicController node, String on_tag) { voidcall("record_visit", node, on_tag); }
-inline Variant TraversalContext::has_traversed_before(LogicController node, String on_tag) { return operator()("has_traversed_before", node, on_tag); }
+inline void TraversalContext::record_visit(const LogicController& node, String on_tag) { this->voidcall("record_visit", Object(reinterpret_cast<const Object*>(&node)->address()), on_tag); }
+inline Variant TraversalContext::has_traversed_before(const LogicController& node, String on_tag) { return this->operator()("has_traversed_before", Object(reinterpret_cast<const Object*>(&node)->address()), on_tag); }
 
 #endif

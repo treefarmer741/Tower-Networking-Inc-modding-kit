@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_CABLE
 #define TNI_API_HEADER_CABLE
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Cable : public Node2D {
@@ -53,11 +53,11 @@ struct Cable : public Node2D {
 };
 
 
-inline Variant Cable::get_other_end(Variant end) { return operator()("get_other_end", end); }
-inline void Cable::reposition(Variant newpos) { voidcall("reposition", newpos); }
-inline void Cable::elevator_move(Variant pos_delta) { voidcall("elevator_move", pos_delta); }
-inline void Cable::force_cable_unidle() { voidcall("force_cable_unidle"); }
-inline void Cable::remove_and_free_object() { voidcall("remove_and_free_object"); }
-inline void Cable::unmake_cable() { voidcall("unmake_cable"); }
+inline Variant Cable::get_other_end(Variant end) { return this->operator()("get_other_end", end); }
+inline void Cable::reposition(Variant newpos) { this->voidcall("reposition", newpos); }
+inline void Cable::elevator_move(Variant pos_delta) { this->voidcall("elevator_move", pos_delta); }
+inline void Cable::force_cable_unidle() { this->voidcall("force_cable_unidle"); }
+inline void Cable::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
+inline void Cable::unmake_cable() { this->voidcall("unmake_cable"); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_RACK
 #define TNI_API_HEADER_RACK
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct Rack : public StaticBody2D {
@@ -20,6 +20,6 @@ struct Rack : public StaticBody2D {
 };
 
 
-inline void Rack::remove() { voidcall("remove"); }
+inline void Rack::remove() { this->voidcall("remove"); }
 
 #endif

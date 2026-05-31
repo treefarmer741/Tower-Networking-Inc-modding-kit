@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_TEXTUTILS
 #define TNI_API_HEADER_TEXTUTILS
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct TextUtils : public Object {
@@ -18,18 +18,22 @@ struct TextUtils : public Object {
 	inline static const String DIGITS = "0123456789";  // NOTE: You should recompile your mod if this value changes!
 
 
+	inline String capitalize_first_char(String inp);
 	inline String get_last_n_lines(String inp, int64_t n);
 	inline Variant get_random_letters(int64_t count, String symbol_array);
 	inline String get_whitelistchar_prefix(String inp, String whitelist);
 	inline Variant get_int_suffix(String inp);
 	inline String fill_pattstr_with_rand(String pattstr, RandomNumberGenerator rng);
+	inline String get_shortcut_keystr(Variant shortcut);
 };
 
 
-inline String TextUtils::get_last_n_lines(String inp, int64_t n) { return operator()("get_last_n_lines", inp, n); }
-inline Variant TextUtils::get_random_letters(int64_t count, String symbol_array) { return operator()("get_random_letters", count, symbol_array); }
-inline String TextUtils::get_whitelistchar_prefix(String inp, String whitelist) { return operator()("get_whitelistchar_prefix", inp, whitelist); }
-inline Variant TextUtils::get_int_suffix(String inp) { return operator()("get_int_suffix", inp); }
-inline String TextUtils::fill_pattstr_with_rand(String pattstr, RandomNumberGenerator rng) { return operator()("fill_pattstr_with_rand", pattstr, rng); }
+inline String TextUtils::capitalize_first_char(String inp) { return this->operator()("capitalize_first_char", inp); }
+inline String TextUtils::get_last_n_lines(String inp, int64_t n) { return this->operator()("get_last_n_lines", inp, n); }
+inline Variant TextUtils::get_random_letters(int64_t count, String symbol_array) { return this->operator()("get_random_letters", count, symbol_array); }
+inline String TextUtils::get_whitelistchar_prefix(String inp, String whitelist) { return this->operator()("get_whitelistchar_prefix", inp, whitelist); }
+inline Variant TextUtils::get_int_suffix(String inp) { return this->operator()("get_int_suffix", inp); }
+inline String TextUtils::fill_pattstr_with_rand(String pattstr, RandomNumberGenerator rng) { return this->operator()("fill_pattstr_with_rand", pattstr, rng); }
+inline String TextUtils::get_shortcut_keystr(Variant shortcut) { return this->operator()("get_shortcut_keystr", shortcut); }
 
 #endif

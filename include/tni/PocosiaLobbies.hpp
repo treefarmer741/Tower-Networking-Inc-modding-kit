@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIALOBBIES
 #define TNI_API_HEADER_POCOSIALOBBIES
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaLobbies : public ScrollContainer {
@@ -22,6 +22,6 @@ struct PocosiaLobbies : public ScrollContainer {
 };
 
 
-inline void PocosiaLobbies::refresh_lobbies() { voidcall("refresh_lobbies"); }
+inline void PocosiaLobbies::refresh_lobbies() { this->voidcall("refresh_lobbies"); }
 
 #endif

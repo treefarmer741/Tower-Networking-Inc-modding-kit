@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ "**" ]
     paths-ignore:
-      - "lua/"
+      - "mods/**"
       - "*.md"
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-    - uses: actions/checkout@v6.0.1
+    - uses: actions/checkout@v6.0.2
       with:
         submodules: recursive
 
@@ -26,13 +26,14 @@ jobs:
 
     - name: Build luajit support mod and C++ examples
       working-directory: ${{github.workspace}}
-      run: ./build.sh
+      run: ./build-gnu.sh
 
     - name: Collect Artifact
       shell: bash
       run: |
         mkdir ./artifact
-        find ./.build -name '*.elf' -exec cp "{}" ./artifact \;
+        # For every directory containing a .elf file, zip it into ./artifact
+        find ./mods/ -name '*.elf' -execdir bash -c "MOD_NAME=\"\$(basename \$(realpath .))\" && cd .. && zip -r \"${PWD}/artifact/\$MOD_NAME.zip\" \"./\$MOD_NAME\"" \;
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v6

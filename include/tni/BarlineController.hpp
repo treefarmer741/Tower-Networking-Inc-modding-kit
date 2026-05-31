@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_BARLINECONTROLLER
 #define TNI_API_HEADER_BARLINECONTROLLER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct BarlineController : public Control {
@@ -62,10 +62,10 @@ struct BarlineController : public Control {
 };
 
 
-inline void BarlineController::draw_text_at(Variant pos, Variant text, Variant alignment, Variant img_size) { voidcall("draw_text_at", pos, text, alignment, img_size); }
-inline void BarlineController::set_data(Variant new_categories, Variant new_values, Variant new_colors, Variant new_title, Variant new_x_label, Variant new_y_label) { voidcall("set_data", new_categories, new_values, new_colors, new_title, new_x_label, new_y_label); }
-inline void BarlineController::set_bar_data(Variant new_categories, Variant new_datasets, Variant new_colors) { voidcall("set_bar_data", new_categories, new_datasets, new_colors); }
-inline void BarlineController::set_line_data(Variant new_line_values, Variant new_line_label) { voidcall("set_line_data", new_line_values, new_line_label); }
-inline void BarlineController::set_chart_data(Variant new_categories, Variant new_datasets, Variant new_line_values, Variant new_line_label, Variant new_colors, Variant spacing_options) { voidcall("set_chart_data", new_categories, new_datasets, new_line_values, new_line_label, new_colors, spacing_options); }
+inline void BarlineController::draw_text_at(Variant pos, Variant text, Variant alignment, Variant img_size) { this->voidcall("draw_text_at", pos, text, alignment, img_size); }
+inline void BarlineController::set_data(Variant new_categories, Variant new_values, Variant new_colors, Variant new_title, Variant new_x_label, Variant new_y_label) { this->voidcall("set_data", new_categories, new_values, new_colors, new_title, new_x_label, new_y_label); }
+inline void BarlineController::set_bar_data(Variant new_categories, Variant new_datasets, Variant new_colors) { this->voidcall("set_bar_data", new_categories, new_datasets, new_colors); }
+inline void BarlineController::set_line_data(Variant new_line_values, Variant new_line_label) { this->voidcall("set_line_data", new_line_values, new_line_label); }
+inline void BarlineController::set_chart_data(Variant new_categories, Variant new_datasets, Variant new_line_values, Variant new_line_label, Variant new_colors, Variant spacing_options) { this->voidcall("set_chart_data", new_categories, new_datasets, new_line_values, new_line_label, new_colors, spacing_options); }
 
 #endif

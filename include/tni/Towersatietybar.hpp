@@ -1,16 +1,17 @@
 #ifndef TNI_API_HEADER_TOWERSATIETYBAR
 #define TNI_API_HEADER_TOWERSATIETYBAR
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
+#include "DashboardApp.hpp"
 
-struct Towersatietybar : public Container {
-	using Container::Container;
+struct Towersatietybar : public DashboardApp {
+	using DashboardApp::DashboardApp;
 
-	constexpr Towersatietybar(Container base) : Container{base} {}
-	constexpr Towersatietybar(uint64_t addr) : Container{addr} {}
+	constexpr Towersatietybar(DashboardApp base) : DashboardApp{base} {}
+	constexpr Towersatietybar(uint64_t addr) : DashboardApp{addr} {}
 	constexpr Towersatietybar(Object obj) : Towersatietybar{obj.address()} {}
 	Towersatietybar(Variant variant) : Towersatietybar{variant.as_object().address()} {}
 
@@ -44,13 +45,13 @@ struct Towersatietybar : public Container {
 
 #include "MainDashboard.hpp"
 
-inline void Towersatietybar::launch() { voidcall("launch"); }
-inline void Towersatietybar::setup_floor_groups() { voidcall("setup_floor_groups"); }
-inline void Towersatietybar::update_all_user_profile() { voidcall("update_all_user_profile"); }
-inline void Towersatietybar::update_floor_group_display() { voidcall("update_floor_group_display"); }
-inline void Towersatietybar::clear_dynamic() { voidcall("clear_dynamic"); }
-inline void Towersatietybar::toast(String msg, int64_t duration) { voidcall("toast", msg, duration); }
-inline Variant Towersatietybar::get_main_pane() { return operator()("get_main_pane"); }
-inline void Towersatietybar::minimize() { voidcall("minimize"); }
+inline void Towersatietybar::launch() { this->voidcall("launch"); }
+inline void Towersatietybar::setup_floor_groups() { this->voidcall("setup_floor_groups"); }
+inline void Towersatietybar::update_all_user_profile() { this->voidcall("update_all_user_profile"); }
+inline void Towersatietybar::update_floor_group_display() { this->voidcall("update_floor_group_display"); }
+inline void Towersatietybar::clear_dynamic() { this->voidcall("clear_dynamic"); }
+inline void Towersatietybar::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
+inline Variant Towersatietybar::get_main_pane() { return this->operator()("get_main_pane"); }
+inline void Towersatietybar::minimize() { this->voidcall("minimize"); }
 
 #endif

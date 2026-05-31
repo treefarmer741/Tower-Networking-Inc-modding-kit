@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_FIXTUREUNIT
 #define TNI_API_HEADER_FIXTUREUNIT
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct FixtureUnit : public Area2D {
@@ -24,6 +24,6 @@ struct FixtureUnit : public Area2D {
 #include "LogicController.hpp"
 #include "PowerController.hpp"
 
-inline Variant FixtureUnit::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
+inline Variant FixtureUnit::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
 
 #endif

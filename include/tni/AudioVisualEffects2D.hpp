@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_AUDIOVISUALEFFECTS2D
 #define TNI_API_HEADER_AUDIOVISUALEFFECTS2D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct AudioVisualEffects2D : public Node2D {
@@ -26,7 +26,7 @@ struct AudioVisualEffects2D : public Node2D {
 };
 
 
-inline void AudioVisualEffects2D::trigger() { voidcall("trigger"); }
-inline void AudioVisualEffects2D::stop() { voidcall("stop"); }
+inline void AudioVisualEffects2D::trigger() { this->voidcall("trigger"); }
+inline void AudioVisualEffects2D::stop() { this->voidcall("stop"); }
 
 #endif

@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_FEEDBACKFORM
 #define TNI_API_HEADER_FEEDBACKFORM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.11
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct FeedbackForm : public VBoxContainer {
@@ -26,7 +26,7 @@ struct FeedbackForm : public VBoxContainer {
 };
 
 
-inline void FeedbackForm::submit_feedback() { voidcall("submit_feedback"); }
-inline void FeedbackForm::clear_form() { voidcall("clear_form"); }
+inline void FeedbackForm::submit_feedback() { this->voidcall("submit_feedback"); }
+inline void FeedbackForm::clear_form() { this->voidcall("clear_form"); }
 
 #endif
