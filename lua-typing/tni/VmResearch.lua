@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class VmResearch : PropMod
 ---@field techv string # Constant value: virtual_machines_v1
+---@field MIN_COMPUTE_SERVERS integer # Constant value: 5
 ---@field cost integer
 ---@field submitted boolean
 ---@field locked boolean
@@ -34,6 +35,9 @@ function VmResearch.get_description() end
 ---@return Object
 function VmResearch.test_adhoc_requirements() end
 
+---@return string
+function VmResearch.get_unlock_condition_description() end
+
 ---@return Object
 function VmResearch.test_adhoc_requirements() end
 
@@ -53,3 +57,9 @@ function VmResearch.get_proposal_name() end
 
 ---@return string
 function VmResearch.get_lore() end
+
+---@return string
+function VmResearch.get_tiered_display_name() end
+
+---@return string
+function VmResearch.get_unlock_condition_description() end

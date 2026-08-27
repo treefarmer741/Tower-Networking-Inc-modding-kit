@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PACKETCONTROLMODULE
 #define TNI_API_HEADER_PACKETCONTROLMODULE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,6 +16,7 @@ struct PacketControlModule : public LogicControlModule {
 	PacketControlModule(Variant variant) : PacketControlModule{variant.as_object().address()} {}
 
 	static constexpr double default_clock_period = 0.1;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr int64_t MAX_PACKETS_PER_TICK = 2048;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(clk_timer, Timer);
 	PROPERTY(packet_in_queue, Variant);

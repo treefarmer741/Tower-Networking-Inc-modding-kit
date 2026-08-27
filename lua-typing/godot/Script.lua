@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Script : Resource
 local Script = {}
@@ -32,16 +32,7 @@ function Script.get_global_name() end
 function Script.has_script_signal(signal_name) end
 
 ---@return Array<Dictionary>
-function Script.get_script_property_list() end
-
----@return Array<Dictionary>
-function Script.get_script_method_list() end
-
----@return Array<Dictionary>
 function Script.get_script_signal_list() end
-
----@return table<any,any>
-function Script.get_script_constant_map() end
 
 ---@param property string
 ---@return Object

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RelxzdistMarkingCircle : MeshInstance3D
 ---@field MARKER_MAX_THICKNESS number # Constant value: 0.005

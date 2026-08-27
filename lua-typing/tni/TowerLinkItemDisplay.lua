@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TowerLinkItemDisplay : Container
 ---@field bw_load_color Array<any> # Constant value: ["00ccee", "33cccc", "00ff99", "00ffcc", "00ff00", "33cc33", "66ff33", "99ff33", "ccff33", "ffff00", "ff9900", "ff0000"]

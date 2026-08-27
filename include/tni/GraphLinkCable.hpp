@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GRAPHLINKCABLE
 #define TNI_API_HEADER_GRAPHLINKCABLE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -49,6 +49,7 @@ struct GraphLinkCable : public Cable {
 	PROPERTY(smooth_factor, double);
 	PROPERTY(smooth_initialized, bool);
 
+	inline void set_highlight(bool enabled);
 	inline Variant get_other_end(Variant end);
 	inline void reposition(Variant newpos);
 	inline void elevator_move(Variant pos_delta);
@@ -59,6 +60,7 @@ struct GraphLinkCable : public Cable {
 
 #include "Socket.hpp"
 
+inline void GraphLinkCable::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline Variant GraphLinkCable::get_other_end(Variant end) { return this->operator()("get_other_end", end); }
 inline void GraphLinkCable::reposition(Variant newpos) { this->voidcall("reposition", newpos); }
 inline void GraphLinkCable::elevator_move(Variant pos_delta) { this->voidcall("elevator_move", pos_delta); }

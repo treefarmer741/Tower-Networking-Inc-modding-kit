@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class EarlyAccessFoobar : PropMod
 ---@field cost integer
@@ -47,3 +47,9 @@ function EarlyAccessFoobar.get_proposal_name() end
 
 ---@return string
 function EarlyAccessFoobar.get_lore() end
+
+---@return string
+function EarlyAccessFoobar.get_tiered_display_name() end
+
+---@return string
+function EarlyAccessFoobar.get_unlock_condition_description() end

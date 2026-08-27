@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MODMANAGER
 #define TNI_API_HEADER_MODMANAGER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct ModManager : public Control {
 	constexpr ModManager(Object obj) : ModManager{obj.address()} {}
 	ModManager(Variant variant) : ModManager{variant.as_object().address()} {}
 
-	enum DependencyStatus : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct DependencyStatus : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		LOADED = 0,
 		UNLOADED = 1,
 		WRONG_VERSION = 2,
@@ -24,8 +24,10 @@ struct ModManager : public Control {
 	PROPERTY(mod_list, VBoxContainer);
 	PROPERTY(mod_preset_label, Label);
 	PROPERTY(preset_save_load_button, MenuButton);
+	PROPERTY(misc_options_button, MenuButton);
 	PROPERTY(mod_info_container, VBoxContainer);
 	PROPERTY(mod_name_label, RichTextLabel);
+	PROPERTY(edit_assets_tab, Control);
 	PROPERTY(mod_tabs, TabContainer);
 	PROPERTY(mod_info, VBoxContainer);
 	PROPERTY(mod_info_description, RichTextLabel);
@@ -50,12 +52,13 @@ struct ModManager : public Control {
 	PROPERTY(mod_config_no_options_label, Label);
 	PROPERTY(mod_stats, VBoxContainer);
 	PROPERTY(mod_stats_stats_label, RichTextLabel);
+	PROPERTY(previous_tab, int64_t);
 	PROPERTY(selected_manifest, ModManifest);
 	PROPERTY(preset, ModPreset);
 	PROPERTY(preset_modified, bool);
 
 	inline void fade_in();
-	inline void fade_out();
+	inline void try_fade_out();
 	inline void update_preset_label();
 	inline void update_mod_list();
 	inline void update_mod_tabs();
@@ -68,7 +71,7 @@ struct ModManager : public Control {
 #include "ModPreset.hpp"
 
 inline void ModManager::fade_in() { this->voidcall("fade_in"); }
-inline void ModManager::fade_out() { this->voidcall("fade_out"); }
+inline void ModManager::try_fade_out() { this->voidcall("try_fade_out"); }
 inline void ModManager::update_preset_label() { this->voidcall("update_preset_label"); }
 inline void ModManager::update_mod_list() { this->voidcall("update_mod_list"); }
 inline void ModManager::update_mod_tabs() { this->voidcall("update_mod_tabs"); }

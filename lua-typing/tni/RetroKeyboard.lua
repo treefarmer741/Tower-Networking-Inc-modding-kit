@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RetroKeyboard : Node2D
 ---@field total_keypress_sfx_variants integer # Constant value: 20

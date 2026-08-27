@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class HaResearch : PropMod
 ---@field techv string # Constant value: high_availability_v1
+---@field MIN_ROUTERS integer # Constant value: 7
 ---@field cost integer
 ---@field submitted boolean
 ---@field locked boolean
@@ -34,6 +35,9 @@ function HaResearch.get_description() end
 ---@return Object
 function HaResearch.test_adhoc_requirements() end
 
+---@return string
+function HaResearch.get_unlock_condition_description() end
+
 ---@return Object
 function HaResearch.test_adhoc_requirements() end
 
@@ -53,3 +57,9 @@ function HaResearch.get_proposal_name() end
 
 ---@return string
 function HaResearch.get_lore() end
+
+---@return string
+function HaResearch.get_tiered_display_name() end
+
+---@return string
+function HaResearch.get_unlock_condition_description() end

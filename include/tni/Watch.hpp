@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_WATCH
 #define TNI_API_HEADER_WATCH
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct Watch : public TerminalRoutine {
 	constexpr Watch(Object obj) : Watch{obj.address()} {}
 	Watch(Variant variant) : Watch{variant.as_object().address()} {}
 
-	enum WatchMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct WatchMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		FIXED = 0,
 		DYNAMIC = 1,
 	};

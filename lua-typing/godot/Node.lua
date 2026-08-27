@@ -1,10 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Node : Object
 ---@field name string
 ---@field unique_name_in_owner boolean
----@field scene_file_path string
 ---@field owner Node
 ---@field multiplayer MultiplayerAPI
 ---@field process_mode integer
@@ -157,12 +156,6 @@ function Node.get_tree_string() end
 
 ---@return string
 function Node.get_tree_string_pretty() end
-
----@param scene_file_path string
-function Node.set_scene_file_path(scene_file_path) end
-
----@return string
-function Node.get_scene_file_path() end
 
 ---@param what integer
 function Node.propagate_notification(what) end

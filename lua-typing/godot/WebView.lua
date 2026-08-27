@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class WebView : Control
 ---@field full_window_size boolean
 ---@field url string
 ---@field html string
+---@field data_directory string
 ---@field transparent boolean
 ---@field background_color Color
 ---@field devtools boolean
@@ -58,6 +59,9 @@ function WebView.print() end
 
 function WebView.reload() end
 
+---@param scale_factor number
+function WebView.zoom(scale_factor) end
+
 ---@return boolean
 function WebView.get_full_window_size() end
 
@@ -75,6 +79,12 @@ function WebView.get_html() end
 
 ---@param html string
 function WebView.set_html(html) end
+
+---@return string
+function WebView.get_data_directory() end
+
+---@param data_directory string
+function WebView.set_data_directory(data_directory) end
 
 ---@return boolean
 function WebView.get_transparent() end

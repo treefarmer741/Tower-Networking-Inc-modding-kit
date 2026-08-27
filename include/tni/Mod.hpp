@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MOD
 #define TNI_API_HEADER_MOD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -21,6 +21,7 @@ struct Mod : public Sandbox {
 	PROPERTY(manifest, ModManifest);
 	PROPERTY(filesystem, ModFileSystem);
 	PROPERTY(api_v1, ModApiV1);
+	PROPERTY(mod_data, ModData);
 
 	inline void reload();
 	inline bool has_critical_error();
@@ -32,11 +33,13 @@ struct Mod : public Sandbox {
 	inline Variant instance_from_id_(int64_t id);
 	inline String error_string_(int64_t e);
 	inline String str_(Variant value);
+	inline bool class_has_method(String classname, String methodname);
 };
 
 #include "ModManifest.hpp"
 #include "ModFileSystem.hpp"
 #include "ModApiV1.hpp"
+#include "ModData.hpp"
 
 inline void Mod::reload() { this->voidcall("reload"); }
 inline bool Mod::has_critical_error() { return this->operator()("has_critical_error"); }
@@ -48,5 +51,6 @@ inline bool Mod::array_value_allowed(Variant array, int64_t idx) { return this->
 inline Variant Mod::instance_from_id_(int64_t id) { return this->operator()("instance_from_id_", id); }
 inline String Mod::error_string_(int64_t e) { return this->operator()("error_string_", e); }
 inline String Mod::str_(Variant value) { return this->operator()("str_", value); }
+inline bool Mod::class_has_method(String classname, String methodname) { return this->operator()("class_has_method", classname, methodname); }
 
 #endif

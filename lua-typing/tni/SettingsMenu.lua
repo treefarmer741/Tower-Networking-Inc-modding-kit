@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SettingsMenu : Control
 ---@field game_settings Container
 ---@field audio_settings Container
 ---@field graphic_settings Container
+---@field keybind_settings Container
 ---@field is_in_game boolean
 local SettingsMenu = {}
 ---@enum SettingsMenu.locale_lang_map
@@ -19,6 +20,7 @@ SettingsMenu.locale_lang_map = {
 	["uk"] = "українська мова",
 	["pt_BR"] = "Português Brasileiro",
 	["de"] = "Deutsch",
+	["pl_PL"] = "polski",
 }
 
 ---@return Array<string>

@@ -1,11 +1,13 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TowerNetworkLink : Node
 ---@field link_controller LinkController
 ---@field activated_for_the_day boolean
 ---@field outlet_a_np string
 ---@field outlet_b_np string
+---@field socket_a_index integer
+---@field socket_b_index integer
 ---@field setup_cost integer
 ---@field daily_cost integer
 ---@field highest_nbw_for_day integer
@@ -20,6 +22,12 @@
 ---@field installed_nbw integer
 ---@field will_decom boolean
 local TowerNetworkLink = {}
+
+---@return Object
+function TowerNetworkLink.get_outlet_a_serial_num() end
+
+---@return Object
+function TowerNetworkLink.get_outlet_b_serial_num() end
 
 ---@param socket LogicControllerSocket
 function TowerNetworkLink.link_socket_neighbour_if_graphcable(socket) end

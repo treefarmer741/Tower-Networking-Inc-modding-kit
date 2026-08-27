@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GraphNode : GraphElement
 ---@field title string
@@ -66,6 +66,14 @@ function GraphNode.set_slot_custom_icon_left(slot_index, custom_icon) end
 function GraphNode.get_slot_custom_icon_left(slot_index) end
 
 ---@param slot_index integer
+---@param value Object
+function GraphNode.set_slot_metadata_left(slot_index, value) end
+
+---@param slot_index integer
+---@return Object
+function GraphNode.get_slot_metadata_left(slot_index) end
+
+---@param slot_index integer
 ---@return boolean
 function GraphNode.is_slot_enabled_right(slot_index) end
 
@@ -96,6 +104,14 @@ function GraphNode.set_slot_custom_icon_right(slot_index, custom_icon) end
 ---@param slot_index integer
 ---@return Texture2D
 function GraphNode.get_slot_custom_icon_right(slot_index) end
+
+---@param slot_index integer
+---@param value Object
+function GraphNode.set_slot_metadata_right(slot_index, value) end
+
+---@param slot_index integer
+---@return Object
+function GraphNode.get_slot_metadata_right(slot_index) end
 
 ---@param slot_index integer
 ---@return boolean

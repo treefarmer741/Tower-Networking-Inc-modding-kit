@@ -1,7 +1,8 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Recycler : Node2D
+---@field recycle_skip_merchants Array<any>
 ---@field objcount_lbl Label
 ---@field cashdisp_lbl Label
 ---@field lowz_sprite Sprite2D

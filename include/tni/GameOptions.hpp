@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMEOPTIONS
 #define TNI_API_HEADER_GAMEOPTIONS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -47,18 +47,20 @@ struct GameOptions : public VBoxContainer {
 	PROPERTY(userhwr_in, Slider);
 	PROPERTY(drdfee_in, Slider);
 	PROPERTY(sttech_in, OptionButton);
+	PROPERTY(limitless_in, OptionButton);
 	PROPERTY(default_user_dhcp, OptionButton);
 	PROPERTY(default_device_dhcp, OptionButton);
+	PROPERTY(dhcp_origin_ignores_routing, OptionButton);
 
 	inline void do_localize();
 	inline void update_playoptions(const PlayOptions& playopts);
-	inline void set_inputs(const PlayOptions& playopts, bool lock_options);
+	inline void set_inputs(const PlayOptions& playopts, bool lock_options, bool is_user_onboarding);
 };
 
 #include "PlayOptions.hpp"
 
 inline void GameOptions::do_localize() { this->voidcall("do_localize"); }
 inline void GameOptions::update_playoptions(const PlayOptions& playopts) { this->voidcall("update_playoptions", Object(reinterpret_cast<const Object*>(&playopts)->address())); }
-inline void GameOptions::set_inputs(const PlayOptions& playopts, bool lock_options) { this->voidcall("set_inputs", Object(reinterpret_cast<const Object*>(&playopts)->address()), lock_options); }
+inline void GameOptions::set_inputs(const PlayOptions& playopts, bool lock_options, bool is_user_onboarding) { this->voidcall("set_inputs", Object(reinterpret_cast<const Object*>(&playopts)->address()), lock_options, is_user_onboarding); }
 
 #endif

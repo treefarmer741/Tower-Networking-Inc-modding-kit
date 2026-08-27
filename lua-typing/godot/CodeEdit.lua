@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CodeEdit : TextEdit
 ---@field symbol_lookup_on_click boolean
@@ -11,6 +11,7 @@
 ---@field gutters_draw_executing_lines boolean
 ---@field gutters_draw_line_numbers boolean
 ---@field gutters_zero_pad_line_numbers boolean
+---@field gutters_line_numbers_min_digits integer
 ---@field gutters_draw_fold_gutter boolean
 ---@field delimiter_strings PackedStringArray
 ---@field delimiter_comments PackedStringArray
@@ -161,6 +162,12 @@ function CodeEdit.set_line_numbers_zero_padded(enable) end
 
 ---@return boolean
 function CodeEdit.is_line_numbers_zero_padded() end
+
+---@param count integer
+function CodeEdit.set_line_numbers_min_digits(count) end
+
+---@return integer
+function CodeEdit.get_line_numbers_min_digits() end
 
 ---@param enable boolean
 function CodeEdit.set_draw_fold_gutter(enable) end

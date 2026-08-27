@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TenaboltFusionPhaseOne : PropMod
 ---@field cost integer # Constant value: 1000
@@ -34,6 +34,9 @@ function TenaboltFusionPhaseOne.get_description() end
 ---@return Object
 function TenaboltFusionPhaseOne.test_adhoc_requirements() end
 
+---@return string
+function TenaboltFusionPhaseOne.get_unlock_condition_description() end
+
 ---@return Object
 function TenaboltFusionPhaseOne.test_adhoc_requirements() end
 
@@ -53,3 +56,9 @@ function TenaboltFusionPhaseOne.get_proposal_name() end
 
 ---@return string
 function TenaboltFusionPhaseOne.get_lore() end
+
+---@return string
+function TenaboltFusionPhaseOne.get_tiered_display_name() end
+
+---@return string
+function TenaboltFusionPhaseOne.get_unlock_condition_description() end

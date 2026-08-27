@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class OpenXRCompositionLayer : Node3D
 ---@field layer_viewport Object
 ---@field use_android_surface boolean
+---@field protected_content boolean
 ---@field android_surface_size Vector2i
 ---@field sort_order integer
 ---@field alpha_blend boolean
@@ -62,6 +63,12 @@ function OpenXRCompositionLayer.get_android_surface() end
 
 ---@return boolean
 function OpenXRCompositionLayer.is_natively_supported() end
+
+---@return boolean
+function OpenXRCompositionLayer.is_protected_content() end
+
+---@param protected_content boolean
+function OpenXRCompositionLayer.set_protected_content(protected_content) end
 
 ---@param mode OpenXRCompositionLayer.Filter
 function OpenXRCompositionLayer.set_min_filter(mode) end

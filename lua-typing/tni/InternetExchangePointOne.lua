@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class InternetExchangePointOne : PropMod
 ---@field submitted boolean
@@ -46,3 +46,9 @@ function InternetExchangePointOne.get_proposal_name() end
 
 ---@return string
 function InternetExchangePointOne.get_lore() end
+
+---@return string
+function InternetExchangePointOne.get_tiered_display_name() end
+
+---@return string
+function InternetExchangePointOne.get_unlock_condition_description() end

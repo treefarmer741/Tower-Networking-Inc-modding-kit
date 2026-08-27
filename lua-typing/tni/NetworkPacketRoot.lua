@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetworkPacketRoot : RefCounted
 ---@field default_ttl integer # Constant value: 32
@@ -30,6 +30,7 @@
 local NetworkPacketRoot = {}
 ---@enum NetworkPacketRoot.Err
 NetworkPacketRoot.Err = {
+	["REQUESTING"] = -1,
 	["NO_ERROR"] = 0,
 	["NO_DNS_SERVER"] = 1,
 	["NO_DNS_ENTRY"] = 2,
@@ -40,6 +41,8 @@ NetworkPacketRoot.Err = {
 	["NO_COMPATIBLE_USES_LEFT"] = 7,
 	["SRC_OFFLINE"] = 8,
 	["NO_DHCP_SERVER"] = 9,
+	["TIMEOUT"] = 200,
+	["GAMEBUG"] = 1000,
 }
 
 ---@param src_ LogicController

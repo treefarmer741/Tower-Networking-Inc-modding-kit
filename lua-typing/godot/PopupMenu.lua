@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PopupMenu : Popup
 ---@field hide_on_item_selection boolean
@@ -9,6 +9,8 @@
 ---@field allow_search boolean
 ---@field system_menu_id integer
 ---@field prefer_native_menu boolean
+---@field shrink_height boolean
+---@field shrink_width boolean
 ---@field item_count Items,item_
 local PopupMenu = {}
 
@@ -369,3 +371,15 @@ function PopupMenu.set_system_menu(system_menu_id) end
 
 ---@return NativeMenu.SystemMenus
 function PopupMenu.get_system_menu() end
+
+---@param shrink boolean
+function PopupMenu.set_shrink_height(shrink) end
+
+---@return boolean
+function PopupMenu.get_shrink_height() end
+
+---@param shrink boolean
+function PopupMenu.set_shrink_width(shrink) end
+
+---@return boolean
+function PopupMenu.get_shrink_width() end

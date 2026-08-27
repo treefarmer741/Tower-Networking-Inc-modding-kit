@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TranslationDomain : RefCounted
 ---@field enabled boolean
@@ -25,6 +25,23 @@ function TranslationDomain.add_translation(translation) end
 function TranslationDomain.remove_translation(translation) end
 
 function TranslationDomain.clear() end
+
+---@return Array<Translation>
+function TranslationDomain.get_translations() end
+
+---@param locale string
+---@param exact boolean
+---@return boolean
+function TranslationDomain.has_translation_for_locale(locale, exact) end
+
+---@param translation Translation
+---@return boolean
+function TranslationDomain.has_translation(translation) end
+
+---@param locale string
+---@param exact boolean
+---@return Array<Translation>
+function TranslationDomain.find_translations(locale, exact) end
 
 ---@param message string
 ---@param context string?  # Default = 

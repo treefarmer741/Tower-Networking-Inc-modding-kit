@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_HAROUTER
 #define TNI_API_HEADER_HAROUTER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,6 +18,7 @@ struct HaRouter : public NetworkRouterImpl {
 
 	PROPERTY(routectl, RouteControlModule);
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -30,33 +31,39 @@ struct HaRouter : public NetworkRouterImpl {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline void tick();
 	inline Variant get_longest_matched_port(Variant hc, Variant pktctl, Variant rtctl, Variant packet);
 	inline void update_routes_from_rip_packet(const LogicController& src_node_controller, const LogicController& hopped_node_controller, String rcpt_port_id, String src_port_id);
+	inline void install_advertised_route(const RouteControlModule& hcnroutc, String install_rte, String rcpt_port_id, int64_t advertised_metric);
 	inline String colorize_description(String ds);
 	inline void start();
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
 #include "RouteControlModule.hpp"
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline bool HaRouter::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t HaRouter::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline void HaRouter::tick() { this->voidcall("tick"); }
 inline Variant HaRouter::get_longest_matched_port(Variant hc, Variant pktctl, Variant rtctl, Variant packet) { return this->operator()("get_longest_matched_port", hc, pktctl, rtctl, packet); }
 inline void HaRouter::update_routes_from_rip_packet(const LogicController& src_node_controller, const LogicController& hopped_node_controller, String rcpt_port_id, String src_port_id) { this->voidcall("update_routes_from_rip_packet", Object(reinterpret_cast<const Object*>(&src_node_controller)->address()), Object(reinterpret_cast<const Object*>(&hopped_node_controller)->address()), rcpt_port_id, src_port_id); }
+inline void HaRouter::install_advertised_route(const RouteControlModule& hcnroutc, String install_rte, String rcpt_port_id, int64_t advertised_metric) { this->voidcall("install_advertised_route", Object(reinterpret_cast<const Object*>(&hcnroutc)->address()), install_rte, rcpt_port_id, advertised_metric); }
 inline String HaRouter::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
 inline void HaRouter::start() { this->voidcall("start"); }
 inline void HaRouter::stop() { this->voidcall("stop"); }
 inline void HaRouter::uninstall() { this->voidcall("uninstall"); }
 inline void HaRouter::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
 inline bool HaRouter::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool HaRouter::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

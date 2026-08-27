@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class User : Node
 ---@field description string
@@ -16,6 +16,7 @@
 ---@field inactive_time_float number
 ---@field fulfilment_penalty_factor number
 ---@field icon_texture Texture2D
+---@field custom_user_note string
 ---@field unknown_user boolean
 ---@field satiety_ratio number
 ---@field is_active boolean
@@ -29,7 +30,6 @@
 ---@field location Location
 ---@field username_fixed boolean
 ---@field username string
----@field previous_active_state boolean
 local User = {}
 
 ---@param time_mult_delta number
@@ -42,3 +42,6 @@ function User.first_use() end
 function User.periodic_use() end
 
 function User.down() end
+
+---@param new_value string
+function User.update_user_note(new_value) end

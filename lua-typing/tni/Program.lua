@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Program : Node
 ---@field CONFIG_SIZE integer # Constant value: 1
 ---@field PROG_DESCRIPT_COLOR string # Constant value: FFB82F
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -17,6 +18,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local Program = {}
 ---@enum Program.ControllerModifiers
@@ -36,6 +38,12 @@ Program.ControllerModifiers = {
 	["ALLOW_STP_PORT_CONTROL"] = 12,
 	["ALLOW_PACKET_TRANSLATION"] = 13,
 }
+---@enum Program.PacketHandling
+Program.PacketHandling = {
+	["DROP"] = 0,
+	["PASS"] = 1,
+	["NOOP"] = 2,
+}
 
 ---@param ds string
 ---@return string
@@ -54,9 +62,13 @@ function Program.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function Program.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function Program.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function Program.test_routing_exemption(packet) end

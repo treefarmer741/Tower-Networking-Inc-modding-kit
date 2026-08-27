@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_NETWORKPACKETROOT
 #define TNI_API_HEADER_NETWORKPACKETROOT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,7 +16,8 @@ struct NetworkPacketRoot : public RefCounted {
 
 	static constexpr int64_t default_ttl = 32;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr double default_request_timeout = 4.0;  // NOTE: You should recompile your mod if this value changes!
-	enum Err : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Err : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		REQUESTING = -1,
 		NO_ERROR = 0,
 		NO_DNS_SERVER = 1,
 		NO_DNS_ENTRY = 2,
@@ -27,6 +28,8 @@ struct NetworkPacketRoot : public RefCounted {
 		NO_COMPATIBLE_USES_LEFT = 7,
 		SRC_OFFLINE = 8,
 		NO_DHCP_SERVER = 9,
+		TIMEOUT = 200,
+		GAMEBUG = 1000,
 	};
 
 	PROPERTY(timeout_seconds, double);

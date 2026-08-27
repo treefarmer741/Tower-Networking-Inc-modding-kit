@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SceneTree : MainLoop
 ---@field auto_accept_quit boolean
@@ -155,6 +155,10 @@ function SceneTree.change_scene_to_file(path) end
 ---@param packed_scene PackedScene
 ---@return Error
 function SceneTree.change_scene_to_packed(packed_scene) end
+
+---@param node Node
+---@return Error
+function SceneTree.change_scene_to_node(node) end
 
 ---@return Error
 function SceneTree.reload_current_scene() end

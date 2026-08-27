@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BASEUI
 #define TNI_API_HEADER_BASEUI
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -21,6 +21,7 @@ struct BaseUI : public CanvasLayer {
 	PROPERTY(wiki, Variant);
 	PROPERTY(feedback, Variant);
 	PROPERTY(mod_manager, Variant);
+	PROPERTY(mod_editor, Variant);
 	PROPERTY(catalog, Variant);
 	PROPERTY(screen_fader, Variant);
 	PROPERTY(jumbotron_flasher, Variant);
@@ -50,7 +51,7 @@ struct BaseUI : public CanvasLayer {
 	inline void show_feedback();
 	inline void hide_feedback();
 	inline void show_mod_manager();
-	inline void hide_mod_manager();
+	inline void show_mod_editor();
 	inline void show_catalog();
 	inline void hide_catalog();
 	inline void hide_game_uis();
@@ -73,7 +74,7 @@ inline void BaseUI::hide_wiki() { this->voidcall("hide_wiki"); }
 inline void BaseUI::show_feedback() { this->voidcall("show_feedback"); }
 inline void BaseUI::hide_feedback() { this->voidcall("hide_feedback"); }
 inline void BaseUI::show_mod_manager() { this->voidcall("show_mod_manager"); }
-inline void BaseUI::hide_mod_manager() { this->voidcall("hide_mod_manager"); }
+inline void BaseUI::show_mod_editor() { this->voidcall("show_mod_editor"); }
 inline void BaseUI::show_catalog() { this->voidcall("show_catalog"); }
 inline void BaseUI::hide_catalog() { this->voidcall("hide_catalog"); }
 inline void BaseUI::hide_game_uis() { this->voidcall("hide_game_uis"); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SurveyScaledUserHosting : UserHosting
 ---@field min_visitors integer
@@ -20,6 +20,7 @@
 ---@field produce_factor integer
 ---@field required_consumes_per_tick integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -32,6 +33,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local SurveyScaledUserHosting = {}
 
@@ -69,9 +71,13 @@ function SurveyScaledUserHosting.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function SurveyScaledUserHosting.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function SurveyScaledUserHosting.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function SurveyScaledUserHosting.test_routing_exemption(packet) end

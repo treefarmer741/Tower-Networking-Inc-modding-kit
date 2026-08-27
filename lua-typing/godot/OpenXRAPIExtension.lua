@@ -1,8 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class OpenXRAPIExtension : RefCounted
 local OpenXRAPIExtension = {}
+
+---@return integer
+function OpenXRAPIExtension.get_openxr_version() end
 
 ---@return integer
 function OpenXRAPIExtension.get_instance() end
@@ -160,3 +163,5 @@ function OpenXRAPIExtension.set_emulate_environment_blend_mode_alpha_blend(enabl
 
 ---@return OpenXRAPIExtension.OpenXRAlphaBlendModeSupport
 function OpenXRAPIExtension.is_environment_blend_mode_alpha_supported() end
+
+function OpenXRAPIExtension.update_main_swapchain_size() end

@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PacketControlModule : LogicControlModule
 ---@field default_clock_period number # Constant value: 0.1
+---@field MAX_PACKETS_PER_TICK integer # Constant value: 2048
 ---@field clk_timer Timer
 ---@field packet_in_queue Array<Dictionary>
 ---@field packet_out_queue table<string,Array>

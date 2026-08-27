@@ -1,12 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AudioSettings : VBoxContainer
 ---@field music_volume_slider Object
 ---@field master_volume_slider Object
 ---@field sfx_volume_slider Object
+---@field ambdevsfx_volume_slider Slider
+---@field amblocsfx_volume_slider Slider
+---@field ambmetsfx_volume_slider Slider
 local AudioSettings = {}
-
----@param inp number
----@return Object
-function AudioSettings.map_float_to_volume_db(inp) end

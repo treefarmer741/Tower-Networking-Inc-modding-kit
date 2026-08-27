@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GraphLinkCable : Cable
 ---@field MAX_PRICE integer # Constant value: 1000000
@@ -35,6 +35,9 @@
 ---@field smooth_factor number
 ---@field smooth_initialized boolean
 local GraphLinkCable = {}
+
+---@param enabled boolean
+function GraphLinkCable.set_highlight(enabled) end
 
 ---@param end_ Object
 ---@return Object

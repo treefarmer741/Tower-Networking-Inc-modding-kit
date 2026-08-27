@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SUPPORTCABLERSUNION
 #define TNI_API_HEADER_SUPPORTCABLERSUNION
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -31,24 +31,28 @@ struct SupportCablersUnion : public PropMod {
 	PROPERTY(is_active_proposal, bool);
 
 	inline void apply_mod();
+	inline void activate_local_effects();
 	inline String get_proposal_name();
 	inline String get_lore();
 	inline String get_description();
 	inline Variant test_adhoc_requirements();
 	inline void submit_and_apply();
 	inline void update_state();
-	inline void activate_local_effects();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
 
 inline void SupportCablersUnion::apply_mod() { this->voidcall("apply_mod"); }
+inline void SupportCablersUnion::activate_local_effects() { this->voidcall("activate_local_effects"); }
 inline String SupportCablersUnion::get_proposal_name() { return this->operator()("get_proposal_name"); }
 inline String SupportCablersUnion::get_lore() { return this->operator()("get_lore"); }
 inline String SupportCablersUnion::get_description() { return this->operator()("get_description"); }
 inline Variant SupportCablersUnion::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
 inline void SupportCablersUnion::submit_and_apply() { this->voidcall("submit_and_apply"); }
 inline void SupportCablersUnion::update_state() { this->voidcall("update_state"); }
-inline void SupportCablersUnion::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String SupportCablersUnion::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String SupportCablersUnion::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

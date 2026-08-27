@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SEMVER
 #define TNI_API_HEADER_SEMVER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -13,7 +13,7 @@ struct SemVer : public Object {
 	constexpr SemVer(uint64_t addr) : Object{addr} {}
 	SemVer(Variant variant) : SemVer{variant.as_object().address()} {}
 
-	enum VersionComparatorUnaryOp : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct VersionComparatorUnaryOp : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		EQ = 0,
 		LT = 1,
 		LE = 2,
@@ -22,7 +22,7 @@ struct SemVer : public Object {
 		TILDE = 5,
 		CARET = 6,
 	};
-	enum VersionComparatorBinaryOp : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct VersionComparatorBinaryOp : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		AND = 0,
 		OR = 1,
 	};

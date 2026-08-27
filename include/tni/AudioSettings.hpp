@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_AUDIOSETTINGS
 #define TNI_API_HEADER_AUDIOSETTINGS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,11 +18,12 @@ struct AudioSettings : public VBoxContainer {
 	PROPERTY(music_volume_slider, Variant);
 	PROPERTY(master_volume_slider, Variant);
 	PROPERTY(sfx_volume_slider, Variant);
+	PROPERTY(ambdevsfx_volume_slider, Slider);
+	PROPERTY(amblocsfx_volume_slider, Slider);
+	PROPERTY(ambmetsfx_volume_slider, Slider);
 
-	inline Variant map_float_to_volume_db(double inp);
 };
 
 
-inline Variant AudioSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
 
 #endif

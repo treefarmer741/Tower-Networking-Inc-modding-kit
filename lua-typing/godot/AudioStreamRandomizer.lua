@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AudioStreamRandomizer : AudioStream
 ---@field playback_mode integer
 ---@field random_pitch number
+---@field random_pitch_semitones number
 ---@field random_volume_offset_db number
 ---@field streams stream_
 ---@field streams_count integer
@@ -48,6 +49,12 @@ function AudioStreamRandomizer.set_random_pitch(scale) end
 
 ---@return number
 function AudioStreamRandomizer.get_random_pitch() end
+
+---@param semitones number
+function AudioStreamRandomizer.set_random_pitch_semitones(semitones) end
+
+---@return number
+function AudioStreamRandomizer.get_random_pitch_semitones() end
 
 ---@param db_offset number
 function AudioStreamRandomizer.set_random_volume_offset_db(db_offset) end

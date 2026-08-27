@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PROPMOD
 #define TNI_API_HEADER_PROPMOD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -36,6 +36,8 @@ struct PropMod : public Node {
 	inline String get_description();
 	inline String get_proposal_name();
 	inline String get_lore();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -48,5 +50,7 @@ inline void PropMod::activate_local_effects() { this->voidcall("activate_local_e
 inline String PropMod::get_description() { return this->operator()("get_description"); }
 inline String PropMod::get_proposal_name() { return this->operator()("get_proposal_name"); }
 inline String PropMod::get_lore() { return this->operator()("get_lore"); }
+inline String PropMod::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String PropMod::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

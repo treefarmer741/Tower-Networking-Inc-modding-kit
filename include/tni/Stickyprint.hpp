@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_STICKYPRINT
 #define TNI_API_HEADER_STICKYPRINT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,12 +16,20 @@ struct Stickyprint : public ScreenApp {
 	Stickyprint(Variant variant) : Stickyprint{variant.as_object().address()} {}
 
 	static constexpr int64_t COST_PER_PRINT = 6;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double STICKY_SATURATION = 0.26;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double STICKY_VALUE = 0.94;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(labeledit, TextEdit);
-	PROPERTY(colorsel, OptionButton);
+	PROPERTY(hue_slider, HSlider);
+	PROPERTY(hue_preview, ColorRect);
+	PROPERTY(fontchooser, OptionButton);
 	PROPERTY(printbut, Button);
 	PROPERTY(fineprint, Label);
 	PROPERTY(quitbut, Button);
+	PROPERTY(cable_tag_panel, PanelContainer);
+	PROPERTY(ct_hue_slider, HSlider);
+	PROPERTY(ct_hue_preview, ColorRect);
+	PROPERTY(ct_text_edit, TextEdit);
 	PROPERTY(sticky_ghost, Node2D);
 	PROPERTY(sticky_scn, PackedScene);
 	PROPERTY(main_pane, MainPane);
@@ -31,7 +39,7 @@ struct Stickyprint : public ScreenApp {
 
 	inline void launch();
 	inline void minimize();
-	inline void spawn_sticky(Variant lblc, Variant nc, Variant global_pos, Variant parent_path);
+	inline void spawn_sticky(Variant lblc, Variant nc, Variant fi, Variant global_pos, Variant parent_path);
 	inline void clear_dynamic();
 	inline void toast(String msg, int64_t duration);
 	inline Variant get_main_pane();
@@ -41,7 +49,7 @@ struct Stickyprint : public ScreenApp {
 
 inline void Stickyprint::launch() { this->voidcall("launch"); }
 inline void Stickyprint::minimize() { this->voidcall("minimize"); }
-inline void Stickyprint::spawn_sticky(Variant lblc, Variant nc, Variant global_pos, Variant parent_path) { this->voidcall("spawn_sticky", lblc, nc, global_pos, parent_path); }
+inline void Stickyprint::spawn_sticky(Variant lblc, Variant nc, Variant fi, Variant global_pos, Variant parent_path) { this->voidcall("spawn_sticky", lblc, nc, fi, global_pos, parent_path); }
 inline void Stickyprint::clear_dynamic() { this->voidcall("clear_dynamic"); }
 inline void Stickyprint::toast(String msg, int64_t duration) { this->voidcall("toast", msg, duration); }
 inline Variant Stickyprint::get_main_pane() { return this->operator()("get_main_pane"); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TenaboltLegalRetaliation : MerchantListingMod
 ---@field merchant_scn PackedScene
@@ -58,3 +58,9 @@ function TenaboltLegalRetaliation.get_proposal_name() end
 
 ---@return string
 function TenaboltLegalRetaliation.get_lore() end
+
+---@return string
+function TenaboltLegalRetaliation.get_tiered_display_name() end
+
+---@return string
+function TenaboltLegalRetaliation.get_unlock_condition_description() end

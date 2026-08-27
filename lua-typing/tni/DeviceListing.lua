@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class DeviceListing : Node
 ---@field device_scn PackedScene
 ---@field listed_on_day integer
 ---@field delisted_on_day integer
+---@field requires_tech string
 ---@field warranty_period integer
 ---@field allowed_variant DeviceListing.VariantType
 ---@field listing_title string

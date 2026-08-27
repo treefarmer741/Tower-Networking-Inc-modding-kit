@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetworkRouterImpl : Program
 ---@field SCAN_BYPASS_RDATA string # Constant value: debugger scan with bypass
 ---@field routectl RouteControlModule
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -17,6 +18,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local NetworkRouterImpl = {}
 
@@ -31,7 +33,7 @@ function NetworkRouterImpl.get_longest_matched_port(hc, pktctl, rtctl, packet) e
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkRouterImpl.process_network_packet(pktctl, packet) end
 
 ---@param src_node_controller LogicController
@@ -39,6 +41,12 @@ function NetworkRouterImpl.process_network_packet(pktctl, packet) end
 ---@param rcpt_port_id string
 ---@param src_port_id string
 function NetworkRouterImpl.update_routes_from_rip_packet(src_node_controller, hopped_node_controller, rcpt_port_id, src_port_id) end
+
+---@param hcnroutc RouteControlModule
+---@param install_rte string
+---@param rcpt_port_id string
+---@param advertised_metric integer
+function NetworkRouterImpl.install_advertised_route(hcnroutc, install_rte, rcpt_port_id, advertised_metric) end
 
 ---@param ds string
 ---@return string
@@ -57,9 +65,13 @@ function NetworkRouterImpl.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkRouterImpl.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function NetworkRouterImpl.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function NetworkRouterImpl.test_routing_exemption(packet) end

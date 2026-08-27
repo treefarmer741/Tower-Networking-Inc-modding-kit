@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Environment : Resource
 ---@field background_mode integer
@@ -19,6 +19,8 @@
 ---@field tonemap_mode integer
 ---@field tonemap_exposure number
 ---@field tonemap_white number
+---@field tonemap_agx_white number
+---@field tonemap_agx_contrast number
 ---@field ssr_enabled boolean
 ---@field ssr_max_steps integer
 ---@field ssr_fade_in number
@@ -211,6 +213,18 @@ function Environment.set_tonemap_white(white) end
 
 ---@return number
 function Environment.get_tonemap_white() end
+
+---@param white number
+function Environment.set_tonemap_agx_white(white) end
+
+---@return number
+function Environment.get_tonemap_agx_white() end
+
+---@param contrast number
+function Environment.set_tonemap_agx_contrast(contrast) end
+
+---@return number
+function Environment.get_tonemap_agx_contrast() end
 
 ---@param enabled boolean
 function Environment.set_ssr_enabled(enabled) end

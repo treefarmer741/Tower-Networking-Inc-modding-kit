@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PocosiaInputNode3DOrbiter : Node3D
 ---@field target_mindrag_sens_mult number

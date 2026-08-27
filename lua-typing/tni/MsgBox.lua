@@ -1,9 +1,19 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class MsgBox : ScreenApp
 ---@field msg_list_scene PackedScene
 ---@field msg_view_scene PackedScene
+---@field keyword_edit LineEdit
+---@field select_all_cb CheckBox
+---@field delete_button TextureButton
+---@field label_name_edit LineEdit
+---@field label_hue_slider HSlider
+---@field label_hue_preview ColorRect
+---@field labels_bar HFlowContainer
+---@field hidden_msg_ids Array<any>
+---@field labels table<any,any>
+---@field msg_label_map table<any,any>
 ---@field viewing_msg boolean
 ---@field main_pane MainPane
 ---@field dynamic_container_path string

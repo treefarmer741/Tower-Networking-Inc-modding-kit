@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Input : Object
 ---@field mouse_mode integer
@@ -162,6 +162,14 @@ function Input.set_magnetometer(value) end
 
 ---@param value Vector3
 function Input.set_gyroscope(value) end
+
+---@param device integer
+---@param color Color
+function Input.set_joy_light(device, color) end
+
+---@param device integer
+---@return boolean
+function Input.has_joy_light(device) end
 
 ---@return Vector2
 function Input.get_last_mouse_velocity() end

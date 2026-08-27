@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CnetworkWorld : GameWorld
 ---@field is_state_restored boolean
@@ -16,6 +16,7 @@
 ---@field time_mult number
 ---@field dns_lookup table<any,any>
 ---@field nwaddr_lookup table<any,any>
+---@field tap_color_map_by_traffic table<any,any>
 ---@field scene_res_path string
 ---@field elevator_fee_per_floor integer
 ---@field elevator_time_per_floor number
@@ -27,6 +28,7 @@
 ---@field day_opening_balance integer
 ---@field auto_complete_candidate_list Array<any>
 ---@field migration_srack_c integer
+---@field migration_lrack_c integer
 ---@field fbcntr integer
 ---@field difficulty_hash integer
 ---@field unlocks_or_achievements_allowed boolean
@@ -44,6 +46,7 @@
 ---@field loan_controller LoanController
 ---@field decentromarket_controller DecentroMarketController
 ---@field playerhosting_controller PlayerHostingController
+---@field ppksb_controller KeystoneBridgeManager
 ---@field player_hostings Array<PlayerHosting>
 ---@field propmod_controller PropModController
 ---@field available_programs Array<PackedScene>
@@ -126,7 +129,8 @@ function CnetworkWorld.remove_autocomplete_candidate(candid) end
 function CnetworkWorld.get_loc_index(loc) end
 
 ---@param sfp string
-function CnetworkWorld.add_location(sfp) end
+---@param suppress_notification boolean?  # Default = false
+function CnetworkWorld.add_location(sfp, suppress_notification) end
 
 ---@param peer_id integer
 ---@return MultiplayerMouse
@@ -194,6 +198,10 @@ function CnetworkWorld.add_player_hosting(fqdn, use_spec_csv, ppu) end
 ---@param fqdn string
 function CnetworkWorld.remove_player_hosting(fqdn) end
 
+---@param traffic_class string
+---@param hex_rgb string
+function CnetworkWorld.set_tap_traffic_color(traffic_class, hex_rgb) end
+
 ---@param fqdn Object
 ---@param netaddr Object
 function CnetworkWorld.put_dns_entry(fqdn, netaddr) end
@@ -212,3 +220,7 @@ function CnetworkWorld.acquire_all_tech() end
 function CnetworkWorld.enable_all_listings() end
 
 function CnetworkWorld.enable_all_tech_and_listings() end
+
+---@param _device DeviceUnit
+---@return number
+function CnetworkWorld.get_device_replacement_rate(_device) end

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLUG
 #define TNI_API_HEADER_PLUG
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,8 +16,15 @@ struct Plug : public PickableDevice {
 	Plug(Variant variant) : Plug{variant.as_object().address()} {}
 
 	static constexpr int64_t ZINDEX = 500;  // NOTE: You should recompile your mod if this value changes!
+	enum struct CableMakeType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		RJ45 = 0,
+		FIBEROPTIC = 1,
+		POWERMA = 2,
+	};
 
 	PROPERTY(compatibles, Variant);
+	PROPERTY(ripped_cable_ps, PackedScene);
+	PROPERTY(cable_make_type, int64_t);
 	PROPERTY(connection, Variant);
 	PROPERTY(cable_joint, PinJoint2D);
 	PROPERTY(attached_device_unit, DeviceUnit);
@@ -25,6 +32,9 @@ struct Plug : public PickableDevice {
 	PROPERTY(fixed_pick_offset, Variant);
 	PROPERTY(is_plugged_in, bool);
 	PROPERTY(applied_color, Variant);
+	PROPERTY(is_labelled, bool);
+	PROPERTY(label_text, String);
+	PROPERTY(label_color, Variant);
 	PROPERTY(hard_contact_tolerance, double);
 	PROPERTY(hard_contact_audio, AudioStreamPlayer2D);
 	PROPERTY(base_size, Variant);
@@ -37,7 +47,10 @@ struct Plug : public PickableDevice {
 	PROPERTY(is_picked_by_attaching, bool);
 	PROPERTY(picker_type, int64_t);
 
+	inline PackedScene get_cable_make_scene();
+	inline void set_highlight(bool enabled);
 	inline void apply_color(Variant color_val);
+	inline void apply_label(String text, Variant color, bool labelled);
 	inline void plug_in(Variant a);
 	inline bool drop(Variant impulse, bool skip_autoplug);
 	inline void srv_handle_pickup(const Socket& a);
@@ -52,7 +65,10 @@ struct Plug : public PickableDevice {
 #include "GraphController.hpp"
 #include "Socket.hpp"
 
+inline PackedScene Plug::get_cable_make_scene() { return PackedScene(this->operator()("get_cable_make_scene").as_object().address()); }
+inline void Plug::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline void Plug::apply_color(Variant color_val) { this->voidcall("apply_color", color_val); }
+inline void Plug::apply_label(String text, Variant color, bool labelled) { this->voidcall("apply_label", text, color, labelled); }
 inline void Plug::plug_in(Variant a) { this->voidcall("plug_in", a); }
 inline bool Plug::drop(Variant impulse, bool skip_autoplug) { return this->operator()("drop", impulse, skip_autoplug); }
 inline void Plug::srv_handle_pickup(const Socket& a) { this->voidcall("srv_handle_pickup", Object(reinterpret_cast<const Object*>(&a)->address())); }

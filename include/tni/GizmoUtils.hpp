@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GIZMOUTILS
 #define TNI_API_HEADER_GIZMOUTILS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -13,7 +13,7 @@ struct GizmoUtils : public Object {
 	constexpr GizmoUtils(uint64_t addr) : Object{addr} {}
 	GizmoUtils(Variant variant) : GizmoUtils{variant.as_object().address()} {}
 
-	enum T : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct T : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		arbitrary_code = 0,
 		left_clicked = 1,
 		left_button_held = 2,

@@ -1,12 +1,15 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetworkControlModule : LogicControlModule
 ---@field DHCP_BASE_PERIOD number # Constant value: 10.0
+---@field DHCP_MAX_PERIOD number # Constant value: 36000.0
+---@field DHCP_JITTER_S number # Constant value: 5.0
 ---@field BACK_PORT string # Constant value: backend
 ---@field STP_BLOCKED string # Constant value: stp-blocked
 ---@field parent_controller LogicController
 ---@field local_dns_mapping boolean
+---@field dhcp_period_s integer
 ---@field hwaddr_fixed boolean
 ---@field hardware_address string
 ---@field network_address string
@@ -67,6 +70,9 @@ function NetworkControlModule.handle_save(save_obj) end
 function NetworkControlModule.handle_load(save_obj) end
 
 function NetworkControlModule.try_schedule_dhcp_request() end
+
+---@param period integer
+function NetworkControlModule.set_dhcp_period(period) end
 
 ---@param entry Object
 ---@param val Object

@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class VlanHub : Program
 ---@field vlanctl VLANControlModule
 ---@field networkctl NetworkControlModule
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -17,12 +18,13 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local VlanHub = {}
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function VlanHub.process_network_packet(pktctl, packet) end
 
 function VlanHub.tick() end
@@ -44,9 +46,13 @@ function VlanHub.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function VlanHub.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function VlanHub.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function VlanHub.test_routing_exemption(packet) end

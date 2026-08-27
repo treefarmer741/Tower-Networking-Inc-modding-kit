@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AlwaysProduce : Program
 ---@field produce_use_config UseConfig
@@ -8,6 +8,7 @@
 ---@field limit_factor integer
 ---@field produced_last_tick integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -20,6 +21,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local AlwaysProduce = {}
 ---@enum AlwaysProduce.ProduceLimitType
@@ -30,6 +32,7 @@ AlwaysProduce.ProduceLimitType = {
 	["LIMITED_BY_TARGET_TOTAL_MEM"] = 3,
 	["LIMITED_BY_TARGET_TOTAL_CPU"] = 4,
 	["LIMITED_BY_TARGET_TOTAL_STORAGE"] = 5,
+	["LIMITED_BY_TARGET_FREE_STORAGE"] = 6,
 }
 
 ---@param limit_type AlwaysProduce.ProduceLimitType
@@ -62,9 +65,13 @@ function AlwaysProduce.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function AlwaysProduce.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function AlwaysProduce.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function AlwaysProduce.test_routing_exemption(packet) end

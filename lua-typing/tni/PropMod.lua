@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PropMod : Node
 ---@field submitted boolean
@@ -35,3 +35,9 @@ function PropMod.get_proposal_name() end
 
 ---@return string
 function PropMod.get_lore() end
+
+---@return string
+function PropMod.get_tiered_display_name() end
+
+---@return string
+function PropMod.get_unlock_condition_description() end

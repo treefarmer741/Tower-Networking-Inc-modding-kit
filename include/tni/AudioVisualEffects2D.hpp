@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_AUDIOVISUALEFFECTS2D
 #define TNI_API_HEADER_AUDIOVISUALEFFECTS2D
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct AudioVisualEffects2D : public Node2D {
 	constexpr AudioVisualEffects2D(Object obj) : AudioVisualEffects2D{obj.address()} {}
 	AudioVisualEffects2D(Variant variant) : AudioVisualEffects2D{variant.as_object().address()} {}
 
-	enum EffectsGroup : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct EffectsGroup : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		UNGROUPED = 0,
 		FAILURE = 1,
 	};

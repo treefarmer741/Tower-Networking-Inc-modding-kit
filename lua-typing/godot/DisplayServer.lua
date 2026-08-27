@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class DisplayServer : Object
 local DisplayServer = {}
@@ -643,6 +643,9 @@ function DisplayServer.window_start_drag(window_id) end
 ---@param window_id integer?  # Default = 0
 function DisplayServer.window_start_resize(edge, window_id) end
 
+---@param color Color
+function DisplayServer.window_set_color(color) end
+
 ---@return integer
 function DisplayServer.accessibility_should_increase_contrast() end
 
@@ -670,8 +673,9 @@ function DisplayServer.accessibility_create_sub_element(parent_rid, role, insert
 ---@param shaped_text RID
 ---@param min_height number
 ---@param insert_pos integer?  # Default = -1
+---@param is_last_line boolean?  # Default = false
 ---@return RID
-function DisplayServer.accessibility_create_sub_text_edit_elements(parent_rid, shaped_text, min_height, insert_pos) end
+function DisplayServer.accessibility_create_sub_text_edit_elements(parent_rid, shaped_text, min_height, insert_pos, is_last_line) end
 
 ---@param id RID
 ---@return boolean

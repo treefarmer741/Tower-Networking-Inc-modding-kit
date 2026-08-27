@@ -1,14 +1,17 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Surveyor : ScreenApp
 ---@field satiety_per_color_level number # Constant value: 3.0
 ---@field satiety_level_color Array<any> # Constant value: [(1.0, 0.6, 0.0, 1.0), (1.0, 1.0, 0.0, 1.0), (0.8, 1.0, 0.2, 1.0), (0.6, 1.0, 0.2, 1.0), (0.4, 1.0, 0.2, 1.0), (0.2, 0.8, 0.2, 1.0), (0.0, 1.0, 0.0, 1.0), (0.0, 1.0, 0.6, 1.0), (0.0, 1.0, 0.8, 1.0), (0.0, 0.8, 0.9333, 1.0)]
 ---@field user_list_item_scene PackedScene
+---@field user_heatmap_item_scene PackedScene
+---@field user_schedule_item_scene PackedScene
 ---@field user_detail_panel_scene PackedScene
 ---@field floor_list_item_scene PackedScene
 ---@field floor_detail_panel_scene PackedScene
 ---@field user_total_lbl Label
+---@field heatmap_legend UserHeatmapItem
 ---@field main_scroll_last_vscroll integer
 ---@field search_text string
 ---@field main_pane MainPane

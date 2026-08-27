@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LogicControllerUser : User
 ---@field logic_controller LogicController
@@ -10,6 +10,7 @@
 ---@field consumption_payment_scaling number
 ---@field allow_hwreset boolean
 ---@field bandwidth_used_last_tick integer
+---@field ot_probability number
 ---@field program_manifest_rolls table<any,any>
 ---@field bandwidth_used_this_tick integer
 ---@field consumption_total_this_tick integer
@@ -44,6 +45,7 @@
 ---@field inactive_time_float number
 ---@field fulfilment_penalty_factor number
 ---@field icon_texture Texture2D
+---@field custom_user_note string
 ---@field unknown_user boolean
 ---@field satiety_ratio number
 ---@field is_active boolean
@@ -57,7 +59,6 @@
 ---@field location Location
 ---@field username_fixed boolean
 ---@field username string
----@field previous_active_state boolean
 local LogicControllerUser = {}
 ---@enum LogicControllerUser.PaymentCalculationMethod
 LogicControllerUser.PaymentCalculationMethod = {
@@ -100,3 +101,6 @@ function LogicControllerUser.first_use() end
 function LogicControllerUser.periodic_use() end
 
 function LogicControllerUser.down() end
+
+---@param new_value string
+function LogicControllerUser.update_user_note(new_value) end

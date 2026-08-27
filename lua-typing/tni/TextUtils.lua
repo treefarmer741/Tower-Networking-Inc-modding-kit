@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TextUtils : Object
 ---@field LOWERCASE_ALPHABETS string # Constant value: abcdefghijklmnopqrstuvwxyz
 ---@field UPPERCASE_ALPHABETS string # Constant value: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ---@field DIGITS string # Constant value: 0123456789
+---@field CHUNK_SIZE integer # Constant value: 1024
 local TextUtils = {}
 
 ---@param inp string
@@ -38,3 +39,8 @@ function TextUtils.fill_pattstr_with_rand(pattstr, rng) end
 ---@param shortcut Object
 ---@return string
 function TextUtils.get_shortcut_keystr(shortcut) end
+
+---@param text string
+---@param method HashingContext.HashType?  # Default = 2
+---@return PackedByteArray
+function TextUtils.hash_string(text, method) end

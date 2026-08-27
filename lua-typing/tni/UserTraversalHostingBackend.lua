@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class UserTraversalHostingBackend : UserTraversalFQDN
 ---@field user_hosting_frontend UserHosting
@@ -19,8 +19,10 @@
 ---@field dialog_text string
 ---@field surveyor_dialog_ptype string
 ---@field theme_affinity ThemeConfig
+---@field daily_traffic_curve Curve
+---@field curved_traffic_weight_last_tick integer
 ---@field consumption_history table<any,any>
----@field successfully_consumed_this_tick boolean
+---@field consumption_status_this_tick NetworkPacketRoot.Err
 ---@field will_manifest boolean
 ---@field reqshare_accept_hash integer
 ---@field reqshare_weight_index Array<integer>
@@ -40,6 +42,7 @@
 ---@field traffic_class string
 ---@field traffic_weight integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -52,6 +55,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local UserTraversalHostingBackend = {}
 
@@ -133,9 +137,13 @@ function UserTraversalHostingBackend.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function UserTraversalHostingBackend.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function UserTraversalHostingBackend.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function UserTraversalHostingBackend.test_routing_exemption(packet) end

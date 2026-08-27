@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class WormBase : TraversalBase
 ---@field release_name_template string
@@ -7,10 +7,12 @@
 ---@field signature string
 ---@field vulnerable_device_types Array<any>
 ---@field incubation_cycles integer
+---@field force_hint_hide boolean
 ---@field incubation_ctr integer
 ---@field traffic_class string
 ---@field traffic_weight integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -23,6 +25,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local WormBase = {}
 
@@ -63,9 +66,13 @@ function WormBase.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function WormBase.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function WormBase.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function WormBase.test_routing_exemption(packet) end

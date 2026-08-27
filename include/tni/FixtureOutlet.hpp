@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_FIXTUREOUTLET
 #define TNI_API_HEADER_FIXTUREOUTLET
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,6 +16,7 @@ struct FixtureOutlet : public Area2D {
 
 
 	PROPERTY(socket, Socket);
+	PROPERTY(sockets, Variant);
 	PROPERTY(floor_num, int64_t);
 
 	inline Variant debug_monitor_callback();

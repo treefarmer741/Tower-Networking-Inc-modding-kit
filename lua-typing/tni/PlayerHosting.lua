@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PlayerHosting : Node
 ---@field fqdn string
@@ -24,3 +24,6 @@ function PlayerHosting.reset_for_day() end
 
 ---@param new_ppu number
 function PlayerHosting.update_ppu(new_ppu) end
+
+---@param new_csv string
+function PlayerHosting.update_use_spec_csv(new_csv) end

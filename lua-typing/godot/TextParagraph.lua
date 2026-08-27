@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TextParagraph : RefCounted
 ---@field direction integer
@@ -18,6 +18,9 @@
 local TextParagraph = {}
 
 function TextParagraph.clear() end
+
+---@return TextParagraph
+function TextParagraph.duplicate() end
 
 ---@param direction TextServer.Direction
 function TextParagraph.set_direction(direction) end
@@ -87,6 +90,10 @@ function TextParagraph.add_object(key, size, inline_align, length, baseline) end
 ---@param baseline number?  # Default = 0.0
 ---@return boolean
 function TextParagraph.resize_object(key, size, inline_align, baseline) end
+
+---@param key Object
+---@return boolean
+function TextParagraph.has_object(key) end
 
 ---@param alignment HorizontalAlignment
 function TextParagraph.set_alignment(alignment) end

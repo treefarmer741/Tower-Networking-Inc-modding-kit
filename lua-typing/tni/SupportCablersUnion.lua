@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SupportCablersUnion : PropMod
 ---@field cost integer
@@ -18,6 +18,8 @@
 local SupportCablersUnion = {}
 
 function SupportCablersUnion.apply_mod() end
+
+function SupportCablersUnion.activate_local_effects() end
 
 ---@return string
 function SupportCablersUnion.get_proposal_name() end
@@ -47,3 +49,9 @@ function SupportCablersUnion.get_proposal_name() end
 
 ---@return string
 function SupportCablersUnion.get_lore() end
+
+---@return string
+function SupportCablersUnion.get_tiered_display_name() end
+
+---@return string
+function SupportCablersUnion.get_unlock_condition_description() end

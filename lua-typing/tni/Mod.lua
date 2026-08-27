@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Mod : Sandbox
 ---@field mod_entry_binary string
@@ -8,6 +8,7 @@
 ---@field manifest ModManifest
 ---@field filesystem ModFileSystem
 ---@field api_v1 ModApiV1
+---@field mod_data ModData
 local Mod = {}
 
 function Mod.reload() end
@@ -43,3 +44,7 @@ function Mod.error_string_(e) end
 ---@param value Object
 ---@return string
 function Mod.str_(value) end
+
+---@param classname string
+---@return Array<string>
+function Mod.class_get_method_list(classname) end

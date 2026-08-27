@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LogicProgramUnlock : PropMod
 ---@field title string
@@ -56,3 +56,9 @@ function LogicProgramUnlock.get_proposal_name() end
 
 ---@return string
 function LogicProgramUnlock.get_lore() end
+
+---@return string
+function LogicProgramUnlock.get_tiered_display_name() end
+
+---@return string
+function LogicProgramUnlock.get_unlock_condition_description() end

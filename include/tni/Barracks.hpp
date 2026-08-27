@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BARRACKS
 #define TNI_API_HEADER_BARRACKS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -21,10 +21,11 @@ struct Barracks : public ScreenApp {
 	PROPERTY(r_remove, Container);
 	PROPERTY(cfmbutton, Button);
 	PROPERTY(optcontainer, Container);
+	PROPERTY(cable_tray_panel_items, Variant);
 	PROPERTY(curr_ghost, CollisionObject2D);
 	PROPERTY(curr_rack, Container);
 	PROPERTY(placed_ghost, CollisionObject2D);
-	PROPERTY(curr_removal_target, Rack);
+	PROPERTY(curr_removal_target, CollisionObject2D);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);
 	PROPERTY(dynamic_container, Container);
@@ -38,7 +39,6 @@ struct Barracks : public ScreenApp {
 	inline Variant get_main_pane();
 };
 
-#include "Rack.hpp"
 #include "MainPane.hpp"
 
 inline void Barracks::launch() { this->voidcall("launch"); }

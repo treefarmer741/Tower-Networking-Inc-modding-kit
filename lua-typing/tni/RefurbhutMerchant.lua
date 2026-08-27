@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RefurbhutMerchant : PropMod
 ---@field cost integer
@@ -50,3 +50,9 @@ function RefurbhutMerchant.get_proposal_name() end
 
 ---@return string
 function RefurbhutMerchant.get_lore() end
+
+---@return string
+function RefurbhutMerchant.get_tiered_display_name() end
+
+---@return string
+function RefurbhutMerchant.get_unlock_condition_description() end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Cable : Node2D
 ---@field ZINDEX integer # Constant value: 1000
@@ -8,6 +8,7 @@
 ---@field CablePieceScene30 string # Constant value: <PackedScene>
 ---@field CablePieceScene50 string # Constant value: <PackedScene>
 ---@field CablePieceScene25 string # Constant value: <PackedScene>
+---@field cable_highlight_effect Color # Constant value: (2.454, 2.454, 2.454, 1.0)
 ---@field DELAY_TIMER_FLT number # Constant value: 0.3
 ---@field LINVELT number # Constant value: 5.0
 ---@field with_mouse_stretch_factor Object
@@ -31,6 +32,9 @@
 ---@field smooth_factor number
 ---@field smooth_initialized boolean
 local Cable = {}
+
+---@param enabled boolean
+function Cable.set_highlight(enabled) end
 
 ---@param end_ Object
 ---@return Object

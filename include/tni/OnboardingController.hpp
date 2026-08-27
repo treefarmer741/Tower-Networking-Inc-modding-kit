@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ONBOARDINGCONTROLLER
 #define TNI_API_HEADER_ONBOARDINGCONTROLLER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct OnboardingController : public Node {
 	constexpr OnboardingController(Object obj) : OnboardingController{obj.address()} {}
 	OnboardingController(Variant variant) : OnboardingController{variant.as_object().address()} {}
 
-	enum FloorQueueKey : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct FloorQueueKey : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		SCENE_FILE_PATH = 0,
 		FINAL_DATE = 1,
 		QUEUE_ID = 2,

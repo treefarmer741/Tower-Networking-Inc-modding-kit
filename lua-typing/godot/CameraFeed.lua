@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CameraFeed : RefCounted
 ---@field feed_is_active boolean
@@ -39,6 +39,10 @@ function CameraFeed.set_rgb_image(rgb_image) end
 
 ---@param ycbcr_image Image
 function CameraFeed.set_ycbcr_image(ycbcr_image) end
+
+---@param y_image Image
+---@param cbcr_image Image
+function CameraFeed.set_ycbcr_images(y_image, cbcr_image) end
 
 ---@param width integer
 ---@param height integer

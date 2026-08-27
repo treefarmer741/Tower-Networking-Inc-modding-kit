@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TowerLink : ScreenApp
 ---@field tower_link_itm_scn PackedScene
@@ -27,7 +27,10 @@
 ---@field same_floor_warning Label
 ---@field a_link_sock LinkOutlet
 ---@field b_link_sock LinkOutlet
+---@field a_link_sock_index integer
+---@field b_link_sock_index integer
 ---@field selected_link_outlets Array<LinkOutlet>
+---@field selected_link_socket_indices Array<integer>
 ---@field tower_view_handler table<any,any>
 ---@field main_pane MainPane
 ---@field dynamic_container_path string

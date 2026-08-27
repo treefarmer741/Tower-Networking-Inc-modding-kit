@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SpinBox : Range
 ---@field alignment integer
@@ -8,6 +8,7 @@
 ---@field prefix string
 ---@field suffix string
 ---@field custom_arrow_step number
+---@field custom_arrow_round boolean
 ---@field select_all_on_focus boolean
 local SpinBox = {}
 
@@ -37,6 +38,12 @@ function SpinBox.set_custom_arrow_step(arrow_step) end
 
 ---@return number
 function SpinBox.get_custom_arrow_step() end
+
+---@param round boolean
+function SpinBox.set_custom_arrow_round(round) end
+
+---@return boolean
+function SpinBox.is_custom_arrow_rounding() end
 
 ---@return boolean
 function SpinBox.is_editable() end

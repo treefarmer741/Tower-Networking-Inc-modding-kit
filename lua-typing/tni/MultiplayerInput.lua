@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class MultiplayerInput : MultiplayerSynchronizer
 ---@field dbg_console_win_scn string # Constant value: <PackedScene>
@@ -15,10 +15,15 @@ function MultiplayerInput.press_primary_double() end
 
 function MultiplayerInput.release_primary() end
 
-function MultiplayerInput.press_t() end
+---@param with_ctrl boolean?  # Default = false
+function MultiplayerInput.press_t(with_ctrl) end
 
 function MultiplayerInput.release_t() end
 
 function MultiplayerInput.press_r() end
 
 function MultiplayerInput.release_r() end
+
+function MultiplayerInput.press_f() end
+
+function MultiplayerInput.release_f() end

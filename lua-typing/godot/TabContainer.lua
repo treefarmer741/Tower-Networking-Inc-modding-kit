@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TabContainer : Container
 ---@field tab_alignment integer
@@ -8,6 +8,7 @@
 ---@field clip_tabs boolean
 ---@field tabs_visible boolean
 ---@field all_tabs_in_front boolean
+---@field switch_on_drag_hover boolean
 ---@field drag_to_rearrange_enabled boolean
 ---@field tabs_rearrange_group integer
 ---@field use_hidden_tabs_for_min_size boolean
@@ -150,6 +151,12 @@ function TabContainer.set_popup(popup) end
 
 ---@return Popup
 function TabContainer.get_popup() end
+
+---@param enabled boolean
+function TabContainer.set_switch_on_drag_hover(enabled) end
+
+---@return boolean
+function TabContainer.get_switch_on_drag_hover() end
 
 ---@param enabled boolean
 function TabContainer.set_drag_to_rearrange_enabled(enabled) end

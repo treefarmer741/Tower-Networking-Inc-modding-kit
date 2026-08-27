@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NewDataCenter : PropMod
 ---@field admin_perc_increase number # Constant value: 0.1
@@ -49,3 +49,9 @@ function NewDataCenter.get_proposal_name() end
 
 ---@return string
 function NewDataCenter.get_lore() end
+
+---@return string
+function NewDataCenter.get_tiered_display_name() end
+
+---@return string
+function NewDataCenter.get_unlock_condition_description() end

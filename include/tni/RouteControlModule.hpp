@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ROUTECONTROLMODULE
 #define TNI_API_HEADER_ROUTECONTROLMODULE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,7 +17,7 @@ struct RouteControlModule : public LogicControlModule {
 
 	inline static const String DEFAULT_DROP_CS = "drop";  // NOTE: You should recompile your mod if this value changes!
 	static constexpr int64_t MAX_PORT_GROUPS = 10;  // NOTE: You should recompile your mod if this value changes!
-	enum RVID : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct RVID : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		DST_PORT_ID = 0,
 		METRIC = 1,
 		CYCTL = 2,

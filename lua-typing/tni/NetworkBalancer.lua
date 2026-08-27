@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetworkBalancer : Program
 ---@field networkctl NetworkControlModule
 ---@field lbcounter integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -17,12 +18,13 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local NetworkBalancer = {}
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkBalancer.process_network_packet(pktctl, packet) end
 
 function NetworkBalancer.tick() end
@@ -44,9 +46,13 @@ function NetworkBalancer.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkBalancer.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function NetworkBalancer.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function NetworkBalancer.test_routing_exemption(packet) end

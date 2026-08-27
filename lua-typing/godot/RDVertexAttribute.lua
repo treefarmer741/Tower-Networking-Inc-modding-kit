@@ -1,13 +1,20 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RDVertexAttribute : RefCounted
+---@field binding integer
 ---@field location integer
 ---@field offset integer
 ---@field format integer
 ---@field stride integer
 ---@field frequency integer
 local RDVertexAttribute = {}
+
+---@param p_member integer
+function RDVertexAttribute.set_binding(p_member) end
+
+---@return integer
+function RDVertexAttribute.get_binding() end
 
 ---@param p_member integer
 function RDVertexAttribute.set_location(p_member) end

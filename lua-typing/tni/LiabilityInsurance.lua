@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LiabilityInsurance : PropMod
 ---@field multiplier integer # Constant value: 10
@@ -51,3 +51,9 @@ function LiabilityInsurance.get_proposal_name() end
 
 ---@return string
 function LiabilityInsurance.get_lore() end
+
+---@return string
+function LiabilityInsurance.get_tiered_display_name() end
+
+---@return string
+function LiabilityInsurance.get_unlock_condition_description() end

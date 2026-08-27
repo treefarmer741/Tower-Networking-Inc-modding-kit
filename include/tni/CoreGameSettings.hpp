@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_COREGAMESETTINGS
 #define TNI_API_HEADER_COREGAMESETTINGS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,16 +19,22 @@ struct CoreGameSettings : public BaseSettings {
 	PROPERTY(mouse_pan_speed, double);
 	PROPERTY(keyboard_pan_speed, double);
 	PROPERTY(drag_pan_speed, double);
+	PROPERTY(ambdevsfx_volume_linear, double);
+	PROPERTY(amblocsfx_volume_linear, double);
+	PROPERTY(ambmetsfx_volume_linear, double);
 	PROPERTY(rgb_shift_factor, double);
 	PROPERTY(autosave_freq_min, double);
 	PROPERTY(autosave_retention, int64_t);
 	PROPERTY(perf_phy_sim_mode, int64_t);
+	PROPERTY(perf_cable_sim_mode, int64_t);
 	PROPERTY(show_announcements, bool);
 	PROPERTY(shift_panning_enabled, bool);
 	PROPERTY(dmarkv2sel, bool);
 	PROPERTY(time_affects_phyanim, bool);
+	PROPERTY(breaktime_animations_enabled, bool);
 	PROPERTY(crt_filter_effect, bool);
 	PROPERTY(flickering_lights_effect, bool);
+	PROPERTY(lights_on, bool);
 	PROPERTY(show_username, bool);
 	PROPERTY(show_help_guides, bool);
 	PROPERTY(player_set_name, String);
@@ -39,6 +45,7 @@ struct CoreGameSettings : public BaseSettings {
 	PROPERTY(cmd_alias, Variant);
 	PROPERTY(floor_unlocks, Variant);
 	PROPERTY(user_stampbook, Variant);
+	PROPERTY(keybindings, Variant);
 	PROPERTY(fullscreen_mode, bool);
 	PROPERTY(vsync, int64_t);
 	PROPERTY(last_joined_ip, String);
@@ -50,12 +57,16 @@ struct CoreGameSettings : public BaseSettings {
 
 	inline void apply();
 	inline void engine_perfpar_sync();
+	inline void sync_keybindings();
 	inline Variant map_float_to_volume_db(double inp);
+	inline void adjust_bus_volume(String abid_s, double linear_value);
 };
 
 
 inline void CoreGameSettings::apply() { this->voidcall("apply"); }
 inline void CoreGameSettings::engine_perfpar_sync() { this->voidcall("engine_perfpar_sync"); }
+inline void CoreGameSettings::sync_keybindings() { this->voidcall("sync_keybindings"); }
 inline Variant CoreGameSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
+inline void CoreGameSettings::adjust_bus_volume(String abid_s, double linear_value) { this->voidcall("adjust_bus_volume", abid_s, linear_value); }
 
 #endif

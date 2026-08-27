@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SavannahBios : DeviceUnit
 ---@field bs string
@@ -26,6 +26,8 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field is_mount_locked boolean
+---@field screw_sprite Object
 ---@field auto_replacement_cost integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
@@ -94,6 +96,8 @@ function SavannahBios.set_autosvc(new_state) end
 
 ---@param new_value string
 function SavannahBios.update_user_note(new_value) end
+
+function SavannahBios.toggle_mount_lock() end
 
 function SavannahBios.remove_and_free_object() end
 

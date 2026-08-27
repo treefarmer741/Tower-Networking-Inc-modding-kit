@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class BaseUI : CanvasLayer
 ---@field is_fully_unfaded boolean
@@ -8,6 +8,7 @@
 ---@field wiki Object
 ---@field feedback Object
 ---@field mod_manager Object
+---@field mod_editor Object
 ---@field catalog Object
 ---@field screen_fader Object
 ---@field jumbotron_flasher Object
@@ -47,7 +48,7 @@ function BaseUI.hide_feedback() end
 
 function BaseUI.show_mod_manager() end
 
-function BaseUI.hide_mod_manager() end
+function BaseUI.show_mod_editor() end
 
 function BaseUI.show_catalog() end
 

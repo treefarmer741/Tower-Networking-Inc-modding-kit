@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RenderingServer : Object
 ---@field render_loop_enabled boolean
@@ -174,6 +174,9 @@ function RenderingServer.material_set_render_priority(material, priority) end
 ---@param material RID
 ---@param next_material RID
 function RenderingServer.material_set_next_pass(material, next_material) end
+
+---@param enable boolean
+function RenderingServer.material_set_use_debanding(enable) end
 
 ---@param surfaces Array<Dictionary>
 ---@param blend_shape_count integer?  # Default = 0
@@ -425,6 +428,9 @@ function RenderingServer.multimesh_set_physics_interpolation_quality(multimesh, 
 ---@param multimesh RID
 ---@param index integer
 function RenderingServer.multimesh_instance_reset_physics_interpolation(multimesh, index) end
+
+---@param multimesh RID
+function RenderingServer.multimesh_instances_reset_physics_interpolation(multimesh) end
 
 ---@return RID
 function RenderingServer.skeleton_create() end
@@ -1386,6 +1392,10 @@ function RenderingServer.environment_set_glow(env, enable, levels, intensity, st
 function RenderingServer.environment_set_tonemap(env, tone_mapper, exposure, white) end
 
 ---@param env RID
+---@param agx_contrast number
+function RenderingServer.environment_set_tonemap_agx_contrast(env, agx_contrast) end
+
+---@param env RID
 ---@param enable boolean
 ---@param brightness number
 ---@param contrast number
@@ -1464,6 +1474,9 @@ function RenderingServer.environment_set_volumetric_fog(env, enable, density, al
 
 ---@param enable boolean
 function RenderingServer.environment_glow_set_use_bicubic_upscale(enable) end
+
+---@param half_size boolean
+function RenderingServer.environment_set_ssr_half_size(half_size) end
 
 ---@param quality RenderingServer.EnvironmentSSRRoughnessQuality
 function RenderingServer.environment_set_ssr_roughness_quality(quality) end
@@ -1864,6 +1877,14 @@ function RenderingServer.canvas_item_add_rect(item, rect, color, antialiased) en
 function RenderingServer.canvas_item_add_circle(item, pos, radius, color, antialiased) end
 
 ---@param item RID
+---@param pos Vector2
+---@param major number
+---@param minor number
+---@param color Color
+---@param antialiased boolean?  # Default = false
+function RenderingServer.canvas_item_add_ellipse(item, pos, major, minor, color, antialiased) end
+
+---@param item RID
 ---@param rect Rect2
 ---@param texture RID
 ---@param tile boolean?  # Default = false
@@ -2257,6 +2278,12 @@ function RenderingServer.get_test_texture() end
 
 ---@return RID
 function RenderingServer.get_white_texture() end
+
+---@param image Image
+---@param color Color
+---@param stretch_mode RenderingServer.SplashStretchMode
+---@param use_filter boolean?  # Default = true
+function RenderingServer.set_boot_image_with_stretch(image, color, stretch_mode, use_filter) end
 
 ---@param image Image
 ---@param color Color

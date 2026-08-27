@@ -1,11 +1,13 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PlayOptions : Resource
+---@field EASIER_EPSILON number # Constant value: 0.0001
 ---@field rng_seed_str string
 ---@field starting_cash integer
 ---@field day_period integer
 ---@field freeplay boolean
+---@field limitless_money boolean
 ---@field waive_power_fee boolean
 ---@field auto_create_dns_mappings boolean
 ---@field print_connectivity_troubleshooting_help boolean
@@ -46,10 +48,85 @@
 ---@field start_amount_override integer
 ---@field tower_wide_user_dhcp_default string
 ---@field tower_wide_device_dhcp_default string
+---@field dhcp_origin_ignores_routing boolean
+---@field starting_datacenter_path string
 local PlayOptions = {}
+---@enum PlayOptions.DiffDir
+PlayOptions.DiffDir = {
+	["NEUTRAL"] = 0,
+	["LOWER_HARDER"] = 1,
+	["HIGHER_HARDER"] = 2,
+}
+---@enum PlayOptions.DIFFICULTY_DIRECTIONS
+PlayOptions.DIFFICULTY_DIRECTIONS = {
+	["rng_seed_str"] = 0,
+	["print_connectivity_troubleshooting_help"] = 0,
+	["max_nwaddr_len"] = 0,
+	["day_period"] = 0,
+	["netaddr_required_for_requests"] = 0,
+	["local_dns_mapping"] = 0,
+	["debugger_access_costs_bandwidth"] = 0,
+	["device_collisions"] = 0,
+	["program_autostart"] = 0,
+	["user_hwreset_probability"] = 0,
+	["tower_wide_user_dhcp_default"] = 0,
+	["tower_wide_device_dhcp_default"] = 0,
+	["dhcp_origin_ignores_routing"] = 0,
+	["starting_datacenter_path"] = 0,
+	["early_floorbuild_bonus_factor"] = 0,
+	["ppu_change_fee"] = 0,
+	["ph_domain_scaling_factor_1"] = 0,
+	["tenabolt_penalty"] = 0,
+	["lab_mode"] = 0,
+	["start_amount_override"] = 0,
+	["resource_local_to_scene"] = 0,
+	["locked_game_options"] = 0,
+	["scenario_name"] = 0,
+	["deprecated"] = 0,
+	["only_available_in_editor"] = 0,
+	["randomize_seed_on_menu"] = 0,
+	["is_user_onboarding"] = 0,
+	["floor_build_maximum_floors"] = 1,
+	["onboarding_max_days_in_q"] = 1,
+	["floor_build_period_multiplier"] = 1,
+	["freeplay"] = 1,
+	["limitless_money"] = 1,
+	["waive_power_fee"] = 1,
+	["auto_create_dns_mappings"] = 1,
+	["infinite_bandwidth_mode"] = 1,
+	["see_error_hints_in_world"] = 1,
+	["memento_replacement_rate"] = 2,
+	["starting_cash"] = 1,
+	["max_days_in_debt"] = 1,
+	["user_grace_days_multiplier"] = 1,
+	["user_sla_breach_time_factor_multiplier"] = 1,
+	["proposal_refresh"] = 1,
+	["proposal_batch_size"] = 1,
+	["socket_installation_cost"] = 2,
+	["device_warranty_period_multiplier"] = 1,
+	["network_outage_notice_factor"] = 1,
+	["memento_daily_rate_per_device"] = 2,
+	["user_fee_payment_multiplier"] = 2,
+	["daily_admin_expenses"] = 2,
+	["admin_fee_scaling_multiplier"] = 2,
+	["device_malfunction_occurrence_rate"] = 2,
+	["power_outage_occurrence_rate"] = 2,
+	["power_surge_occurrence_rate"] = 2,
+	["cybattack_occurrence_rate"] = 2,
+}
 
 ---@param pod table<any,any>
 function PlayOptions.set_vals_from_dict(pod) end
+
+---@param baseline PlayOptions
+---@return PackedStringArray
+function PlayOptions.get_easier_deviations(baseline) end
+
+---@param baseline PlayOptions
+---@return boolean
+function PlayOptions.is_no_easier_than(baseline) end
+
+function PlayOptions.verify_direction_coverage() end
 
 ---@return integer
 function PlayOptions.get_difficulty_hash() end

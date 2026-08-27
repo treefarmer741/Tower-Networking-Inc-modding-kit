@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class StorageSocket : Socket
 ---@field connection Object
@@ -15,6 +15,8 @@
 ---@field is_blocked boolean
 ---@field root_transformer RemoteTransform2D
 local StorageSocket = {}
+
+function StorageSocket.try_play_insert_sound() end
 
 function StorageSocket.block() end
 

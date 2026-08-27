@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class BoneConstraint3D : SkeletonModifier3D
 local BoneConstraint3D = {}
@@ -29,6 +29,14 @@ function BoneConstraint3D.set_apply_bone(index, bone) end
 function BoneConstraint3D.get_apply_bone(index) end
 
 ---@param index integer
+---@param type BoneConstraint3D.ReferenceType
+function BoneConstraint3D.set_reference_type(index, type) end
+
+---@param index integer
+---@return BoneConstraint3D.ReferenceType
+function BoneConstraint3D.get_reference_type(index) end
+
+---@param index integer
 ---@param bone_name string
 function BoneConstraint3D.set_reference_bone_name(index, bone_name) end
 
@@ -43,6 +51,14 @@ function BoneConstraint3D.set_reference_bone(index, bone) end
 ---@param index integer
 ---@return integer
 function BoneConstraint3D.get_reference_bone(index) end
+
+---@param index integer
+---@param node string
+function BoneConstraint3D.set_reference_node(index, node) end
+
+---@param index integer
+---@return string
+function BoneConstraint3D.get_reference_node(index) end
 
 ---@param count integer
 function BoneConstraint3D.set_setting_count(count) end

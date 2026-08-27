@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class RenderingDevice : Object
 local RenderingDevice = {}
@@ -374,6 +374,13 @@ function RenderingDevice.draw_list_bind_uniform_set(draw_list, uniform_set, set_
 ---@param draw_list integer
 ---@param vertex_array RID
 function RenderingDevice.draw_list_bind_vertex_array(draw_list, vertex_array) end
+
+---@param draw_list integer
+---@param vertex_format integer
+---@param vertex_count integer
+---@param vertex_buffers Array<RID>
+---@param offsets PackedInt64Array?  # Default = []
+function RenderingDevice.draw_list_bind_vertex_buffers_format(draw_list, vertex_format, vertex_count, vertex_buffers, offsets) end
 
 ---@param draw_list integer
 ---@param index_array RID

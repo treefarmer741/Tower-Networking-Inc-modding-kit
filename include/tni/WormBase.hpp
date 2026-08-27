@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_WORMBASE
 #define TNI_API_HEADER_WORMBASE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -21,10 +21,12 @@ struct WormBase : public TraversalBase {
 	PROPERTY(signature, String);
 	PROPERTY(vulnerable_device_types, Variant);
 	PROPERTY(incubation_cycles, int64_t);
+	PROPERTY(force_hint_hide, bool);
 	PROPERTY(incubation_ctr, int64_t);
 	PROPERTY(traffic_class, String);
 	PROPERTY(traffic_weight, int64_t);
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -37,6 +39,7 @@ struct WormBase : public TraversalBase {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
 	inline NetworkPacketRoot make_packet_root();
@@ -48,10 +51,12 @@ struct WormBase : public TraversalBase {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "NetworkPacketRoot.hpp"
 #include "PacketControlModule.hpp"
@@ -65,7 +70,8 @@ inline void WormBase::start() { this->voidcall("start"); }
 inline void WormBase::stop() { this->voidcall("stop"); }
 inline void WormBase::uninstall() { this->voidcall("uninstall"); }
 inline void WormBase::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
-inline bool WormBase::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t WormBase::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool WormBase::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool WormBase::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

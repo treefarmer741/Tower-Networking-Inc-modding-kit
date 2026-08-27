@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MODFILEACCESS
 #define TNI_API_HEADER_MODFILEACCESS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -31,7 +31,7 @@ struct ModFileAccess : public RefCounted {
 	inline double get_float();
 	inline double get_half();
 	inline String get_line();
-	inline String get_as_text(bool skip_cr);
+	inline String get_as_text();
 	inline double get_real();
 	inline String get_pascal_string();
 	inline String get_var(bool allow_objects);
@@ -67,7 +67,7 @@ inline double ModFileAccess::get_double() { return this->operator()("get_double"
 inline double ModFileAccess::get_float() { return this->operator()("get_float"); }
 inline double ModFileAccess::get_half() { return this->operator()("get_half"); }
 inline String ModFileAccess::get_line() { return this->operator()("get_line"); }
-inline String ModFileAccess::get_as_text(bool skip_cr) { return this->operator()("get_as_text", skip_cr); }
+inline String ModFileAccess::get_as_text() { return this->operator()("get_as_text"); }
 inline double ModFileAccess::get_real() { return this->operator()("get_real"); }
 inline String ModFileAccess::get_pascal_string() { return this->operator()("get_pascal_string"); }
 inline String ModFileAccess::get_var(bool allow_objects) { return this->operator()("get_var", allow_objects); }

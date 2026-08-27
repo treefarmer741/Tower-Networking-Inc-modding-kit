@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ALWAYSPRODUCE
 #define TNI_API_HEADER_ALWAYSPRODUCE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,13 +15,14 @@ struct AlwaysProduce : public Program {
 	constexpr AlwaysProduce(Object obj) : AlwaysProduce{obj.address()} {}
 	AlwaysProduce(Variant variant) : AlwaysProduce{variant.as_object().address()} {}
 
-	enum ProduceLimitType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ProduceLimitType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		LIMITED_BY_PRODUCE_FACTOR = 0,
 		LIMITED_BY_TARGET_FREE_MEMORY = 1,
 		LIMITED_BY_LIMIT_FACTOR = 2,
 		LIMITED_BY_TARGET_TOTAL_MEM = 3,
 		LIMITED_BY_TARGET_TOTAL_CPU = 4,
 		LIMITED_BY_TARGET_TOTAL_STORAGE = 5,
+		LIMITED_BY_TARGET_FREE_STORAGE = 6,
 	};
 
 	PROPERTY(produce_use_config, UseConfig);
@@ -30,6 +31,7 @@ struct AlwaysProduce : public Program {
 	PROPERTY(limit_factor, int64_t);
 	PROPERTY(produced_last_tick, int64_t);
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -42,6 +44,7 @@ struct AlwaysProduce : public Program {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
 	inline Variant get_produce_limit(int64_t limit_type, int64_t lfact, const LogicController& node, int64_t pfact);
@@ -52,11 +55,13 @@ struct AlwaysProduce : public Program {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
 #include "UseConfig.hpp"
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
@@ -68,7 +73,8 @@ inline void AlwaysProduce::start() { this->voidcall("start"); }
 inline void AlwaysProduce::stop() { this->voidcall("stop"); }
 inline void AlwaysProduce::uninstall() { this->voidcall("uninstall"); }
 inline void AlwaysProduce::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
-inline bool AlwaysProduce::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t AlwaysProduce::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool AlwaysProduce::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool AlwaysProduce::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

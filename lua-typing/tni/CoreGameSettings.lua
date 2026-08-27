@@ -1,20 +1,26 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CoreGameSettings : BaseSettings
 ---@field mouse_pan_speed number
 ---@field keyboard_pan_speed number
 ---@field drag_pan_speed number
+---@field ambdevsfx_volume_linear number
+---@field amblocsfx_volume_linear number
+---@field ambmetsfx_volume_linear number
 ---@field rgb_shift_factor number
 ---@field autosave_freq_min number
 ---@field autosave_retention integer
 ---@field perf_phy_sim_mode integer
+---@field perf_cable_sim_mode integer
 ---@field show_announcements boolean
 ---@field shift_panning_enabled boolean
 ---@field dmarkv2sel boolean
 ---@field time_affects_phyanim boolean
+---@field breaktime_animations_enabled boolean
 ---@field crt_filter_effect boolean
 ---@field flickering_lights_effect boolean
+---@field lights_on boolean
 ---@field show_username boolean
 ---@field show_help_guides boolean
 ---@field player_set_name string
@@ -25,6 +31,7 @@
 ---@field cmd_alias table<any,any>
 ---@field floor_unlocks table<any,any>
 ---@field user_stampbook table<any,any>
+---@field keybindings table<any,any>
 ---@field fullscreen_mode boolean
 ---@field vsync integer
 ---@field last_joined_ip string
@@ -39,8 +46,14 @@ function CoreGameSettings.apply() end
 
 function CoreGameSettings.engine_perfpar_sync() end
 
+function CoreGameSettings.sync_keybindings() end
+
+function CoreGameSettings.apply() end
+
 ---@param inp number
 ---@return Object
 function CoreGameSettings.map_float_to_volume_db(inp) end
 
-function CoreGameSettings.apply() end
+---@param abid_s string
+---@param linear_value number
+function CoreGameSettings.adjust_bus_volume(abid_s, linear_value) end

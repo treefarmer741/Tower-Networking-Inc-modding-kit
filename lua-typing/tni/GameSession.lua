@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GameSession : Node
 ---@field MAX_BGM_HEAT integer # Constant value: 3
@@ -16,6 +16,7 @@
 ---@field beige_pointer_cursor Resource
 ---@field is_save_state_loaded boolean
 ---@field floor_cache table<any,any>
+---@field loaded_save_name string
 ---@field loaded_from_save boolean
 ---@field join_addr string
 ---@field game_world GameWorld

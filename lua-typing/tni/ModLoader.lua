@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ModLoader : Node
 ---@field PRESET_FILE string # Constant value: user://mod_preset.json
@@ -34,3 +34,6 @@ function ModLoader.user_spawned(user) end
 
 ---@param location Location
 function ModLoader.location_spawned(location) end
+
+---@param merchant Merchant
+function ModLoader.merchant_spawned(merchant) end

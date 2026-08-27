@@ -1,18 +1,16 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CableOMatic : DeviceUnit
 ---@field stored_length integer
----@field max_stored_length integer
----@field max_make_length integer
----@field cable_make PackedScene
+---@field spool_threshold integer
+---@field cable_spool PackedScene
 ---@field color_variant Color
 ---@field storage_in StorageSocket
+---@field color_slider Slider
+---@field CABLE_COLOR_MODULATE_VARIANTS table<any,any>
 ---@field color_ind_sprite Sprite2D
----@field remaining_len_display Label
----@field make_len_display Label
----@field make_len_slider Slider
----@field make_length integer
+---@field storing_len_display Label
 ---@field product_name string
 ---@field description string
 ---@field text string
@@ -35,6 +33,8 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field is_mount_locked boolean
+---@field screw_sprite Object
 ---@field auto_replacement_cost integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
@@ -103,6 +103,8 @@ function CableOMatic.set_autosvc(new_state) end
 
 ---@param new_value string
 function CableOMatic.update_user_note(new_value) end
+
+function CableOMatic.toggle_mount_lock() end
 
 function CableOMatic.remove_and_free_object() end
 

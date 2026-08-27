@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SecondMonitor : PropMod
 ---@field techv string # Constant value: second_monitor
@@ -53,3 +53,9 @@ function SecondMonitor.get_proposal_name() end
 
 ---@return string
 function SecondMonitor.get_lore() end
+
+---@return string
+function SecondMonitor.get_tiered_display_name() end
+
+---@return string
+function SecondMonitor.get_unlock_condition_description() end

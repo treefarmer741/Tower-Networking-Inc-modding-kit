@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SettingsPagesGameSettings : VBoxContainer
 ---@field mouse_pan_speed Object
@@ -13,6 +13,7 @@
 ---@field show_username Object
 ---@field show_help_guides Object
 ---@field physim Object
+---@field cablesim Object
 ---@field timcphyanim Object
 ---@field autosavefreqsel Object
 ---@field autosavertnsel Object

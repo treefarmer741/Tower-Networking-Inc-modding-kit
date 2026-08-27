@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TranslationServer : Object
 ---@field pseudolocalization_enabled boolean
@@ -49,6 +49,10 @@ function TranslationServer.get_country_name(country) end
 ---@return string
 function TranslationServer.get_locale_name(locale) end
 
+---@param locale string
+---@return string
+function TranslationServer.get_plural_rules(locale) end
+
 ---@param message string
 ---@param context string?  # Default = 
 ---@return string
@@ -71,6 +75,23 @@ function TranslationServer.remove_translation(translation) end
 ---@return Translation
 function TranslationServer.get_translation_object(locale) end
 
+---@return Array<Translation>
+function TranslationServer.get_translations() end
+
+---@param locale string
+---@param exact boolean
+---@return Array<Translation>
+function TranslationServer.find_translations(locale, exact) end
+
+---@param locale string
+---@param exact boolean
+---@return boolean
+function TranslationServer.has_translation_for_locale(locale, exact) end
+
+---@param translation Translation
+---@return boolean
+function TranslationServer.has_translation(translation) end
+
 ---@param domain string
 ---@return boolean
 function TranslationServer.has_domain(domain) end
@@ -86,6 +107,20 @@ function TranslationServer.clear() end
 
 ---@return PackedStringArray
 function TranslationServer.get_loaded_locales() end
+
+---@param number string
+---@param locale string
+---@return string
+function TranslationServer.format_number(number, locale) end
+
+---@param locale string
+---@return string
+function TranslationServer.get_percent_sign(locale) end
+
+---@param number string
+---@param locale string
+---@return string
+function TranslationServer.parse_number(number, locale) end
 
 ---@return boolean
 function TranslationServer.is_pseudolocalization_enabled() end

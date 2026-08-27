@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICEMERCHANT
 #define TNI_API_HEADER_DEVICEMERCHANT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct DeviceMerchant : public Merchant {
 	constexpr DeviceMerchant(Object obj) : DeviceMerchant{obj.address()} {}
 	DeviceMerchant(Variant variant) : DeviceMerchant{variant.as_object().address()} {}
 
-	enum RESTOCK_MODE : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct RESTOCK_MODE : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		FILL = 0,
 	};
 

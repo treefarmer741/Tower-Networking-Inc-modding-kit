@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TENABOLTLEGALRETALIATION
 #define TNI_API_HEADER_TENABOLTLEGALRETALIATION
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -45,6 +45,8 @@ struct TenaboltLegalRetaliation : public MerchantListingMod {
 	inline Variant test_adhoc_requirements();
 	inline void submit_and_apply();
 	inline void update_state();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -57,5 +59,7 @@ inline String TenaboltLegalRetaliation::get_description() { return this->operato
 inline Variant TenaboltLegalRetaliation::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
 inline void TenaboltLegalRetaliation::submit_and_apply() { this->voidcall("submit_and_apply"); }
 inline void TenaboltLegalRetaliation::update_state() { this->voidcall("update_state"); }
+inline String TenaboltLegalRetaliation::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String TenaboltLegalRetaliation::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

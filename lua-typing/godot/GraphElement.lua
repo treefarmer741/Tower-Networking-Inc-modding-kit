@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GraphElement : Container
 ---@field position_offset Vector2
@@ -7,6 +7,7 @@
 ---@field draggable boolean
 ---@field selectable boolean
 ---@field selected boolean
+---@field scaling_menus boolean
 local GraphElement = {}
 
 ---@param resizable boolean
@@ -32,6 +33,12 @@ function GraphElement.set_selected(selected) end
 
 ---@return boolean
 function GraphElement.is_selected() end
+
+---@param scaling_menus boolean
+function GraphElement.set_scaling_menus(scaling_menus) end
+
+---@return boolean
+function GraphElement.is_scaling_menus() end
 
 ---@param offset Vector2
 function GraphElement.set_position_offset(offset) end

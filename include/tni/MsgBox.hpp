@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MSGBOX
 #define TNI_API_HEADER_MSGBOX
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,6 +18,16 @@ struct MsgBox : public ScreenApp {
 
 	PROPERTY(msg_list_scene, PackedScene);
 	PROPERTY(msg_view_scene, PackedScene);
+	PROPERTY(keyword_edit, LineEdit);
+	PROPERTY(select_all_cb, CheckBox);
+	PROPERTY(delete_button, TextureButton);
+	PROPERTY(label_name_edit, LineEdit);
+	PROPERTY(label_hue_slider, HSlider);
+	PROPERTY(label_hue_preview, ColorRect);
+	PROPERTY(labels_bar, HFlowContainer);
+	PROPERTY(hidden_msg_ids, Variant);
+	PROPERTY(labels, Variant);
+	PROPERTY(msg_label_map, Variant);
 	PROPERTY(viewing_msg, bool);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);

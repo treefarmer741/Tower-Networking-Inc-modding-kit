@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ScrollContainer : Container
 ---@field follow_focus boolean
@@ -11,6 +11,8 @@
 ---@field horizontal_scroll_mode integer
 ---@field vertical_scroll_mode integer
 ---@field scroll_deadzone integer
+---@field scroll_hint_mode integer
+---@field tile_scroll_hint boolean
 local ScrollContainer = {}
 
 ---@param value integer
@@ -54,6 +56,18 @@ function ScrollContainer.set_deadzone(deadzone) end
 
 ---@return integer
 function ScrollContainer.get_deadzone() end
+
+---@param scroll_hint_mode ScrollContainer.ScrollHintMode
+function ScrollContainer.set_scroll_hint_mode(scroll_hint_mode) end
+
+---@return ScrollContainer.ScrollHintMode
+function ScrollContainer.get_scroll_hint_mode() end
+
+---@param tile_scroll_hint boolean
+function ScrollContainer.set_tile_scroll_hint(tile_scroll_hint) end
+
+---@return boolean
+function ScrollContainer.is_scroll_hint_tiled() end
 
 ---@param enabled boolean
 function ScrollContainer.set_follow_focus(enabled) end

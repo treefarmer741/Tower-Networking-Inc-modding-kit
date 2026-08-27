@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Registration : VBoxContainer
 ---@field usi_scn string # Constant value: <PackedScene>
@@ -13,6 +13,7 @@
 ---@field ppu_slider Slider
 ---@field rg_display Label
 ---@field dmlbl_default string
+---@field infrastructure_uses UseConfig
 ---@field configured_use_specs Array<string>
 local Registration = {}
 

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class BaseSettings : Object
 ---@field fullscreen_mode boolean
@@ -12,8 +12,12 @@
 ---@field max_fps integer
 local BaseSettings = {}
 
+function BaseSettings.apply() end
+
 ---@param inp number
 ---@return Object
 function BaseSettings.map_float_to_volume_db(inp) end
 
-function BaseSettings.apply() end
+---@param abid_s string
+---@param linear_value number
+function BaseSettings.adjust_bus_volume(abid_s, linear_value) end

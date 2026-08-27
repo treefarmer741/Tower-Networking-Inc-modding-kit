@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetopsResearch : PropMod
 ---@field techv string # Constant value: netops_v1
@@ -53,3 +53,9 @@ function NetopsResearch.get_proposal_name() end
 
 ---@return string
 function NetopsResearch.get_lore() end
+
+---@return string
+function NetopsResearch.get_tiered_display_name() end
+
+---@return string
+function NetopsResearch.get_unlock_condition_description() end

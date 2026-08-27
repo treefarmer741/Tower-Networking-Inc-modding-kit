@@ -1,11 +1,12 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class UseStorage : Program
 ---@field stored_use_stack table<any,any>
 ---@field stored_use_config UseConfig
 ---@field storage_factor integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -18,6 +19,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local UseStorage = {}
 
@@ -40,9 +42,13 @@ function UseStorage.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function UseStorage.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function UseStorage.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function UseStorage.test_routing_exemption(packet) end

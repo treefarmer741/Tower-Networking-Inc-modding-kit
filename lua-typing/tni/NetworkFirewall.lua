@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NetworkFirewall : Program
 ---@field firewallctl FirewallControlModule
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -16,12 +17,13 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local NetworkFirewall = {}
 
 ---@param _pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkFirewall.process_network_packet(_pktctl, packet) end
 
 function NetworkFirewall.tick() end
@@ -43,9 +45,13 @@ function NetworkFirewall.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function NetworkFirewall.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function NetworkFirewall.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function NetworkFirewall.test_routing_exemption(packet) end

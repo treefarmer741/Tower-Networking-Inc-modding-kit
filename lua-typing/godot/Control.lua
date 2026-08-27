@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Control : CanvasItem
 ---@field clip_contents boolean
@@ -24,6 +24,7 @@
 ---@field rotation_degrees number
 ---@field scale Vector2
 ---@field pivot_offset Vector2
+---@field pivot_offset_ratio Vector2
 ---@field size_flags_horizontal integer
 ---@field size_flags_vertical integer
 ---@field size_flags_stretch_ratio number
@@ -136,6 +137,9 @@ function Control.set_scale(scale) end
 ---@param pivot_offset Vector2
 function Control.set_pivot_offset(pivot_offset) end
 
+---@param ratio Vector2
+function Control.set_pivot_offset_ratio(ratio) end
+
 ---@return Vector2
 function Control.get_begin() end
 
@@ -159,6 +163,12 @@ function Control.get_scale() end
 
 ---@return Vector2
 function Control.get_pivot_offset() end
+
+---@return Vector2
+function Control.get_pivot_offset_ratio() end
+
+---@return Vector2
+function Control.get_combined_pivot_offset() end
 
 ---@return Vector2
 function Control.get_custom_minimum_size() end
@@ -193,10 +203,12 @@ function Control.set_focus_behavior_recursive(focus_behavior_recursive) end
 ---@return Control.FocusBehaviorRecursive
 function Control.get_focus_behavior_recursive() end
 
+---@param ignore_hidden_focus boolean?  # Default = false
 ---@return boolean
-function Control.has_focus() end
+function Control.has_focus(ignore_hidden_focus) end
 
-function Control.grab_focus() end
+---@param hide_focus boolean?  # Default = false
+function Control.grab_focus(hide_focus) end
 
 function Control.release_focus() end
 

@@ -1,13 +1,21 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Stickyprint : ScreenApp
 ---@field COST_PER_PRINT integer # Constant value: 6
+---@field STICKY_SATURATION number # Constant value: 0.26
+---@field STICKY_VALUE number # Constant value: 0.94
 ---@field labeledit TextEdit
----@field colorsel OptionButton
+---@field hue_slider HSlider
+---@field hue_preview ColorRect
+---@field fontchooser OptionButton
 ---@field printbut Button
 ---@field fineprint Label
 ---@field quitbut Button
+---@field cable_tag_panel PanelContainer
+---@field ct_hue_slider HSlider
+---@field ct_hue_preview ColorRect
+---@field ct_text_edit TextEdit
 ---@field sticky_ghost Node2D
 ---@field sticky_scn PackedScene
 ---@field main_pane MainPane
@@ -22,9 +30,10 @@ function Stickyprint.minimize() end
 
 ---@param lblc Object
 ---@param nc Object
+---@param fi Object
 ---@param global_pos Object
 ---@param parent_path Object
-function Stickyprint.spawn_sticky(lblc, nc, global_pos, parent_path) end
+function Stickyprint.spawn_sticky(lblc, nc, fi, global_pos, parent_path) end
 
 function Stickyprint.clear_dynamic() end
 

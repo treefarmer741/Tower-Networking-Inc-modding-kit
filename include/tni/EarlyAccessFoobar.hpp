@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_EARLYACCESSFOOBAR
 #define TNI_API_HEADER_EARLYACCESSFOOBAR
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -38,6 +38,8 @@ struct EarlyAccessFoobar : public PropMod {
 	inline void submit_and_apply();
 	inline void update_state();
 	inline void activate_local_effects();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -50,5 +52,7 @@ inline Variant EarlyAccessFoobar::test_adhoc_requirements() { return this->opera
 inline void EarlyAccessFoobar::submit_and_apply() { this->voidcall("submit_and_apply"); }
 inline void EarlyAccessFoobar::update_state() { this->voidcall("update_state"); }
 inline void EarlyAccessFoobar::activate_local_effects() { this->voidcall("activate_local_effects"); }
+inline String EarlyAccessFoobar::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String EarlyAccessFoobar::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

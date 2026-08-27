@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AnimationNodeStateMachinePlayback : Resource
 local AnimationNodeStateMachinePlayback = {}
@@ -30,6 +30,18 @@ function AnimationNodeStateMachinePlayback.get_current_length() end
 
 ---@return string
 function AnimationNodeStateMachinePlayback.get_fading_from_node() end
+
+---@return number
+function AnimationNodeStateMachinePlayback.get_fading_from_play_position() end
+
+---@return number
+function AnimationNodeStateMachinePlayback.get_fading_from_length() end
+
+---@return number
+function AnimationNodeStateMachinePlayback.get_fading_position() end
+
+---@return number
+function AnimationNodeStateMachinePlayback.get_fading_length() end
 
 ---@return Array<StringName>
 function AnimationNodeStateMachinePlayback.get_travel_path() end

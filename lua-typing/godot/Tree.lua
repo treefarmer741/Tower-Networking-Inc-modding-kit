@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Tree : Control
 ---@field columns integer
@@ -9,12 +9,15 @@
 ---@field allow_search boolean
 ---@field hide_folding boolean
 ---@field enable_recursive_folding boolean
+---@field enable_drag_unfolding boolean
 ---@field hide_root boolean
 ---@field drop_mode_flags integer
 ---@field select_mode integer
+---@field auto_tooltip boolean
 ---@field scroll_horizontal_enabled boolean
 ---@field scroll_vertical_enabled boolean
----@field auto_tooltip boolean
+---@field scroll_hint_mode integer
+---@field tile_scroll_hint boolean
 local Tree = {}
 
 function Tree.clear() end
@@ -148,6 +151,14 @@ function Tree.set_column_title(column, title) end
 function Tree.get_column_title(column) end
 
 ---@param column integer
+---@param tooltip_text string
+function Tree.set_column_title_tooltip_text(column, tooltip_text) end
+
+---@param column integer
+---@return string
+function Tree.get_column_title_tooltip_text(column) end
+
+---@param column integer
 ---@param title_alignment HorizontalAlignment
 function Tree.set_column_title_alignment(column, title_alignment) end
 
@@ -190,6 +201,18 @@ function Tree.set_v_scroll_enabled(h_scroll) end
 ---@return boolean
 function Tree.is_v_scroll_enabled() end
 
+---@param scroll_hint_mode Tree.ScrollHintMode
+function Tree.set_scroll_hint_mode(scroll_hint_mode) end
+
+---@return Tree.ScrollHintMode
+function Tree.get_scroll_hint_mode() end
+
+---@param tile_scroll_hint boolean
+function Tree.set_tile_scroll_hint(tile_scroll_hint) end
+
+---@return boolean
+function Tree.is_scroll_hint_tiled() end
+
 ---@param hide boolean
 function Tree.set_hide_folding(hide) end
 
@@ -201,6 +224,12 @@ function Tree.set_enable_recursive_folding(enable) end
 
 ---@return boolean
 function Tree.is_recursive_folding_enabled() end
+
+---@param enable boolean
+function Tree.set_enable_drag_unfolding(enable) end
+
+---@return boolean
+function Tree.is_drag_unfolding_enabled() end
 
 ---@param flags integer
 function Tree.set_drop_mode_flags(flags) end

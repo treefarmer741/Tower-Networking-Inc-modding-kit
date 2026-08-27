@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TreeItem : Object
 ---@field collapsed boolean
@@ -203,6 +203,14 @@ function TreeItem.set_custom_draw_callback(column, callback) end
 ---@param column integer
 ---@return (Callable|function)
 function TreeItem.get_custom_draw_callback(column) end
+
+---@param column integer
+---@param stylebox StyleBox
+function TreeItem.set_custom_stylebox(column, stylebox) end
+
+---@param column integer
+---@return StyleBox
+function TreeItem.get_custom_stylebox(column) end
 
 ---@param enable boolean
 function TreeItem.set_collapsed(enable) end

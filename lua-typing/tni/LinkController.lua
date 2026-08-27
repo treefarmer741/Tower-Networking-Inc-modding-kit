@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LinkController : Node
 ---@field COPPER_LINK_TYPEN string # Constant value: COPPER
@@ -39,4 +39,6 @@ function LinkController.populate_bill_breakdown(payment_breakdown, fee_mult, ite
 ---@param lo1_np string
 ---@param lo2_np string
 ---@param sizing_id integer
-function LinkController.create_link(lo1_np, lo2_np, sizing_id) end
+---@param socket_a_idx integer?  # Default = 0
+---@param socket_b_idx integer?  # Default = 0
+function LinkController.create_link(lo1_np, lo2_np, sizing_id, socket_a_idx, socket_b_idx) end

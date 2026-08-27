@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LoadingScreen : Control
 ---@field SS_PATHS Array<any> # Constant value: ["res://assets/game_screenshots/loading/media-1.PNG", "res://assets/game_screenshots/loading/media-2.PNG", "res://assets/game_screenshots/loading/media-3.PNG", "res://assets/game_screenshots/loading/user-1.png", "res://assets/game_screenshots/loading/user-3.png", "res://assets/game_screenshots/loading/user-4.png", "res://assets/game_screenshots/loading/user-5.png", "res://assets/game_screenshots/loading/user-7.png", "res://assets/game_screenshots/loading/user-9.png", "res://assets/game_screenshots/loading/user-10.png", "res://assets/game_screenshots/loading/user-11.png", "res://assets/game_screenshots/loading/user-14.png"]

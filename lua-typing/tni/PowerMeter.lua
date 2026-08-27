@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class PowerMeter : FixtureUnit
 ---@field metering_target PowerController
@@ -9,6 +9,7 @@
 ---@field kwh_price_ratio integer
 ---@field payment_title string
 ---@field bill_due integer
+---@field robtimer Timer
 ---@field logic_controller LogicController
 ---@field power_controller PowerController
 local PowerMeter = {}
