@@ -89,19 +89,26 @@ int push_gd_variant(lua_State *L, Variant variant) {
 static Variant gd_callable_lua(uint64_t Lptr, Array args) {
     lua_State* L = (lua_State*)Lptr;
     // ENSURE the function remains on the stack!
-    // Stack: function
+    // Stack: function, ???
+    if (!lua_isfunction(L, 1)) {
+        luaL_error(L, "luajit-support error: Expected lua function at top of stack, but found %s", lua_typename(L, lua_type(L, 1)));
+    }
+
     lua_settop(L, 1);  // Ensure nothing was accidentally left on the stack.
+    // Stack: function
+    lua_pushvalue(L, 1);
+    // Stack: function, function
+
     int nargs = 0;
     for (int i = 0; i < args.size(); i++) {
         nargs += push_gd_variant(L, args[i]);
     }
-    // Stack: function, args...
+    // Stack: function, function, args...
     
     if (pcall_stacktrace(L, nargs, LUA_MULTRET) != 0) {
         // Stack: function, err_str
         const char *err = lua_tostring(L, -1);
         printf("Lua exec error: %s\n", err);
-        lua_pop(L, 1);
         // Stack: function
         throw std::runtime_error("Lua exec error");  // Hopefully propagate the error through godot.
     } else {
@@ -110,7 +117,7 @@ static Variant gd_callable_lua(uint64_t Lptr, Array args) {
         if (nret > 0) {
             // NOTE: This only takes the first return value, as godot only supports single returned values.
             //       We don't try make an array out of all of them, as that might be confusing to the user.
-            return to_gd_variant(L, 1);
+            return to_gd_variant(L, 2);
         }
         return Nil;
     }
