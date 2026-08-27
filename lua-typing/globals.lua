@@ -15,6 +15,12 @@ Engine = nil
 ---@type Array
 Array = nil
 
+---@type Dictionary
+Dictionary = nil
+
+---@type Callable
+Callable = nil
+
 ---@param path string
 ---@return any|Object
 function loadv(path) end
