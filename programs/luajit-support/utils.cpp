@@ -2,7 +2,6 @@
 #include <api.hpp>
 #include <cstring>
 #include <string>
-#include <stdexcept>
 
 #include "utils.hpp"
 #include "tower.hpp"
@@ -87,91 +86,6 @@ int push_gd_variant(lua_State *L, Variant variant) {
             printf("push_gd_type() Unhandled variant type %d\n", variant.get_type());
             return 0;
     }
-}
-
-static Variant gd_callable_lua(uint64_t Lptr, Array args) {
-    lua_State* L = (lua_State*)Lptr;
-    // ENSURE the function remains on the stack!
-    // Stack: function, ???
-    if (!lua_isfunction(L, 1)) {
-        luaL_error(L, "luajit-support error: Expected lua function at top of stack, but found %s", lua_typename(L, lua_type(L, 1)));
-    }
-
-    lua_settop(L, 1);  // Ensure nothing was accidentally left on the stack.
-    // Stack: function
-    lua_pushvalue(L, 1);
-    // Stack: function, function
-
-    int nargs = 0;
-    for (int i = 0; i < args.size(); i++) {
-        nargs += push_gd_variant(L, args[i]);
-    }
-    // Stack: function, function, args...
-    
-    if (pcall_stacktrace(L, nargs, LUA_MULTRET) != 0) {
-        // Stack: function, err_str
-        const char *err = lua_tostring(L, -1);
-        printf("Lua exec error: %s\n", err);
-        // Stack: function
-        throw std::runtime_error("Lua exec error");  // Hopefully propagate the error through godot.
-    } else {
-        // Stack: function, ...
-        int nret = lua_gettop(L) - 1;
-        if (nret > 0) {
-            // NOTE: This only takes the first return value, as godot only supports single returned values.
-            //       We don't try make an array out of all of them, as that might be confusing to the user.
-            return to_gd_variant(L, 2);
-        }
-        return Nil;
-    }
-}
-
-Callable to_gd_callable(lua_State *L, int pos) {
-    if (!lua_isfunction(L, pos)) {
-        luaL_error(L, "Expected function");  // luaL_error never returns.
-        return Nil;
-    }
-
-    // FIXME: There is no clean-up, as the lifetime of a Callable is unknown.
-    //        We are at least caching so it's not as bad.
-    //        But there are cases that cache doesn't work, eg `some_gd_func(function() end)`
-
-    lua_getregistry(L);
-    // Stack: ..., LUA_REGISTRY
-    lua_pushvalue(L, pos);
-    // Stack: ..., LUA_REGISTRY, function
-    lua_gettable(L, -2);
-    // Stack: ..., LUA_REGISTRY, value
-    lua_State* co;
-    if (!lua_isthread(L, -1)) {
-        // Stack: ..., LUA_REGISTRY, value
-        lua_pop(L, 1);
-        // Create new lua thread (aka coroutine)
-        co = lua_newthread(L);
-        // Stack: ..., LUA_REGISTRY, co
-        // Put the function in the new thread's stack.
-        lua_pushvalue(L, pos);
-        // Stack: ..., LUA_REGISTRY, co, function
-        lua_xmove(L, co, 1);
-        // Stack: ..., LUA_REGISTRY, co
-
-        // Stack: ..., LUA_REGISTRY, co
-        lua_pushvalue(L, pos);
-        // Stack: ..., LUA_REGISTRY, co, function
-        lua_pushvalue(L, -2);
-        // Stack: ..., LUA_REGISTRY, co, function, co
-        lua_settable(L, -4);
-        // Stack: ..., LUA_REGISTRY, co
-        lua_pop(L, 2);
-        // Stack: ...
-    } else {
-        // Stack: ..., LUA_REGISTRY, co
-        lua_State* co = lua_tothread(L, -1);
-        lua_pop(L, 2);
-        // Stack: ...
-    }
-
-    return get_node<Mod>().callable_args_to_array(Callable::Create(gd_callable_lua, Variant((uint64_t)co)));
 }
 
 Variant to_gd_variant(lua_State *L, int pos) {
