@@ -112,7 +112,12 @@ void push_gd_array_metatable(lua_State *L) {
                     return 1;
                 lua_pop(L, 2);
                 // Stack: gdarray, index
-                lua_pushcclosure(L, variant_self_call, 1);
+                if (((Mod)get_node()).class_has_method("Array", std::string(key))) {
+                    lua_pushcclosure(L, variant_self_call, 1);
+                    return 1;
+                }
+                lua_pushnil(L);
+                // Stack: gdarray, index, nil
                 return 1;
             }
             return 0;
