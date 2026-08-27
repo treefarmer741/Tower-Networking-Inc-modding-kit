@@ -4,6 +4,7 @@ project(luajit-support)
 add_ci_program(luajit-support
 	gdobject.cpp gdobject.hpp
 	gdcallable.cpp gdcallable.hpp
+	gddictionary.cpp gddictionary.hpp
 	gdarray.cpp gdarray.hpp
 	utils.cpp utils.hpp
 	luamodpackage.cpp luamodpackage.hpp

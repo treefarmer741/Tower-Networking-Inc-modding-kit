@@ -9,6 +9,7 @@
 #include "gdobject.hpp"
 #include "gdcallable.hpp"
 #include "gdarray.hpp"
+#include "gddictionary.hpp"
 
 
 int variant_self_call(lua_State *L) {
@@ -80,6 +81,8 @@ int push_gd_variant(lua_State *L, Variant variant) {
             return push_gd_callable(L, variant.as_callable());
         case Variant::Type::ARRAY:
             return push_gd_array(L, variant.as_array());
+        case Variant::Type::DICTIONARY:
+            return push_gd_dictionary(L, variant.as_dictionary());
         default:
             printf("push_gd_type() Unhandled variant type %d\n", variant.get_type());
             return 0;
@@ -195,6 +198,9 @@ Variant to_gd_variant(lua_State *L, int pos) {
                 return *ud;
 
             if (Array* ud = test_gdarray(L, pos))
+                return *ud;
+
+            if (Dictionary* ud = test_gddictionary(L, pos))
                 return *ud;
             
             luaL_error(L, "Can not convert userdata to godot variant.");  // luaL_error never returns.

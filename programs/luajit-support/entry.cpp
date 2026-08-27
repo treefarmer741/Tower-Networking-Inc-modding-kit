@@ -11,6 +11,7 @@
 #include "gdarray.hpp"
 #include "gdcallable.hpp"
 #include "luamodpackage.hpp"
+#include "gddictionary.hpp"
 
 
 EXTERN_SYSCALL(uint64_t, sys_node_create, Node_Create_Shortlist, const char *, size_t, const char *, size_t);
@@ -114,6 +115,9 @@ static void setup_lua_state() {
 
     push_gd_array_metatable(L);
     lua_setglobal(L, "Array");
+
+    push_gd_dictionary_metatable(L);
+    lua_setglobal(L, "Dictionary");
 
     push_gd_callable_metatable(L);
     lua_setglobal(L, "Callable");
