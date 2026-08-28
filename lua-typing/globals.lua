@@ -56,3 +56,15 @@ function on_user_spawned(user) end
 -- Callback event, optionally defined by the user.
 ---@param location Location
 function on_location_spawned(location) end
+
+-- Callback event, optionally defined by the user.
+---@param merchant Merchant
+function on_merchant_spawned(merchant) end
+
+-- Callback event, optionally defined by the user.
+---@param data Dictionary
+function on_save_export(data) end
+
+-- Callback event, optionally defined by the user.
+---@param data Dictionary
+function on_save_import(data) end
