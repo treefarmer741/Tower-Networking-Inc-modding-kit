@@ -21,3 +21,5 @@ target_include_directories(luajit-support PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CMAKE_SOURCE_DIR}/ext/LuaJIT/src
 )
+
+target_compile_features(luajit-support PRIVATE cxx_std_20)

@@ -1,9 +1,15 @@
 #include <lua.hpp>
 #include <cstring>
+#include <unordered_set>
 
 #include "gddictionary.hpp"
 #include "utils.hpp"
 #include "tower.hpp"
+
+
+// Must be a static list as there is no way to check what methods exist at runtime in Godot for special types like Dictionary.
+// This was generated from https://github.com/godotengine/godot/tree/master/doc/classes using "tools/extract_valid_names_from_docs.py"
+static std::unordered_set<std::string_view> _dictionary_method_names = {"assign", "clear", "duplicate", "duplicate_deep", "erase", "find_key", "get", "get_or_add", "get_typed_key_builtin", "get_typed_key_class_name", "get_typed_key_script", "get_typed_value_builtin", "get_typed_value_class_name", "get_typed_value_script", "has", "has_all", "hash", "is_empty", "is_read_only", "is_same_typed", "is_same_typed_key", "is_same_typed_value", "is_typed", "is_typed_key", "is_typed_value", "keys", "make_read_only", "merge", "merged", "recursive_equal", "set", "size", "sort", "values"};
 
 
 Dictionary* check_gddictionary(lua_State *L, int pos) {
@@ -42,7 +48,7 @@ void push_gd_dictionary_metatable(lua_State *L) {
             Dictionary* dictionary = check_gddictionary(L, 1);
             if (lua_isstring(L, 2)) {
                 const char* skey = lua_tostring(L, 2);
-                if (((Mod)get_node()).class_has_method("Dictionary", std::string(skey))) {
+                if (_dictionary_method_names.contains(skey)) {
                     lua_pushcclosure(L, variant_self_call, 1);
                     return 1;
                 }

@@ -5,3 +5,5 @@ project(cpp-template)
 add_ci_program(cpp-template
 	entry.cpp
 )
+
+target_compile_features(cpp-template PRIVATE cxx_std_20)

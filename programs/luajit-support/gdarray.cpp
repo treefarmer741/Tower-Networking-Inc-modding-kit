@@ -1,9 +1,15 @@
 #include <lua.hpp>
 #include <cstring>
+#include <unordered_set>
 
 #include "gdarray.hpp"
 #include "utils.hpp"
 #include "tower.hpp"
+
+
+// Must be a static list as there is no way to check what methods exist at runtime in Godot for special types like Array.
+// This was generated from https://github.com/godotengine/godot/tree/master/doc/classes using "tools/extract_valid_names_from_docs.py"
+static std::unordered_set<std::string_view> _array_method_names = {"all", "any", "append", "append_array", "assign", "back", "bsearch", "bsearch_custom", "clear", "count", "duplicate", "duplicate_deep", "erase", "fill", "filter", "find", "find_custom", "front", "get", "get_typed_builtin", "get_typed_class_name", "get_typed_script", "has", "hash", "insert", "is_empty", "is_read_only", "is_same_typed", "is_typed", "make_read_only", "map", "max", "min", "pick_random", "pop_at", "pop_back", "pop_front", "push_back", "push_front", "reduce", "remove_at", "resize", "reverse", "rfind", "rfind_custom", "set", "shuffle", "size", "slice", "sort", "sort_custom"};
 
 
 Array* check_gdarray(lua_State *L, int pos) {
@@ -112,7 +118,7 @@ void push_gd_array_metatable(lua_State *L) {
                     return 1;
                 lua_pop(L, 2);
                 // Stack: gdarray, index
-                if (((Mod)get_node()).class_has_method("Array", std::string(key))) {
+                if (_array_method_names.contains(key)) {
                     lua_pushcclosure(L, variant_self_call, 1);
                     return 1;
                 }
