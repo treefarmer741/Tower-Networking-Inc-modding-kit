@@ -4,7 +4,7 @@
 ---@class BotnetsResearch : PropMod
 ---@field techv string # Constant value: botnets
 ---@field MIN_COMPUTE_SERVERS integer # Constant value: 5
----@field prereq_ps Array<any> # Constant value: [(res://scenes/graph_network_simulation/programs/early_access/botnets/user_traffic_analyzer.tscn):<PackedScene#-9223258200944287898>]
+---@field prereq_ps Array<any> # Constant value: [(res://scenes/graph_network_simulation/programs/early_access/botnets/user_traffic_analyzer.tscn):<PackedScene#-9223369223735009012>]
 ---@field cost integer
 ---@field submitted boolean
 ---@field locked boolean

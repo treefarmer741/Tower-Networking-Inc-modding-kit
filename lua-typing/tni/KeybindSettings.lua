@@ -7,5 +7,5 @@
 local KeybindSettings = {}
 ---@enum KeybindSettings.EXCLUDE_KEYS
 KeybindSettings.EXCLUDE_KEYS = {
-	["toggle_feedback"] = [50],
+	-- ["toggle_feedback"] = [50],
 }

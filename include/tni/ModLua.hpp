@@ -34,7 +34,6 @@ struct ModLua : public Mod {
 	inline Variant instance_from_id_(int64_t id);
 	inline String error_string_(int64_t e);
 	inline String str_(Variant value);
-	inline bool class_has_method(String classname, String methodname);
 };
 
 #include "ModManifest.hpp"
@@ -51,6 +50,5 @@ inline bool ModLua::array_value_allowed(Variant array, int64_t idx) { return thi
 inline Variant ModLua::instance_from_id_(int64_t id) { return this->operator()("instance_from_id_", id); }
 inline String ModLua::error_string_(int64_t e) { return this->operator()("error_string_", e); }
 inline String ModLua::str_(Variant value) { return this->operator()("str_", value); }
-inline bool ModLua::class_has_method(String classname, String methodname) { return this->operator()("class_has_method", classname, methodname); }
 
 #endif
