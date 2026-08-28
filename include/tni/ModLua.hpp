@@ -23,7 +23,6 @@ struct ModLua : public Mod {
 	PROPERTY(manifest, ModManifest);
 	PROPERTY(filesystem, ModFileSystem);
 	PROPERTY(api_v1, ModApiV1);
-	PROPERTY(mod_data, ModData);
 
 	inline void reload();
 	inline bool has_critical_error();
@@ -41,7 +40,6 @@ struct ModLua : public Mod {
 #include "ModManifest.hpp"
 #include "ModFileSystem.hpp"
 #include "ModApiV1.hpp"
-#include "ModData.hpp"
 
 inline void ModLua::reload() { this->voidcall("reload"); }
 inline bool ModLua::has_critical_error() { return this->operator()("has_critical_error"); }

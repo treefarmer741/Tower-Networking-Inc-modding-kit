@@ -27,7 +27,6 @@ struct ModManager : public Control {
 	PROPERTY(misc_options_button, MenuButton);
 	PROPERTY(mod_info_container, VBoxContainer);
 	PROPERTY(mod_name_label, RichTextLabel);
-	PROPERTY(edit_assets_tab, Control);
 	PROPERTY(mod_tabs, TabContainer);
 	PROPERTY(mod_info, VBoxContainer);
 	PROPERTY(mod_info_description, RichTextLabel);
@@ -52,7 +51,6 @@ struct ModManager : public Control {
 	PROPERTY(mod_config_no_options_label, Label);
 	PROPERTY(mod_stats, VBoxContainer);
 	PROPERTY(mod_stats_stats_label, RichTextLabel);
-	PROPERTY(previous_tab, int64_t);
 	PROPERTY(selected_manifest, ModManifest);
 	PROPERTY(preset, ModPreset);
 	PROPERTY(preset_modified, bool);

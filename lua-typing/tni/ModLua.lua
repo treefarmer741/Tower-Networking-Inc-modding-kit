@@ -9,7 +9,6 @@
 ---@field manifest ModManifest
 ---@field filesystem ModFileSystem
 ---@field api_v1 ModApiV1
----@field mod_data ModData
 local ModLua = {}
 
 function ModLua.reload() end
@@ -45,7 +44,3 @@ function ModLua.error_string_(e) end
 ---@param value Object
 ---@return string
 function ModLua.str_(value) end
-
----@param classname string
----@return Array<string>
-function ModLua.class_get_method_list(classname) end

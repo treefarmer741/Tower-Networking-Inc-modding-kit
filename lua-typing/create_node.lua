@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@param classname "AESContext"
 ---@param param string
@@ -226,11 +226,6 @@ function create_node(classname, param) end
 ---@return AnimationPlayer
 function create_node(classname, param) end
 
----@param classname "AnimationPlayerEditor"
----@param param string
----@return AnimationPlayerEditor
-function create_node(classname, param) end
-
 ---@param classname "AnimationRootNode"
 ---@param param string
 ---@return AnimationRootNode
@@ -261,11 +256,6 @@ function create_node(classname, param) end
 ---@return AnimationTree
 function create_node(classname, param) end
 
----@param classname "AnimationTreeEditor"
----@param param string
----@return AnimationTreeEditor
-function create_node(classname, param) end
-
 ---@param classname "AnimationTreeNodeEditorPlugin"
 ---@param param string
 ---@return AnimationTreeNodeEditorPlugin
@@ -289,6 +279,11 @@ function create_node(classname, param) end
 ---@param classname "ArrayOccluder3D"
 ---@param param string
 ---@return ArrayOccluder3D
+function create_node(classname, param) end
+
+---@param classname "ArrayPanelContainer"
+---@param param string
+---@return ArrayPanelContainer
 function create_node(classname, param) end
 
 ---@param classname "AspectRatioContainer"
@@ -666,6 +661,11 @@ function create_node(classname, param) end
 ---@return BoneMap
 function create_node(classname, param) end
 
+---@param classname "BoneTwistDisperser3D"
+---@param param string
+---@return BoneTwistDisperser3D
+function create_node(classname, param) end
+
 ---@param classname "BoxContainer"
 ---@param param string
 ---@return BoxContainer
@@ -694,6 +694,11 @@ function create_node(classname, param) end
 ---@param classname "ButtonGroup"
 ---@param param string
 ---@return ButtonGroup
+function create_node(classname, param) end
+
+---@param classname "CCDIK3D"
+---@param param string
+---@return CCDIK3D
 function create_node(classname, param) end
 
 ---@param classname "CPUParticles2D"
@@ -821,6 +826,11 @@ function create_node(classname, param) end
 ---@return CanvasItemEditor
 function create_node(classname, param) end
 
+---@param classname "CanvasItemEditorSelectedItem"
+---@param param string
+---@return CanvasItemEditorSelectedItem
+function create_node(classname, param) end
+
 ---@param classname "CanvasItemEditorViewport"
 ---@param param string
 ---@return CanvasItemEditorViewport
@@ -869,6 +879,11 @@ function create_node(classname, param) end
 ---@param classname "CenterContainer"
 ---@param param string
 ---@return CenterContainer
+function create_node(classname, param) end
+
+---@param classname "ChainIK3D"
+---@param param string
+---@return ChainIK3D
 function create_node(classname, param) end
 
 ---@param classname "CharFXTransform"
@@ -1116,6 +1131,11 @@ function create_node(classname, param) end
 ---@return ControlEditorToolbar
 function create_node(classname, param) end
 
+---@param classname "ControlPositioningWarning"
+---@param param string
+---@return ControlPositioningWarning
+function create_node(classname, param) end
+
 ---@param classname "ConvertTransformModifier3D"
 ---@param param string
 ---@return ConvertTransformModifier3D
@@ -1271,6 +1291,11 @@ function create_node(classname, param) end
 ---@return DockContextPopup
 function create_node(classname, param) end
 
+---@param classname "DockShortcutHandler"
+---@param param string
+---@return DockShortcutHandler
+function create_node(classname, param) end
+
 ---@param classname "DockSplitContainer"
 ---@param param string
 ---@return DockSplitContainer
@@ -1316,11 +1341,6 @@ function create_node(classname, param) end
 ---@return EditorAudioBus
 function create_node(classname, param) end
 
----@param classname "EditorAudioBuses"
----@param param string
----@return EditorAudioBuses
-function create_node(classname, param) end
-
 ---@param classname "EditorAudioMeterNotches"
 ---@param param string
 ---@return EditorAudioMeterNotches
@@ -1361,11 +1381,6 @@ function create_node(classname, param) end
 ---@return EditorContextMenuPluginManager
 function create_node(classname, param) end
 
----@param classname "EditorDebuggerNode"
----@param param string
----@return EditorDebuggerNode
-function create_node(classname, param) end
-
 ---@param classname "EditorDebuggerPlugin"
 ---@param param string
 ---@return EditorDebuggerPlugin
@@ -1389,6 +1404,11 @@ function create_node(classname, param) end
 ---@param classname "EditorDirDialog"
 ---@param param string
 ---@return EditorDirDialog
+function create_node(classname, param) end
+
+---@param classname "EditorDock"
+---@param param string
+---@return EditorDock
 function create_node(classname, param) end
 
 ---@param classname "EditorDockDragHint"
@@ -1531,11 +1551,6 @@ function create_node(classname, param) end
 ---@return EditorLocaleDialog
 function create_node(classname, param) end
 
----@param classname "EditorLog"
----@param param string
----@return EditorLog
-function create_node(classname, param) end
-
 ---@param classname "EditorMainScreen"
 ---@param param string
 ---@return EditorMainScreen
@@ -1596,9 +1611,19 @@ function create_node(classname, param) end
 ---@return EditorProperty
 function create_node(classname, param) end
 
+---@param classname "EditorPropertyArrayObject"
+---@param param string
+---@return EditorPropertyArrayObject
+function create_node(classname, param) end
+
 ---@param classname "EditorPropertyDictionaryObject"
 ---@param param string
 ---@return EditorPropertyDictionaryObject
+function create_node(classname, param) end
+
+---@param classname "EditorPropertyLayersGrid"
+---@param param string
+---@return EditorPropertyLayersGrid
 function create_node(classname, param) end
 
 ---@param classname "EditorPropertyNameProcessor"
@@ -1686,6 +1711,11 @@ function create_node(classname, param) end
 ---@return EditorSettingsDialog
 function create_node(classname, param) end
 
+---@param classname "EditorShaderLanguagePlugin"
+---@param param string
+---@return EditorShaderLanguagePlugin
+function create_node(classname, param) end
+
 ---@param classname "EditorSpinSlider"
 ---@param param string
 ---@return EditorSpinSlider
@@ -1746,6 +1776,11 @@ function create_node(classname, param) end
 ---@return EditorVariantTypeOptionButton
 function create_node(classname, param) end
 
+---@param classname "EditorVariantTypePopupMenu"
+---@param param string
+---@return EditorVariantTypePopupMenu
+function create_node(classname, param) end
+
 ---@param classname "EditorVersionButton"
 ---@param param string
 ---@return EditorVersionButton
@@ -1801,6 +1836,11 @@ function create_node(classname, param) end
 ---@return ExternalTexture
 function create_node(classname, param) end
 
+---@param classname "FABRIK3D"
+---@param param string
+---@return FABRIK3D
+function create_node(classname, param) end
+
 ---@param classname "FBXImporterManager"
 ---@param param string
 ---@return FBXImporterManager
@@ -1819,11 +1859,6 @@ function create_node(classname, param) end
 ---@param classname "FileDialog"
 ---@param param string
 ---@return FileDialog
-function create_node(classname, param) end
-
----@param classname "FileSystemDock"
----@param param string
----@return FileSystemDock
 function create_node(classname, param) end
 
 ---@param classname "FileSystemList"
@@ -2126,6 +2161,11 @@ function create_node(classname, param) end
 ---@return Gizmo3DHelper
 function create_node(classname, param) end
 
+---@param classname "GodotInstance"
+---@param param string
+---@return GodotInstance
+function create_node(classname, param) end
+
 ---@param classname "GodotNavigationServer2D"
 ---@param param string
 ---@return GodotNavigationServer2D
@@ -2276,9 +2316,9 @@ function create_node(classname, param) end
 ---@return HingeJoint3D
 function create_node(classname, param) end
 
----@param classname "HistoryDock"
+---@param classname "IKModifier3D"
 ---@param param string
----@return HistoryDock
+---@return IKModifier3D
 function create_node(classname, param) end
 
 ---@param classname "IP"
@@ -2334,11 +2374,6 @@ function create_node(classname, param) end
 ---@param classname "ImportDefaultsEditorSettings"
 ---@param param string
 ---@return ImportDefaultsEditorSettings
-function create_node(classname, param) end
-
----@param classname "ImportDock"
----@param param string
----@return ImportDock
 function create_node(classname, param) end
 
 ---@param classname "ImportDockParameters"
@@ -2456,11 +2491,6 @@ function create_node(classname, param) end
 ---@return InputMap
 function create_node(classname, param) end
 
----@param classname "InspectorDock"
----@param param string
----@return InspectorDock
-function create_node(classname, param) end
-
 ---@param classname "InstancePlaceholder"
 ---@param param string
 ---@return InstancePlaceholder
@@ -2476,9 +2506,19 @@ function create_node(classname, param) end
 ---@return ItemList
 function create_node(classname, param) end
 
+---@param classname "IterateIK3D"
+---@param param string
+---@return IterateIK3D
+function create_node(classname, param) end
+
 ---@param classname "JSONRPC"
 ---@param param string
 ---@return JSONRPC
+function create_node(classname, param) end
+
+---@param classname "JacobianIK3D"
+---@param param string
+---@return JacobianIK3D
 function create_node(classname, param) end
 
 ---@param classname "Joint2D"
@@ -2489,6 +2529,16 @@ function create_node(classname, param) end
 ---@param classname "Joint3D"
 ---@param param string
 ---@return Joint3D
+function create_node(classname, param) end
+
+---@param classname "JointLimitation3D"
+---@param param string
+---@return JointLimitation3D
+function create_node(classname, param) end
+
+---@param classname "JointLimitationCone3D"
+---@param param string
+---@return JointLimitationCone3D
 function create_node(classname, param) end
 
 ---@param classname "KinematicCollision2D"
@@ -2559,6 +2609,11 @@ function create_node(classname, param) end
 ---@param classname "LightmapperRD"
 ---@param param string
 ---@return LightmapperRD
+function create_node(classname, param) end
+
+---@param classname "LimitAngularVelocityModifier3D"
+---@param param string
+---@return LimitAngularVelocityModifier3D
 function create_node(classname, param) end
 
 ---@param classname "Line2D"
@@ -2901,9 +2956,19 @@ function create_node(classname, param) end
 ---@return NavigationServer2D
 function create_node(classname, param) end
 
+---@param classname "NavigationServer2DManager"
+---@param param string
+---@return NavigationServer2DManager
+function create_node(classname, param) end
+
 ---@param classname "NavigationServer3D"
 ---@param param string
 ---@return NavigationServer3D
+function create_node(classname, param) end
+
+---@param classname "NavigationServer3DManager"
+---@param param string
+---@return NavigationServer3DManager
 function create_node(classname, param) end
 
 ---@param classname "NinePatchRect"
@@ -2946,11 +3011,6 @@ function create_node(classname, param) end
 ---@return Node3DGizmo
 function create_node(classname, param) end
 
----@param classname "NodeDock"
----@param param string
----@return NodeDock
-function create_node(classname, param) end
-
 ---@param classname "Noise"
 ---@param param string
 ---@return Noise
@@ -2974,6 +3034,11 @@ function create_node(classname, param) end
 ---@param classname "Object"
 ---@param param string
 ---@return Object
+function create_node(classname, param) end
+
+---@param classname "ObjectDBProfilerPanel"
+---@param param string
+---@return ObjectDBProfilerPanel
 function create_node(classname, param) end
 
 ---@param classname "Occluder3D"
@@ -3041,6 +3106,16 @@ function create_node(classname, param) end
 ---@return OpenXRAnalogThresholdModifier
 function create_node(classname, param) end
 
+---@param classname "OpenXRAnchorTracker"
+---@param param string
+---@return OpenXRAnchorTracker
+function create_node(classname, param) end
+
+---@param classname "OpenXRAndroidThreadSettingsExtension"
+---@param param string
+---@return OpenXRAndroidThreadSettingsExtension
+function create_node(classname, param) end
+
 ---@param classname "OpenXRBindingModifier"
 ---@param param string
 ---@return OpenXRBindingModifier
@@ -3084,6 +3159,11 @@ function create_node(classname, param) end
 ---@param classname "OpenXRExtensionWrapperExtension"
 ---@param param string
 ---@return OpenXRExtensionWrapperExtension
+function create_node(classname, param) end
+
+---@param classname "OpenXRFrameSynthesisExtension"
+---@param param string
+---@return OpenXRFrameSynthesisExtension
 function create_node(classname, param) end
 
 ---@param classname "OpenXRFutureExtension"
@@ -3146,6 +3226,16 @@ function create_node(classname, param) end
 ---@return OpenXRInterface
 function create_node(classname, param) end
 
+---@param classname "OpenXRMarkerTracker"
+---@param param string
+---@return OpenXRMarkerTracker
+function create_node(classname, param) end
+
+---@param classname "OpenXRPlaneTracker"
+---@param param string
+---@return OpenXRPlaneTracker
+function create_node(classname, param) end
+
 ---@param classname "OpenXRRenderModel"
 ---@param param string
 ---@return OpenXRRenderModel
@@ -3159,6 +3249,141 @@ function create_node(classname, param) end
 ---@param classname "OpenXRRenderModelManager"
 ---@param param string
 ---@return OpenXRRenderModelManager
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialAnchorCapability"
+---@param param string
+---@return OpenXRSpatialAnchorCapability
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationAnchor"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationAnchor
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationAprilTag"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationAprilTag
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationAruco"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationAruco
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationBaseHeader"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationBaseHeader
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationMicroQrCode"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationMicroQrCode
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationPlaneTracking"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationPlaneTracking
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialCapabilityConfigurationQrCode"
+---@param param string
+---@return OpenXRSpatialCapabilityConfigurationQrCode
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentAnchorList"
+---@param param string
+---@return OpenXRSpatialComponentAnchorList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentBounded2DList"
+---@param param string
+---@return OpenXRSpatialComponentBounded2DList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentBounded3DList"
+---@param param string
+---@return OpenXRSpatialComponentBounded3DList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentData"
+---@param param string
+---@return OpenXRSpatialComponentData
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentMarkerList"
+---@param param string
+---@return OpenXRSpatialComponentMarkerList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentMesh2DList"
+---@param param string
+---@return OpenXRSpatialComponentMesh2DList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentMesh3DList"
+---@param param string
+---@return OpenXRSpatialComponentMesh3DList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentParentList"
+---@param param string
+---@return OpenXRSpatialComponentParentList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentPersistenceList"
+---@param param string
+---@return OpenXRSpatialComponentPersistenceList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentPlaneAlignmentList"
+---@param param string
+---@return OpenXRSpatialComponentPlaneAlignmentList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentPlaneSemanticLabelList"
+---@param param string
+---@return OpenXRSpatialComponentPlaneSemanticLabelList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialComponentPolygon2DList"
+---@param param string
+---@return OpenXRSpatialComponentPolygon2DList
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialContextPersistenceConfig"
+---@param param string
+---@return OpenXRSpatialContextPersistenceConfig
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialEntityExtension"
+---@param param string
+---@return OpenXRSpatialEntityExtension
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialEntityTracker"
+---@param param string
+---@return OpenXRSpatialEntityTracker
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialMarkerTrackingCapability"
+---@param param string
+---@return OpenXRSpatialMarkerTrackingCapability
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialPlaneTrackingCapability"
+---@param param string
+---@return OpenXRSpatialPlaneTrackingCapability
+function create_node(classname, param) end
+
+---@param classname "OpenXRSpatialQueryResultData"
+---@param param string
+---@return OpenXRSpatialQueryResultData
+function create_node(classname, param) end
+
+---@param classname "OpenXRStructureBase"
+---@param param string
+---@return OpenXRStructureBase
 function create_node(classname, param) end
 
 ---@param classname "OpenXRVisibilityMask"
@@ -3901,11 +4126,6 @@ function create_node(classname, param) end
 ---@return Resource
 function create_node(classname, param) end
 
----@param classname "ResourcePreloaderEditor"
----@param param string
----@return ResourcePreloaderEditor
-function create_node(classname, param) end
-
 ---@param classname "ResourceUID"
 ---@param param string
 ---@return ResourceUID
@@ -3949,6 +4169,11 @@ function create_node(classname, param) end
 ---@param classname "RunInstancesDialog"
 ---@param param string
 ---@return RunInstancesDialog
+function create_node(classname, param) end
+
+---@param classname "SandboxFunctionState"
+---@param param string
+---@return SandboxFunctionState
 function create_node(classname, param) end
 
 ---@param classname "SceneCacheInterface"
@@ -4009,11 +4234,6 @@ function create_node(classname, param) end
 ---@param classname "SceneTreeDialog"
 ---@param param string
 ---@return SceneTreeDialog
-function create_node(classname, param) end
-
----@param classname "SceneTreeDock"
----@param param string
----@return SceneTreeDock
 function create_node(classname, param) end
 
 ---@param classname "SceneTreeEditor"
@@ -4124,11 +4344,6 @@ function create_node(classname, param) end
 ---@param classname "ShaderCreateDialog"
 ---@param param string
 ---@return ShaderCreateDialog
-function create_node(classname, param) end
-
----@param classname "ShaderFileEditor"
----@param param string
----@return ShaderFileEditor
 function create_node(classname, param) end
 
 ---@param classname "ShaderGlobalsEditor"
@@ -4306,6 +4521,41 @@ function create_node(classname, param) end
 ---@return SnapDialog
 function create_node(classname, param) end
 
+---@param classname "SnapshotClassView"
+---@param param string
+---@return SnapshotClassView
+function create_node(classname, param) end
+
+---@param classname "SnapshotNodeView"
+---@param param string
+---@return SnapshotNodeView
+function create_node(classname, param) end
+
+---@param classname "SnapshotObjectView"
+---@param param string
+---@return SnapshotObjectView
+function create_node(classname, param) end
+
+---@param classname "SnapshotRefCountedView"
+---@param param string
+---@return SnapshotRefCountedView
+function create_node(classname, param) end
+
+---@param classname "SnapshotSummaryView"
+---@param param string
+---@return SnapshotSummaryView
+function create_node(classname, param) end
+
+---@param classname "SnapshotView"
+---@param param string
+---@return SnapshotView
+function create_node(classname, param) end
+
+---@param classname "SocketServer"
+---@param param string
+---@return SocketServer
+function create_node(classname, param) end
+
 ---@param classname "SoftBody3D"
 ---@param param string
 ---@return SoftBody3D
@@ -4334,6 +4584,11 @@ function create_node(classname, param) end
 ---@param classname "SpinBoxLineEdit"
 ---@param param string
 ---@return SpinBoxLineEdit
+function create_node(classname, param) end
+
+---@param classname "SplineIK3D"
+---@param param string
+---@return SplineIK3D
 function create_node(classname, param) end
 
 ---@param classname "SplitContainer"
@@ -4406,11 +4661,6 @@ function create_node(classname, param) end
 ---@return SpriteFrames
 function create_node(classname, param) end
 
----@param classname "SpriteFramesEditor"
----@param param string
----@return SpriteFramesEditor
-function create_node(classname, param) end
-
 ---@param classname "StandardMaterial3D"
 ---@param param string
 ---@return StandardMaterial3D
@@ -4451,6 +4701,11 @@ function create_node(classname, param) end
 ---@return StreamPeerGZIP
 function create_node(classname, param) end
 
+---@param classname "StreamPeerSocket"
+---@param param string
+---@return StreamPeerSocket
+function create_node(classname, param) end
+
 ---@param classname "StreamPeerTCP"
 ---@param param string
 ---@return StreamPeerTCP
@@ -4459,6 +4714,11 @@ function create_node(classname, param) end
 ---@param classname "StreamPeerTLS"
 ---@param param string
 ---@return StreamPeerTLS
+function create_node(classname, param) end
+
+---@param classname "StreamPeerUDS"
+---@param param string
+---@return StreamPeerUDS
 function create_node(classname, param) end
 
 ---@param classname "StyleBox"
@@ -4504,6 +4764,11 @@ function create_node(classname, param) end
 ---@param classname "SurfaceTool"
 ---@param param string
 ---@return SurfaceTool
+function create_node(classname, param) end
+
+---@param classname "SwitchSeparator"
+---@param param string
+---@return SwitchSeparator
 function create_node(classname, param) end
 
 ---@param classname "SyntaxHighlighter"
@@ -4671,11 +4936,6 @@ function create_node(classname, param) end
 ---@return ThemeDB
 function create_node(classname, param) end
 
----@param classname "ThemeEditor"
----@param param string
----@return ThemeEditor
-function create_node(classname, param) end
-
 ---@param classname "ThemeEditorPreview"
 ---@param param string
 ---@return ThemeEditorPreview
@@ -4726,11 +4986,6 @@ function create_node(classname, param) end
 ---@return TileMapLayer
 function create_node(classname, param) end
 
----@param classname "TileMapLayerEditor"
----@param param string
----@return TileMapLayerEditor
-function create_node(classname, param) end
-
 ---@param classname "TileMapLayerEditorTerrainsPlugin"
 ---@param param string
 ---@return TileMapLayerEditorTerrainsPlugin
@@ -4771,11 +5026,6 @@ function create_node(classname, param) end
 ---@return TileSetAtlasSourceProxyObject
 function create_node(classname, param) end
 
----@param classname "TileSetEditor"
----@param param string
----@return TileSetEditor
-function create_node(classname, param) end
-
 ---@param classname "TileSetScenesCollectionProxyObject"
 ---@param param string
 ---@return TileSetScenesCollectionProxyObject
@@ -4794,6 +5044,11 @@ function create_node(classname, param) end
 ---@param classname "TileSetSource"
 ---@param param string
 ---@return TileSetSource
+function create_node(classname, param) end
+
+---@param classname "TileSetSourceItemList"
+---@param param string
+---@return TileSetSourceItemList
 function create_node(classname, param) end
 
 ---@param classname "TilesEditorUtils"
@@ -4866,9 +5121,19 @@ function create_node(classname, param) end
 ---@return Tweener
 function create_node(classname, param) end
 
+---@param classname "TwoBoneIK3D"
+---@param param string
+---@return TwoBoneIK3D
+function create_node(classname, param) end
+
 ---@param classname "UDPServer"
 ---@param param string
 ---@return UDPServer
+function create_node(classname, param) end
+
+---@param classname "UDSServer"
+---@param param string
+---@return UDSServer
 function create_node(classname, param) end
 
 ---@param classname "UndoRedo"
