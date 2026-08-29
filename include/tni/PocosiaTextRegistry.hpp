@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POCOSIATEXTREGISTRY
 #define TNI_API_HEADER_POCOSIATEXTREGISTRY
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,15 +14,22 @@ struct PocosiaTextRegistry : public Node {
 	constexpr PocosiaTextRegistry(Object obj) : PocosiaTextRegistry{obj.address()} {}
 	PocosiaTextRegistry(Variant variant) : PocosiaTextRegistry{variant.as_object().address()} {}
 
-	static constexpr int64_t MAX_ATTEMPTS = 10;  // NOTE: You should recompile your mod if this value changes!
 
+	PROPERTY(max_attempts, Variant);
+	PROPERTY(si, int64_t);
+	PROPERTY(lol, Variant);
+	PROPERTY(sepchar, String);
 
 	inline void clear_registry();
-	inline String generate_deterministic_string(Node node, int64_t seed_i, Variant lists, String separator);
+	inline void setup_text_registry(int64_t seed_i_, Variant list_of_lists_, String separator_, int64_t max_attempts_);
+	inline String get_or_generate_deterministic_string(Node node);
+	inline String generate_string_from_lists(NodePath path, int64_t seed_i, int64_t attempt, Variant list_of_list, String sep);
 };
 
 
 inline void PocosiaTextRegistry::clear_registry() { this->voidcall("clear_registry"); }
-inline String PocosiaTextRegistry::generate_deterministic_string(Node node, int64_t seed_i, Variant lists, String separator) { return this->operator()("generate_deterministic_string", node, seed_i, lists, separator); }
+inline void PocosiaTextRegistry::setup_text_registry(int64_t seed_i_, Variant list_of_lists_, String separator_, int64_t max_attempts_) { this->voidcall("setup_text_registry", seed_i_, list_of_lists_, separator_, max_attempts_); }
+inline String PocosiaTextRegistry::get_or_generate_deterministic_string(Node node) { return this->operator()("get_or_generate_deterministic_string", node); }
+inline String PocosiaTextRegistry::generate_string_from_lists(NodePath path, int64_t seed_i, int64_t attempt, Variant list_of_list, String sep) { return this->operator()("generate_string_from_lists", path, seed_i, attempt, list_of_list, sep); }
 
 #endif

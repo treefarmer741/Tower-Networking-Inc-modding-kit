@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SURVEYOR
 #define TNI_API_HEADER_SURVEYOR
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,10 +19,13 @@ struct Surveyor : public ScreenApp {
 	PROPERTY(satiety_level_color, Variant);  // Const value type was not supported.
 
 	PROPERTY(user_list_item_scene, PackedScene);
+	PROPERTY(user_heatmap_item_scene, PackedScene);
+	PROPERTY(user_schedule_item_scene, PackedScene);
 	PROPERTY(user_detail_panel_scene, PackedScene);
 	PROPERTY(floor_list_item_scene, PackedScene);
 	PROPERTY(floor_detail_panel_scene, PackedScene);
 	PROPERTY(user_total_lbl, Label);
+	PROPERTY(heatmap_legend, UserHeatmapItem);
 	PROPERTY(main_scroll_last_vscroll, int64_t);
 	PROPERTY(search_text, String);
 	PROPERTY(main_pane, MainPane);
@@ -39,6 +42,7 @@ struct Surveyor : public ScreenApp {
 	inline Variant get_main_pane();
 };
 
+#include "UserHeatmapItem.hpp"
 #include "MainPane.hpp"
 
 inline Variant Surveyor::get_color_on_satiety(double test_sat_ratio, double min_sat_ratio) { return this->operator()("get_color_on_satiety", test_sat_ratio, min_sat_ratio); }

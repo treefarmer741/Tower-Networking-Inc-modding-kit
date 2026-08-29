@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CHUNKEDTERRAINLAYER
 #define TNI_API_HEADER_CHUNKEDTERRAINLAYER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct ChunkedTerrainLayer : public Node3D {
 	constexpr ChunkedTerrainLayer(Object obj) : ChunkedTerrainLayer{obj.address()} {}
 	ChunkedTerrainLayer(Variant variant) : ChunkedTerrainLayer{variant.as_object().address()} {}
 
-	enum ChunkState : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ChunkState : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		UNLOADED = 0,
 		LOADED = 1,
 		LOADING = 2,

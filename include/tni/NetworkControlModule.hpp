@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_NETWORKCONTROLMODULE
 #define TNI_API_HEADER_NETWORKCONTROLMODULE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,11 +16,14 @@ struct NetworkControlModule : public LogicControlModule {
 	NetworkControlModule(Variant variant) : NetworkControlModule{variant.as_object().address()} {}
 
 	static constexpr double DHCP_BASE_PERIOD = 10.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double DHCP_MAX_PERIOD = 36000.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double DHCP_JITTER_S = 5.0;  // NOTE: You should recompile your mod if this value changes!
 	inline static const String BACK_PORT = "backend";  // NOTE: You should recompile your mod if this value changes!
 	inline static const String STP_BLOCKED = "stp-blocked";  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(parent_controller, LogicController);
 	PROPERTY(local_dns_mapping, bool);
+	PROPERTY(dhcp_period_s, int64_t);
 	PROPERTY(hwaddr_fixed, bool);
 	PROPERTY(hardware_address, String);
 	PROPERTY(network_address, String);
@@ -54,6 +57,7 @@ struct NetworkControlModule : public LogicControlModule {
 	inline void handle_save(Variant save_obj);
 	inline void handle_load(Variant save_obj);
 	inline void try_schedule_dhcp_request();
+	inline void set_dhcp_period(int64_t period);
 	inline void set_etc_host_entry(Variant entry, Variant val);
 	inline void clear_etc_host();
 	inline void set_timeout(String cat, double new_timeout);
@@ -104,6 +108,7 @@ inline Variant NetworkControlModule::get_save_var_list() { return this->operator
 inline void NetworkControlModule::handle_save(Variant save_obj) { this->voidcall("handle_save", save_obj); }
 inline void NetworkControlModule::handle_load(Variant save_obj) { this->voidcall("handle_load", save_obj); }
 inline void NetworkControlModule::try_schedule_dhcp_request() { this->voidcall("try_schedule_dhcp_request"); }
+inline void NetworkControlModule::set_dhcp_period(int64_t period) { this->voidcall("set_dhcp_period", period); }
 inline void NetworkControlModule::set_etc_host_entry(Variant entry, Variant val) { this->voidcall("set_etc_host_entry", entry, val); }
 inline void NetworkControlModule::clear_etc_host() { this->voidcall("clear_etc_host"); }
 inline void NetworkControlModule::set_timeout(String cat, double new_timeout) { this->voidcall("set_timeout", cat, new_timeout); }

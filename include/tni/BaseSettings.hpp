@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BASESETTINGS
 #define TNI_API_HEADER_BASESETTINGS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -23,12 +23,14 @@ struct BaseSettings : public Object {
 	PROPERTY(sfx_volume_linear, double);
 	PROPERTY(max_fps, int64_t);
 
-	inline Variant map_float_to_volume_db(double inp);
 	inline void apply();
+	inline Variant map_float_to_volume_db(double inp);
+	inline void adjust_bus_volume(String abid_s, double linear_value);
 };
 
 
-inline Variant BaseSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
 inline void BaseSettings::apply() { this->voidcall("apply"); }
+inline Variant BaseSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
+inline void BaseSettings::adjust_bus_volume(String abid_s, double linear_value) { this->voidcall("adjust_bus_volume", abid_s, linear_value); }
 
 #endif

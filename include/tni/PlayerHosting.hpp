@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLAYERHOSTING
 #define TNI_API_HEADER_PLAYERHOSTING
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -30,6 +30,7 @@ struct PlayerHosting : public Node {
 	inline String get_fqdn();
 	inline void reset_for_day();
 	inline void update_ppu(double new_ppu);
+	inline void update_use_spec_csv(String new_csv);
 };
 
 
@@ -37,5 +38,6 @@ inline void PlayerHosting::account_visit(int64_t n) { this->voidcall("account_vi
 inline String PlayerHosting::get_fqdn() { return this->operator()("get_fqdn"); }
 inline void PlayerHosting::reset_for_day() { this->voidcall("reset_for_day"); }
 inline void PlayerHosting::update_ppu(double new_ppu) { this->voidcall("update_ppu", new_ppu); }
+inline void PlayerHosting::update_use_spec_csv(String new_csv) { this->voidcall("update_use_spec_csv", new_csv); }
 
 #endif

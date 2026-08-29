@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLAYMENU
 #define TNI_API_HEADER_PLAYMENU
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,6 +14,7 @@ struct PlayMenu : public Control {
 	constexpr PlayMenu(Object obj) : PlayMenu{obj.address()} {}
 	PlayMenu(Variant variant) : PlayMenu{variant.as_object().address()} {}
 
+	inline static const String SELECT_STARTING_LOCATION_DEFAULT_TEXT = "Select starting location";  // NOTE: You should recompile your mod if this value changes!
 	PROPERTY(default_description_scn, Variant);  // Const value type was not supported.
 
 	PROPERTY(game_scenarios, Variant);
@@ -32,6 +33,10 @@ struct PlayMenu : public Control {
 	PROPERTY(diffpreset_in, OptionButton);
 	PROPERTY(advgotogbtn, Button);
 	PROPERTY(achlbl, Label);
+	PROPERTY(select_starting_location_row, HBoxContainer);
+	PROPERTY(select_starting_location_btn, Button);
+	PROPERTY(datacenter_sel_container, MarginContainer);
+	PROPERTY(selected_starting_datacenter_scene, PackedScene);
 	PROPERTY(last_selected_itemlist, ItemList);
 	PROPERTY(current_selected_scenario, String);
 

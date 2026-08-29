@@ -72,7 +72,7 @@ int lua_modsearcher_lua(lua_State *L) {
     Mod mod = get_node<Mod>();
     ModFileSystem mfs = (ModFileSystem)mod.filesystem();
 	ModFileAccess mfa = mfs.open(String(std::string_view(filename)), 1).value();
-	String src = mfa.get_as_text(mfa.get_length());
+	String src = mfa.get_as_text();
 	std::string src_name = std::string() + "@" + name;
     if (luaL_loadbuffer(L, src.utf8().c_str(), src.size(), src_name.c_str()) != 0) {
         luaL_error(L, "error loading module " LUA_QS " from file " LUA_QS ":\n\t%s", name, filename, lua_tostring(L, -1));

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CPUParticles2D : Node2D
 ---@field emitting boolean
@@ -24,6 +24,8 @@
 ---@field emission_points PackedVector2Array
 ---@field emission_normals PackedVector2Array
 ---@field emission_colors PackedColorArray
+---@field emission_ring_inner_radius number
+---@field emission_ring_radius number
 ---@field particle_flag_align_y boolean
 ---@field direction Vector2
 ---@field spread number
@@ -270,6 +272,18 @@ function CPUParticles2D.set_emission_colors(array) end
 
 ---@return PackedColorArray
 function CPUParticles2D.get_emission_colors() end
+
+---@param inner_radius number
+function CPUParticles2D.set_emission_ring_inner_radius(inner_radius) end
+
+---@return number
+function CPUParticles2D.get_emission_ring_inner_radius() end
+
+---@param radius number
+function CPUParticles2D.set_emission_ring_radius(radius) end
+
+---@return number
+function CPUParticles2D.get_emission_ring_radius() end
 
 ---@return Vector2
 function CPUParticles2D.get_gravity() end

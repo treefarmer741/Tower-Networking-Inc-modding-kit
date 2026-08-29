@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MERCHANTLISTINGMOD
 #define TNI_API_HEADER_MERCHANTLISTINGMOD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -45,6 +45,8 @@ struct MerchantListingMod : public PropMod {
 	inline String get_description();
 	inline String get_proposal_name();
 	inline String get_lore();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -57,5 +59,7 @@ inline void MerchantListingMod::apply_mod() { this->voidcall("apply_mod"); }
 inline String MerchantListingMod::get_description() { return this->operator()("get_description"); }
 inline String MerchantListingMod::get_proposal_name() { return this->operator()("get_proposal_name"); }
 inline String MerchantListingMod::get_lore() { return this->operator()("get_lore"); }
+inline String MerchantListingMod::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String MerchantListingMod::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

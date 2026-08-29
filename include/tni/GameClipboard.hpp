@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMECLIPBOARD
 #define TNI_API_HEADER_GAMECLIPBOARD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,8 +14,13 @@ struct GameClipboard : public Control {
 	constexpr GameClipboard(Object obj) : GameClipboard{obj.address()} {}
 	GameClipboard(Variant variant) : GameClipboard{variant.as_object().address()} {}
 
+	static constexpr int64_t DEFAULT_ROWS = 6;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr int64_t DEFAULT_COLS = 4;  // NOTE: You should recompile your mod if this value changes!
+	PROPERTY(HEADER_BG, Variant);  // Const value type was not supported.
+	PROPERTY(ROW_EVEN_BG, Variant);  // Const value type was not supported.
+	PROPERTY(ROW_ODD_BG, Variant);  // Const value type was not supported.
 	static constexpr int64_t Y_HIDE_HEIGHT = -740;  // NOTE: You should recompile your mod if this value changes!
-	enum ContextType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ContextType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NONE = 0,
 		HWADDR = 1,
 		NWADDR = 2,
@@ -26,11 +31,18 @@ struct GameClipboard : public Control {
 	PROPERTY(main_panel, Variant);
 	PROPERTY(clipboard_item_container, Variant);
 	PROPERTY(main_button, Variant);
+	PROPERTY(tab_container, Variant);
+	PROPERTY(add_menu, Variant);
+	PROPERTY(delete_confirm_dialog, Variant);
+	PROPERTY(grid_container, GridContainer);
 	PROPERTY(clipboard_item_scn, PackedScene);
+	PROPERTY(spreadsheet_tab_scn, PackedScene);
+	PROPERTY(tab_menu_icon, Texture2D);
+	PROPERTY(tab_menu_icon_size, int64_t);
 	PROPERTY(current_context, Variant);
 	PROPERTY(context_type, int64_t);
 	PROPERTY(twn, Tween);
-	PROPERTY(notepad_text, String);
+	PROPERTY(tabs_data, String);
 	PROPERTY(has_notepad_focus, bool);
 	PROPERTY(clipboard_items, Variant);
 

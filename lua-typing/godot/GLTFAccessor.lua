@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GLTFAccessor : Resource
 ---@field buffer_view integer
@@ -18,6 +18,13 @@
 ---@field sparse_values_buffer_view integer
 ---@field sparse_values_byte_offset integer
 local GLTFAccessor = {}
+
+---@param dictionary table<any,any>
+---@return GLTFAccessor
+function GLTFAccessor.from_dictionary(dictionary) end
+
+---@return table<any,any>
+function GLTFAccessor.to_dictionary() end
 
 ---@return integer
 function GLTFAccessor.get_buffer_view() end

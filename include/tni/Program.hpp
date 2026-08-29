@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PROGRAM
 #define TNI_API_HEADER_PROGRAM
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,7 +16,7 @@ struct Program : public Node {
 
 	static constexpr int64_t CONFIG_SIZE = 1;  // NOTE: You should recompile your mod if this value changes!
 	inline static const String PROG_DESCRIPT_COLOR = "FFB82F";  // NOTE: You should recompile your mod if this value changes!
-	enum ControllerModifiers : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ControllerModifiers : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		ALLOW_REMOTE_DEBUGGING = 0,
 		ALLOW_PACKET_SWITCHING = 1,
 		ALLOW_PACKET_ROUTING = 2,
@@ -32,8 +32,14 @@ struct Program : public Node {
 		ALLOW_STP_PORT_CONTROL = 12,
 		ALLOW_PACKET_TRANSLATION = 13,
 	};
+	enum struct PacketHandling : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		DROP = 0,
+		PASS = 1,
+		NOOP = 2,
+	};
 
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -46,6 +52,7 @@ struct Program : public Node {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
 	inline String colorize_description(String ds);
@@ -54,10 +61,12 @@ struct Program : public Node {
 	inline void uninstall();
 	inline void install(Variant _install_opts);
 	inline void tick();
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
@@ -67,7 +76,8 @@ inline void Program::stop() { this->voidcall("stop"); }
 inline void Program::uninstall() { this->voidcall("uninstall"); }
 inline void Program::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
 inline void Program::tick() { this->voidcall("tick"); }
-inline bool Program::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t Program::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool Program::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool Program::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

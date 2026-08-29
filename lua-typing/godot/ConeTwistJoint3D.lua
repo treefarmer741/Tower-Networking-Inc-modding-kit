@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ConeTwistJoint3D : Joint3D
 ---@field swing_span number

@@ -1,19 +1,20 @@
 #ifndef TNI_API_HEADER_CREDITTRANSACTION
 #define TNI_API_HEADER_CREDITTRANSACTION
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
 #include "structs.hpp"
 
-struct CreditTransaction : public Object {
-	using Object::Object;
+struct CreditTransaction : public RefCounted {
+	using RefCounted::RefCounted;
 
-	constexpr CreditTransaction(Object base) : Object{base} {}
-	constexpr CreditTransaction(uint64_t addr) : Object{addr} {}
+	constexpr CreditTransaction(RefCounted base) : RefCounted{base} {}
+	constexpr CreditTransaction(uint64_t addr) : RefCounted{addr} {}
+	constexpr CreditTransaction(Object obj) : CreditTransaction{obj.address()} {}
 	CreditTransaction(Variant variant) : CreditTransaction{variant.as_object().address()} {}
 
-	enum Category : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Category : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		UNKNOWN = 0,
 		INCOME = 1,
 		CAPEX = 2,

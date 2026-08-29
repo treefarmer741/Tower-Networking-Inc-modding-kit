@@ -2,7 +2,6 @@
 
 
 --- Type for godot array's, identified as GDArray.
---- WARN: Attempting to call a non-existent method will not error and will do nothing silently.
 ---@class Array<T> : { [integer]: T }
 ---@field create fun():Array<any>
 local Array = {}
@@ -15,6 +14,9 @@ local Array = {}
 ---@param value_for_banned_object any?  # If omitted, an error is raised instead.
 ---@return fun(array:Array<T>, i:integer):(integer,T)
 function Array.iter(self, value_for_banned_object) end
+
+---@return integer
+function Array.__len() end
 
 ---@generic T
 ---@param self Array<`T`>

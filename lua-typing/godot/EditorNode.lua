@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class EditorNode : Node
 local EditorNode = {}
@@ -14,3 +14,8 @@ function EditorNode.set_edited_scene(_unnamed_arg0) end
 
 ---@param _unnamed_arg0 integer
 function EditorNode.stop_child_process(_unnamed_arg0) end
+
+---@param value Object
+---@param node Node
+---@param remove boolean?  # Default = false
+function EditorNode.update_node_reference(value, node, remove) end

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_NETWORKHUB
 #define TNI_API_HEADER_NETWORKHUB
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct NetworkHub : public Program {
 
 
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -29,9 +30,10 @@ struct NetworkHub : public Program {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline void tick();
 	inline String colorize_description(String ds);
 	inline void start();
@@ -39,12 +41,14 @@ struct NetworkHub : public Program {
 	inline void uninstall();
 	inline void install(Variant _install_opts);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
-inline bool NetworkHub::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t NetworkHub::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline void NetworkHub::tick() { this->voidcall("tick"); }
 inline String NetworkHub::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
 inline void NetworkHub::start() { this->voidcall("start"); }
@@ -52,5 +56,6 @@ inline void NetworkHub::stop() { this->voidcall("stop"); }
 inline void NetworkHub::uninstall() { this->voidcall("uninstall"); }
 inline void NetworkHub::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
 inline bool NetworkHub::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool NetworkHub::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

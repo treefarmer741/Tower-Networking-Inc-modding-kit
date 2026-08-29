@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_USERTRAVERSALFQDN
 #define TNI_API_HEADER_USERTRAVERSALFQDN
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -31,8 +31,10 @@ struct UserTraversalFQDN : public UserTraversal {
 	PROPERTY(dialog_text, String);
 	PROPERTY(surveyor_dialog_ptype, String);
 	PROPERTY(theme_affinity, ThemeConfig);
+	PROPERTY(daily_traffic_curve, Curve);
+	PROPERTY(curved_traffic_weight_last_tick, int64_t);
 	PROPERTY(consumption_history, Variant);
-	PROPERTY(successfully_consumed_this_tick, bool);
+	PROPERTY(consumption_status_this_tick, int64_t);
 	PROPERTY(will_manifest, bool);
 	PROPERTY(reqshare_accept_hash, int64_t);
 	PROPERTY(reqshare_weight_index, Variant);
@@ -52,6 +54,7 @@ struct UserTraversalFQDN : public UserTraversal {
 	PROPERTY(traffic_class, String);
 	PROPERTY(traffic_weight, int64_t);
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -64,6 +67,7 @@ struct UserTraversalFQDN : public UserTraversal {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
 	inline Variant make_traversal_packet(const NetworkPacketRoot& proot);
@@ -81,13 +85,15 @@ struct UserTraversalFQDN : public UserTraversal {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
 #include "LogicControllerUser.hpp"
 #include "ThemeConfig.hpp"
 #include "UseConfig.hpp"
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "NetworkPacketRoot.hpp"
 #include "PacketControlModule.hpp"
@@ -107,7 +113,8 @@ inline void UserTraversalFQDN::start() { this->voidcall("start"); }
 inline void UserTraversalFQDN::stop() { this->voidcall("stop"); }
 inline void UserTraversalFQDN::uninstall() { this->voidcall("uninstall"); }
 inline void UserTraversalFQDN::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
-inline bool UserTraversalFQDN::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t UserTraversalFQDN::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool UserTraversalFQDN::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool UserTraversalFQDN::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

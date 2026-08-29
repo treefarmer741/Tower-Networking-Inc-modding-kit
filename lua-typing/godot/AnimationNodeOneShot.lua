@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AnimationNodeOneShot : AnimationNodeSync
 ---@field mix_mode integer
@@ -8,6 +8,7 @@
 ---@field fadeout_time number
 ---@field fadeout_curve Curve
 ---@field break_loop_at_end boolean
+---@field abort_on_reset boolean
 ---@field autorestart boolean
 ---@field autorestart_delay number
 ---@field autorestart_random_delay number
@@ -42,6 +43,12 @@ function AnimationNodeOneShot.set_break_loop_at_end(enable) end
 
 ---@return boolean
 function AnimationNodeOneShot.is_loop_broken_at_end() end
+
+---@param enable boolean
+function AnimationNodeOneShot.set_abort_on_reset(enable) end
+
+---@return boolean
+function AnimationNodeOneShot.is_aborted_on_reset() end
 
 ---@param active boolean
 function AnimationNodeOneShot.set_autorestart(active) end

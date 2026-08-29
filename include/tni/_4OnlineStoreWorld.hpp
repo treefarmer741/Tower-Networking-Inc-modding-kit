@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER__4ONLINESTOREWORLD
 #define TNI_API_HEADER__4ONLINESTOREWORLD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -33,6 +33,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 	PROPERTY(time_mult, double);
 	PROPERTY(dns_lookup, Variant);
 	PROPERTY(nwaddr_lookup, Variant);
+	PROPERTY(tap_color_map_by_traffic, Variant);
 	PROPERTY(scene_res_path, String);
 	PROPERTY(elevator_fee_per_floor, int64_t);
 	PROPERTY(elevator_time_per_floor, double);
@@ -44,6 +45,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 	PROPERTY(day_opening_balance, int64_t);
 	PROPERTY(auto_complete_candidate_list, Variant);
 	PROPERTY(migration_srack_c, int64_t);
+	PROPERTY(migration_lrack_c, int64_t);
 	PROPERTY(fbcntr, int64_t);
 	PROPERTY(difficulty_hash, int64_t);
 	PROPERTY(unlocks_or_achievements_allowed, bool);
@@ -61,6 +63,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 	PROPERTY(loan_controller, LoanController);
 	PROPERTY(decentromarket_controller, DecentroMarketController);
 	PROPERTY(playerhosting_controller, PlayerHostingController);
+	PROPERTY(ppksb_controller, KeystoneBridgeManager);
 	PROPERTY(player_hostings, Variant);
 	PROPERTY(propmod_controller, PropModController);
 	PROPERTY(available_programs, Variant);
@@ -112,7 +115,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 	inline void add_autocomplete_candidate(String candid);
 	inline void remove_autocomplete_candidate(String candid);
 	inline Variant get_loc_index(const Location& loc);
-	inline void add_location(String sfp);
+	inline void add_location(String sfp, bool suppress_notification);
 	inline MultiplayerMouse add_player(int64_t peer_id);
 	inline void try_resume_daycycle();
 	inline void master_timeout();
@@ -133,12 +136,14 @@ struct _4OnlineStoreWorld : public GameWorld {
 	inline void send_player_message(Variant title, Variant msg, int64_t tone_enum);
 	inline void add_player_hosting(String fqdn, String use_spec_csv, double ppu);
 	inline void remove_player_hosting(String fqdn);
+	inline void set_tap_traffic_color(String traffic_class, String hex_rgb);
 	inline void put_dns_entry(Variant fqdn, Variant netaddr);
 	inline void update_server_timescale(double timescale_arg);
 	inline void submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg);
 	inline void acquire_all_tech();
 	inline void enable_all_listings();
 	inline void enable_all_tech_and_listings();
+	inline double get_device_replacement_rate(const DeviceUnit& _device);
 };
 
 #include "PlayOptions.hpp"
@@ -150,6 +155,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 #include "LoanController.hpp"
 #include "DecentroMarketController.hpp"
 #include "PlayerHostingController.hpp"
+#include "KeystoneBridgeManager.hpp"
 #include "PropModController.hpp"
 #include "LinkController.hpp"
 #include "OnboardingController.hpp"
@@ -158,6 +164,7 @@ struct _4OnlineStoreWorld : public GameWorld {
 #include "Location.hpp"
 #include "MultiplayerMouse.hpp"
 #include "User.hpp"
+#include "DeviceUnit.hpp"
 
 inline void _4OnlineStoreWorld::recompute_diff_hash() { this->voidcall("recompute_diff_hash"); }
 inline void _4OnlineStoreWorld::update_player_msg(Variant msg_id, const GameMessage& gm) { this->voidcall("update_player_msg", msg_id, Object(reinterpret_cast<const Object*>(&gm)->address())); }
@@ -170,7 +177,7 @@ inline void _4OnlineStoreWorld::try_release_program(PackedScene prog_scene, Vari
 inline void _4OnlineStoreWorld::add_autocomplete_candidate(String candid) { this->voidcall("add_autocomplete_candidate", candid); }
 inline void _4OnlineStoreWorld::remove_autocomplete_candidate(String candid) { this->voidcall("remove_autocomplete_candidate", candid); }
 inline Variant _4OnlineStoreWorld::get_loc_index(const Location& loc) { return this->operator()("get_loc_index", Object(reinterpret_cast<const Object*>(&loc)->address())); }
-inline void _4OnlineStoreWorld::add_location(String sfp) { this->voidcall("add_location", sfp); }
+inline void _4OnlineStoreWorld::add_location(String sfp, bool suppress_notification) { this->voidcall("add_location", sfp, suppress_notification); }
 inline MultiplayerMouse _4OnlineStoreWorld::add_player(int64_t peer_id) { return MultiplayerMouse(this->operator()("add_player", peer_id).as_object().address()); }
 inline void _4OnlineStoreWorld::try_resume_daycycle() { this->voidcall("try_resume_daycycle"); }
 inline void _4OnlineStoreWorld::master_timeout() { this->voidcall("master_timeout"); }
@@ -191,11 +198,13 @@ inline void _4OnlineStoreWorld::modify_player_cash(Variant amount, Variant detai
 inline void _4OnlineStoreWorld::send_player_message(Variant title, Variant msg, int64_t tone_enum) { this->voidcall("send_player_message", title, msg, tone_enum); }
 inline void _4OnlineStoreWorld::add_player_hosting(String fqdn, String use_spec_csv, double ppu) { this->voidcall("add_player_hosting", fqdn, use_spec_csv, ppu); }
 inline void _4OnlineStoreWorld::remove_player_hosting(String fqdn) { this->voidcall("remove_player_hosting", fqdn); }
+inline void _4OnlineStoreWorld::set_tap_traffic_color(String traffic_class, String hex_rgb) { this->voidcall("set_tap_traffic_color", traffic_class, hex_rgb); }
 inline void _4OnlineStoreWorld::put_dns_entry(Variant fqdn, Variant netaddr) { this->voidcall("put_dns_entry", fqdn, netaddr); }
 inline void _4OnlineStoreWorld::update_server_timescale(double timescale_arg) { this->voidcall("update_server_timescale", timescale_arg); }
 inline void _4OnlineStoreWorld::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg); }
 inline void _4OnlineStoreWorld::acquire_all_tech() { this->voidcall("acquire_all_tech"); }
 inline void _4OnlineStoreWorld::enable_all_listings() { this->voidcall("enable_all_listings"); }
 inline void _4OnlineStoreWorld::enable_all_tech_and_listings() { this->voidcall("enable_all_tech_and_listings"); }
+inline double _4OnlineStoreWorld::get_device_replacement_rate(const DeviceUnit& _device) { return this->operator()("get_device_replacement_rate", Object(reinterpret_cast<const Object*>(&_device)->address())); }
 
 #endif

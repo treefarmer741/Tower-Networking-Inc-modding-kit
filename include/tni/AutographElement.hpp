@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_AUTOGRAPHELEMENT
 #define TNI_API_HEADER_AUTOGRAPHELEMENT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,6 +18,7 @@ struct AutographElement : public Control {
 	PROPERTY(texture_rect, TextureRect);
 	PROPERTY(main_label, Label);
 	PROPERTY(sub_label, Label);
+	PROPERTY(nsub_label, Label);
 	PROPERTY(auxctn, Container);
 	PROPERTY(auxlb1, Label);
 

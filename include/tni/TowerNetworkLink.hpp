@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TOWERNETWORKLINK
 #define TNI_API_HEADER_TOWERNETWORKLINK
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,6 +19,8 @@ struct TowerNetworkLink : public Node {
 	PROPERTY(activated_for_the_day, bool);
 	PROPERTY(outlet_a_np, NodePath);
 	PROPERTY(outlet_b_np, NodePath);
+	PROPERTY(socket_a_index, int64_t);
+	PROPERTY(socket_b_index, int64_t);
 	PROPERTY(setup_cost, int64_t);
 	PROPERTY(daily_cost, int64_t);
 	PROPERTY(highest_nbw_for_day, int64_t);
@@ -33,6 +35,8 @@ struct TowerNetworkLink : public Node {
 	PROPERTY(installed_nbw, int64_t);
 	PROPERTY(will_decom, bool);
 
+	inline Variant get_outlet_a_serial_num();
+	inline Variant get_outlet_b_serial_num();
 	inline void link_socket_neighbour_if_graphcable(const LogicControllerSocket& socket);
 	inline void unlink_socket_neighbour_if_graphcable(const LogicControllerSocket& socket);
 	inline void activate();
@@ -47,6 +51,8 @@ struct TowerNetworkLink : public Node {
 #include "LogicController.hpp"
 #include "LogicControllerSocket.hpp"
 
+inline Variant TowerNetworkLink::get_outlet_a_serial_num() { return this->operator()("get_outlet_a_serial_num"); }
+inline Variant TowerNetworkLink::get_outlet_b_serial_num() { return this->operator()("get_outlet_b_serial_num"); }
 inline void TowerNetworkLink::link_socket_neighbour_if_graphcable(const LogicControllerSocket& socket) { this->voidcall("link_socket_neighbour_if_graphcable", Object(reinterpret_cast<const Object*>(&socket)->address())); }
 inline void TowerNetworkLink::unlink_socket_neighbour_if_graphcable(const LogicControllerSocket& socket) { this->voidcall("unlink_socket_neighbour_if_graphcable", Object(reinterpret_cast<const Object*>(&socket)->address())); }
 inline void TowerNetworkLink::activate() { this->voidcall("activate"); }

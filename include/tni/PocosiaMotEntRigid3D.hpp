@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POCOSIAMOTENTRIGID3D
 #define TNI_API_HEADER_POCOSIAMOTENTRIGID3D
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct PocosiaMotEntRigid3D : public RigidBody3D {
 	PocosiaMotEntRigid3D(Variant variant) : PocosiaMotEntRigid3D{variant.as_object().address()} {}
 
 	static constexpr double motcol_hit_mag = 0.5;  // NOTE: You should recompile your mod if this value changes!
-	enum MotionDecision : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct MotionDecision : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NOTHING = 0,
 		JUMP = 1,
 		CLIMB = 2,

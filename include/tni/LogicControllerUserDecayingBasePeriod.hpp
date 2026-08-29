@@ -1,0 +1,116 @@
+#ifndef TNI_API_HEADER_LOGICCONTROLLERUSERDECAYINGBASEPERIOD
+#define TNI_API_HEADER_LOGICCONTROLLERUSERDECAYINGBASEPERIOD
+// Generated API for game version 0.12.1
+// If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
+
+#include <generated_api.hpp>
+#include "structs.hpp"
+#include "LogicControllerUser.hpp"
+
+struct LogicControllerUserDecayingBasePeriod : public LogicControllerUser {
+	using LogicControllerUser::LogicControllerUser;
+
+	constexpr LogicControllerUserDecayingBasePeriod(LogicControllerUser base) : LogicControllerUser{base} {}
+	constexpr LogicControllerUserDecayingBasePeriod(uint64_t addr) : LogicControllerUser{addr} {}
+	constexpr LogicControllerUserDecayingBasePeriod(Object obj) : LogicControllerUserDecayingBasePeriod{obj.address()} {}
+	LogicControllerUserDecayingBasePeriod(Variant variant) : LogicControllerUserDecayingBasePeriod{variant.as_object().address()} {}
+
+
+	PROPERTY(unlock_conditions, Variant);
+	PROPERTY(base_period_decay_ratio, double);
+	PROPERTY(logic_controller, LogicController);
+	PROPERTY(behaviors, Variant);
+	PROPERTY(hosting_behaviors, Variant);
+	PROPERTY(public_client_behaviors, Variant);
+	PROPERTY(user_application_unlocks, Variant);
+	PROPERTY(consumption_payment_scaling, double);
+	PROPERTY(allow_hwreset, bool);
+	PROPERTY(bandwidth_used_last_tick, int64_t);
+	PROPERTY(ot_probability, double);
+	PROPERTY(program_manifest_rolls, Variant);
+	PROPERTY(bandwidth_used_this_tick, int64_t);
+	PROPERTY(consumption_total_this_tick, int64_t);
+	PROPERTY(consumption_satiety_this_tick, int64_t);
+	PROPERTY(visitation_satiety_last_tick, int64_t);
+	PROPERTY(visitation_satiety_this_tick, int64_t);
+	PROPERTY(surveyor_messages, Variant);
+	PROPERTY(visitor_stats, Variant);
+	PROPERTY(visitor_stats_last_tick, Variant);
+	PROPERTY(surveyor_daily_incidents, Variant);
+	PROPERTY(surveyor_msg_stra, Variant);
+	PROPERTY(payment_calculation_method, int64_t);
+	PROPERTY(payment_today, int64_t);
+	PROPERTY(user_hostings, Variant);
+	PROPERTY(required_visitation_satiety_per_tick, int64_t);
+	PROPERTY(csr, double);
+	PROPERTY(vsr, double);
+	PROPERTY(visitor_reset_modulo_n, int64_t);
+	PROPERTY(consumption_total_last_tick, int64_t);
+	PROPERTY(consumption_satiety_last_tick, int64_t);
+	PROPERTY(description, String);
+	PROPERTY(user_profile_name, String);
+	PROPERTY(base_use_period, double);
+	PROPERTY(use_period_variance, double);
+	PROPERTY(downtime_sla_seconds, int64_t);
+	PROPERTY(init_grace_days, int64_t);
+	PROPERTY(daily_rate, int64_t);
+	PROPERTY(eagerness_factor, int64_t);
+	PROPERTY(max_satiety_decay_ratio, double);
+	PROPERTY(satiety_sla_ratio, double);
+	PROPERTY(active_time_float, double);
+	PROPERTY(inactive_time_float, double);
+	PROPERTY(fulfilment_penalty_factor, double);
+	PROPERTY(icon_texture, Texture2D);
+	PROPERTY(custom_user_note, String);
+	PROPERTY(unknown_user, bool);
+	PROPERTY(satiety_ratio, double);
+	PROPERTY(is_active, bool);
+	PROPERTY(average_satiety_ratio_last_tick, double);
+	PROPERTY(lowest_satiety_ratio, double);
+	PROPERTY(usage_fulfilment_today, double);
+	PROPERTY(use_timer, Timer);
+	PROPERTY(down_timer, Timer);
+	PROPERTY(grace_days_left, int64_t);
+	PROPERTY(rng, RandomNumberGenerator);
+	PROPERTY(location, Location);
+	PROPERTY(username_fixed, bool);
+	PROPERTY(username, String);
+
+	inline Variant apply_data_spike(double min_mult, double max_mult, int64_t duration_secs);
+	inline void push_surveyor_message(String msg);
+	inline double get_manifest_roll(String release_name);
+	inline Variant debug_monitor_callback();
+	inline void account_intent(const UserTraversal& utc);
+	inline void unaccount_intent(const UserTraversal& utc);
+	inline void account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt);
+	inline void account_visitation(const Program& vprog, Variant ctx_or_pkt, const LogicControllerUser& _visitor);
+	inline void time_mult_updated(double time_mult_delta);
+	inline void finish_setup();
+	inline void first_use();
+	inline void periodic_use();
+	inline void down();
+	inline void update_user_note(String new_value);
+};
+
+#include "LogicController.hpp"
+#include "Location.hpp"
+#include "UserTraversal.hpp"
+#include "Program.hpp"
+#include "LogicControllerUser.hpp"
+
+inline Variant LogicControllerUserDecayingBasePeriod::apply_data_spike(double min_mult, double max_mult, int64_t duration_secs) { return this->operator()("apply_data_spike", min_mult, max_mult, duration_secs); }
+inline void LogicControllerUserDecayingBasePeriod::push_surveyor_message(String msg) { this->voidcall("push_surveyor_message", msg); }
+inline double LogicControllerUserDecayingBasePeriod::get_manifest_roll(String release_name) { return this->operator()("get_manifest_roll", release_name); }
+inline Variant LogicControllerUserDecayingBasePeriod::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void LogicControllerUserDecayingBasePeriod::account_intent(const UserTraversal& utc) { this->voidcall("account_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
+inline void LogicControllerUserDecayingBasePeriod::unaccount_intent(const UserTraversal& utc) { this->voidcall("unaccount_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
+inline void LogicControllerUserDecayingBasePeriod::account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt) { this->voidcall("account_consumption", Object(reinterpret_cast<const Object*>(&utc)->address()), _ctx_or_pkt); }
+inline void LogicControllerUserDecayingBasePeriod::account_visitation(const Program& vprog, Variant ctx_or_pkt, const LogicControllerUser& _visitor) { this->voidcall("account_visitation", Object(reinterpret_cast<const Object*>(&vprog)->address()), ctx_or_pkt, Object(reinterpret_cast<const Object*>(&_visitor)->address())); }
+inline void LogicControllerUserDecayingBasePeriod::time_mult_updated(double time_mult_delta) { this->voidcall("time_mult_updated", time_mult_delta); }
+inline void LogicControllerUserDecayingBasePeriod::finish_setup() { this->voidcall("finish_setup"); }
+inline void LogicControllerUserDecayingBasePeriod::first_use() { this->voidcall("first_use"); }
+inline void LogicControllerUserDecayingBasePeriod::periodic_use() { this->voidcall("periodic_use"); }
+inline void LogicControllerUserDecayingBasePeriod::down() { this->voidcall("down"); }
+inline void LogicControllerUserDecayingBasePeriod::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+
+#endif

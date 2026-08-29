@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AnimatedSprite3D : SpriteBase3D
 ---@field sprite_frames SpriteFrames

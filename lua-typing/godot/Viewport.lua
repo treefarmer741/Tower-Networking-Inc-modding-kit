@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Viewport : Node
 ---@field disable_3d boolean
@@ -38,6 +38,7 @@
 ---@field gui_disable_input boolean
 ---@field gui_snap_controls_to_pixels boolean
 ---@field gui_embed_subwindows boolean
+---@field gui_drag_threshold integer
 ---@field sdf_oversize integer
 ---@field sdf_scale integer
 ---@field positional_shadow_atlas_size integer
@@ -301,6 +302,12 @@ function Viewport.is_embedding_subwindows() end
 
 ---@return Array<Window>
 function Viewport.get_embedded_subwindows() end
+
+---@param threshold integer
+function Viewport.set_drag_threshold(threshold) end
+
+---@return integer
+function Viewport.get_drag_threshold() end
 
 ---@param mask integer
 function Viewport.set_canvas_cull_mask(mask) end

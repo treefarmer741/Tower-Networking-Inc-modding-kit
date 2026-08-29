@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TEXTUTILS
 #define TNI_API_HEADER_TEXTUTILS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,6 +16,7 @@ struct TextUtils : public Object {
 	inline static const String LOWERCASE_ALPHABETS = "abcdefghijklmnopqrstuvwxyz";  // NOTE: You should recompile your mod if this value changes!
 	inline static const String UPPERCASE_ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  // NOTE: You should recompile your mod if this value changes!
 	inline static const String DIGITS = "0123456789";  // NOTE: You should recompile your mod if this value changes!
+	static constexpr int64_t CHUNK_SIZE = 1024;  // NOTE: You should recompile your mod if this value changes!
 
 
 	inline String capitalize_first_char(String inp);
@@ -25,6 +26,7 @@ struct TextUtils : public Object {
 	inline Variant get_int_suffix(String inp);
 	inline String fill_pattstr_with_rand(String pattstr, RandomNumberGenerator rng);
 	inline String get_shortcut_keystr(Variant shortcut);
+	inline PackedArray<uint8_t> hash_string(String text, int64_t method);
 };
 
 
@@ -35,5 +37,6 @@ inline String TextUtils::get_whitelistchar_prefix(String inp, String whitelist) 
 inline Variant TextUtils::get_int_suffix(String inp) { return this->operator()("get_int_suffix", inp); }
 inline String TextUtils::fill_pattstr_with_rand(String pattstr, RandomNumberGenerator rng) { return this->operator()("fill_pattstr_with_rand", pattstr, rng); }
 inline String TextUtils::get_shortcut_keystr(Variant shortcut) { return this->operator()("get_shortcut_keystr", shortcut); }
+inline PackedArray<uint8_t> TextUtils::hash_string(String text, int64_t method) { return this->operator()("hash_string", text, method); }
 
 #endif

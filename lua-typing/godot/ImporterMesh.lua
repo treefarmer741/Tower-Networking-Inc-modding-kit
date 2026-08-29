@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ImporterMesh : Resource
 local ImporterMesh = {}
@@ -87,6 +87,10 @@ function ImporterMesh.generate_lods(normal_merge_angle, normal_split_angle, bone
 ---@param base_mesh ArrayMesh?  # Default = <Object#null>
 ---@return ArrayMesh
 function ImporterMesh.get_mesh(base_mesh) end
+
+---@param mesh Mesh
+---@return ImporterMesh
+function ImporterMesh.from_mesh(mesh) end
 
 function ImporterMesh.clear() end
 

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CHARBOD3DNAV
 #define TNI_API_HEADER_CHARBOD3DNAV
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct Charbod3dNav : public NavigationAgent3D {
 	constexpr Charbod3dNav(Object obj) : Charbod3dNav{obj.address()} {}
 	Charbod3dNav(Variant variant) : Charbod3dNav{variant.as_object().address()} {}
 
-	enum NavAssistMotionMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct NavAssistMotionMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		DISABLED = 0,
 		SPROTO = 1,
 		ALIGNMENT = 2,

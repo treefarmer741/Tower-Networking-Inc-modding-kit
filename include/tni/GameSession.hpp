@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMESESSION
 #define TNI_API_HEADER_GAMESESSION
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -29,6 +29,7 @@ struct GameSession : public Node {
 	PROPERTY(beige_pointer_cursor, Resource);
 	PROPERTY(is_save_state_loaded, bool);
 	PROPERTY(floor_cache, Variant);
+	PROPERTY(loaded_save_name, String);
 	PROPERTY(loaded_from_save, bool);
 	PROPERTY(join_addr, String);
 	PROPERTY(game_world, GameWorld);

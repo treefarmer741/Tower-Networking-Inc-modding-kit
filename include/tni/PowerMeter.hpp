@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POWERMETER
 #define TNI_API_HEADER_POWERMETER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -23,6 +23,7 @@ struct PowerMeter : public FixtureUnit {
 	PROPERTY(kwh_price_ratio, int64_t);
 	PROPERTY(payment_title, String);
 	PROPERTY(bill_due, int64_t);
+	PROPERTY(robtimer, Timer);
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(power_controller, PowerController);
 

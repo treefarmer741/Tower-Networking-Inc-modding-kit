@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LIVEMUX
 #define TNI_API_HEADER_LIVEMUX
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct LiveMux : public Control {
 
 	PROPERTY(monitoring_obj, Object);
 	PROPERTY(rtlabel, RichTextLabel);
+	PROPERTY(pathlbl, RichTextLabel);
 
 };
 

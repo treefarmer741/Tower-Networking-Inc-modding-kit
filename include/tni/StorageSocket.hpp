@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_STORAGESOCKET
 #define TNI_API_HEADER_STORAGESOCKET
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -29,6 +29,7 @@ struct StorageSocket : public Socket {
 	PROPERTY(is_blocked, bool);
 	PROPERTY(root_transformer, RemoteTransform2D);
 
+	inline void try_play_insert_sound();
 	inline void block();
 	inline void unblock();
 	inline Variant compatible_with(const Plug& plug);
@@ -39,6 +40,7 @@ struct StorageSocket : public Socket {
 #include "GraphController.hpp"
 #include "Plug.hpp"
 
+inline void StorageSocket::try_play_insert_sound() { this->voidcall("try_play_insert_sound"); }
 inline void StorageSocket::block() { this->voidcall("block"); }
 inline void StorageSocket::unblock() { this->voidcall("unblock"); }
 inline Variant StorageSocket::compatible_with(const Plug& plug) { return this->operator()("compatible_with", Object(reinterpret_cast<const Object*>(&plug)->address())); }

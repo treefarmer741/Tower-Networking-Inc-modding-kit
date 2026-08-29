@@ -1,7 +1,8 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ImageTexture : Texture2D
+---@field image Image
 local ImageTexture = {}
 
 ---@param image Image

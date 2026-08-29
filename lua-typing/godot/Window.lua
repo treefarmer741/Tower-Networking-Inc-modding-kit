@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Window : Viewport
 ---@field mode integer
@@ -8,6 +8,7 @@
 ---@field position Vector2i
 ---@field size Vector2i
 ---@field current_screen integer
+---@field nonclient_area Rect2i
 ---@field mouse_passthrough_polygon PackedVector2Array
 ---@field visible boolean
 ---@field wrap_controls boolean
@@ -201,6 +202,12 @@ function Window.set_content_scale_stretch(stretch) end
 
 ---@return Window.ContentScaleStretch
 function Window.get_content_scale_stretch() end
+
+---@param area Rect2i
+function Window.set_nonclient_area(area) end
+
+---@return Rect2i
+function Window.get_nonclient_area() end
 
 ---@param title_visible boolean
 function Window.set_keep_title_visible(title_visible) end

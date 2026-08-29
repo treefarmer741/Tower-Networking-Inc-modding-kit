@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_REGISTRATION
 #define TNI_API_HEADER_REGISTRATION
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -26,11 +26,13 @@ struct Registration : public VBoxContainer {
 	PROPERTY(ppu_slider, Slider);
 	PROPERTY(rg_display, Label);
 	PROPERTY(dmlbl_default, String);
+	PROPERTY(infrastructure_uses, UseConfig);
 	PROPERTY(configured_use_specs, Variant);
 
 	inline void reset();
 };
 
+#include "UseConfig.hpp"
 
 inline void Registration::reset() { this->voidcall("reset"); }
 

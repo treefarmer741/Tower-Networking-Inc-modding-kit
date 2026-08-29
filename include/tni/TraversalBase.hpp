@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TRAVERSALBASE
 #define TNI_API_HEADER_TRAVERSALBASE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct TraversalBase : public Program {
 	constexpr TraversalBase(Object obj) : TraversalBase{obj.address()} {}
 	TraversalBase(Variant variant) : TraversalBase{variant.as_object().address()} {}
 
-	enum Context : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Context : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		SRC_CONTROLLER = 0,
 		BANDWIDTH_USED = 1,
 		CONSUMED_TARGET = 2,
@@ -29,6 +29,7 @@ struct TraversalBase : public Program {
 	PROPERTY(traffic_class, String);
 	PROPERTY(traffic_weight, int64_t);
 	PROPERTY(cpu_load, int64_t);
+	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
 	PROPERTY(stack_size, int64_t);
 	PROPERTY(release_name, String);
@@ -41,6 +42,7 @@ struct TraversalBase : public Program {
 	PROPERTY(rendered_description, String);
 	PROPERTY(pkt_processing_priority, int64_t);
 	PROPERTY(is_running, bool);
+	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
 	inline NetworkPacketRoot make_packet_root();
@@ -52,10 +54,12 @@ struct TraversalBase : public Program {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline bool process_network_packet(const PacketControlModule& pktctl, Variant packet);
+	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
+	inline bool test_routing_exemption(Variant packet);
 };
 
+#include "PlayOptions.hpp"
 #include "LogicController.hpp"
 #include "NetworkPacketRoot.hpp"
 #include "PacketControlModule.hpp"
@@ -69,7 +73,8 @@ inline void TraversalBase::start() { this->voidcall("start"); }
 inline void TraversalBase::stop() { this->voidcall("stop"); }
 inline void TraversalBase::uninstall() { this->voidcall("uninstall"); }
 inline void TraversalBase::install(Variant _install_opts) { this->voidcall("install", _install_opts); }
-inline bool TraversalBase::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
+inline int64_t TraversalBase::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool TraversalBase::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }
+inline bool TraversalBase::test_routing_exemption(Variant packet) { return this->operator()("test_routing_exemption", packet); }
 
 #endif

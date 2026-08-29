@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICEUNIT
 #define TNI_API_HEADER_DEVICEUNIT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,12 +17,12 @@ struct DeviceUnit : public PickableDevice {
 
 	static constexpr int64_t ZINDEX = 200;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr int64_t MAX_PRICE = 1000000;  // NOTE: You should recompile your mod if this value changes!
-	enum Condition : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Condition : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NORMAL = 0,
 		GENERAL_FAILURE = 1,
 		OVERVOLTAGE_DAMAGE = 2,
 	};
-	enum DeviceHardwareClass : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct DeviceHardwareClass : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		DEFAULT = 0,
 		NETWORK_SWITCH = 1,
 		NETWORK_ROUTER = 2,
@@ -45,14 +45,14 @@ struct DeviceUnit : public PickableDevice {
 		NETWORK_LOAD_BALANCER = 19,
 		NETWORK_STORAGE = 20,
 	};
-	enum ExtraDescriptionType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ExtraDescriptionType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NODESCRIPT = 0,
 		BW_PER_TICK = 1,
 		CMSBW_BASIC = 2,
 		POWER_SUPPLY = 3,
 		CABLE_O_MATIC = 4,
 	};
-	enum MountType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct MountType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NA = 0,
 		R500 = 1,
 		R930 = 2,
@@ -82,6 +82,8 @@ struct DeviceUnit : public PickableDevice {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(is_mount_locked, bool);
+	PROPERTY(screw_sprite, Variant);
 	PROPERTY(auto_replacement_cost, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
@@ -122,6 +124,7 @@ struct DeviceUnit : public PickableDevice {
 	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
 	inline void update_user_note(String new_value);
+	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
 	inline void lift_child_z_index(int64_t base_val);
 	inline Variant get_picker_type(Variant test_picker);
@@ -145,6 +148,7 @@ inline bool DeviceUnit::drop(Variant impulse) { return this->operator()("drop", 
 inline void DeviceUnit::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void DeviceUnit::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
 inline void DeviceUnit::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void DeviceUnit::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void DeviceUnit::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
 inline void DeviceUnit::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
 inline Variant DeviceUnit::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }

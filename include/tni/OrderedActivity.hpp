@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ORDEREDACTIVITY
 #define TNI_API_HEADER_ORDEREDACTIVITY
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct OrderedActivity : public WorldActivity {
 	constexpr OrderedActivity(Object obj) : OrderedActivity{obj.address()} {}
 	OrderedActivity(Variant variant) : OrderedActivity{variant.as_object().address()} {}
 
-	enum Todo : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Todo : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NOT_INITIALIZED = -1,
 		BREAK_AND_EXECUTE = 0,
 		CONTINUE_ADD = 1,

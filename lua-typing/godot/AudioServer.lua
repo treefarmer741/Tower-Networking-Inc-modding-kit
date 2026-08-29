@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AudioServer : Object
 ---@field bus_count integer
@@ -185,6 +185,20 @@ function AudioServer.get_input_device() end
 
 ---@param name string
 function AudioServer.set_input_device(name) end
+
+---@param active boolean
+---@return Error
+function AudioServer.set_input_device_active(active) end
+
+---@return integer
+function AudioServer.get_input_frames_available() end
+
+---@return integer
+function AudioServer.get_input_buffer_length_frames() end
+
+---@param frames integer
+---@return PackedVector2Array
+function AudioServer.get_input_frames(frames) end
 
 ---@param bus_layout AudioBusLayout
 function AudioServer.set_bus_layout(bus_layout) end

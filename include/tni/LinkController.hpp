@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LINKCONTROLLER
 #define TNI_API_HEADER_LINKCONTROLLER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -27,7 +27,7 @@ struct LinkController : public Node {
 	inline int64_t get_setup_quote(Variant lo1, const LinkOutlet& lo2, int64_t sizing_id);
 	inline int64_t get_daily_quote(Variant lo1, const LinkOutlet& lo2, int64_t sizing_id);
 	inline void populate_bill_breakdown(Variant payment_breakdown, double fee_mult, bool itemized);
-	inline void create_link(NodePath lo1_np, NodePath lo2_np, int64_t sizing_id);
+	inline void create_link(NodePath lo1_np, NodePath lo2_np, int64_t sizing_id, int64_t socket_a_idx, int64_t socket_b_idx);
 };
 
 #include "LinkSizing.hpp"
@@ -38,6 +38,6 @@ inline LinkSizing LinkController::get_sizing_by_type_and_id(int64_t link_type, i
 inline int64_t LinkController::get_setup_quote(Variant lo1, const LinkOutlet& lo2, int64_t sizing_id) { return this->operator()("get_setup_quote", lo1, Object(reinterpret_cast<const Object*>(&lo2)->address()), sizing_id); }
 inline int64_t LinkController::get_daily_quote(Variant lo1, const LinkOutlet& lo2, int64_t sizing_id) { return this->operator()("get_daily_quote", lo1, Object(reinterpret_cast<const Object*>(&lo2)->address()), sizing_id); }
 inline void LinkController::populate_bill_breakdown(Variant payment_breakdown, double fee_mult, bool itemized) { this->voidcall("populate_bill_breakdown", payment_breakdown, fee_mult, itemized); }
-inline void LinkController::create_link(NodePath lo1_np, NodePath lo2_np, int64_t sizing_id) { this->voidcall("create_link", lo1_np, lo2_np, sizing_id); }
+inline void LinkController::create_link(NodePath lo1_np, NodePath lo2_np, int64_t sizing_id, int64_t socket_a_idx, int64_t socket_b_idx) { this->voidcall("create_link", lo1_np, lo2_np, sizing_id, socket_a_idx, socket_b_idx); }
 
 #endif

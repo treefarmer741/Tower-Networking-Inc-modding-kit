@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LAYOUTUTILS
 #define TNI_API_HEADER_LAYOUTUTILS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -13,7 +13,7 @@ struct LayoutUtils : public Object {
 	constexpr LayoutUtils(uint64_t addr) : Object{addr} {}
 	LayoutUtils(Variant variant) : LayoutUtils{variant.as_object().address()} {}
 
-	enum AnchorMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct AnchorMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		TOP_LEFT = 0,
 		TOP_CENTER = 1,
 		TOP_RIGHT = 2,

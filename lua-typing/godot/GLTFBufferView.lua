@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class GLTFBufferView : Resource
 ---@field buffer integer
@@ -13,6 +13,13 @@ local GLTFBufferView = {}
 ---@param state GLTFState
 ---@return PackedByteArray
 function GLTFBufferView.load_buffer_view_data(state) end
+
+---@param dictionary table<any,any>
+---@return GLTFBufferView
+function GLTFBufferView.from_dictionary(dictionary) end
+
+---@return table<any,any>
+function GLTFBufferView.to_dictionary() end
 
 ---@return integer
 function GLTFBufferView.get_buffer() end

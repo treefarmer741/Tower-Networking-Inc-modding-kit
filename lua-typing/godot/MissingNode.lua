@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class MissingNode : Node
 ---@field original_class string
 ---@field original_scene string
 ---@field recording_properties boolean
+---@field recording_signals boolean
 local MissingNode = {}
 
 ---@param name string
@@ -24,3 +25,9 @@ function MissingNode.set_recording_properties(enable) end
 
 ---@return boolean
 function MissingNode.is_recording_properties() end
+
+---@param enable boolean
+function MissingNode.set_recording_signals(enable) end
+
+---@return boolean
+function MissingNode.is_recording_signals() end

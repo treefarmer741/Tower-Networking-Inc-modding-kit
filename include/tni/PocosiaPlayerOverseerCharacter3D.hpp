@@ -1,9 +1,9 @@
 #ifndef TNI_API_HEADER_POCOSIAPLAYEROVERSEERCHARACTER3D
 #define TNI_API_HEADER_POCOSIAPLAYEROVERSEERCHARACTER3D
-// Generated API for game version 0.10.0
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
-#include <api.hpp>
+#include <generated_api.hpp>
 #include "structs.hpp"
 
 struct PocosiaPlayerOverseerCharacter3D : public CharacterBody3D {
@@ -16,6 +16,9 @@ struct PocosiaPlayerOverseerCharacter3D : public CharacterBody3D {
 
 
 	PROPERTY(smooth_speed, double);
+	PROPERTY(affected_by_engine_time_scale, bool);
+	PROPERTY(input_disabled, bool);
+	PROPERTY(input_type, String);
 	PROPERTY(rot_control_key, int64_t);
 	PROPERTY(rotation_speed, double);
 	PROPERTY(max_tilt_from_horizontal, double);
@@ -40,8 +43,10 @@ struct PocosiaPlayerOverseerCharacter3D : public CharacterBody3D {
 	PROPERTY(pan_ctl_enabled, bool);
 	PROPERTY(rot_ctl_enabled, bool);
 
+	inline void handle_input(InputEvent event);
 };
 
 
+inline void PocosiaPlayerOverseerCharacter3D::handle_input(InputEvent event) { this->voidcall("handle_input", event); }
 
 #endif

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SEGMENTEDSUPPORTBUILDER
 #define TNI_API_HEADER_SEGMENTEDSUPPORTBUILDER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct SegmentedSupportBuilder : public Area3D {
 	constexpr SegmentedSupportBuilder(Object obj) : SegmentedSupportBuilder{obj.address()} {}
 	SegmentedSupportBuilder(Variant variant) : SegmentedSupportBuilder{variant.as_object().address()} {}
 
-	enum default_build_mode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct default_build_mode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		STRAIGHT_BOX = 0,
 		SAGGING_BOXES = 1,
 	};

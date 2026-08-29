@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_RECYCLER
 #define TNI_API_HEADER_RECYCLER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,6 +15,7 @@ struct Recycler : public Node2D {
 	Recycler(Variant variant) : Recycler{variant.as_object().address()} {}
 
 
+	PROPERTY(recycle_skip_merchants, Variant);
 	PROPERTY(objcount_lbl, Label);
 	PROPERTY(cashdisp_lbl, Label);
 	PROPERTY(lowz_sprite, Sprite2D);

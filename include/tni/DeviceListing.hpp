@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICELISTING
 #define TNI_API_HEADER_DEVICELISTING
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct DeviceListing : public Node {
 	constexpr DeviceListing(Object obj) : DeviceListing{obj.address()} {}
 	DeviceListing(Variant variant) : DeviceListing{variant.as_object().address()} {}
 
-	enum VariantType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct VariantType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NO_VARIANT = 0,
 		CABLE_COLOR_MODULATION_VARIANT = 1,
 	};
@@ -22,6 +22,7 @@ struct DeviceListing : public Node {
 	PROPERTY(device_scn, PackedScene);
 	PROPERTY(listed_on_day, int64_t);
 	PROPERTY(delisted_on_day, int64_t);
+	PROPERTY(requires_tech, String);
 	PROPERTY(warranty_period, int64_t);
 	PROPERTY(allowed_variant, int64_t);
 	PROPERTY(listing_title, String);

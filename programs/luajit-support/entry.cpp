@@ -11,6 +11,7 @@
 #include "gdarray.hpp"
 #include "gdcallable.hpp"
 #include "luamodpackage.hpp"
+#include "gddictionary.hpp"
 
 
 EXTERN_SYSCALL(uint64_t, sys_node_create, Node_Create_Shortlist, const char *, size_t, const char *, size_t);
@@ -84,9 +85,12 @@ DEFINE_LUA_CALLBACK_0(on_game_host_eod)
 
 DEFINE_LUA_CALLBACK_1(on_game_tick, double, delta)
 DEFINE_LUA_CALLBACK_1(on_player_input, InputEvent, event)
-DEFINE_LUA_CALLBACK_1(on_device_spawned, Node, device)
-DEFINE_LUA_CALLBACK_1(on_user_spawned, Node, user)
-DEFINE_LUA_CALLBACK_1(on_location_spawned, Node, location)
+DEFINE_LUA_CALLBACK_1(on_device_spawned, DeviceUnit, device)
+DEFINE_LUA_CALLBACK_1(on_user_spawned, LogicControllerUser, user)
+DEFINE_LUA_CALLBACK_1(on_location_spawned, Location, location)
+DEFINE_LUA_CALLBACK_1(on_merchant_spawned, Merchant, merchant)
+DEFINE_LUA_CALLBACK_1(on_save_export, Dictionary, data)
+DEFINE_LUA_CALLBACK_1(on_save_import, Dictionary, data)
 
 static void setup_lua_state() {
     L = luaL_newstate();
@@ -114,6 +118,9 @@ static void setup_lua_state() {
 
     push_gd_array_metatable(L);
     lua_setglobal(L, "Array");
+
+    push_gd_dictionary_metatable(L);
+    lua_setglobal(L, "Dictionary");
 
     push_gd_callable_metatable(L);
     lua_setglobal(L, "Callable");
@@ -172,6 +179,9 @@ int main() {
     ADD_API_FUNCTION(on_device_spawned, "", "", "");
     ADD_API_FUNCTION(on_user_spawned, "", "", "");
     ADD_API_FUNCTION(on_location_spawned, "", "", "");
+    ADD_API_FUNCTION(on_merchant_spawned, "", "", "");
+    ADD_API_FUNCTION(on_save_export, "", "", "");
+    ADD_API_FUNCTION(on_save_import, "", "", "");
 
     halt();
 }

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CABLE
 #define TNI_API_HEADER_CABLE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -20,6 +20,7 @@ struct Cable : public Node2D {
 	PROPERTY(CablePieceScene30, Variant);  // Const value type was not supported.
 	PROPERTY(CablePieceScene50, Variant);  // Const value type was not supported.
 	PROPERTY(CablePieceScene25, Variant);  // Const value type was not supported.
+	PROPERTY(cable_highlight_effect, Variant);  // Const value type was not supported.
 	static constexpr double DELAY_TIMER_FLT = 0.3;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr double LINVELT = 5.0;  // NOTE: You should recompile your mod if this value changes!
 
@@ -44,6 +45,7 @@ struct Cable : public Node2D {
 	PROPERTY(smooth_factor, double);
 	PROPERTY(smooth_initialized, bool);
 
+	inline void set_highlight(bool enabled);
 	inline Variant get_other_end(Variant end);
 	inline void reposition(Variant newpos);
 	inline void elevator_move(Variant pos_delta);
@@ -53,6 +55,7 @@ struct Cable : public Node2D {
 };
 
 
+inline void Cable::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline Variant Cable::get_other_end(Variant end) { return this->operator()("get_other_end", end); }
 inline void Cable::reposition(Variant newpos) { this->voidcall("reposition", newpos); }
 inline void Cable::elevator_move(Variant pos_delta) { this->voidcall("elevator_move", pos_delta); }

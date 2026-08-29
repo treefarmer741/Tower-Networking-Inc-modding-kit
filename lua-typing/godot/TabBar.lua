@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TabBar : Control
 ---@field current_tab integer
@@ -10,6 +10,7 @@
 ---@field max_tab_width integer
 ---@field scrolling_enabled boolean
 ---@field drag_to_rearrange_enabled boolean
+---@field switch_on_drag_hover boolean
 ---@field tabs_rearrange_group integer
 ---@field scroll_to_selected boolean
 ---@field select_with_rmb boolean
@@ -187,6 +188,12 @@ function TabBar.set_drag_to_rearrange_enabled(enabled) end
 
 ---@return boolean
 function TabBar.get_drag_to_rearrange_enabled() end
+
+---@param enabled boolean
+function TabBar.set_switch_on_drag_hover(enabled) end
+
+---@return boolean
+function TabBar.get_switch_on_drag_hover() end
 
 ---@param group_id integer
 function TabBar.set_tabs_rearrange_group(group_id) end

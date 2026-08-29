@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERUSER
 #define TNI_API_HEADER_LOGICCONTROLLERUSER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,7 @@ struct LogicControllerUser : public User {
 	constexpr LogicControllerUser(Object obj) : LogicControllerUser{obj.address()} {}
 	LogicControllerUser(Variant variant) : LogicControllerUser{variant.as_object().address()} {}
 
-	enum PaymentCalculationMethod : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct PaymentCalculationMethod : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		USAGE_FULFILMENT_TODAY = 0,
 		LOWEST_SATIETY_TODAY = 1,
 	};
@@ -28,6 +28,7 @@ struct LogicControllerUser : public User {
 	PROPERTY(consumption_payment_scaling, double);
 	PROPERTY(allow_hwreset, bool);
 	PROPERTY(bandwidth_used_last_tick, int64_t);
+	PROPERTY(ot_probability, double);
 	PROPERTY(program_manifest_rolls, Variant);
 	PROPERTY(bandwidth_used_this_tick, int64_t);
 	PROPERTY(consumption_total_this_tick, int64_t);
@@ -62,6 +63,7 @@ struct LogicControllerUser : public User {
 	PROPERTY(inactive_time_float, double);
 	PROPERTY(fulfilment_penalty_factor, double);
 	PROPERTY(icon_texture, Texture2D);
+	PROPERTY(custom_user_note, String);
 	PROPERTY(unknown_user, bool);
 	PROPERTY(satiety_ratio, double);
 	PROPERTY(is_active, bool);
@@ -75,7 +77,6 @@ struct LogicControllerUser : public User {
 	PROPERTY(location, Location);
 	PROPERTY(username_fixed, bool);
 	PROPERTY(username, String);
-	PROPERTY(previous_active_state, bool);
 
 	inline void push_surveyor_message(String msg);
 	inline double get_manifest_roll(String release_name);
@@ -89,6 +90,7 @@ struct LogicControllerUser : public User {
 	inline void first_use();
 	inline void periodic_use();
 	inline void down();
+	inline void update_user_note(String new_value);
 };
 
 #include "LogicController.hpp"
@@ -109,5 +111,6 @@ inline void LogicControllerUser::finish_setup() { this->voidcall("finish_setup")
 inline void LogicControllerUser::first_use() { this->voidcall("first_use"); }
 inline void LogicControllerUser::periodic_use() { this->voidcall("periodic_use"); }
 inline void LogicControllerUser::down() { this->voidcall("down"); }
+inline void LogicControllerUser::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
 
 #endif

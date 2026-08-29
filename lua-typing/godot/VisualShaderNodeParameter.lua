@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class VisualShaderNodeParameter : VisualShaderNode
 ---@field parameter_name string
 ---@field qualifier integer
+---@field instance_index integer
 local VisualShaderNodeParameter = {}
 
 ---@param name string
@@ -17,3 +18,9 @@ function VisualShaderNodeParameter.set_qualifier(qualifier) end
 
 ---@return VisualShaderNodeParameter.Qualifier
 function VisualShaderNodeParameter.get_qualifier() end
+
+---@param instance_index integer
+function VisualShaderNodeParameter.set_instance_index(instance_index) end
+
+---@return integer
+function VisualShaderNodeParameter.get_instance_index() end

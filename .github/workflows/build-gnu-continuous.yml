@@ -51,7 +51,7 @@ jobs:
         RELEASE_TAG="continuous-gnu-${{github.ref_name}}"
         RELEASE_NAME="Continuous (gnu) - ${{github.ref_name}}"
         RELEASE_NOTES_PATH=".github/workflows/continuous-gnu-release-notes.md"
-        gh release delete --cleanup-tag --yes "$RELEASE_TAG"
+        gh release delete --cleanup-tag --yes "$RELEASE_TAG" || true
         gh release create --target "${{github.sha}}" --title "$RELEASE_NAME" --notes-file "$RELEASE_NOTES_PATH" --draft --prerelease "$RELEASE_TAG"
         find ./artifact -name '*.zip' -exec gh release upload --clobber "$RELEASE_TAG" "{}" \;
         gh release edit "$RELEASE_TAG" --draft=false

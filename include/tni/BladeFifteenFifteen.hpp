@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BLADEFIFTEENFIFTEEN
 #define TNI_API_HEADER_BLADEFIFTEENFIFTEEN
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -39,6 +39,8 @@ struct BladeFifteenFifteen : public DeviceUnit {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(is_mount_locked, bool);
+	PROPERTY(screw_sprite, Variant);
 	PROPERTY(auto_replacement_cost, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
@@ -79,6 +81,7 @@ struct BladeFifteenFifteen : public DeviceUnit {
 	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
 	inline void update_user_note(String new_value);
+	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
 	inline void lift_child_z_index(int64_t base_val);
 	inline Variant get_picker_type(Variant test_picker);
@@ -102,6 +105,7 @@ inline bool BladeFifteenFifteen::drop(Variant impulse) { return this->operator()
 inline void BladeFifteenFifteen::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void BladeFifteenFifteen::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
 inline void BladeFifteenFifteen::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void BladeFifteenFifteen::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void BladeFifteenFifteen::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
 inline void BladeFifteenFifteen::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
 inline Variant BladeFifteenFifteen::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }

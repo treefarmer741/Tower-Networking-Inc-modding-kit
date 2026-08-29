@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_FREECAMERA3D
 #define TNI_API_HEADER_FREECAMERA3D
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct FreeCamera3d : public Camera3D {
 	constexpr FreeCamera3d(Object obj) : FreeCamera3d{obj.address()} {}
 	FreeCamera3d(Variant variant) : FreeCamera3d{variant.as_object().address()} {}
 
-	enum CameraMotionMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct CameraMotionMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		CAPTURED = 0,
 		ESCAPED = 1,
 	};

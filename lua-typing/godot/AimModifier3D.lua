@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class AimModifier3D : BoneConstraint3D
 ---@field setting_count Settings,settings/
@@ -36,3 +36,11 @@ function AimModifier3D.set_use_secondary_rotation(index, enabled) end
 ---@param index integer
 ---@return boolean
 function AimModifier3D.is_using_secondary_rotation(index) end
+
+---@param index integer
+---@param enabled boolean
+function AimModifier3D.set_relative(index, enabled) end
+
+---@param index integer
+---@return boolean
+function AimModifier3D.is_relative(index) end

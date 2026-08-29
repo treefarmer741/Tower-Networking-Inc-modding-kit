@@ -1,13 +1,16 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Sandbox : Node
 ---@field references_max integer
+---@field coroutines_max integer
 ---@field memory_max integer
 ---@field execution_timeout integer
 ---@field allocations_max integer
 ---@field unboxed_arguments boolean
 ---@field precise_simulation boolean
+---@field binary_translation_nbit_as boolean
+---@field binary_translation_register_caching boolean
 ---@field profiling boolean
 ---@field program ELFScript
 ---@field monitor_heap_usage integer
@@ -83,6 +86,12 @@ function Sandbox.get_current_instruction() end
 ---@return boolean
 function Sandbox.has_function(function_) end
 
+---@return PackedStringArray
+function Sandbox.get_functions() end
+
+---@return Array<any>
+function Sandbox.get_public_api() end
+
 ---@param symbol string
 ---@return integer
 function Sandbox.address_of(symbol) end
@@ -90,50 +99,6 @@ function Sandbox.address_of(symbol) end
 ---@param address integer
 ---@return string
 function Sandbox.lookup_address(address) end
-
----@param allow_write boolean
----@param array PackedByteArray
----@return integer
-function Sandbox.share_byte_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedFloat32Array
----@return integer
-function Sandbox.share_float32_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedFloat64Array
----@return integer
-function Sandbox.share_float64_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedInt32Array
----@return integer
-function Sandbox.share_int32_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedInt64Array
----@return integer
-function Sandbox.share_int64_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedVector2Array
----@return integer
-function Sandbox.share_vec2_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedVector3Array
----@return integer
-function Sandbox.share_vec3_array(allow_write, array) end
-
----@param allow_write boolean
----@param array PackedVector4Array
----@return integer
-function Sandbox.share_vec4_array(allow_write, array) end
-
----@param address integer
----@return boolean
-function Sandbox.unshare_array(address) end
 
 ---@return boolean
 function Sandbox.is_binary_translated() end
@@ -158,7 +123,18 @@ function Sandbox.set_max_refs(max) end
 ---@return integer
 function Sandbox.get_max_refs() end
 
----@param max integer?  # Default = 16
+---@param max integer?  # Default = 32
+function Sandbox.set_max_coroutines(max) end
+
+---@return integer
+function Sandbox.get_max_coroutines() end
+
+---@return integer
+function Sandbox.get_coroutine_count() end
+
+function Sandbox.reap_coroutines() end
+
+---@param max integer?  # Default = 20
 function Sandbox.set_memory_max(max) end
 
 ---@return integer

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class TextEdit : Control
 ---@field text string
@@ -12,14 +12,14 @@
 ---@field selecting_enabled boolean
 ---@field deselect_on_focus_loss_enabled boolean
 ---@field drag_and_drop_selection_enabled boolean
----@field virtual_keyboard_enabled boolean
----@field virtual_keyboard_show_on_focus boolean
 ---@field middle_mouse_paste_enabled boolean
 ---@field empty_selection_clipboard_enabled boolean
 ---@field wrap_mode integer
 ---@field autowrap_mode integer
 ---@field indent_wrapped_lines boolean
 ---@field tab_input_mode boolean
+---@field virtual_keyboard_enabled boolean
+---@field virtual_keyboard_show_on_focus boolean
 ---@field scroll_smooth boolean
 ---@field scroll_v_scroll_speed number
 ---@field scroll_past_end_of_file boolean

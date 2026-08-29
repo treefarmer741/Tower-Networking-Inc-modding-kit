@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TOWERLINK
 #define TNI_API_HEADER_TOWERLINK
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -41,7 +41,10 @@ struct TowerLink : public ScreenApp {
 	PROPERTY(same_floor_warning, Label);
 	PROPERTY(a_link_sock, LinkOutlet);
 	PROPERTY(b_link_sock, LinkOutlet);
+	PROPERTY(a_link_sock_index, int64_t);
+	PROPERTY(b_link_sock_index, int64_t);
 	PROPERTY(selected_link_outlets, Variant);
+	PROPERTY(selected_link_socket_indices, Variant);
 	PROPERTY(tower_view_handler, Variant);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);

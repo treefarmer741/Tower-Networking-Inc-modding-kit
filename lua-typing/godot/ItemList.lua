@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class ItemList : Control
 ---@field select_mode integer
@@ -11,6 +11,8 @@
 ---@field auto_height boolean
 ---@field text_overrun_behavior integer
 ---@field wraparound_items boolean
+---@field scroll_hint_mode integer
+---@field tile_scroll_hint boolean
 ---@field item_count Items,item_
 ---@field max_columns integer
 ---@field same_column_width boolean
@@ -282,6 +284,18 @@ function ItemList.get_v_scroll_bar() end
 
 ---@return HScrollBar
 function ItemList.get_h_scroll_bar() end
+
+---@param scroll_hint_mode ItemList.ScrollHintMode
+function ItemList.set_scroll_hint_mode(scroll_hint_mode) end
+
+---@return ItemList.ScrollHintMode
+function ItemList.get_scroll_hint_mode() end
+
+---@param tile_scroll_hint boolean
+function ItemList.set_tile_scroll_hint(tile_scroll_hint) end
+
+---@return boolean
+function ItemList.is_scroll_hint_tiled() end
 
 ---@param overrun_behavior TextServer.OverrunBehavior
 function ItemList.set_text_overrun_behavior(overrun_behavior) end

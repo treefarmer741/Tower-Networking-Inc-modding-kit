@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Texture3DRD : Texture3D
 ---@field texture_rd_rid RID

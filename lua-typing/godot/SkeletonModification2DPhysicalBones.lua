@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SkeletonModification2DPhysicalBones : SkeletonModification2D
 ---@field physical_bone_chain_length integer

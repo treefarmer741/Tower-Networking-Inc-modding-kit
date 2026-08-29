@@ -103,7 +103,7 @@ static Variant on_game_host_eod() {
 static Variant on_device_spawned(DeviceUnit device) {
 	fetch_mod_api();
     // this is called when a device is spawned.
-	if ((int64_t)device.device_hardware_class() == DeviceUnit::DeviceHardwareClass::NETWORK_SWITCH) {
+	if ((int64_t)device.device_hardware_class() == (int64_t)DeviceUnit::DeviceHardwareClass::NETWORK_SWITCH) {
 		LogicController lc = device.logic_controller();
 		int64_t original_nbw = lc.installed_nbw();
 		int64_t new_nbw = original_nbw * 2;

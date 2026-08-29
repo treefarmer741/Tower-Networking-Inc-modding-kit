@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class LineEdit : Control
 ---@field text string
@@ -12,19 +12,18 @@
 ---@field context_menu_enabled boolean
 ---@field emoji_menu_enabled boolean
 ---@field backspace_deletes_composite_character_enabled boolean
----@field virtual_keyboard_enabled boolean
----@field virtual_keyboard_show_on_focus boolean
----@field virtual_keyboard_type integer
 ---@field clear_button_enabled boolean
 ---@field shortcut_keys_enabled boolean
 ---@field middle_mouse_paste_enabled boolean
 ---@field selecting_enabled boolean
 ---@field deselect_on_focus_loss_enabled boolean
 ---@field drag_and_drop_selection_enabled boolean
----@field right_icon Texture2D
 ---@field flat boolean
 ---@field draw_control_chars boolean
 ---@field select_all_on_focus boolean
+---@field virtual_keyboard_enabled boolean
+---@field virtual_keyboard_show_on_focus boolean
+---@field virtual_keyboard_type integer
 ---@field caret_blink boolean
 ---@field caret_blink_interval number
 ---@field caret_column integer
@@ -36,6 +35,9 @@
 ---@field language string
 ---@field structured_text_bidi_override integer
 ---@field structured_text_bidi_override_options Array<any>
+---@field right_icon Texture2D
+---@field icon_expand_mode integer
+---@field right_icon_scale number
 local LineEdit = {}
 
 ---@return boolean
@@ -51,7 +53,8 @@ function LineEdit.set_horizontal_alignment(alignment) end
 ---@return HorizontalAlignment
 function LineEdit.get_horizontal_alignment() end
 
-function LineEdit.edit() end
+---@param hide_focus boolean?  # Default = false
+function LineEdit.edit(hide_focus) end
 
 function LineEdit.unedit() end
 
@@ -300,6 +303,18 @@ function LineEdit.set_right_icon(icon) end
 
 ---@return Texture2D
 function LineEdit.get_right_icon() end
+
+---@param mode LineEdit.ExpandMode
+function LineEdit.set_icon_expand_mode(mode) end
+
+---@return LineEdit.ExpandMode
+function LineEdit.get_icon_expand_mode() end
+
+---@param scale number
+function LineEdit.set_right_icon_scale(scale) end
+
+---@return number
+function LineEdit.get_right_icon_scale() end
 
 ---@param enabled boolean
 function LineEdit.set_flat(enabled) end

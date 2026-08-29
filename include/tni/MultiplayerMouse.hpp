@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MULTIPLAYERMOUSE
 #define TNI_API_HEADER_MULTIPLAYERMOUSE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,6 +15,15 @@ struct MultiplayerMouse : public Node2D {
 	MultiplayerMouse(Variant variant) : MultiplayerMouse{variant.as_object().address()} {}
 
 	PROPERTY(HIGH_BLUE_COLARR, Variant);  // Const value type was not supported.
+	enum struct SpoolAffixState : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		IDLE = 0,
+		WAITING_FOR_ENTRY = 1,
+		IN_TRAY = 2,
+		OUT_TRAY = 3,
+		STARTED_FROM_PUNCHDOWN = 4,
+	};
+	static constexpr double PATCH_CABLE_MAX_LENGTH = 1000.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double PATCH_CABLE_WARN_LENGTH = 700.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(multi_double_pick, Variant);
 	PROPERTY(curr_picked_original_pos, Variant);
@@ -25,10 +34,14 @@ struct MultiplayerMouse : public Node2D {
 	PROPERTY(hovertxt, RichTextLabel);
 	PROPERTY(rulerlbl, Label);
 	PROPERTY(grid_ov, Node2D);
+	PROPERTY(thuds_audiostreams, Node2D);
+	PROPERTY(cutting_clip, AudioStreamPlayer2D);
 	PROPERTY(mpinput, MultiplayerInput);
 	PROPERTY(peer_id, int64_t);
 	PROPERTY(curr_drag, Variant);
 	PROPERTY(primary_double_held, bool);
+	PROPERTY(cable_tag_content, String);
+	PROPERTY(cable_tag_color, Variant);
 	PROPERTY(draw_ruler, bool);
 	PROPERTY(ruler_start, Variant);
 

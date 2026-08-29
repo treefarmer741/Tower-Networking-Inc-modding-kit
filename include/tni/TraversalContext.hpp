@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TRAVERSALCONTEXT
 #define TNI_API_HEADER_TRAVERSALCONTEXT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct TraversalContext : public RefCounted {
 	constexpr TraversalContext(Object obj) : TraversalContext{obj.address()} {}
 	TraversalContext(Variant variant) : TraversalContext{variant.as_object().address()} {}
 
-	enum ResultType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ResultType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		NO_ERROR = 0,
 		NO_DNS = 1,
 		NO_DNS_ENTRY = 2,

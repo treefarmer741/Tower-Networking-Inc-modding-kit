@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_OUTAGESURGEPROPMOD
 #define TNI_API_HEADER_OUTAGESURGEPROPMOD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -40,6 +40,8 @@ struct OutageSurgePropMod : public PropMod {
 	inline void update_state();
 	inline String get_proposal_name();
 	inline String get_lore();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -52,5 +54,7 @@ inline void OutageSurgePropMod::submit_and_apply() { this->voidcall("submit_and_
 inline void OutageSurgePropMod::update_state() { this->voidcall("update_state"); }
 inline String OutageSurgePropMod::get_proposal_name() { return this->operator()("get_proposal_name"); }
 inline String OutageSurgePropMod::get_lore() { return this->operator()("get_lore"); }
+inline String OutageSurgePropMod::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String OutageSurgePropMod::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

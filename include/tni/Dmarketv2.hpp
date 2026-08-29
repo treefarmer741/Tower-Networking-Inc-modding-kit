@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DMARKETV2
 #define TNI_API_HEADER_DMARKETV2
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,9 +17,11 @@ struct Dmarketv2 : public ScreenApp {
 
 
 	PROPERTY(lstv2scn, PackedScene);
+	PROPERTY(cart_item_scene, PackedScene);
 	PROPERTY(togsrchbtn, Button);
 	PROPERTY(searchdtype, OptionButton);
 	PROPERTY(searchctn, Container);
+	PROPERTY(mounttype, OptionButton);
 	PROPERTY(mrchtype, OptionButton);
 	PROPERTY(chkoctl, Container);
 	PROPERTY(lstctn, Container);
@@ -30,6 +32,9 @@ struct Dmarketv2 : public ScreenApp {
 	PROPERTY(delivery_floor_sel, ItemList);
 	PROPERTY(fwd_button, Button);
 	PROPERTY(clr_button, Button);
+	PROPERTY(cart_preview_overlay, PanelContainer);
+	PROPERTY(cart_preview_scroll, ScrollContainer);
+	PROPERTY(toggle_cart_btn, Button);
 	PROPERTY(current_local_cart, Variant);
 	PROPERTY(dlist, Variant);
 	PROPERTY(main_pane, MainPane);

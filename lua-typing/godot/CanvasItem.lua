@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class CanvasItem : Node
 ---@field visible boolean
@@ -116,6 +116,17 @@ function CanvasItem.draw_polyline(points, color, width, antialiased) end
 function CanvasItem.draw_polyline_colors(points, colors, width, antialiased) end
 
 ---@param center Vector2
+---@param major number
+---@param minor number
+---@param start_angle number
+---@param end_angle number
+---@param point_count integer
+---@param color Color
+---@param width number?  # Default = -1.0
+---@param antialiased boolean?  # Default = false
+function CanvasItem.draw_ellipse_arc(center, major, minor, start_angle, end_angle, point_count, color, width, antialiased) end
+
+---@param center Vector2
 ---@param radius number
 ---@param start_angle number
 ---@param end_angle number
@@ -151,6 +162,15 @@ function CanvasItem.draw_rect(rect, color, filled, width, antialiased) end
 ---@param width number?  # Default = -1.0
 ---@param antialiased boolean?  # Default = false
 function CanvasItem.draw_circle(position, radius, color, filled, width, antialiased) end
+
+---@param position Vector2
+---@param major number
+---@param minor number
+---@param color Color
+---@param filled boolean?  # Default = true
+---@param width number?  # Default = -1.0
+---@param antialiased boolean?  # Default = false
+function CanvasItem.draw_ellipse(position, major, minor, color, filled, width, antialiased) end
 
 ---@param texture Texture2D
 ---@param position Vector2

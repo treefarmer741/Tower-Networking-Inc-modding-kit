@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class SpringBoneSimulator3D : SkeletonModifier3D
 ---@field external_force Vector3
+---@field mutable_bone_axes boolean
 ---@field setting_count Settings,settings/
 local SpringBoneSimulator3D = {}
 
@@ -47,11 +48,11 @@ function SpringBoneSimulator3D.set_extend_end_bone(index, enabled) end
 function SpringBoneSimulator3D.is_end_bone_extended(index) end
 
 ---@param index integer
----@param bone_direction SpringBoneSimulator3D.BoneDirection
+---@param bone_direction SkeletonModifier3D.BoneDirection
 function SpringBoneSimulator3D.set_end_bone_direction(index, bone_direction) end
 
 ---@param index integer
----@return SpringBoneSimulator3D.BoneDirection
+---@return SkeletonModifier3D.BoneDirection
 function SpringBoneSimulator3D.get_end_bone_direction(index) end
 
 ---@param index integer
@@ -103,11 +104,11 @@ function SpringBoneSimulator3D.set_radius(index, radius) end
 function SpringBoneSimulator3D.get_radius(index) end
 
 ---@param index integer
----@param axis SpringBoneSimulator3D.RotationAxis
+---@param axis SkeletonModifier3D.RotationAxis
 function SpringBoneSimulator3D.set_rotation_axis(index, axis) end
 
 ---@param index integer
----@return SpringBoneSimulator3D.RotationAxis
+---@return SkeletonModifier3D.RotationAxis
 function SpringBoneSimulator3D.get_rotation_axis(index) end
 
 ---@param index integer
@@ -210,12 +211,12 @@ function SpringBoneSimulator3D.get_joint_bone(index, joint) end
 
 ---@param index integer
 ---@param joint integer
----@param axis SpringBoneSimulator3D.RotationAxis
+---@param axis SkeletonModifier3D.RotationAxis
 function SpringBoneSimulator3D.set_joint_rotation_axis(index, joint, axis) end
 
 ---@param index integer
 ---@param joint integer
----@return SpringBoneSimulator3D.RotationAxis
+---@return SkeletonModifier3D.RotationAxis
 function SpringBoneSimulator3D.get_joint_rotation_axis(index, joint) end
 
 ---@param index integer
@@ -337,5 +338,11 @@ function SpringBoneSimulator3D.set_external_force(force) end
 
 ---@return Vector3
 function SpringBoneSimulator3D.get_external_force() end
+
+---@param enabled boolean
+function SpringBoneSimulator3D.set_mutable_bone_axes(enabled) end
+
+---@return boolean
+function SpringBoneSimulator3D.are_bone_axes_mutable() end
 
 function SpringBoneSimulator3D.reset() end

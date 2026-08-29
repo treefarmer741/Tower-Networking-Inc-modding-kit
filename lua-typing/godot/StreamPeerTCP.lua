@@ -1,7 +1,7 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
----@class StreamPeerTCP : StreamPeer
+---@class StreamPeerTCP : StreamPeerSocket
 local StreamPeerTCP = {}
 
 ---@param port integer
@@ -14,12 +14,6 @@ function StreamPeerTCP.bind(port, host) end
 ---@return Error
 function StreamPeerTCP.connect_to_host(host, port) end
 
----@return Error
-function StreamPeerTCP.poll() end
-
----@return StreamPeerTCP.Status
-function StreamPeerTCP.get_status() end
-
 ---@return string
 function StreamPeerTCP.get_connected_host() end
 
@@ -28,8 +22,6 @@ function StreamPeerTCP.get_connected_port() end
 
 ---@return integer
 function StreamPeerTCP.get_local_port() end
-
-function StreamPeerTCP.disconnect_from_host() end
 
 ---@param enabled boolean
 function StreamPeerTCP.set_no_delay(enabled) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class NativeMenu : Object
 local NativeMenu = {}
@@ -19,6 +19,14 @@ function NativeMenu.get_system_menu(menu_id) end
 ---@param menu_id NativeMenu.SystemMenus
 ---@return string
 function NativeMenu.get_system_menu_name(menu_id) end
+
+---@param menu_id NativeMenu.SystemMenus
+---@return string
+function NativeMenu.get_system_menu_text(menu_id) end
+
+---@param menu_id NativeMenu.SystemMenus
+---@param name string
+function NativeMenu.set_system_menu_text(menu_id, name) end
 
 ---@return RID
 function NativeMenu.create_menu() end

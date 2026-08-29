@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TENABOLTFUSIONPHASETWO
 #define TNI_API_HEADER_TENABOLTFUSIONPHASETWO
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -38,8 +38,10 @@ struct TenaboltFusionPhaseTwo : public PropMod {
 	inline String get_lore();
 	inline String get_description();
 	inline Variant test_adhoc_requirements();
+	inline String get_unlock_condition_description();
 	inline void submit_and_apply();
 	inline void update_state();
+	inline String get_tiered_display_name();
 };
 
 #include "PropMod.hpp"
@@ -50,7 +52,9 @@ inline String TenaboltFusionPhaseTwo::get_proposal_name() { return this->operato
 inline String TenaboltFusionPhaseTwo::get_lore() { return this->operator()("get_lore"); }
 inline String TenaboltFusionPhaseTwo::get_description() { return this->operator()("get_description"); }
 inline Variant TenaboltFusionPhaseTwo::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
+inline String TenaboltFusionPhaseTwo::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 inline void TenaboltFusionPhaseTwo::submit_and_apply() { this->voidcall("submit_and_apply"); }
 inline void TenaboltFusionPhaseTwo::update_state() { this->voidcall("update_state"); }
+inline String TenaboltFusionPhaseTwo::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
 
 #endif

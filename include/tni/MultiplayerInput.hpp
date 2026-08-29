@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MULTIPLAYERINPUT
 #define TNI_API_HEADER_MULTIPLAYERINPUT
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -24,19 +24,23 @@ struct MultiplayerInput : public MultiplayerSynchronizer {
 	inline void press_primary();
 	inline void press_primary_double();
 	inline void release_primary();
-	inline void press_t();
+	inline void press_t(bool with_ctrl);
 	inline void release_t();
 	inline void press_r();
 	inline void release_r();
+	inline void press_f();
+	inline void release_f();
 };
 
 
 inline void MultiplayerInput::press_primary() { this->voidcall("press_primary"); }
 inline void MultiplayerInput::press_primary_double() { this->voidcall("press_primary_double"); }
 inline void MultiplayerInput::release_primary() { this->voidcall("release_primary"); }
-inline void MultiplayerInput::press_t() { this->voidcall("press_t"); }
+inline void MultiplayerInput::press_t(bool with_ctrl) { this->voidcall("press_t", with_ctrl); }
 inline void MultiplayerInput::release_t() { this->voidcall("release_t"); }
 inline void MultiplayerInput::press_r() { this->voidcall("press_r"); }
 inline void MultiplayerInput::release_r() { this->voidcall("release_r"); }
+inline void MultiplayerInput::press_f() { this->voidcall("press_f"); }
+inline void MultiplayerInput::release_f() { this->voidcall("release_f"); }
 
 #endif

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Thread : RefCounted
 local Thread = {}
@@ -23,3 +23,6 @@ function Thread.wait_to_finish() end
 
 ---@param enabled boolean
 function Thread.set_thread_safety_checks_enabled(enabled) end
+
+---@return boolean
+function Thread.is_main_thread() end

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MODLOADER
 #define TNI_API_HEADER_MODLOADER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -34,6 +34,7 @@ struct ModLoader : public Node {
 	inline void device_spawned(const DeviceUnit& device);
 	inline void user_spawned(const LogicControllerUser& user);
 	inline void location_spawned(const Location& location);
+	inline void merchant_spawned(const Merchant& merchant);
 };
 
 #include "ModPreset.hpp"
@@ -42,6 +43,7 @@ struct ModLoader : public Node {
 #include "DeviceUnit.hpp"
 #include "LogicControllerUser.hpp"
 #include "Location.hpp"
+#include "Merchant.hpp"
 
 inline void ModLoader::rediscover_mods() { this->voidcall("rediscover_mods"); }
 inline Mod ModLoader::try_load_mod(const ModManifest& manifest) { return Mod(this->operator()("try_load_mod", Object(reinterpret_cast<const Object*>(&manifest)->address())).as_object().address()); }
@@ -51,5 +53,6 @@ inline void ModLoader::game_state_ready() { this->voidcall("game_state_ready"); 
 inline void ModLoader::device_spawned(const DeviceUnit& device) { this->voidcall("device_spawned", Object(reinterpret_cast<const Object*>(&device)->address())); }
 inline void ModLoader::user_spawned(const LogicControllerUser& user) { this->voidcall("user_spawned", Object(reinterpret_cast<const Object*>(&user)->address())); }
 inline void ModLoader::location_spawned(const Location& location) { this->voidcall("location_spawned", Object(reinterpret_cast<const Object*>(&location)->address())); }
+inline void ModLoader::merchant_spawned(const Merchant& merchant) { this->voidcall("merchant_spawned", Object(reinterpret_cast<const Object*>(&merchant)->address())); }
 
 #endif

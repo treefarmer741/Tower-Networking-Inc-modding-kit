@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICEOUTLET
 #define TNI_API_HEADER_DEVICEOUTLET
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -21,6 +21,7 @@ struct DeviceOutlet : public FixtureOutlet {
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(device_hardware_class, int64_t);
 	PROPERTY(socket, Socket);
+	PROPERTY(sockets, Variant);
 	PROPERTY(floor_num, int64_t);
 
 	inline Variant debug_monitor_callback();

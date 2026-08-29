@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LINEARDEPTHGRAPHVIZ
 #define TNI_API_HEADER_LINEARDEPTHGRAPHVIZ
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,16 +14,16 @@ struct LinearDepthGraphviz : public ScrollContainer {
 	constexpr LinearDepthGraphviz(Object obj) : LinearDepthGraphviz{obj.address()} {}
 	LinearDepthGraphviz(Variant variant) : LinearDepthGraphviz{variant.as_object().address()} {}
 
-	enum DisplayMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct DisplayMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		VPHC_FROM_TOP = 0,
 		HPVC_FROM_LEFT = 1,
 	};
-	enum EdgeLineMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct EdgeLineMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		STRAIGHT = 0,
 		ANGLE1 = 1,
 		SHARP2 = 2,
 	};
-	enum ElementAttribute : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct ElementAttribute : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		LINE_WIDTH = 0,
 		LINE_COLOR = 1,
 		MAIN_LABEL_TEXT = 2,

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Image : Resource
 ---@field data table<any,any>
@@ -242,6 +242,10 @@ function Image.load_ktx_from_buffer(buffer) end
 ---@param buffer PackedByteArray
 ---@return Error
 function Image.load_dds_from_buffer(buffer) end
+
+---@param buffer PackedByteArray
+---@return Error
+function Image.load_exr_from_buffer(buffer) end
 
 ---@param buffer PackedByteArray
 ---@param scale number?  # Default = 1.0

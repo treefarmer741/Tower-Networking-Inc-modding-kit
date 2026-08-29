@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CABLEOMATIC
 #define TNI_API_HEADER_CABLEOMATIC
-// Generated API for game version 0.10.11
+// Generated API for game version 0.12.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,16 +17,14 @@ struct CableOMatic : public DeviceUnit {
 
 
 	PROPERTY(stored_length, int64_t);
-	PROPERTY(max_stored_length, int64_t);
-	PROPERTY(max_make_length, int64_t);
-	PROPERTY(cable_make, PackedScene);
+	PROPERTY(spool_threshold, int64_t);
+	PROPERTY(cable_spool, PackedScene);
 	PROPERTY(color_variant, Variant);
 	PROPERTY(storage_in, StorageSocket);
+	PROPERTY(color_slider, Slider);
+	PROPERTY(CABLE_COLOR_MODULATE_VARIANTS, Variant);
 	PROPERTY(color_ind_sprite, Sprite2D);
-	PROPERTY(remaining_len_display, Label);
-	PROPERTY(make_len_display, Label);
-	PROPERTY(make_len_slider, Slider);
-	PROPERTY(make_length, int64_t);
+	PROPERTY(storing_len_display, Label);
 	PROPERTY(product_name, String);
 	PROPERTY(description, String);
 	PROPERTY(text, String);
@@ -49,6 +47,8 @@ struct CableOMatic : public DeviceUnit {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(is_mount_locked, bool);
+	PROPERTY(screw_sprite, Variant);
 	PROPERTY(auto_replacement_cost, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
@@ -89,6 +89,7 @@ struct CableOMatic : public DeviceUnit {
 	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
 	inline void update_user_note(String new_value);
+	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
 	inline void lift_child_z_index(int64_t base_val);
 	inline Variant get_picker_type(Variant test_picker);
@@ -113,6 +114,7 @@ inline bool CableOMatic::drop(Variant impulse) { return this->operator()("drop",
 inline void CableOMatic::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void CableOMatic::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
 inline void CableOMatic::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void CableOMatic::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void CableOMatic::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
 inline void CableOMatic::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
 inline Variant CableOMatic::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }

@@ -3,7 +3,7 @@ include(FetchContent)
 FetchContent_Declare(
 	godot-sandbox
 	GIT_REPOSITORY https://github.com/libriscv/godot-sandbox.git
-	GIT_TAG        main
+	GIT_TAG        v0.53
 	GIT_PROGRESS   TRUE
 	GIT_SHALLOW    TRUE
 	GIT_SUBMODULES ""

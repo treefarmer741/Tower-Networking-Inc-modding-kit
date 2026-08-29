@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class FileDialog : ConfirmationDialog
 ---@field mode_overrides_title boolean
@@ -19,6 +19,8 @@
 ---@field favorites_enabled boolean
 ---@field recent_list_enabled boolean
 ---@field layout_toggle_enabled boolean
+---@field overwrite_warning_enabled boolean
+---@field deleting_enabled boolean
 ---@field current_dir string
 ---@field current_file string
 ---@field current_path string
@@ -28,7 +30,8 @@ function FileDialog.clear_filters() end
 
 ---@param filter string
 ---@param description string?  # Default = 
-function FileDialog.add_filter(filter, description) end
+---@param mime_type string?  # Default = 
+function FileDialog.add_filter(filter, description, mime_type) end
 
 ---@param filters PackedStringArray
 function FileDialog.set_filters(filters) end
@@ -157,5 +160,25 @@ function FileDialog.set_customization_flag_enabled(flag, enabled) end
 function FileDialog.is_customization_flag_enabled(flag) end
 
 function FileDialog.deselect_all() end
+
+---@param favorites PackedStringArray
+function FileDialog.set_favorite_list(favorites) end
+
+---@return PackedStringArray
+function FileDialog.get_favorite_list() end
+
+---@param recents PackedStringArray
+function FileDialog.set_recent_list(recents) end
+
+---@return PackedStringArray
+function FileDialog.get_recent_list() end
+
+---@param callback (Callable|function)
+function FileDialog.set_get_icon_callback(callback) end
+
+---@param callback (Callable|function)
+function FileDialog.set_get_thumbnail_callback(callback) end
+
+function FileDialog.popup_file_dialog() end
 
 function FileDialog.invalidate() end

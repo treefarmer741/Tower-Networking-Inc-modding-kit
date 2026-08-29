@@ -1,9 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.12.1
 
 ---@class Autograph : ScreenApp
----@field white256txt Object # Constant value: <CompressedTexture2D#-9223369065425186733>
----@field green256txt Object # Constant value: <CompressedTexture2D#-9223369065056088247>
+---@field white256txt Object # Constant value: (res://assets/whitebox256.png):<CompressedTexture2D#-9223369646520854215>
+---@field green256txt Object # Constant value: (res://assets/greenbox256.png):<CompressedTexture2D#-9223369558205588384>
 ---@field bw_load_color Array<any> # Constant value: [(1.0, 0.0, 0.0, 1.0), (1.0, 0.6, 0.0, 1.0), (1.0, 1.0, 0.0, 1.0), (0.8, 1.0, 0.2, 1.0), (0.6, 1.0, 0.2, 1.0), (0.4, 1.0, 0.2, 1.0), (0.2, 0.8, 0.2, 1.0), (0.0, 1.0, 0.0, 1.0), (0.0, 1.0, 0.6, 1.0), (0.0, 1.0, 0.8, 1.0), (0.2, 0.8, 0.8, 1.0), (0.0, 0.8, 0.9333, 1.0)]
 ---@field togcfgbtn Button
 ---@field cfgpage Container
