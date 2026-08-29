@@ -12,7 +12,7 @@
 	},
 	"dependencies": {
 		// See https://devhints.io/semver for syntax.
-		"tower-networking-inc": "^0.10.7"
+		"tower-networking-inc": "^0.12.4"
 	},
 	"dependencies_optional": {
 	},
