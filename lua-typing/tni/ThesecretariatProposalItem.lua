@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class ThesecretariatProposalItem : VBoxContainer
 ---@field hb Container
@@ -12,4 +12,5 @@
 ---@field btn Button
 ---@field btn2 Button
 ---@field proposal PropMod
+---@field secretariat_ref Node
 local ThesecretariatProposalItem = {}

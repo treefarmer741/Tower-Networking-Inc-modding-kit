@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOCATION
 #define TNI_API_HEADER_LOCATION
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -32,8 +32,7 @@ struct Location : public Node2D {
 	PROPERTY(will_not_spawn_before_day, int64_t);
 	PROPERTY(location_prerequisite_scn, PackedScene);
 	PROPERTY(description, String);
-	PROPERTY(surge_immunity, bool);
-	PROPERTY(outage_immunity, bool);
+	PROPERTY(power_immunity, bool);
 	PROPERTY(network_outage_flag, bool);
 	PROPERTY(network_outage_scheduled, bool);
 	PROPERTY(is_datacenter, bool);

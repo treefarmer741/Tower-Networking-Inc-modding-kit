@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_USERTRAVERSALFQDN
 #define TNI_API_HEADER_USERTRAVERSALFQDN
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -35,6 +35,7 @@ struct UserTraversalFQDN : public UserTraversal {
 	PROPERTY(curved_traffic_weight_last_tick, int64_t);
 	PROPERTY(consumption_history, Variant);
 	PROPERTY(consumption_status_this_tick, int64_t);
+	PROPERTY(last_problem, String);
 	PROPERTY(will_manifest, bool);
 	PROPERTY(reqshare_accept_hash, int64_t);
 	PROPERTY(reqshare_weight_index, Variant);

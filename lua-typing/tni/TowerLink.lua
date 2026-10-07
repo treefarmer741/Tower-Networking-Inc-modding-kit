@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class TowerLink : ScreenApp
 ---@field tower_link_itm_scn PackedScene

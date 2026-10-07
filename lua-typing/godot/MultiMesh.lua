@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class MultiMesh : Resource
 ---@field transform_format integer
@@ -93,8 +93,6 @@ function MultiMesh.get_instance_custom_data(instance) end
 
 ---@param instance integer
 function MultiMesh.reset_instance_physics_interpolation(instance) end
-
-function MultiMesh.reset_instances_physics_interpolation() end
 
 ---@param aabb AABB
 function MultiMesh.set_custom_aabb(aabb) end

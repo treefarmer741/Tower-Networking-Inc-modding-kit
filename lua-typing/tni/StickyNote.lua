@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class StickyNote : Area2D
 ---@field FONT_DATA Array<any> # Constant value: [{ "path": "res://assets/texts/fonts/PatrickHand-Regular.ttf", "size": 26, "max_width": 99, "name": "Patrick Hand" }, { "path": "res://assets/texts/monospace_fonts/JetBrainsMono-Regular.ttf", "size": 18, "max_width": 90, "name": "JetBrains Mono" }, { "path": "res://assets/texts/fonts/ComicRelief-Regular.ttf", "size": 18, "max_width": 90, "name": "Comic Relief" }]

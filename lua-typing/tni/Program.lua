@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Program : Node
 ---@field CONFIG_SIZE integer # Constant value: 1
@@ -37,6 +37,9 @@ Program.ControllerModifiers = {
 	["ALLOW_TRAFFIC_SPLITTING"] = 11,
 	["ALLOW_STP_PORT_CONTROL"] = 12,
 	["ALLOW_PACKET_TRANSLATION"] = 13,
+	["ALLOW_CENSORSHIP_ACCOUNTING"] = 14,
+	["ALLOW_SANDWORM_TARGETING"] = 15,
+	["ALLOW_DECENTROWORM_TARGETING"] = 16,
 }
 ---@enum Program.PacketHandling
 Program.PacketHandling = {

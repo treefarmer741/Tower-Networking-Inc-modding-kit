@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class KeystoneToKeystoneLink : TrayAffixedLink
 ---@field SAG_EXIT_LENGTH number # Constant value: 40.0

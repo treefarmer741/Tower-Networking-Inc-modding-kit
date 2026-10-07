@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class SanResearch : PropMod
 ---@field techv string # Constant value: san_storage_v1
 ---@field MIN_STORAGE_DEVICES integer # Constant value: 1
+---@field san_initiator_scn string # Constant value: <PackedScene>
 ---@field cost integer
 ---@field submitted boolean
 ---@field locked boolean

@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class FirewallControlModule : LogicControlModule
 ---@field firewall_table Array<any>
 ---@field default_firewall_policy_allows boolean
+---@field firewall_rules Array<any>
 ---@field host_controller LogicController
 local FirewallControlModule = {}
 

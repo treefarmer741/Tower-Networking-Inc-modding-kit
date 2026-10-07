@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POWERSURGECONTROLLER
 #define TNI_API_HEADER_POWERSURGECONTROLLER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -27,6 +27,7 @@ struct PowerSurgeController : public RandomEvent {
 	PROPERTY(enabled, bool);
 	PROPERTY(trial_timer, Timer);
 
+	inline void notify_surge_rerouted();
 	inline void notify_surge_warning(const Location& loc, int64_t start_ts, int64_t end_ts);
 	inline void start();
 	inline void pause();
@@ -34,6 +35,7 @@ struct PowerSurgeController : public RandomEvent {
 
 #include "Location.hpp"
 
+inline void PowerSurgeController::notify_surge_rerouted() { this->voidcall("notify_surge_rerouted"); }
 inline void PowerSurgeController::notify_surge_warning(const Location& loc, int64_t start_ts, int64_t end_ts) { this->voidcall("notify_surge_warning", Object(reinterpret_cast<const Object*>(&loc)->address()), start_ts, end_ts); }
 inline void PowerSurgeController::start() { this->voidcall("start"); }
 inline void PowerSurgeController::pause() { this->voidcall("pause"); }

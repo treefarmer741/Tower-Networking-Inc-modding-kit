@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SANRESEARCH
 #define TNI_API_HEADER_SANRESEARCH
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct SanResearch : public PropMod {
 
 	inline static const String techv = "san_storage_v1";  // NOTE: You should recompile your mod if this value changes!
 	static constexpr int64_t MIN_STORAGE_DEVICES = 1;  // NOTE: You should recompile your mod if this value changes!
+	PROPERTY(san_initiator_scn, Variant);  // Const value type was not supported.
 
 	PROPERTY(cost, int64_t);
 	PROPERTY(submitted, bool);

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class LogicController : GraphController
 ---@field default_tick_period number
@@ -16,6 +16,7 @@
 ---@field skip_autoconfig_cpu boolean
 ---@field allow_storage_mods boolean
 ---@field allow_process_mods boolean
+---@field keep_autoconfig_programs boolean
 ---@field auto_config_additional_cpu integer
 ---@field auto_config_additional_sto integer
 ---@field auto_config_additional_mem integer
@@ -70,6 +71,11 @@
 ---@field extended_storage integer
 ---@field total_gpu_capacity integer
 ---@field extended_gpu integer
+---@field total_cpu_capacity integer
+---@field extended_cpu integer
+---@field total_mem_capacity integer
+---@field extended_mem integer
+---@field extended_power_draw integer
 ---@field used_storage integer
 ---@field free_memory integer
 ---@field used_memory integer
@@ -117,6 +123,8 @@ LogicController.TableType = {
 function LogicController.time_mult_updated(_time_mult_delta) end
 
 function LogicController.wipe_all_data() end
+
+function LogicController.wipe_replaceable_data() end
 
 function LogicController.reboot_os() end
 
@@ -172,6 +180,10 @@ function LogicController.remove_peripheral(per) end
 function LogicController.remove_peripheral_at(per_np) end
 
 function LogicController.enforce_storage_limit() end
+
+function LogicController.enforce_memory_limit() end
+
+function LogicController.enforce_cpu_limit() end
 
 function LogicController.reset() end
 

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class Image : Resource
 ---@field data table<any,any>
@@ -103,10 +103,46 @@ function Image.load_from_file(path) end
 
 ---@param path string
 ---@return Error
+function Image.save_png(path) end
+
+---@return PackedByteArray
+function Image.save_png_to_buffer() end
+
+---@param path string
+---@param quality number?  # Default = 0.75
+---@return Error
+function Image.save_jpg(path, quality) end
+
+---@param quality number?  # Default = 0.75
+---@return PackedByteArray
+function Image.save_jpg_to_buffer(quality) end
+
+---@param path string
+---@param grayscale boolean?  # Default = false
+---@return Error
+function Image.save_exr(path, grayscale) end
+
+---@param grayscale boolean?  # Default = false
+---@return PackedByteArray
+function Image.save_exr_to_buffer(grayscale) end
+
+---@param path string
+---@return Error
 function Image.save_dds(path) end
 
 ---@return PackedByteArray
 function Image.save_dds_to_buffer() end
+
+---@param path string
+---@param lossy boolean?  # Default = false
+---@param quality number?  # Default = 0.75
+---@return Error
+function Image.save_webp(path, lossy, quality) end
+
+---@param lossy boolean?  # Default = false
+---@param quality number?  # Default = 0.75
+---@return PackedByteArray
+function Image.save_webp_to_buffer(lossy, quality) end
 
 ---@return Image.AlphaMode
 function Image.detect_alpha() end
@@ -202,6 +238,15 @@ function Image.get_region(region) end
 function Image.copy_from(src) end
 
 ---@param point Vector2i
+---@return Color
+function Image.get_pixelv(point) end
+
+---@param x integer
+---@param y integer
+---@return Color
+function Image.get_pixel(x, y) end
+
+---@param point Vector2i
 ---@param color Color
 function Image.set_pixelv(point, color) end
 
@@ -242,10 +287,6 @@ function Image.load_ktx_from_buffer(buffer) end
 ---@param buffer PackedByteArray
 ---@return Error
 function Image.load_dds_from_buffer(buffer) end
-
----@param buffer PackedByteArray
----@return Error
-function Image.load_exr_from_buffer(buffer) end
 
 ---@param buffer PackedByteArray
 ---@param scale number?  # Default = 1.0

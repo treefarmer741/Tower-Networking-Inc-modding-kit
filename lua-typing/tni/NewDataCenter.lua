@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class NewDataCenter : PropMod
 ---@field admin_perc_increase number # Constant value: 0.1

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POWERMETERFIRMWARE
 #define TNI_API_HEADER_POWERMETERFIRMWARE
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct PowerMeterFirmware : public Program {
 
 
 	PROPERTY(cumulative_kwh, double);
+	PROPERTY(exploited, bool);
 	PROPERTY(cpu_load, int64_t);
 	PROPERTY(gpu_load, int64_t);
 	PROPERTY(code_size, int64_t);
@@ -34,6 +35,7 @@ struct PowerMeterFirmware : public Program {
 	PROPERTY(gw_playopt, PlayOptions);
 	PROPERTY(host_controller, LogicController);
 
+	inline void set_exploited(bool on);
 	inline void tick();
 	inline String colorize_description(String ds);
 	inline void start();
@@ -49,6 +51,7 @@ struct PowerMeterFirmware : public Program {
 #include "LogicController.hpp"
 #include "PacketControlModule.hpp"
 
+inline void PowerMeterFirmware::set_exploited(bool on) { this->voidcall("set_exploited", on); }
 inline void PowerMeterFirmware::tick() { this->voidcall("tick"); }
 inline String PowerMeterFirmware::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
 inline void PowerMeterFirmware::start() { this->voidcall("start"); }

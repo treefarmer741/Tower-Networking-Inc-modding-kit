@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TESTLAB
 #define TNI_API_HEADER_TESTLAB
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct Testlab : public ScreenApp {
 
 	static constexpr int64_t EVENT_OUTAGE = 0;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr int64_t EVENT_SURGE = 1;  // NOTE: You should recompile your mod if this value changes!
+	PROPERTY(WORM_CONTROLLER_NAMES, Variant);  // Const value type was not supported.
 
 	PROPERTY(event_type_selector, OptionButton);
 	PROPERTY(floor_selector, OptionButton);
@@ -29,6 +30,7 @@ struct Testlab : public ScreenApp {
 	PROPERTY(worm_floor_selector, OptionButton);
 	PROPERTY(cyber_attack_selector, OptionButton);
 	PROPERTY(device_address_input, LineEdit);
+	PROPERTY(copod_status_label, Label);
 	PROPERTY(user_type_selector, OptionButton);
 	PROPERTY(user_socket_selector, OptionButton);
 	PROPERTY(user_count_spinner, SpinBox);

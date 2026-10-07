@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SANTARGET
 #define TNI_API_HEADER_SANTARGET
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -40,6 +40,7 @@ struct SanTarget : public Program {
 	PROPERTY(host_controller, LogicController);
 
 	inline String volume_filekey(String volume_id);
+	inline Variant ordered_volume_ids();
 	inline bool has_volume(String volume_id);
 	inline Variant volume_row(String volume_id);
 	inline String volume_owner(String volume_id);
@@ -47,9 +48,11 @@ struct SanTarget : public Program {
 	inline bool provision_volume(String volume_id, Variant row);
 	inline bool write_volume(String volume_id, Variant row);
 	inline int64_t destroy_volume(String volume_id);
+	inline bool wipe_volume_contents(String volume_id);
 	inline Variant backed_keys();
-	inline int64_t lookup_lun_size(String volume_id, String requestor);
-	inline int64_t negotiate_lun(String volume_id, int64_t size, String requestor, bool authoritative);
+	inline int64_t lookup_lun_size(String volume_id, String requestor, String label);
+	inline bool has_other_live_holder(String volume_id, String requestor);
+	inline int64_t negotiate_lun(String volume_id, int64_t size, String requestor, bool authoritative, String label);
 	inline void revoke_lun(String volume_id);
 	inline void tick();
 	inline void reconcile_reservation();
@@ -69,6 +72,7 @@ struct SanTarget : public Program {
 #include "PacketControlModule.hpp"
 
 inline String SanTarget::volume_filekey(String volume_id) { return this->operator()("volume_filekey", volume_id); }
+inline Variant SanTarget::ordered_volume_ids() { return this->operator()("ordered_volume_ids"); }
 inline bool SanTarget::has_volume(String volume_id) { return this->operator()("has_volume", volume_id); }
 inline Variant SanTarget::volume_row(String volume_id) { return this->operator()("volume_row", volume_id); }
 inline String SanTarget::volume_owner(String volume_id) { return this->operator()("volume_owner", volume_id); }
@@ -76,9 +80,11 @@ inline String SanTarget::reservation_label(String volume_id) { return this->oper
 inline bool SanTarget::provision_volume(String volume_id, Variant row) { return this->operator()("provision_volume", volume_id, row); }
 inline bool SanTarget::write_volume(String volume_id, Variant row) { return this->operator()("write_volume", volume_id, row); }
 inline int64_t SanTarget::destroy_volume(String volume_id) { return this->operator()("destroy_volume", volume_id); }
+inline bool SanTarget::wipe_volume_contents(String volume_id) { return this->operator()("wipe_volume_contents", volume_id); }
 inline Variant SanTarget::backed_keys() { return this->operator()("backed_keys"); }
-inline int64_t SanTarget::lookup_lun_size(String volume_id, String requestor) { return this->operator()("lookup_lun_size", volume_id, requestor); }
-inline int64_t SanTarget::negotiate_lun(String volume_id, int64_t size, String requestor, bool authoritative) { return this->operator()("negotiate_lun", volume_id, size, requestor, authoritative); }
+inline int64_t SanTarget::lookup_lun_size(String volume_id, String requestor, String label) { return this->operator()("lookup_lun_size", volume_id, requestor, label); }
+inline bool SanTarget::has_other_live_holder(String volume_id, String requestor) { return this->operator()("has_other_live_holder", volume_id, requestor); }
+inline int64_t SanTarget::negotiate_lun(String volume_id, int64_t size, String requestor, bool authoritative, String label) { return this->operator()("negotiate_lun", volume_id, size, requestor, authoritative, label); }
 inline void SanTarget::revoke_lun(String volume_id) { this->voidcall("revoke_lun", volume_id); }
 inline void SanTarget::tick() { this->voidcall("tick"); }
 inline void SanTarget::reconcile_reservation() { this->voidcall("reconcile_reservation"); }

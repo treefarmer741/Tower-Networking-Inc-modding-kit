@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class DeviceUnit : PickableDevice
 ---@field ZINDEX integer # Constant value: 200
 ---@field MAX_PRICE integer # Constant value: 1000000
+---@field RNG_FAIL_INVERSE_STEEP number # Constant value: -12.0
 ---@field SNAP_MARGIN number # Constant value: 2.0
 ---@field product_name string
 ---@field description string
@@ -14,6 +15,7 @@
 ---@field base_warranty_days integer
 ---@field base_warranty_cycles integer
 ---@field sale_warranty integer
+---@field terminal_failure_prob number
 ---@field recycle_price_factor number
 ---@field recycle_price integer
 ---@field force_auto_config_powctl_based_on_logctl boolean
@@ -27,9 +29,12 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field data_migration_enabled boolean
 ---@field is_mount_locked boolean
 ---@field screw_sprite Object
+---@field auto_replacement_multiplier integer
 ---@field auto_replacement_cost integer
+---@field memento_daily_fee integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
 ---@field device_hardware_class DeviceUnit.DeviceHardwareClass
@@ -37,6 +42,7 @@
 ---@field mount_type DeviceUnit.MountType
 ---@field bw_per_second number
 ---@field reliability_flt number
+---@field rng_fail_chance number
 ---@field device_rendered_description string
 ---@field logic_controller LogicController
 ---@field power_controller PowerController
@@ -99,7 +105,12 @@ DeviceUnit.MountType = {
 	["R500"] = 1,
 	["R930"] = 2,
 	["R630"] = 3,
+	["BLADE_BAY"] = 4,
 }
+
+---@param extra_devices integer?  # Default = 0
+---@return integer
+function DeviceUnit.get_daily_cost_multiplier(extra_devices) end
 
 function DeviceUnit.apply_autoconfig() end
 
@@ -139,6 +150,9 @@ function DeviceUnit.reset_child_z_index() end
 
 ---@param new_state boolean
 function DeviceUnit.set_autosvc(new_state) end
+
+---@param new_state boolean
+function DeviceUnit.set_data_migration(new_state) end
 
 ---@param new_value string
 function DeviceUnit.update_user_note(new_value) end

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERUSERDECAYINGBASEPERIOD
 #define TNI_API_HEADER_LOGICCONTROLLERUSERDECAYINGBASEPERIOD
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -37,16 +37,19 @@ struct LogicControllerUserDecayingBasePeriod : public LogicControllerUser {
 	PROPERTY(visitor_stats, Variant);
 	PROPERTY(visitor_stats_last_tick, Variant);
 	PROPERTY(surveyor_daily_incidents, Variant);
+	PROPERTY(sla_reasons, Variant);
 	PROPERTY(surveyor_msg_stra, Variant);
 	PROPERTY(payment_calculation_method, int64_t);
 	PROPERTY(payment_today, int64_t);
 	PROPERTY(user_hostings, Variant);
+	PROPERTY(is_producer, bool);
 	PROPERTY(required_visitation_satiety_per_tick, int64_t);
 	PROPERTY(csr, double);
 	PROPERTY(vsr, double);
 	PROPERTY(visitor_reset_modulo_n, int64_t);
 	PROPERTY(consumption_total_last_tick, int64_t);
 	PROPERTY(consumption_satiety_last_tick, int64_t);
+	PROPERTY(surveyed_behavior_count, int64_t);
 	PROPERTY(description, String);
 	PROPERTY(user_profile_name, String);
 	PROPERTY(base_use_period, double);
@@ -78,8 +81,11 @@ struct LogicControllerUserDecayingBasePeriod : public LogicControllerUser {
 
 	inline Variant apply_data_spike(double min_mult, double max_mult, int64_t duration_secs);
 	inline void push_surveyor_message(String msg);
+	inline void push_or_refresh_surveyor_message(String msg, String line_prefix);
 	inline double get_manifest_roll(String release_name);
 	inline Variant debug_monitor_callback();
+	inline void apply_satiety_penalty(double ratio_penalty);
+	inline void apply_satiety_boost(double ratio_boost, int64_t source_id);
 	inline void account_intent(const UserTraversal& utc);
 	inline void unaccount_intent(const UserTraversal& utc);
 	inline void account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt);
@@ -100,8 +106,11 @@ struct LogicControllerUserDecayingBasePeriod : public LogicControllerUser {
 
 inline Variant LogicControllerUserDecayingBasePeriod::apply_data_spike(double min_mult, double max_mult, int64_t duration_secs) { return this->operator()("apply_data_spike", min_mult, max_mult, duration_secs); }
 inline void LogicControllerUserDecayingBasePeriod::push_surveyor_message(String msg) { this->voidcall("push_surveyor_message", msg); }
+inline void LogicControllerUserDecayingBasePeriod::push_or_refresh_surveyor_message(String msg, String line_prefix) { this->voidcall("push_or_refresh_surveyor_message", msg, line_prefix); }
 inline double LogicControllerUserDecayingBasePeriod::get_manifest_roll(String release_name) { return this->operator()("get_manifest_roll", release_name); }
 inline Variant LogicControllerUserDecayingBasePeriod::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void LogicControllerUserDecayingBasePeriod::apply_satiety_penalty(double ratio_penalty) { this->voidcall("apply_satiety_penalty", ratio_penalty); }
+inline void LogicControllerUserDecayingBasePeriod::apply_satiety_boost(double ratio_boost, int64_t source_id) { this->voidcall("apply_satiety_boost", ratio_boost, source_id); }
 inline void LogicControllerUserDecayingBasePeriod::account_intent(const UserTraversal& utc) { this->voidcall("account_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
 inline void LogicControllerUserDecayingBasePeriod::unaccount_intent(const UserTraversal& utc) { this->voidcall("unaccount_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
 inline void LogicControllerUserDecayingBasePeriod::account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt) { this->voidcall("account_consumption", Object(reinterpret_cast<const Object*>(&utc)->address()), _ctx_or_pkt); }

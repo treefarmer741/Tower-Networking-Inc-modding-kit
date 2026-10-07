@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Pcap : TerminalRoutine
 ---@field MAX_LIVE_TRAFFIC_DISPLAY integer # Constant value: 15

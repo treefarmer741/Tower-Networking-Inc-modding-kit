@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICEUNIT
 #define TNI_API_HEADER_DEVICEUNIT
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -57,7 +57,9 @@ struct DeviceUnit : public PickableDevice {
 		R500 = 1,
 		R930 = 2,
 		R630 = 3,
+		BLADE_BAY = 4,
 	};
+	static constexpr double RNG_FAIL_INVERSE_STEEP = -12.0;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr double SNAP_MARGIN = 2.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(product_name, String);
@@ -69,6 +71,7 @@ struct DeviceUnit : public PickableDevice {
 	PROPERTY(base_warranty_days, int64_t);
 	PROPERTY(base_warranty_cycles, int64_t);
 	PROPERTY(sale_warranty, int64_t);
+	PROPERTY(terminal_failure_prob, double);
 	PROPERTY(recycle_price_factor, double);
 	PROPERTY(recycle_price, int64_t);
 	PROPERTY(force_auto_config_powctl_based_on_logctl, bool);
@@ -82,9 +85,12 @@ struct DeviceUnit : public PickableDevice {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(data_migration_enabled, bool);
 	PROPERTY(is_mount_locked, bool);
 	PROPERTY(screw_sprite, Variant);
+	PROPERTY(auto_replacement_multiplier, int64_t);
 	PROPERTY(auto_replacement_cost, int64_t);
+	PROPERTY(memento_daily_fee, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
 	PROPERTY(device_hardware_class, int64_t);
@@ -92,6 +98,7 @@ struct DeviceUnit : public PickableDevice {
 	PROPERTY(mount_type, int64_t);
 	PROPERTY(bw_per_second, double);
 	PROPERTY(reliability_flt, double);
+	PROPERTY(rng_fail_chance, double);
 	PROPERTY(device_rendered_description, String);
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(power_controller, PowerController);
@@ -110,6 +117,7 @@ struct DeviceUnit : public PickableDevice {
 	PROPERTY(is_picked_by_attaching, bool);
 	PROPERTY(picker_type, int64_t);
 
+	inline int64_t get_daily_cost_multiplier(int64_t extra_devices);
 	inline void apply_autoconfig();
 	inline void reposition(Variant new_pos);
 	inline void elevator_move(Variant new_pos);
@@ -123,6 +131,7 @@ struct DeviceUnit : public PickableDevice {
 	inline bool drop(Variant impulse);
 	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
+	inline void set_data_migration(bool new_state);
 	inline void update_user_note(String new_value);
 	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
@@ -134,6 +143,7 @@ struct DeviceUnit : public PickableDevice {
 #include "LogicController.hpp"
 #include "PowerController.hpp"
 
+inline int64_t DeviceUnit::get_daily_cost_multiplier(int64_t extra_devices) { return this->operator()("get_daily_cost_multiplier", extra_devices); }
 inline void DeviceUnit::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
 inline void DeviceUnit::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
 inline void DeviceUnit::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
@@ -147,6 +157,7 @@ inline bool DeviceUnit::pickup(Variant new_picker) { return this->operator()("pi
 inline bool DeviceUnit::drop(Variant impulse) { return this->operator()("drop", impulse); }
 inline void DeviceUnit::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void DeviceUnit::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void DeviceUnit::set_data_migration(bool new_state) { this->voidcall("set_data_migration", new_state); }
 inline void DeviceUnit::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
 inline void DeviceUnit::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void DeviceUnit::remove_and_free_object() { this->voidcall("remove_and_free_object"); }

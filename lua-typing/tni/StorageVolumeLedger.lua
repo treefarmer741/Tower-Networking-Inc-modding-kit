@@ -1,13 +1,18 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class StorageVolumeLedger : RefCounted
 ---@field ctl LogicController
 ---@field claims table<any,any>
 ---@field capacity integer
+---@field claims_hash integer
 ---@field used_capacity integer
 ---@field free_capacity integer
 local StorageVolumeLedger = {}
+
+---@param s string
+---@return integer
+function StorageVolumeLedger.hash_configstr(s) end
 
 ---@param ctl_ Object
 ---@param claims_ table<any,any>

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLER
 #define TNI_API_HEADER_LOGICCONTROLLER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -46,6 +46,7 @@ struct LogicController : public GraphController {
 	PROPERTY(skip_autoconfig_cpu, bool);
 	PROPERTY(allow_storage_mods, bool);
 	PROPERTY(allow_process_mods, bool);
+	PROPERTY(keep_autoconfig_programs, bool);
 	PROPERTY(auto_config_additional_cpu, int64_t);
 	PROPERTY(auto_config_additional_sto, int64_t);
 	PROPERTY(auto_config_additional_mem, int64_t);
@@ -100,6 +101,11 @@ struct LogicController : public GraphController {
 	PROPERTY(extended_storage, int64_t);
 	PROPERTY(total_gpu_capacity, int64_t);
 	PROPERTY(extended_gpu, int64_t);
+	PROPERTY(total_cpu_capacity, int64_t);
+	PROPERTY(extended_cpu, int64_t);
+	PROPERTY(total_mem_capacity, int64_t);
+	PROPERTY(extended_mem, int64_t);
+	PROPERTY(extended_power_draw, int64_t);
 	PROPERTY(used_storage, int64_t);
 	PROPERTY(free_memory, int64_t);
 	PROPERTY(used_memory, int64_t);
@@ -126,6 +132,7 @@ struct LogicController : public GraphController {
 
 	inline void time_mult_updated(double _time_mult_delta);
 	inline void wipe_all_data();
+	inline void wipe_replaceable_data();
 	inline void reboot_os();
 	inline void autoconfigure_specs_based_on_installs();
 	inline Variant install_program(String prg_path, bool bypass_restrictions, int64_t modify_cpu_abs, int64_t modify_mem_abs, int64_t modify_sto_abs, int64_t modify_gpu_abs, String modify_rel_nm, Variant extra_install_opts);
@@ -140,6 +147,8 @@ struct LogicController : public GraphController {
 	inline void remove_peripheral(Variant per);
 	inline void remove_peripheral_at(NodePath per_np);
 	inline void enforce_storage_limit();
+	inline void enforce_memory_limit();
+	inline void enforce_cpu_limit();
 	inline void reset();
 	inline void client_update_last_tick_usage(int64_t new_nbw_used, int64_t new_nbw_wasted);
 	inline void refresh_all(bool reset_schidx);
@@ -191,6 +200,7 @@ struct LogicController : public GraphController {
 
 inline void LogicController::time_mult_updated(double _time_mult_delta) { this->voidcall("time_mult_updated", _time_mult_delta); }
 inline void LogicController::wipe_all_data() { this->voidcall("wipe_all_data"); }
+inline void LogicController::wipe_replaceable_data() { this->voidcall("wipe_replaceable_data"); }
 inline void LogicController::reboot_os() { this->voidcall("reboot_os"); }
 inline void LogicController::autoconfigure_specs_based_on_installs() { this->voidcall("autoconfigure_specs_based_on_installs"); }
 inline Variant LogicController::install_program(String prg_path, bool bypass_restrictions, int64_t modify_cpu_abs, int64_t modify_mem_abs, int64_t modify_sto_abs, int64_t modify_gpu_abs, String modify_rel_nm, Variant extra_install_opts) { return this->operator()("install_program", prg_path, bypass_restrictions, modify_cpu_abs, modify_mem_abs, modify_sto_abs, modify_gpu_abs, modify_rel_nm, extra_install_opts); }
@@ -205,6 +215,8 @@ inline void LogicController::add_peripheral_at(NodePath per_np, bool install_cal
 inline void LogicController::remove_peripheral(Variant per) { this->voidcall("remove_peripheral", per); }
 inline void LogicController::remove_peripheral_at(NodePath per_np) { this->voidcall("remove_peripheral_at", per_np); }
 inline void LogicController::enforce_storage_limit() { this->voidcall("enforce_storage_limit"); }
+inline void LogicController::enforce_memory_limit() { this->voidcall("enforce_memory_limit"); }
+inline void LogicController::enforce_cpu_limit() { this->voidcall("enforce_cpu_limit"); }
 inline void LogicController::reset() { this->voidcall("reset"); }
 inline void LogicController::client_update_last_tick_usage(int64_t new_nbw_used, int64_t new_nbw_wasted) { this->voidcall("client_update_last_tick_usage", new_nbw_used, new_nbw_wasted); }
 inline void LogicController::refresh_all(bool reset_schidx) { this->voidcall("refresh_all", reset_schidx); }

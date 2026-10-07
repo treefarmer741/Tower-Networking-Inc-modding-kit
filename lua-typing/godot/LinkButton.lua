@@ -1,12 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class LinkButton : BaseButton
 ---@field text string
 ---@field underline integer
 ---@field uri string
----@field text_overrun_behavior integer
----@field ellipsis_char string
 ---@field text_direction integer
 ---@field language string
 ---@field structured_text_bidi_override integer
@@ -18,18 +16,6 @@ function LinkButton.set_text(text) end
 
 ---@return string
 function LinkButton.get_text() end
-
----@param overrun_behavior TextServer.OverrunBehavior
-function LinkButton.set_text_overrun_behavior(overrun_behavior) end
-
----@return TextServer.OverrunBehavior
-function LinkButton.get_text_overrun_behavior() end
-
----@param char string
-function LinkButton.set_ellipsis_char(char) end
-
----@return string
-function LinkButton.get_ellipsis_char() end
 
 ---@param direction Control.TextDirection
 function LinkButton.set_text_direction(direction) end

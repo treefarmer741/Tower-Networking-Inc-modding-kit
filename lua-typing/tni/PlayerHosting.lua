@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PlayerHosting : Node
 ---@field fqdn string
@@ -10,6 +10,8 @@
 ---@field historical_visit_count integer
 ---@field thm_spec_csv string
 ---@field today_payment number
+---@field ppu_boost number
+---@field ppu_boost_expires_on_day integer
 ---@field registered_on_day integer
 ---@field payment_today integer
 local PlayerHosting = {}

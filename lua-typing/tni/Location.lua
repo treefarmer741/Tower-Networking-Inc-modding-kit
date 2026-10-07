@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Location : Node2D
 ---@field max_height integer # Constant value: 5000
@@ -19,8 +19,7 @@
 ---@field will_not_spawn_before_day integer
 ---@field location_prerequisite_scn PackedScene
 ---@field description string
----@field surge_immunity boolean
----@field outage_immunity boolean
+---@field power_immunity boolean
 ---@field network_outage_flag boolean
 ---@field network_outage_scheduled boolean
 ---@field is_datacenter boolean

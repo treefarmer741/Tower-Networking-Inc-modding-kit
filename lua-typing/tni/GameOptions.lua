@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class GameOptions : VBoxContainer
 ---@field startcash_in Slider
@@ -33,11 +33,13 @@
 ---@field maxnwl_in Slider
 ---@field userhwr_in Slider
 ---@field drdfee_in Slider
+---@field dmsf_in Slider
 ---@field sttech_in OptionButton
 ---@field limitless_in OptionButton
 ---@field default_user_dhcp OptionButton
 ---@field default_device_dhcp OptionButton
 ---@field dhcp_origin_ignores_routing OptionButton
+---@field reliability_mode_in OptionButton
 local GameOptions = {}
 
 function GameOptions.do_localize() end

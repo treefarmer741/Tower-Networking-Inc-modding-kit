@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_REMOVABLEGPUCARD
 #define TNI_API_HEADER_REMOVABLEGPUCARD
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -26,6 +26,7 @@ struct RemovableGPUCard : public PeripheralPlug {
 	PROPERTY(compatibles, Variant);
 	PROPERTY(ripped_cable_ps, PackedScene);
 	PROPERTY(cable_make_type, int64_t);
+	PROPERTY(color_plug_end, bool);
 	PROPERTY(connection, Variant);
 	PROPERTY(cable_joint, PinJoint2D);
 	PROPERTY(attached_device_unit, DeviceUnit);

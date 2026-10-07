@@ -1,11 +1,12 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Plug : PickableDevice
 ---@field ZINDEX integer # Constant value: 500
 ---@field compatibles Array<any>
 ---@field ripped_cable_ps PackedScene
 ---@field cable_make_type Plug.CableMakeType
+---@field color_plug_end boolean
 ---@field connection Object
 ---@field cable_joint PinJoint2D
 ---@field attached_device_unit DeviceUnit
@@ -33,6 +34,7 @@ Plug.CableMakeType = {
 	["RJ45"] = 0,
 	["FIBEROPTIC"] = 1,
 	["POWERMA"] = 2,
+	["PDC"] = 3,
 }
 
 ---@return PackedScene

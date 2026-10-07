@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PROGRAM
 #define TNI_API_HEADER_PROGRAM
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -31,6 +31,9 @@ struct Program : public Node {
 		ALLOW_TRAFFIC_SPLITTING = 11,
 		ALLOW_STP_PORT_CONTROL = 12,
 		ALLOW_PACKET_TRANSLATION = 13,
+		ALLOW_CENSORSHIP_ACCOUNTING = 14,
+		ALLOW_SANDWORM_TARGETING = 15,
+		ALLOW_DECENTROWORM_TARGETING = 16,
 	};
 	enum struct PacketHandling : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		DROP = 0,

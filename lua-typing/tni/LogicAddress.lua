@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class LogicAddress : Object
 ---@field MAX_NADDR_CHARS integer # Constant value: 15

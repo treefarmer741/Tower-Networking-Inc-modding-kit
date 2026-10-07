@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TUTORIALSCENARIO
 #define TNI_API_HEADER_TUTORIALSCENARIO
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -58,8 +58,11 @@ struct TutorialScenario : public GameWorld {
 	PROPERTY(power_outage_controller, RandomEvent);
 	PROPERTY(power_surge_controller, RandomEvent);
 	PROPERTY(worm_spawn_controller, RandomEvent);
+	PROPERTY(t1_spam_attack_controller, RandomEvent);
+	PROPERTY(t2_spam_attack_controller, RandomEvent);
 	PROPERTY(loan_controller, LoanController);
 	PROPERTY(decentromarket_controller, DecentroMarketController);
+	PROPERTY(secretariat_credit_controller, SecretariatCreditController);
 	PROPERTY(playerhosting_controller, PlayerHostingController);
 	PROPERTY(ppksb_controller, KeystoneBridgeManager);
 	PROPERTY(player_hostings, Variant);
@@ -131,13 +134,13 @@ struct TutorialScenario : public GameWorld {
 	inline void trigger_day_elapse(Variant curr_day);
 	inline void acquire_app_license(String title, int64_t license_cost);
 	inline void modify_player_cash(Variant amount, Variant details, int64_t category);
-	inline void send_player_message(Variant title, Variant msg, int64_t tone_enum);
+	inline void send_player_message(Variant title, Variant msg, int64_t tone_enum, int64_t event_kind, int64_t event_ts);
 	inline void add_player_hosting(String fqdn, String use_spec_csv, double ppu);
 	inline void remove_player_hosting(String fqdn);
 	inline void set_tap_traffic_color(String traffic_class, String hex_rgb);
 	inline void put_dns_entry(Variant fqdn, Variant netaddr);
 	inline void update_server_timescale(double timescale_arg);
-	inline void submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg);
+	inline void submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg, int64_t event_kind);
 	inline void acquire_all_tech();
 	inline void enable_all_listings();
 	inline void enable_all_tech_and_listings();
@@ -152,6 +155,7 @@ struct TutorialScenario : public GameWorld {
 #include "RandomEvent.hpp"
 #include "LoanController.hpp"
 #include "DecentroMarketController.hpp"
+#include "SecretariatCreditController.hpp"
 #include "PlayerHostingController.hpp"
 #include "KeystoneBridgeManager.hpp"
 #include "PropModController.hpp"
@@ -193,13 +197,13 @@ inline void TutorialScenario::update_last_node_spawn_ts_now() { this->voidcall("
 inline void TutorialScenario::trigger_day_elapse(Variant curr_day) { this->voidcall("trigger_day_elapse", curr_day); }
 inline void TutorialScenario::acquire_app_license(String title, int64_t license_cost) { this->voidcall("acquire_app_license", title, license_cost); }
 inline void TutorialScenario::modify_player_cash(Variant amount, Variant details, int64_t category) { this->voidcall("modify_player_cash", amount, details, category); }
-inline void TutorialScenario::send_player_message(Variant title, Variant msg, int64_t tone_enum) { this->voidcall("send_player_message", title, msg, tone_enum); }
+inline void TutorialScenario::send_player_message(Variant title, Variant msg, int64_t tone_enum, int64_t event_kind, int64_t event_ts) { this->voidcall("send_player_message", title, msg, tone_enum, event_kind, event_ts); }
 inline void TutorialScenario::add_player_hosting(String fqdn, String use_spec_csv, double ppu) { this->voidcall("add_player_hosting", fqdn, use_spec_csv, ppu); }
 inline void TutorialScenario::remove_player_hosting(String fqdn) { this->voidcall("remove_player_hosting", fqdn); }
 inline void TutorialScenario::set_tap_traffic_color(String traffic_class, String hex_rgb) { this->voidcall("set_tap_traffic_color", traffic_class, hex_rgb); }
 inline void TutorialScenario::put_dns_entry(Variant fqdn, Variant netaddr) { this->voidcall("put_dns_entry", fqdn, netaddr); }
 inline void TutorialScenario::update_server_timescale(double timescale_arg) { this->voidcall("update_server_timescale", timescale_arg); }
-inline void TutorialScenario::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg); }
+inline void TutorialScenario::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg, int64_t event_kind) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg, event_kind); }
 inline void TutorialScenario::acquire_all_tech() { this->voidcall("acquire_all_tech"); }
 inline void TutorialScenario::enable_all_listings() { this->voidcall("enable_all_listings"); }
 inline void TutorialScenario::enable_all_tech_and_listings() { this->voidcall("enable_all_tech_and_listings"); }

@@ -1,10 +1,9 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class Translation : Resource
 ---@field messages table<any,any>
 ---@field locale string
----@field plural_rules_override string
 local Translation = {}
 
 ---@param locale string
@@ -47,9 +46,3 @@ function Translation.get_translated_message_list() end
 
 ---@return integer
 function Translation.get_message_count() end
-
----@param rules string
-function Translation.set_plural_rules_override(rules) end
-
----@return string
-function Translation.get_plural_rules_override() end

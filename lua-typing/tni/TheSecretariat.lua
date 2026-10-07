@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class TheSecretariat : ScreenApp
 ---@field proposal_item_scene PackedScene
@@ -13,6 +13,8 @@
 ---@field directory_container Container
 ---@field fbind_tr TextureRect
 ---@field prind_tr TextureRect
+---@field credit_toggle HBoxContainer
+---@field credit_freeze_pane VBoxContainer
 ---@field main_pane MainPane
 ---@field dynamic_container_path string
 ---@field dynamic_container Container

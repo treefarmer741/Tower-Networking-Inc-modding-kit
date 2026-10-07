@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class BladeFifteenFifteen : DeviceUnit
 ---@field bs string
@@ -12,6 +12,7 @@
 ---@field base_warranty_days integer
 ---@field base_warranty_cycles integer
 ---@field sale_warranty integer
+---@field terminal_failure_prob number
 ---@field recycle_price_factor number
 ---@field recycle_price integer
 ---@field force_auto_config_powctl_based_on_logctl boolean
@@ -25,9 +26,12 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field data_migration_enabled boolean
 ---@field is_mount_locked boolean
 ---@field screw_sprite Object
+---@field auto_replacement_multiplier integer
 ---@field auto_replacement_cost integer
+---@field memento_daily_fee integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
 ---@field device_hardware_class DeviceUnit.DeviceHardwareClass
@@ -35,6 +39,7 @@
 ---@field mount_type DeviceUnit.MountType
 ---@field bw_per_second number
 ---@field reliability_flt number
+---@field rng_fail_chance number
 ---@field device_rendered_description string
 ---@field logic_controller LogicController
 ---@field power_controller PowerController
@@ -53,6 +58,10 @@
 ---@field is_picked_by_attaching boolean
 ---@field picker_type PickableRigidBody2D.PICKER_TYPE
 local BladeFifteenFifteen = {}
+
+---@param extra_devices integer?  # Default = 0
+---@return integer
+function BladeFifteenFifteen.get_daily_cost_multiplier(extra_devices) end
 
 function BladeFifteenFifteen.apply_autoconfig() end
 
@@ -92,6 +101,9 @@ function BladeFifteenFifteen.reset_child_z_index() end
 
 ---@param new_state boolean
 function BladeFifteenFifteen.set_autosvc(new_state) end
+
+---@param new_state boolean
+function BladeFifteenFifteen.set_data_migration(new_state) end
 
 ---@param new_value string
 function BladeFifteenFifteen.update_user_note(new_value) end

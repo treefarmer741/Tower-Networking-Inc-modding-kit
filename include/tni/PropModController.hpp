@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PROPMODCONTROLLER
 #define TNI_API_HEADER_PROPMODCONTROLLER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -29,6 +29,8 @@ struct PropModController : public Node {
 	inline void reroll_proposals();
 	inline void submit(Variant mod_path);
 	inline void lock(Variant mod_path);
+	inline void submit_secretariat_credit(Variant mod_path, String extra_fqdn, Variant submit_options);
+	inline void submit_secretariat_credit_with_behavior(Variant mod_path, Variant drain_devpaths, String extra_fqdn, Variant submit_options);
 };
 
 #include "PropMod.hpp"
@@ -38,5 +40,7 @@ inline void PropModController::ex_proposals_updated() { this->voidcall("ex_propo
 inline void PropModController::reroll_proposals() { this->voidcall("reroll_proposals"); }
 inline void PropModController::submit(Variant mod_path) { this->voidcall("submit", mod_path); }
 inline void PropModController::lock(Variant mod_path) { this->voidcall("lock", mod_path); }
+inline void PropModController::submit_secretariat_credit(Variant mod_path, String extra_fqdn, Variant submit_options) { this->voidcall("submit_secretariat_credit", mod_path, extra_fqdn, submit_options); }
+inline void PropModController::submit_secretariat_credit_with_behavior(Variant mod_path, Variant drain_devpaths, String extra_fqdn, Variant submit_options) { this->voidcall("submit_secretariat_credit_with_behavior", mod_path, drain_devpaths, extra_fqdn, submit_options); }
 
 #endif

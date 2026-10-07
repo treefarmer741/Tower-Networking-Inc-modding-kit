@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POWEROUTAGECONTROLLER
 #define TNI_API_HEADER_POWEROUTAGECONTROLLER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -29,6 +29,7 @@ struct PowerOutageController : public RandomEvent {
 	PROPERTY(trial_timer, Timer);
 
 	inline void setup_outage_mod(Variant start_ts, Variant end_ts, Variant loc, bool scheduled);
+	inline void notify_outage_rerouted();
 	inline void notify_unscheduled_outage(const Location& loc, int64_t end_ts);
 	inline void notify_scheduled_outage(const Location& loc, int64_t start_ts, int64_t end_ts);
 	inline void start();
@@ -38,6 +39,7 @@ struct PowerOutageController : public RandomEvent {
 #include "Location.hpp"
 
 inline void PowerOutageController::setup_outage_mod(Variant start_ts, Variant end_ts, Variant loc, bool scheduled) { this->voidcall("setup_outage_mod", start_ts, end_ts, loc, scheduled); }
+inline void PowerOutageController::notify_outage_rerouted() { this->voidcall("notify_outage_rerouted"); }
 inline void PowerOutageController::notify_unscheduled_outage(const Location& loc, int64_t end_ts) { this->voidcall("notify_unscheduled_outage", Object(reinterpret_cast<const Object*>(&loc)->address()), end_ts); }
 inline void PowerOutageController::notify_scheduled_outage(const Location& loc, int64_t start_ts, int64_t end_ts) { this->voidcall("notify_scheduled_outage", Object(reinterpret_cast<const Object*>(&loc)->address()), start_ts, end_ts); }
 inline void PowerOutageController::start() { this->voidcall("start"); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PlayOptions : Resource
 ---@field EASIER_EPSILON number # Constant value: 0.0001
@@ -38,6 +38,7 @@
 ---@field user_hwreset_probability number
 ---@field memento_daily_rate_per_device integer
 ---@field memento_replacement_rate number
+---@field data_migration_scaling_factor integer
 ---@field early_floorbuild_bonus_factor integer
 ---@field max_nwaddr_len integer
 ---@field ppu_change_fee integer
@@ -49,6 +50,7 @@
 ---@field tower_wide_user_dhcp_default string
 ---@field tower_wide_device_dhcp_default string
 ---@field dhcp_origin_ignores_routing boolean
+---@field reliability_failure_mode string
 ---@field starting_datacenter_path string
 local PlayOptions = {}
 ---@enum PlayOptions.DiffDir
@@ -72,12 +74,12 @@ PlayOptions.DIFFICULTY_DIRECTIONS = {
 	["tower_wide_user_dhcp_default"] = 0,
 	["tower_wide_device_dhcp_default"] = 0,
 	["dhcp_origin_ignores_routing"] = 0,
+	["reliability_failure_mode"] = 0,
 	["starting_datacenter_path"] = 0,
 	["early_floorbuild_bonus_factor"] = 0,
 	["ppu_change_fee"] = 0,
 	["ph_domain_scaling_factor_1"] = 0,
 	["tenabolt_penalty"] = 0,
-	["lab_mode"] = 0,
 	["start_amount_override"] = 0,
 	["resource_local_to_scene"] = 0,
 	["locked_game_options"] = 0,
@@ -90,6 +92,7 @@ PlayOptions.DIFFICULTY_DIRECTIONS = {
 	["onboarding_max_days_in_q"] = 1,
 	["floor_build_period_multiplier"] = 1,
 	["freeplay"] = 1,
+	["lab_mode"] = 1,
 	["limitless_money"] = 1,
 	["waive_power_fee"] = 1,
 	["auto_create_dns_mappings"] = 1,
@@ -106,7 +109,8 @@ PlayOptions.DIFFICULTY_DIRECTIONS = {
 	["device_warranty_period_multiplier"] = 1,
 	["network_outage_notice_factor"] = 1,
 	["memento_daily_rate_per_device"] = 2,
-	["user_fee_payment_multiplier"] = 2,
+	["data_migration_scaling_factor"] = 2,
+	["user_fee_payment_multiplier"] = 1,
 	["daily_admin_expenses"] = 2,
 	["admin_fee_scaling_multiplier"] = 2,
 	["device_malfunction_occurrence_rate"] = 2,

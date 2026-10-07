@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMEOPTIONS
 #define TNI_API_HEADER_GAMEOPTIONS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -46,11 +46,13 @@ struct GameOptions : public VBoxContainer {
 	PROPERTY(maxnwl_in, Slider);
 	PROPERTY(userhwr_in, Slider);
 	PROPERTY(drdfee_in, Slider);
+	PROPERTY(dmsf_in, Slider);
 	PROPERTY(sttech_in, OptionButton);
 	PROPERTY(limitless_in, OptionButton);
 	PROPERTY(default_user_dhcp, OptionButton);
 	PROPERTY(default_device_dhcp, OptionButton);
 	PROPERTY(dhcp_origin_ignores_routing, OptionButton);
+	PROPERTY(reliability_mode_in, OptionButton);
 
 	inline void do_localize();
 	inline void update_playoptions(const PlayOptions& playopts);

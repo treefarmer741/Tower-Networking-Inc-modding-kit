@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_THESECRETARIAT
 #define TNI_API_HEADER_THESECRETARIAT
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -27,6 +27,8 @@ struct TheSecretariat : public ScreenApp {
 	PROPERTY(directory_container, Container);
 	PROPERTY(fbind_tr, TextureRect);
 	PROPERTY(prind_tr, TextureRect);
+	PROPERTY(credit_toggle, HBoxContainer);
+	PROPERTY(credit_freeze_pane, VBoxContainer);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);
 	PROPERTY(dynamic_container, Container);

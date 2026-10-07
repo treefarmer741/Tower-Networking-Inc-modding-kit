@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SETTINGSPAGESGAMESETTINGS
 #define TNI_API_HEADER_SETTINGSPAGESGAMESETTINGS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -32,6 +32,8 @@ struct SettingsPagesGameSettings : public VBoxContainer {
 	PROPERTY(autosavertnsel, Variant);
 	PROPERTY(rccpymode, Variant);
 	PROPERTY(pktviz, Variant);
+	PROPERTY(default_user_dhcp, Variant);
+	PROPERTY(default_device_dhcp, Variant);
 
 };
 

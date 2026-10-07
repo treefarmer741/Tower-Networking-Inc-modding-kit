@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PowerSurgeController : RandomEvent
 ---@field min_warn_seconds integer
@@ -13,6 +13,8 @@
 ---@field enabled boolean
 ---@field trial_timer Timer
 local PowerSurgeController = {}
+
+function PowerSurgeController.notify_surge_rerouted() end
 
 ---@param loc Location
 ---@param start_ts integer

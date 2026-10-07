@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class UserBuildQueueItem : VBoxContainer
 ---@field user_row_item_scene string # Constant value: <PackedScene>

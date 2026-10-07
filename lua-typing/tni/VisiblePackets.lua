@@ -1,8 +1,7 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class VisiblePackets : Node2D
----@field tween Tween
 local VisiblePackets = {}
 
 ---@param points PackedVector2Array

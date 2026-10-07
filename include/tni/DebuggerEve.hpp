@@ -1,0 +1,126 @@
+#ifndef TNI_API_HEADER_DEBUGGEREVE
+#define TNI_API_HEADER_DEBUGGEREVE
+// Generated API for game version 0.13.1
+// If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
+
+#include <generated_api.hpp>
+#include "structs.hpp"
+#include "DeviceUnit.hpp"
+
+struct DebuggerEve : public DeviceUnit {
+	using DeviceUnit::DeviceUnit;
+
+	constexpr DebuggerEve(DeviceUnit base) : DeviceUnit{base} {}
+	constexpr DebuggerEve(uint64_t addr) : DeviceUnit{addr} {}
+	constexpr DebuggerEve(Object obj) : DebuggerEve{obj.address()} {}
+	DebuggerEve(Variant variant) : DebuggerEve{variant.as_object().address()} {}
+
+
+	PROPERTY(display, RichTextLabel);
+	PROPERTY(label_update_timer, Timer);
+	PROPERTY(product_name, String);
+	PROPERTY(description, String);
+	PROPERTY(text, String);
+	PROPERTY(extra_descriptions, int64_t);
+	PROPERTY(price, int64_t);
+	PROPERTY(alternate_listing_image, Texture2D);
+	PROPERTY(base_warranty_days, int64_t);
+	PROPERTY(base_warranty_cycles, int64_t);
+	PROPERTY(sale_warranty, int64_t);
+	PROPERTY(terminal_failure_prob, double);
+	PROPERTY(recycle_price_factor, double);
+	PROPERTY(recycle_price, int64_t);
+	PROPERTY(force_auto_config_powctl_based_on_logctl, bool);
+	PROPERTY(force_auto_config_nbw_based_on_ports, bool);
+	PROPERTY(force_auto_config_logctl_powerload, bool);
+	PROPERTY(warranty_period_remaining, int64_t);
+	PROPERTY(defect_possibility, bool);
+	PROPERTY(auto_config_bw_multiplier, double);
+	PROPERTY(auto_config_pload_multiplier, double);
+	PROPERTY(obtained_from, String);
+	PROPERTY(custom_user_note, String);
+	PROPERTY(asset_registration_day, int64_t);
+	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(data_migration_enabled, bool);
+	PROPERTY(is_mount_locked, bool);
+	PROPERTY(screw_sprite, Variant);
+	PROPERTY(auto_replacement_multiplier, int64_t);
+	PROPERTY(auto_replacement_cost, int64_t);
+	PROPERTY(memento_daily_fee, int64_t);
+	PROPERTY(current_floor_num, int64_t);
+	PROPERTY(device_application_unlocks, Variant);
+	PROPERTY(device_hardware_class, int64_t);
+	PROPERTY(condition, int64_t);
+	PROPERTY(mount_type, int64_t);
+	PROPERTY(bw_per_second, double);
+	PROPERTY(reliability_flt, double);
+	PROPERTY(rng_fail_chance, double);
+	PROPERTY(device_rendered_description, String);
+	PROPERTY(logic_controller, LogicController);
+	PROPERTY(power_controller, PowerController);
+	PROPERTY(mp_spawn, MultiplayerSpawner);
+	PROPERTY(mwtwn, Tween);
+	PROPERTY(base_mounted_area, Variant);
+	PROPERTY(hard_contact_tolerance, double);
+	PROPERTY(hard_contact_audio, AudioStreamPlayer2D);
+	PROPERTY(base_size, Variant);
+	PROPERTY(scaling_twn, Tween);
+	PROPERTY(picker, Variant);
+	PROPERTY(pick_offset, Variant);
+	PROPERTY(fixed, bool);
+	PROPERTY(is_picked_by_mouse, bool);
+	PROPERTY(is_picked, bool);
+	PROPERTY(is_picked_by_attaching, bool);
+	PROPERTY(picker_type, int64_t);
+
+	inline void set_disp(String disptext);
+	inline int64_t get_daily_cost_multiplier(int64_t extra_devices);
+	inline void apply_autoconfig();
+	inline void reposition(Variant new_pos);
+	inline void elevator_move(Variant new_pos);
+	inline double get_device_bounding_height();
+	inline Variant get_global_y_range();
+	inline Variant get_local_y_range();
+	inline Variant debug_monitor_callback();
+	inline Variant debug_mux_setup();
+	inline Variant update_in_trolley_state();
+	inline bool pickup(Variant new_picker);
+	inline bool drop(Variant impulse);
+	inline void reset_child_z_index();
+	inline void set_autosvc(bool new_state);
+	inline void set_data_migration(bool new_state);
+	inline void update_user_note(String new_value);
+	inline void toggle_mount_lock();
+	inline void remove_and_free_object();
+	inline void lift_child_z_index(int64_t base_val);
+	inline Variant get_picker_type(Variant test_picker);
+	inline void setup_teleport(Variant gpos);
+};
+
+#include "LogicController.hpp"
+#include "PowerController.hpp"
+
+inline void DebuggerEve::set_disp(String disptext) { this->voidcall("set_disp", disptext); }
+inline int64_t DebuggerEve::get_daily_cost_multiplier(int64_t extra_devices) { return this->operator()("get_daily_cost_multiplier", extra_devices); }
+inline void DebuggerEve::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
+inline void DebuggerEve::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
+inline void DebuggerEve::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
+inline double DebuggerEve::get_device_bounding_height() { return this->operator()("get_device_bounding_height"); }
+inline Variant DebuggerEve::get_global_y_range() { return this->operator()("get_global_y_range"); }
+inline Variant DebuggerEve::get_local_y_range() { return this->operator()("get_local_y_range"); }
+inline Variant DebuggerEve::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline Variant DebuggerEve::debug_mux_setup() { return this->operator()("debug_mux_setup"); }
+inline Variant DebuggerEve::update_in_trolley_state() { return this->operator()("update_in_trolley_state"); }
+inline bool DebuggerEve::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
+inline bool DebuggerEve::drop(Variant impulse) { return this->operator()("drop", impulse); }
+inline void DebuggerEve::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void DebuggerEve::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void DebuggerEve::set_data_migration(bool new_state) { this->voidcall("set_data_migration", new_state); }
+inline void DebuggerEve::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void DebuggerEve::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
+inline void DebuggerEve::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
+inline void DebuggerEve::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline Variant DebuggerEve::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
+inline void DebuggerEve::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
+
+#endif

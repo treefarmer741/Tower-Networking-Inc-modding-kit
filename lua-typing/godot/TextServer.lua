@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class TextServer : RefCounted
 local TextServer = {}
@@ -30,10 +30,6 @@ function TextServer.save_support_data(filename) end
 
 ---@return PackedByteArray
 function TextServer.get_support_data() end
-
----@param locale string
----@return boolean
-function TextServer.is_locale_using_support_data(locale) end
 
 ---@param locale string
 ---@return boolean
@@ -650,10 +646,6 @@ function TextServer.create_shaped_text(direction, orientation) end
 ---@param rid RID
 function TextServer.shaped_text_clear(rid) end
 
----@param rid RID
----@return RID
-function TextServer.shaped_text_duplicate(rid) end
-
 ---@param shaped RID
 ---@param direction TextServer.Direction?  # Default = 0
 function TextServer.shaped_text_set_direction(shaped, direction) end
@@ -748,11 +740,6 @@ function TextServer.shaped_text_add_object(shaped, key, size, inline_align, leng
 function TextServer.shaped_text_resize_object(shaped, key, size, inline_align, baseline) end
 
 ---@param shaped RID
----@param key Object
----@return boolean
-function TextServer.shaped_text_has_object(shaped, key) end
-
----@param shaped RID
 ---@return string
 function TextServer.shaped_get_text(shaped) end
 
@@ -800,11 +787,6 @@ function TextServer.shaped_get_run_text(shaped, index) end
 ---@param index integer
 ---@return Vector2i
 function TextServer.shaped_get_run_range(shaped, index) end
-
----@param shaped RID
----@param index integer
----@return Vector2i
-function TextServer.shaped_get_run_glyph_range(shaped, index) end
 
 ---@param shaped RID
 ---@param index integer

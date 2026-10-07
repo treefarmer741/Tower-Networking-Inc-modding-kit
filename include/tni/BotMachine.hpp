@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BOTMACHINE
 #define TNI_API_HEADER_BOTMACHINE
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -47,7 +47,8 @@ struct BotMachine : public Program {
 	inline void uninstall();
 	inline void install(Variant install_opts);
 	inline Variant serialize_as_str();
-	inline Variant deserialize_from_str(int64_t _sz, String fdats, const LogicController& target_controller);
+	inline void update_from_str(String fdats, const BotMachine& existing);
+	inline Variant deserialize_from_str(int64_t _sz, String fdats, const LogicController& target_controller, String requested_name);
 	inline String colorize_description(String ds);
 	inline int64_t process_network_packet(const PacketControlModule& pktctl, Variant packet);
 	inline bool is_pkt_for_self(Variant packet);
@@ -56,6 +57,7 @@ struct BotMachine : public Program {
 
 #include "PlayOptions.hpp"
 #include "LogicController.hpp"
+#include "BotMachine.hpp"
 #include "PacketControlModule.hpp"
 
 inline int64_t BotMachine::get_new_botid(const LogicController& controller) { return this->operator()("get_new_botid", Object(reinterpret_cast<const Object*>(&controller)->address())); }
@@ -67,7 +69,8 @@ inline void BotMachine::rotate_output() { this->voidcall("rotate_output"); }
 inline void BotMachine::uninstall() { this->voidcall("uninstall"); }
 inline void BotMachine::install(Variant install_opts) { this->voidcall("install", install_opts); }
 inline Variant BotMachine::serialize_as_str() { return this->operator()("serialize_as_str"); }
-inline Variant BotMachine::deserialize_from_str(int64_t _sz, String fdats, const LogicController& target_controller) { return this->operator()("deserialize_from_str", _sz, fdats, Object(reinterpret_cast<const Object*>(&target_controller)->address())); }
+inline void BotMachine::update_from_str(String fdats, const BotMachine& existing) { this->voidcall("update_from_str", fdats, Object(reinterpret_cast<const Object*>(&existing)->address())); }
+inline Variant BotMachine::deserialize_from_str(int64_t _sz, String fdats, const LogicController& target_controller, String requested_name) { return this->operator()("deserialize_from_str", _sz, fdats, Object(reinterpret_cast<const Object*>(&target_controller)->address()), requested_name); }
 inline String BotMachine::colorize_description(String ds) { return this->operator()("colorize_description", ds); }
 inline int64_t BotMachine::process_network_packet(const PacketControlModule& pktctl, Variant packet) { return this->operator()("process_network_packet", Object(reinterpret_cast<const Object*>(&pktctl)->address()), packet); }
 inline bool BotMachine::is_pkt_for_self(Variant packet) { return this->operator()("is_pkt_for_self", packet); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class CSGPrimitive3D : CSGShape3D
 ---@field flip_faces boolean

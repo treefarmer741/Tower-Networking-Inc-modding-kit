@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLAYOPTIONS
 #define TNI_API_HEADER_PLAYOPTIONS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -34,12 +34,12 @@ struct PlayOptions : public Resource {
 		tower_wide_user_dhcp_default = 0,
 		tower_wide_device_dhcp_default = 0,
 		dhcp_origin_ignores_routing = 0,
+		reliability_failure_mode = 0,
 		starting_datacenter_path = 0,
 		early_floorbuild_bonus_factor = 0,
 		ppu_change_fee = 0,
 		ph_domain_scaling_factor_1 = 0,
 		tenabolt_penalty = 0,
-		lab_mode = 0,
 		start_amount_override = 0,
 		resource_local_to_scene = 0,
 		locked_game_options = 0,
@@ -52,6 +52,7 @@ struct PlayOptions : public Resource {
 		onboarding_max_days_in_q = 1,
 		floor_build_period_multiplier = 1,
 		freeplay = 1,
+		lab_mode = 1,
 		limitless_money = 1,
 		waive_power_fee = 1,
 		auto_create_dns_mappings = 1,
@@ -68,7 +69,8 @@ struct PlayOptions : public Resource {
 		device_warranty_period_multiplier = 1,
 		network_outage_notice_factor = 1,
 		memento_daily_rate_per_device = 2,
-		user_fee_payment_multiplier = 2,
+		data_migration_scaling_factor = 2,
+		user_fee_payment_multiplier = 1,
 		daily_admin_expenses = 2,
 		admin_fee_scaling_multiplier = 2,
 		device_malfunction_occurrence_rate = 2,
@@ -112,6 +114,7 @@ struct PlayOptions : public Resource {
 	PROPERTY(user_hwreset_probability, double);
 	PROPERTY(memento_daily_rate_per_device, int64_t);
 	PROPERTY(memento_replacement_rate, double);
+	PROPERTY(data_migration_scaling_factor, int64_t);
 	PROPERTY(early_floorbuild_bonus_factor, int64_t);
 	PROPERTY(max_nwaddr_len, int64_t);
 	PROPERTY(ppu_change_fee, int64_t);
@@ -123,6 +126,7 @@ struct PlayOptions : public Resource {
 	PROPERTY(tower_wide_user_dhcp_default, String);
 	PROPERTY(tower_wide_device_dhcp_default, String);
 	PROPERTY(dhcp_origin_ignores_routing, bool);
+	PROPERTY(reliability_failure_mode, String);
 	PROPERTY(starting_datacenter_path, String);
 
 	inline void set_vals_from_dict(Variant pod);

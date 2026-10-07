@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_FLOORBUILDER
 #define TNI_API_HEADER_FLOORBUILDER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,6 +19,7 @@ struct FloorBuilder : public Node {
 	PROPERTY(build_options, Variant);
 	PROPERTY(build_events, Variant);
 	PROPERTY(disabled, bool);
+	PROPERTY(activation_tech, String);
 	PROPERTY(skip_interval_builds, bool);
 	PROPERTY(min_date, int64_t);
 	PROPERTY(max_date, int64_t);

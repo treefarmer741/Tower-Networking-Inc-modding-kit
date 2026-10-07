@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class GameStatistics : RefCounted
 ---@field data table<any,any>
@@ -24,6 +24,8 @@ GameStatistics.Stat = {
 	["TOTAL_NETWORK_OUTAGES_SCHEDULED"] = 15,
 	["TOTAL_DEVS_SURGED"] = 16,
 	["TOTAL_CYBERATTACKS_ENCOUNTERED"] = 17,
+	["TOTAL_SLA_BREACHES"] = 18,
+	["FORGIVEN_SLA_BREACHES"] = 19,
 }
 ---@enum GameStatistics.Inte
 GameStatistics.Inte = {

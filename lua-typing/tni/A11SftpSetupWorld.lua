@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class A11SftpSetupWorld : GameWorld
 ---@field last_tutorial_name string
@@ -45,8 +45,11 @@
 ---@field power_outage_controller RandomEvent
 ---@field power_surge_controller RandomEvent
 ---@field worm_spawn_controller RandomEvent
+---@field t1_spam_attack_controller RandomEvent
+---@field t2_spam_attack_controller RandomEvent
 ---@field loan_controller LoanController
 ---@field decentromarket_controller DecentroMarketController
+---@field secretariat_credit_controller SecretariatCreditController
 ---@field playerhosting_controller PlayerHostingController
 ---@field ppksb_controller KeystoneBridgeManager
 ---@field player_hostings Array<PlayerHosting>
@@ -190,7 +193,9 @@ function A11SftpSetupWorld.modify_player_cash(amount, details, category) end
 ---@param title Object
 ---@param msg Object
 ---@param tone_enum integer?  # Default = 0
-function A11SftpSetupWorld.send_player_message(title, msg, tone_enum) end
+---@param event_kind integer?  # Default = 0
+---@param event_ts integer?  # Default = -1
+function A11SftpSetupWorld.send_player_message(title, msg, tone_enum, event_kind, event_ts) end
 
 ---@param fqdn string
 ---@param use_spec_csv string
@@ -215,7 +220,8 @@ function A11SftpSetupWorld.update_server_timescale(timescale_arg) end
 ---@param normal_alert_full_msg string
 ---@param lowpass_alert_title string
 ---@param lowpass_alert_full_msg string
-function A11SftpSetupWorld.submit_alert_with_lowpass(normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg) end
+---@param event_kind integer?  # Default = 0
+function A11SftpSetupWorld.submit_alert_with_lowpass(normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg, event_kind) end
 
 function A11SftpSetupWorld.acquire_all_tech() end
 

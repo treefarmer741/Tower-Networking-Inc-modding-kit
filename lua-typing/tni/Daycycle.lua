@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Daycycle : Node
 ---@field RESERVED_GROUP_NAME string # Constant value: pocosia_day_cyclers

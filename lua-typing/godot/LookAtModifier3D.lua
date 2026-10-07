@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class LookAtModifier3D : SkeletonModifier3D
 ---@field target_node string
@@ -8,7 +8,6 @@
 ---@field forward_axis integer
 ---@field primary_rotation_axis integer
 ---@field use_secondary_rotation boolean
----@field relative boolean
 ---@field origin_from integer
 ---@field origin_bone_name string
 ---@field origin_bone integer
@@ -69,12 +68,6 @@ function LookAtModifier3D.set_use_secondary_rotation(enabled) end
 
 ---@return boolean
 function LookAtModifier3D.is_using_secondary_rotation() end
-
----@param enabled boolean
-function LookAtModifier3D.set_relative(enabled) end
-
----@return boolean
-function LookAtModifier3D.is_relative() end
 
 ---@param margin number
 function LookAtModifier3D.set_origin_safe_margin(margin) end

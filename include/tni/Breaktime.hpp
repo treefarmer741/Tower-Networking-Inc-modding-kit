@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BREAKTIME
 #define TNI_API_HEADER_BREAKTIME
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,9 +17,15 @@ struct Breaktime : public ScreenApp {
 
 	static constexpr double CDFTIME = 3.0;  // NOTE: You should recompile your mod if this value changes!
 
-	PROPERTY(speedup_button, Button);
-	PROPERTY(slowdown_button, Button);
-	PROPERTY(reset_button, Button);
+	PROPERTY(coffee_button_1, TextureButton);
+	PROPERTY(coffee_button_2, TextureButton);
+	PROPERTY(coffee_button_3, TextureButton);
+	PROPERTY(tea_button_1, TextureButton);
+	PROPERTY(tea_button_2, TextureButton);
+	PROPERTY(tea_button_3, TextureButton);
+	PROPERTY(water_button, TextureButton);
+	PROPERTY(highlight_v, double);
+	PROPERTY(dim_v, double);
 	PROPERTY(main_pane, MainPane);
 	PROPERTY(dynamic_container_path, NodePath);
 	PROPERTY(dynamic_container, Container);

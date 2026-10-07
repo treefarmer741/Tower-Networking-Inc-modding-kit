@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class SettingsPagesGameSettings : VBoxContainer
 ---@field mouse_pan_speed Object
@@ -19,4 +19,6 @@
 ---@field autosavertnsel Object
 ---@field rccpymode Object
 ---@field pktviz Object
+---@field default_user_dhcp Object
+---@field default_device_dhcp Object
 local SettingsPagesGameSettings = {}

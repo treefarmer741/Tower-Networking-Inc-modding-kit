@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PACKETCONTROLMODULE
 #define TNI_API_HEADER_PACKETCONTROLMODULE
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -25,8 +25,13 @@ struct PacketControlModule : public LogicControlModule {
 	PROPERTY(nwaddr_required_for_sending, bool);
 	PROPERTY(local_dns_mapping, bool);
 	PROPERTY(parent_controller, LogicController);
+	PROPERTY(vmconnect_portmap, Variant);
 	PROPERTY(host_controller, LogicController);
 
+	inline void add_vmconnect(String physical_port_id, String vm_release_name);
+	inline void remove_vmconnect(String physical_port_id, String vm_release_name);
+	inline void remove_all_vmconnect_for_vm(String vm_release_name);
+	inline Variant get_vmconnect_ports_for_vm(String vm_release_name);
 	inline bool is_bandwidth_exceeded();
 	inline bool receive_packet(Variant new_pkt);
 	inline void copy_packet_to_out_queue(Variant packet, String port_id);
@@ -45,6 +50,10 @@ struct PacketControlModule : public LogicControlModule {
 
 #include "LogicController.hpp"
 
+inline void PacketControlModule::add_vmconnect(String physical_port_id, String vm_release_name) { this->voidcall("add_vmconnect", physical_port_id, vm_release_name); }
+inline void PacketControlModule::remove_vmconnect(String physical_port_id, String vm_release_name) { this->voidcall("remove_vmconnect", physical_port_id, vm_release_name); }
+inline void PacketControlModule::remove_all_vmconnect_for_vm(String vm_release_name) { this->voidcall("remove_all_vmconnect_for_vm", vm_release_name); }
+inline Variant PacketControlModule::get_vmconnect_ports_for_vm(String vm_release_name) { return this->operator()("get_vmconnect_ports_for_vm", vm_release_name); }
 inline bool PacketControlModule::is_bandwidth_exceeded() { return this->operator()("is_bandwidth_exceeded"); }
 inline bool PacketControlModule::receive_packet(Variant new_pkt) { return this->operator()("receive_packet", new_pkt); }
 inline void PacketControlModule::copy_packet_to_out_queue(Variant packet, String port_id) { this->voidcall("copy_packet_to_out_queue", packet, port_id); }

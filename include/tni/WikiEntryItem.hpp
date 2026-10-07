@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_WIKIENTRYITEM
 #define TNI_API_HEADER_WIKIENTRYITEM
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,6 +18,7 @@ struct WikiEntryItem : public PanelContainer {
 	PROPERTY(wiki_entry_packed_scene, PackedScene);
 	PROPERTY(wiki_display, Container);
 	PROPERTY(wiki_entry, WikiEntry);
+	PROPERTY(favoriteable, bool);
 	PROPERTY(main_scroll, ScrollContainer);
 	PROPERTY(keywords, Variant);
 

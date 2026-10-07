@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class CoreGameSettings : BaseSettings
 ---@field mouse_pan_speed number
@@ -25,12 +25,16 @@
 ---@field show_help_guides boolean
 ---@field player_set_name string
 ---@field show_packet_animations boolean
+---@field default_user_dhcp string
+---@field default_device_dhcp string
 ---@field addr_copy_mode integer
 ---@field last_sel_diffindex integer
 ---@field has_shown_difficulty_sel boolean
 ---@field cmd_alias table<any,any>
 ---@field floor_unlocks table<any,any>
 ---@field user_stampbook table<any,any>
+---@field wiki_favorites table<any,any>
+---@field lighting_presets Array<any>
 ---@field keybindings table<any,any>
 ---@field fullscreen_mode boolean
 ---@field vsync integer

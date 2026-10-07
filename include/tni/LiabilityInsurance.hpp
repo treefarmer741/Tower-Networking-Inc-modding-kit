@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LIABILITYINSURANCE
 #define TNI_API_HEADER_LIABILITYINSURANCE
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,6 +19,7 @@ struct LiabilityInsurance : public PropMod {
 	inline static const String litrk = "Liability insurance premium";  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(cost, int64_t);
+	PROPERTY(exp_base, double);
 	PROPERTY(submitted, bool);
 	PROPERTY(locked, bool);
 	PROPERTY(depends_on, PropMod);

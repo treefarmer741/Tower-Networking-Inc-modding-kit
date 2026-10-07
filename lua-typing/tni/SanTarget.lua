@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class SanTarget : Program
 ---@field san_lun_table table<any,any>
@@ -29,6 +29,9 @@ local SanTarget = {}
 ---@param volume_id string
 ---@return string
 function SanTarget.volume_filekey(volume_id) end
+
+---@return Array<any>
+function SanTarget.ordered_volume_ids() end
 
 ---@param volume_id string
 ---@return boolean
@@ -60,20 +63,31 @@ function SanTarget.write_volume(volume_id, row) end
 ---@return integer
 function SanTarget.destroy_volume(volume_id) end
 
+---@param volume_id string
+---@return boolean
+function SanTarget.wipe_volume_contents(volume_id) end
+
 ---@return table<any,any>
 function SanTarget.backed_keys() end
 
 ---@param volume_id string
 ---@param requestor string?  # Default = 
+---@param label string?  # Default = 
 ---@return integer
-function SanTarget.lookup_lun_size(volume_id, requestor) end
+function SanTarget.lookup_lun_size(volume_id, requestor, label) end
+
+---@param volume_id string
+---@param requestor string
+---@return boolean
+function SanTarget.has_other_live_holder(volume_id, requestor) end
 
 ---@param volume_id string
 ---@param size integer
 ---@param requestor string?  # Default = 
 ---@param authoritative boolean?  # Default = false
+---@param label string?  # Default = 
 ---@return integer
-function SanTarget.negotiate_lun(volume_id, size, requestor, authoritative) end
+function SanTarget.negotiate_lun(volume_id, size, requestor, authoritative, label) end
 
 ---@param volume_id string
 function SanTarget.revoke_lun(volume_id) end

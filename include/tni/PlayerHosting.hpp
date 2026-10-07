@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLAYERHOSTING
 #define TNI_API_HEADER_PLAYERHOSTING
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -23,6 +23,8 @@ struct PlayerHosting : public Node {
 	PROPERTY(historical_visit_count, int64_t);
 	PROPERTY(thm_spec_csv, String);
 	PROPERTY(today_payment, double);
+	PROPERTY(ppu_boost, double);
+	PROPERTY(ppu_boost_expires_on_day, int64_t);
 	PROPERTY(registered_on_day, int64_t);
 	PROPERTY(payment_today, int64_t);
 

@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class MultiplayerMouse : Node2D
 ---@field HIGH_BLUE_COLARR Array<any> # Constant value: [(1.0, 0.0, 0.0, 1.0), (1.0, 0.6, 0.0, 1.0), (1.0, 1.0, 0.0, 1.0), (0.8, 1.0, 0.2, 1.0), (0.6, 1.0, 0.2, 1.0), (0.4, 1.0, 0.2, 1.0), (0.2, 0.8, 0.2, 1.0), (0.0, 1.0, 0.0, 1.0), (0.0, 1.0, 0.6, 1.0), (0.0, 1.0, 0.8, 1.0), (0.0, 0.8, 0.9333, 1.0)]
 ---@field PATCH_CABLE_MAX_LENGTH number # Constant value: 1000.0
+---@field CABLE_AFFIX_EXCESS_MIN number # Constant value: 100.0
 ---@field PATCH_CABLE_WARN_LENGTH number # Constant value: 700.0
 ---@field multi_double_pick Array<any>
 ---@field curr_picked_original_pos Vector2

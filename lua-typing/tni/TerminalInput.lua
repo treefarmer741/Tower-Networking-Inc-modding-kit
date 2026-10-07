@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class TerminalInput : CodeEdit
 ---@field MAX_HISTORY integer # Constant value: 10
+---@field NETSH_ACTIONS Array<any> # Constant value: ["netsh_submit", "netsh_history_prev", "netsh_history_next", "netsh_confirm_completion", "netsh_interrupt", "netsh_exit", "netsh_clear_screen", "netsh_paste", "netsh_goto_end", "netsh_goto_start", "netsh_erase_word", "netsh_erase_to_start", "netsh_autocomplete"]
 ---@field auto_input boolean
 ---@field command_history Array<string>
 ---@field mouse_is_inside boolean

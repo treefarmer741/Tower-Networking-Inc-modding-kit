@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_VISIBLEPACKETS
 #define TNI_API_HEADER_VISIBLEPACKETS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,7 +15,6 @@ struct VisiblePackets : public Node2D {
 	VisiblePackets(Variant variant) : VisiblePackets{variant.as_object().address()} {}
 
 
-	PROPERTY(tween, Tween);
 
 	inline void animate_along_path(PackedArray<Vector2> points, double duration);
 };

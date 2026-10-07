@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_STORAGEVOLUMELEDGER
 #define TNI_API_HEADER_STORAGEVOLUMELEDGER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -18,9 +18,11 @@ struct StorageVolumeLedger : public RefCounted {
 	PROPERTY(ctl, LogicController);
 	PROPERTY(claims, Variant);
 	PROPERTY(capacity, int64_t);
+	PROPERTY(claims_hash, int64_t);
 	PROPERTY(used_capacity, int64_t);
 	PROPERTY(free_capacity, int64_t);
 
+	inline int64_t hash_configstr(String s);
 	inline StorageVolumeLedger create(Variant ctl_, Variant claims_, int64_t capacity_);
 	inline bool is_binary_key(String filekey);
 	inline Variant ordered_keys(Variant source, bool binaries_first);
@@ -36,6 +38,7 @@ struct StorageVolumeLedger : public RefCounted {
 #include "LogicController.hpp"
 #include "StorageVolumeLedger.hpp"
 
+inline int64_t StorageVolumeLedger::hash_configstr(String s) { return this->operator()("hash_configstr", s); }
 inline StorageVolumeLedger StorageVolumeLedger::create(Variant ctl_, Variant claims_, int64_t capacity_) { return StorageVolumeLedger(this->operator()("create", ctl_, claims_, capacity_).as_object().address()); }
 inline bool StorageVolumeLedger::is_binary_key(String filekey) { return this->operator()("is_binary_key", filekey); }
 inline Variant StorageVolumeLedger::ordered_keys(Variant source, bool binaries_first) { return this->operator()("ordered_keys", source, binaries_first); }

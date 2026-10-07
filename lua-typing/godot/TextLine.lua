@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class TextLine : RefCounted
 ---@field direction integer
@@ -14,9 +14,6 @@
 local TextLine = {}
 
 function TextLine.clear() end
-
----@return TextLine
-function TextLine.duplicate() end
 
 ---@param direction TextServer.Direction
 function TextLine.set_direction(direction) end
@@ -70,10 +67,6 @@ function TextLine.add_object(key, size, inline_align, length, baseline) end
 ---@param baseline number?  # Default = 0.0
 ---@return boolean
 function TextLine.resize_object(key, size, inline_align, baseline) end
-
----@param key Object
----@return boolean
-function TextLine.has_object(key) end
 
 ---@param width number
 function TextLine.set_width(width) end

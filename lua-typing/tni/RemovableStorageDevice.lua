@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class RemovableStorageDevice : PeripheralPlug
 ---@field available_sto integer
@@ -7,6 +7,7 @@
 ---@field payload table<any,any>
 ---@field used_capacity integer
 ---@field free_capacity integer
+---@field payload_cost integer
 ---@field product_name string
 ---@field price integer
 ---@field description string
@@ -16,6 +17,7 @@
 ---@field compatibles Array<any>
 ---@field ripped_cable_ps PackedScene
 ---@field cable_make_type Plug.CableMakeType
+---@field color_plug_end boolean
 ---@field connection Object
 ---@field cable_joint PinJoint2D
 ---@field attached_device_unit DeviceUnit

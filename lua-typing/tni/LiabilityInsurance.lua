@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class LiabilityInsurance : PropMod
 ---@field multiplier integer # Constant value: 10
 ---@field litrk string # Constant value: Liability insurance premium
 ---@field cost integer
+---@field exp_base number
 ---@field submitted boolean
 ---@field locked boolean
 ---@field depends_on PropMod

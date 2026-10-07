@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class UserTraversalFQDN : UserTraversal
 ---@field manifest_probability number
@@ -21,6 +21,7 @@
 ---@field curved_traffic_weight_last_tick integer
 ---@field consumption_history table<any,any>
 ---@field consumption_status_this_tick NetworkPacketRoot.Err
+---@field last_problem string
 ---@field will_manifest boolean
 ---@field reqshare_accept_hash integer
 ---@field reqshare_weight_index Array<integer>

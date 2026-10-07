@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class VirtualMachine : Program
 ---@field LGCTLSCN string # Constant value: <PackedScene>
 ---@field VSSCN string # Constant value: <PackedScene>
+---@field virt_connected boolean
 ---@field vmname string
 ---@field virtual_machine_controller LogicController
 ---@field host_device DeviceUnit
@@ -45,16 +46,32 @@ function VirtualMachine.create_virtual_sockets() end
 
 function VirtualMachine.link_virtual_sockets() end
 
+function VirtualMachine.disconnect_virt() end
+
+function VirtualMachine.reconnect_virt() end
+
+---@param physical_port_num integer
+function VirtualMachine.create_pass_connection(physical_port_num) end
+
+---@param physical_port_num integer
+function VirtualMachine.destroy_pass_connection(physical_port_num) end
+
 function VirtualMachine.tick() end
 
 ---@return Object
 function VirtualMachine.serialize_as_str() end
 
+---@param fdats string
+---@param target_vm LogicController
+---@param vm_program VirtualMachine?  # Default = <null>
+function VirtualMachine.update_from_str(fdats, target_vm, vm_program) end
+
 ---@param sz integer
 ---@param fdats string
 ---@param target_controller LogicController
+---@param requested_name string?  # Default = 
 ---@return Object
-function VirtualMachine.deserialize_from_str(sz, fdats, target_controller) end
+function VirtualMachine.deserialize_from_str(sz, fdats, target_controller, requested_name) end
 
 ---@param ds string
 ---@return string

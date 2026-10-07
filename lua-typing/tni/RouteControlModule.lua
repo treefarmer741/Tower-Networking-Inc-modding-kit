@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class RouteControlModule : LogicControlModule
 ---@field DEFAULT_DROP_CS string # Constant value: drop
@@ -10,6 +10,7 @@
 ---@field broadcast_forwarding boolean
 ---@field rip_advertise_paths Array<any>
 ---@field rip_enabled boolean
+---@field rip_suppress_entries Array<any>
 ---@field port_groups table<any,any>
 ---@field ha_hb_timer Timer
 ---@field rip_hb_timer Timer
@@ -89,6 +90,16 @@ function RouteControlModule.remove_rip_config(type_s, entry) end
 
 ---@param new_mode boolean
 function RouteControlModule.set_rip_mode(new_mode) end
+
+---@param entry string
+function RouteControlModule.add_rip_suppress(entry) end
+
+---@param entry string
+function RouteControlModule.remove_rip_suppress(entry) end
+
+---@param rte string
+---@return boolean
+function RouteControlModule.is_route_suppressed(rte) end
 
 ---@param rte string
 function RouteControlModule.refresh_route(rte) end

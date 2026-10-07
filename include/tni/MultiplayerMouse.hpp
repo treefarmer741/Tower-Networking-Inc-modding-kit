@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MULTIPLAYERMOUSE
 #define TNI_API_HEADER_MULTIPLAYERMOUSE
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -23,6 +23,7 @@ struct MultiplayerMouse : public Node2D {
 		STARTED_FROM_PUNCHDOWN = 4,
 	};
 	static constexpr double PATCH_CABLE_MAX_LENGTH = 1000.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double CABLE_AFFIX_EXCESS_MIN = 100.0;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr double PATCH_CABLE_WARN_LENGTH = 700.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(multi_double_pick, Variant);

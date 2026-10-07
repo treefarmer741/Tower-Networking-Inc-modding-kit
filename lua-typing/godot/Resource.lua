@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class Resource : RefCounted
 ---@field resource_local_to_scene boolean
@@ -10,6 +10,9 @@ local Resource = {}
 
 ---@param path string
 function Resource.set_path(path) end
+
+---@param path string
+function Resource.take_over_path(path) end
 
 ---@return string
 function Resource.get_path() end

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PATCHPANEL
 #define TNI_API_HEADER_PATCHPANEL
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -26,6 +26,7 @@ struct PatchPanel : public DeviceUnit {
 	PROPERTY(base_warranty_days, int64_t);
 	PROPERTY(base_warranty_cycles, int64_t);
 	PROPERTY(sale_warranty, int64_t);
+	PROPERTY(terminal_failure_prob, double);
 	PROPERTY(recycle_price_factor, double);
 	PROPERTY(recycle_price, int64_t);
 	PROPERTY(force_auto_config_powctl_based_on_logctl, bool);
@@ -39,9 +40,12 @@ struct PatchPanel : public DeviceUnit {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(data_migration_enabled, bool);
 	PROPERTY(is_mount_locked, bool);
 	PROPERTY(screw_sprite, Variant);
+	PROPERTY(auto_replacement_multiplier, int64_t);
 	PROPERTY(auto_replacement_cost, int64_t);
+	PROPERTY(memento_daily_fee, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
 	PROPERTY(device_hardware_class, int64_t);
@@ -49,6 +53,7 @@ struct PatchPanel : public DeviceUnit {
 	PROPERTY(mount_type, int64_t);
 	PROPERTY(bw_per_second, double);
 	PROPERTY(reliability_flt, double);
+	PROPERTY(rng_fail_chance, double);
 	PROPERTY(device_rendered_description, String);
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(power_controller, PowerController);
@@ -69,6 +74,7 @@ struct PatchPanel : public DeviceUnit {
 
 	inline void update_fixed_state();
 	inline void teardown_punchdown_links();
+	inline int64_t get_daily_cost_multiplier(int64_t extra_devices);
 	inline void apply_autoconfig();
 	inline void reposition(Variant new_pos);
 	inline void elevator_move(Variant new_pos);
@@ -82,6 +88,7 @@ struct PatchPanel : public DeviceUnit {
 	inline bool drop(Variant impulse);
 	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
+	inline void set_data_migration(bool new_state);
 	inline void update_user_note(String new_value);
 	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
@@ -95,6 +102,7 @@ struct PatchPanel : public DeviceUnit {
 
 inline void PatchPanel::update_fixed_state() { this->voidcall("update_fixed_state"); }
 inline void PatchPanel::teardown_punchdown_links() { this->voidcall("teardown_punchdown_links"); }
+inline int64_t PatchPanel::get_daily_cost_multiplier(int64_t extra_devices) { return this->operator()("get_daily_cost_multiplier", extra_devices); }
 inline void PatchPanel::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
 inline void PatchPanel::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
 inline void PatchPanel::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
@@ -108,6 +116,7 @@ inline bool PatchPanel::pickup(Variant new_picker) { return this->operator()("pi
 inline bool PatchPanel::drop(Variant impulse) { return this->operator()("drop", impulse); }
 inline void PatchPanel::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void PatchPanel::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void PatchPanel::set_data_migration(bool new_state) { this->voidcall("set_data_migration", new_state); }
 inline void PatchPanel::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
 inline void PatchPanel::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void PatchPanel::remove_and_free_object() { this->voidcall("remove_and_free_object"); }

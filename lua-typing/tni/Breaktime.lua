@@ -1,11 +1,17 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Breaktime : ScreenApp
 ---@field CDFTIME number # Constant value: 3.0
----@field speedup_button Button
----@field slowdown_button Button
----@field reset_button Button
+---@field coffee_button_1 TextureButton
+---@field coffee_button_2 TextureButton
+---@field coffee_button_3 TextureButton
+---@field tea_button_1 TextureButton
+---@field tea_button_2 TextureButton
+---@field tea_button_3 TextureButton
+---@field water_button TextureButton
+---@field highlight_v number
+---@field dim_v number
 ---@field main_pane MainPane
 ---@field dynamic_container_path string
 ---@field dynamic_container Container

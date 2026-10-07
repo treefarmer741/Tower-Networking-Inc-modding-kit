@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PowerOutageController : RandomEvent
 ---@field scheduled_outage_rate number
@@ -20,6 +20,8 @@ local PowerOutageController = {}
 ---@param loc Object
 ---@param scheduled boolean?  # Default = true
 function PowerOutageController.setup_outage_mod(start_ts, end_ts, loc, scheduled) end
+
+function PowerOutageController.notify_outage_rerouted() end
 
 ---@param loc Location
 ---@param end_ts integer

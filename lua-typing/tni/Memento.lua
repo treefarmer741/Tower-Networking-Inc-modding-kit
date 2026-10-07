@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Memento : ScreenApp
 ---@field main_tab TabContainer
@@ -9,6 +9,7 @@
 ---@field firewall_entries_ctl Container
 ---@field route_entries_ctl Container
 ---@field cntop OptionButton
+---@field fee_preview_cb CheckButton
 ---@field ri_scn PackedScene
 ---@field dut_scn PackedScene
 ---@field fir_scn PackedScene

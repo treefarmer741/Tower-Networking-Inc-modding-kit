@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERSOCKET
 #define TNI_API_HEADER_LOGICCONTROLLERSOCKET
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -27,6 +27,7 @@ struct LogicControllerSocket : public Socket {
 	PROPERTY(traversal_tc_counts_since_up, Variant);
 	PROPERTY(is_up, bool);
 	// PROPERTY(virtual, bool);  // Property name is same as C++ keyword!
+	PROPERTY(passthrough, bool);
 	PROPERTY(port_num, int64_t);
 	PROPERTY(port_id, String);
 	PROPERTY(bliptimer, Timer);
@@ -45,6 +46,8 @@ struct LogicControllerSocket : public Socket {
 	PROPERTY(is_blocked, bool);
 	PROPERTY(root_transformer, RemoteTransform2D);
 
+	inline bool is_port_id_like(String s);
+	inline String strip_port_prefix(String s);
 	inline void network_activity(bool is_tx_dir, Variant packet);
 	inline void reset_netw_stats();
 	inline Variant get_port_tags();
@@ -58,6 +61,8 @@ struct LogicControllerSocket : public Socket {
 #include "GraphController.hpp"
 #include "Plug.hpp"
 
+inline bool LogicControllerSocket::is_port_id_like(String s) { return this->operator()("is_port_id_like", s); }
+inline String LogicControllerSocket::strip_port_prefix(String s) { return this->operator()("strip_port_prefix", s); }
 inline void LogicControllerSocket::network_activity(bool is_tx_dir, Variant packet) { this->voidcall("network_activity", is_tx_dir, packet); }
 inline void LogicControllerSocket::reset_netw_stats() { this->voidcall("reset_netw_stats"); }
 inline Variant LogicControllerSocket::get_port_tags() { return this->operator()("get_port_tags"); }

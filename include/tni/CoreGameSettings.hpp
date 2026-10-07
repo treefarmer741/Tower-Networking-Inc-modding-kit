@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_COREGAMESETTINGS
 #define TNI_API_HEADER_COREGAMESETTINGS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -39,12 +39,16 @@ struct CoreGameSettings : public BaseSettings {
 	PROPERTY(show_help_guides, bool);
 	PROPERTY(player_set_name, String);
 	PROPERTY(show_packet_animations, bool);
+	PROPERTY(default_user_dhcp, String);
+	PROPERTY(default_device_dhcp, String);
 	PROPERTY(addr_copy_mode, int64_t);
 	PROPERTY(last_sel_diffindex, int64_t);
 	PROPERTY(has_shown_difficulty_sel, bool);
 	PROPERTY(cmd_alias, Variant);
 	PROPERTY(floor_unlocks, Variant);
 	PROPERTY(user_stampbook, Variant);
+	PROPERTY(wiki_favorites, Variant);
+	PROPERTY(lighting_presets, Variant);
 	PROPERTY(keybindings, Variant);
 	PROPERTY(fullscreen_mode, bool);
 	PROPERTY(vsync, int64_t);

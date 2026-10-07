@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class NetworkPacketRoot : RefCounted
 ---@field default_ttl integer # Constant value: 32
@@ -26,6 +26,7 @@
 ---@field offline_callback (Callable|function)
 ---@field adhoc_counter integer
 ---@field adhoc_flag boolean
+---@field force_flood_on_origin boolean
 ---@field packet_drop_reasons table<any,any>
 local NetworkPacketRoot = {}
 ---@enum NetworkPacketRoot.Err

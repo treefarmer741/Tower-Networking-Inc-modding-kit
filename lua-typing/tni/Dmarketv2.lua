@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Dmarketv2 : ScreenApp
 ---@field lstv2scn PackedScene
@@ -12,6 +12,9 @@
 ---@field chkoctl Container
 ---@field lstctn Container
 ---@field keyworde LineEdit
+---@field cond_new_btn Button
+---@field cond_all_btn Button
+---@field cond_refurb_btn Button
 ---@field merchinfopan Container
 ---@field geneinfopan Container
 ---@field final_screen Container

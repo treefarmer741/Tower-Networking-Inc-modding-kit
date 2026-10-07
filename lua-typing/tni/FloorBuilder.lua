@@ -1,11 +1,12 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class FloorBuilder : Node
 ---@field onboarding_controller OnboardingController
 ---@field build_options Array<FloorBuildOptionItem>
 ---@field build_events Array<any>
 ---@field disabled boolean
+---@field activation_tech string
 ---@field skip_interval_builds boolean
 ---@field min_date integer
 ---@field max_date integer

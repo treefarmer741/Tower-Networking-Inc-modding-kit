@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Testlab : ScreenApp
 ---@field EVENT_OUTAGE integer # Constant value: 0
 ---@field EVENT_SURGE integer # Constant value: 1
+---@field WORM_CONTROLLER_NAMES Array<any> # Constant value: ["WormSpawnController", "RebelWormSpawnController", "DecentroWormSpawnController"]
 ---@field event_type_selector OptionButton
 ---@field floor_selector OptionButton
 ---@field duration_slider HSlider
@@ -15,6 +16,7 @@
 ---@field worm_floor_selector OptionButton
 ---@field cyber_attack_selector OptionButton
 ---@field device_address_input LineEdit
+---@field copod_status_label Label
 ---@field user_type_selector OptionButton
 ---@field user_socket_selector OptionButton
 ---@field user_count_spinner SpinBox

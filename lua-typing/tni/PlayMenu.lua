@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PlayMenu : Control
 ---@field SELECT_STARTING_LOCATION_DEFAULT_TEXT string # Constant value: Select starting location

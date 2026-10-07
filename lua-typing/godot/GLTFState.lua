@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.10.0
 
 ---@class GLTFState : Resource
 ---@field json table<any,any>
@@ -30,9 +30,8 @@
 ---@field create_animations boolean
 ---@field import_as_skeleton_bones boolean
 ---@field animations Array<any>
----@field handle_binary_image_mode integer
----@field bake_fps number
 ---@field handle_binary_image integer
+---@field bake_fps number
 local GLTFState = {}
 
 ---@param extension_name string
@@ -116,13 +115,13 @@ function GLTFState.get_meshes() end
 ---@param meshes Array<GLTFMesh>
 function GLTFState.set_meshes(meshes) end
 
----@param anim_player_index integer
+---@param idx integer
 ---@return integer
-function GLTFState.get_animation_players_count(anim_player_index) end
+function GLTFState.get_animation_players_count(idx) end
 
----@param anim_player_index integer
+---@param idx integer
 ---@return AnimationPlayer
-function GLTFState.get_animation_player(anim_player_index) end
+function GLTFState.get_animation_player(idx) end
 
 ---@return Array<Material>
 function GLTFState.get_materials() end
@@ -226,9 +225,9 @@ function GLTFState.get_animations() end
 ---@param animations Array<GLTFAnimation>
 function GLTFState.set_animations(animations) end
 
----@param gltf_node_index integer
+---@param idx integer
 ---@return Node
-function GLTFState.get_scene_node(gltf_node_index) end
+function GLTFState.get_scene_node(idx) end
 
 ---@param scene_node Node
 ---@return integer
@@ -242,20 +241,14 @@ function GLTFState.get_additional_data(extension_name) end
 ---@param additional_data Object
 function GLTFState.set_additional_data(extension_name, additional_data) end
 
----@return GLTFState.HandleBinaryImageMode
-function GLTFState.get_handle_binary_image_mode() end
+---@return integer
+function GLTFState.get_handle_binary_image() end
 
----@param method GLTFState.HandleBinaryImageMode
-function GLTFState.set_handle_binary_image_mode(method) end
+---@param method integer
+function GLTFState.set_handle_binary_image(method) end
 
 ---@param value number
 function GLTFState.set_bake_fps(value) end
 
 ---@return number
 function GLTFState.get_bake_fps() end
-
----@return integer
-function GLTFState.get_handle_binary_image() end
-
----@param method integer
-function GLTFState.set_handle_binary_image(method) end

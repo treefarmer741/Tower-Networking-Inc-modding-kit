@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class TrayAffixedLink : Node2D
 ---@field DEFAULT_MAX_CABLE_LENGTH number # Constant value: 700.0

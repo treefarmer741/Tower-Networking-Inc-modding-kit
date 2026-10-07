@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Axis3Marker : Node3D
 ---@field GROUP string # Constant value: axis3_markers

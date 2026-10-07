@@ -1,7 +1,8 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class LogicControllerUser : User
+---@field SLA_REASON_LIMIT integer # Constant value: 3
 ---@field logic_controller LogicController
 ---@field behaviors Array<Program>
 ---@field hosting_behaviors Array<Program>
@@ -21,16 +22,19 @@
 ---@field visitor_stats table<any,any>
 ---@field visitor_stats_last_tick table<any,any>
 ---@field surveyor_daily_incidents Array<any>
+---@field sla_reasons Array<any>
 ---@field surveyor_msg_stra Array<any>
 ---@field payment_calculation_method LogicControllerUser.PaymentCalculationMethod
 ---@field payment_today integer
 ---@field user_hostings Array<any>
+---@field is_producer boolean
 ---@field required_visitation_satiety_per_tick integer
 ---@field csr number
 ---@field vsr number
 ---@field visitor_reset_modulo_n integer
 ---@field consumption_total_last_tick integer
 ---@field consumption_satiety_last_tick integer
+---@field surveyed_behavior_count integer
 ---@field description string
 ---@field user_profile_name string
 ---@field base_use_period number
@@ -69,12 +73,23 @@ LogicControllerUser.PaymentCalculationMethod = {
 ---@param msg string
 function LogicControllerUser.push_surveyor_message(msg) end
 
+---@param msg string
+---@param line_prefix string
+function LogicControllerUser.push_or_refresh_surveyor_message(msg, line_prefix) end
+
 ---@param release_name string
 ---@return number
 function LogicControllerUser.get_manifest_roll(release_name) end
 
 ---@return Object
 function LogicControllerUser.debug_monitor_callback() end
+
+---@param ratio_penalty number
+function LogicControllerUser.apply_satiety_penalty(ratio_penalty) end
+
+---@param ratio_boost number
+---@param source_id integer
+function LogicControllerUser.apply_satiety_boost(ratio_boost, source_id) end
 
 ---@param utc UserTraversal
 function LogicControllerUser.account_intent(utc) end

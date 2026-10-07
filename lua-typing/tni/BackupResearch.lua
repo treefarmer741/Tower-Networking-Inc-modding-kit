@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class BackupResearch : PropMod
 ---@field techv string # Constant value: remote_backups_v1

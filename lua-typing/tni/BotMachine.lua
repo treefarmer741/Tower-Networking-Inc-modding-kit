@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class BotMachine : Program
 ---@field VISIT_TRAFFIC string # Constant value: tcp/80
@@ -48,11 +48,16 @@ function BotMachine.install(install_opts) end
 ---@return Object
 function BotMachine.serialize_as_str() end
 
+---@param fdats string
+---@param existing BotMachine
+function BotMachine.update_from_str(fdats, existing) end
+
 ---@param _sz integer
 ---@param fdats string
 ---@param target_controller LogicController
+---@param requested_name string?  # Default = 
 ---@return Object
-function BotMachine.deserialize_from_str(_sz, fdats, target_controller) end
+function BotMachine.deserialize_from_str(_sz, fdats, target_controller, requested_name) end
 
 ---@param ds string
 ---@return string

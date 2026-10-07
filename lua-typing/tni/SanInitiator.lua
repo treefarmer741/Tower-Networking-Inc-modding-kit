@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class SanInitiator : TraversalBase
+---@field SHAREABLE_CONFIGS Array<any> # Constant value: ["/etc/routes.conf", "/etc/dhcpd.conf", "/etc/nftables.conf", "/etc/dns.zone", "/etc/vlan.tags", "/etc/mangling.conf"]
 ---@field VOL_MOUNTED string # Constant value: mounted
 ---@field VOL_MOUNTING string # Constant value: mounting
----@field VOL_OFFLINE string # Constant value: offline
+---@field VOL_OFFLINE string # Constant value: no path
 ---@field VOL_NO_VOLUME string # Constant value: no volume
 ---@field VOL_UNBACKED string # Constant value: no storage
 ---@field granted_capacity integer
@@ -14,7 +15,8 @@
 ---@field resolved_paths table<any,any>
 ---@field target_blocks table<any,any>
 ---@field lun_claims table<any,any>
----@field seed_addrs table<any,any>
+---@field target_addrs table<any,any>
+---@field holder_addrs table<any,any>
 ---@field volume_states table<any,any>
 ---@field storage_per_bw_unit integer
 ---@field traffic_class string
@@ -36,6 +38,9 @@
 ---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local SanInitiator = {}
+---@enum SanInitiator.CONFIG_PROGRAM_MODIFIERS
+SanInitiator.CONFIG_PROGRAM_MODIFIERS = {
+}
 
 ---@return string
 function SanInitiator.get_configstr() end
@@ -69,6 +74,10 @@ function SanInitiator.volume_state(idx) end
 ---@return integer
 function SanInitiator.volume_capacity(idx) end
 
+---@param vid string
+---@return integer
+function SanInitiator.volume_capacity_of(vid) end
+
 ---@param idx integer
 ---@return integer
 function SanInitiator.volume_reserved(idx) end
@@ -90,8 +99,20 @@ function SanInitiator.volume_used(idx) end
 function SanInitiator.volume_used_of(vid) end
 
 ---@param idx integer
+---@return table<any,any>
+function SanInitiator.volume_contents_of(idx) end
+
+---@param idx integer
+---@return integer
+function SanInitiator.volume_foreign(idx) end
+
+---@param idx integer
 ---@return integer
 function SanInitiator.volume_free(idx) end
+
+---@param vid string
+---@return integer
+function SanInitiator.volume_free_of(vid) end
 
 ---@param filekey string
 ---@return integer
@@ -127,10 +148,6 @@ function SanInitiator.wipe_volume(idx) end
 ---@return string
 function SanInitiator.volume_label(idx) end
 
----@param token string
----@return integer
-function SanInitiator.parse_volume_label(token) end
-
 ---@param vid string
 ---@return boolean
 function SanInitiator.volume_established(vid) end
@@ -148,28 +165,35 @@ function SanInitiator.mint_volume_token(taken) end
 ---@return table<any,any>
 function SanInitiator.unpack_volume(body) end
 
+---@return Array<any>
+function SanInitiator.unreachable_configs() end
+
 function SanInitiator.recompute_grant_now() end
 
 ---@param vid string
+function SanInitiator.mark_pure_adopt(vid) end
+
+---@param index integer
+---@param target_addr string
+---@param holder_addr string
+---@param resize_to integer?  # Default = -1
+function SanInitiator.set_pending_adopt(index, target_addr, holder_addr, resize_to) end
+
+---@param vid string
 ---@param size integer
----@param seed_addr string
+---@param target_addr string
 ---@param new_round boolean?  # Default = true
-function SanInitiator.set_reservation(vid, size, seed_addr, new_round) end
+---@param holder_addr string?  # Default = 
+function SanInitiator.set_reservation(vid, size, target_addr, new_round, holder_addr) end
 
 ---@param vids Array<any>
 function SanInitiator.remove_volumes(vids) end
 
 function SanInitiator.full_reset() end
 
+---@param vids Array<any>
 ---@return integer
-function SanInitiator.total_established_blocks() end
-
----@return integer
-function SanInitiator.access_traffic_weight() end
-
----@param proot NetworkPacketRoot
----@return Object
-function SanInitiator.make_traversal_packet(proot) end
+function SanInitiator.access_traffic_weight(vids) end
 
 function SanInitiator.stop() end
 

@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class PowerMeterFirmware : Program
 ---@field cumulative_kwh number
+---@field exploited boolean
 ---@field cpu_load integer
 ---@field gpu_load integer
 ---@field code_size integer
@@ -20,6 +21,9 @@
 ---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local PowerMeterFirmware = {}
+
+---@param on boolean
+function PowerMeterFirmware.set_exploited(on) end
 
 function PowerMeterFirmware.tick() end
 

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DAYCYCLECONTROLLER
 #define TNI_API_HEADER_DAYCYCLECONTROLLER
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,6 +14,13 @@ struct DayCycleController : public CanvasModulate {
 	constexpr DayCycleController(Object obj) : DayCycleController{obj.address()} {}
 	DayCycleController(Variant variant) : DayCycleController{variant.as_object().address()} {}
 
+	enum struct LampMode : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		DEFAULT = 0,
+		OFF = 1,
+		ON = 2,
+	};
+	static constexpr double DEFAULT_DARKNESS = 0.6;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double DEFAULT_TINT_STRENGTH = 0.5;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(day_period, int64_t);
 	PROPERTY(day_offset, double);
@@ -26,6 +33,11 @@ struct DayCycleController : public CanvasModulate {
 	PROPERTY(day_period_float, double);
 	PROPERTY(paused, bool);
 	PROPERTY(modval, double);
+	PROPERTY(dark_mode, bool);
+	PROPERTY(lighting_darkness, double);
+	PROPERTY(lamp_mode, int64_t);
+	PROPERTY(tint_hue, double);
+	PROPERTY(tint_strength, double);
 	PROPERTY(sampled_time_str, String);
 	PROPERTY(sampled_day_time_float, double);
 	PROPERTY(sunrise_happened, bool);
@@ -39,6 +51,10 @@ struct DayCycleController : public CanvasModulate {
 	inline void pause_timer();
 	inline void resume_timer();
 	inline Variant debug_monitor_callback();
+	inline void set_lighting(bool dark, double darkness, int64_t lamps);
+	inline void set_tint(double hue, double strength);
+	inline void reset_lighting();
+	inline Variant lumen_color(bool dark, double darkness, double hue, double strength);
 };
 
 
@@ -49,5 +65,9 @@ inline Variant DayCycleController::calculate_day_clock_from_normal_clock(double 
 inline void DayCycleController::pause_timer() { this->voidcall("pause_timer"); }
 inline void DayCycleController::resume_timer() { this->voidcall("resume_timer"); }
 inline Variant DayCycleController::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void DayCycleController::set_lighting(bool dark, double darkness, int64_t lamps) { this->voidcall("set_lighting", dark, darkness, lamps); }
+inline void DayCycleController::set_tint(double hue, double strength) { this->voidcall("set_tint", hue, strength); }
+inline void DayCycleController::reset_lighting() { this->voidcall("reset_lighting"); }
+inline Variant DayCycleController::lumen_color(bool dark, double darkness, double hue, double strength) { return this->operator()("lumen_color", dark, darkness, hue, strength); }
 
 #endif

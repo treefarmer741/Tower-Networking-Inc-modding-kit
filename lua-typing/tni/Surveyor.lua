@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.1
 
 ---@class Surveyor : ScreenApp
 ---@field satiety_per_color_level number # Constant value: 3.0
@@ -12,6 +12,7 @@
 ---@field floor_detail_panel_scene PackedScene
 ---@field user_total_lbl Label
 ---@field heatmap_legend UserHeatmapItem
+---@field sla_warning_panel SLAWarningPanel
 ---@field main_scroll_last_vscroll integer
 ---@field search_text string
 ---@field main_pane MainPane

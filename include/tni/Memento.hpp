@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MEMENTO
 #define TNI_API_HEADER_MEMENTO
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.1
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -23,6 +23,7 @@ struct Memento : public ScreenApp {
 	PROPERTY(firewall_entries_ctl, Container);
 	PROPERTY(route_entries_ctl, Container);
 	PROPERTY(cntop, OptionButton);
+	PROPERTY(fee_preview_cb, CheckButton);
 	PROPERTY(ri_scn, PackedScene);
 	PROPERTY(dut_scn, PackedScene);
 	PROPERTY(fir_scn, PackedScene);
