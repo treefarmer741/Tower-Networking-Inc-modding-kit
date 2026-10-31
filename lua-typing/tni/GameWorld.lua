@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class GameWorld : Node2D
 ---@field mobile_os_scn string # Constant value: <PackedScene>
@@ -35,6 +35,8 @@
 ---@field auto_complete_candidate_list Array<any>
 ---@field migration_srack_c integer
 ---@field migration_lrack_c integer
+---@field migration_prack_c integer
+---@field rack_mount_redirect table<any,any>
 ---@field fbcntr integer
 ---@field difficulty_hash integer
 ---@field unlocks_or_achievements_allowed boolean

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class RemovableStorageDevice : PeripheralPlug
 ---@field available_sto integer
@@ -90,6 +90,8 @@ function RemovableStorageDevice.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function RemovableStorageDevice.apply_label(text, color, labelled) end
+
+function RemovableStorageDevice.wake_loose_tick() end
 
 ---@param a Object
 function RemovableStorageDevice.plug_in(a) end

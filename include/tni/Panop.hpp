@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PANOP
 #define TNI_API_HEADER_PANOP
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>

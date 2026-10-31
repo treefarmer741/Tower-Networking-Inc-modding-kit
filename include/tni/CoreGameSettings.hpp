@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_COREGAMESETTINGS
 #define TNI_API_HEADER_COREGAMESETTINGS
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -56,6 +56,7 @@ struct CoreGameSettings : public BaseSettings {
 	PROPERTY(user_stampbook, Variant);
 	PROPERTY(wiki_favorites, Variant);
 	PROPERTY(lighting_presets, Variant);
+	PROPERTY(ui_scale, double);
 	PROPERTY(keybindings, Variant);
 	PROPERTY(fullscreen_mode, bool);
 	PROPERTY(vsync, int64_t);

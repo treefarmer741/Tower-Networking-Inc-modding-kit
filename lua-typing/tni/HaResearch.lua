@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class HaResearch : PropMod
 ---@field techv string # Constant value: high_availability_v1

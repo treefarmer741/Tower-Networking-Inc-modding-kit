@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class SecretariatLobbyAgainstPhaseTwo : PropMod
 ---@field techv string # Constant value: free_babel_ally_v2

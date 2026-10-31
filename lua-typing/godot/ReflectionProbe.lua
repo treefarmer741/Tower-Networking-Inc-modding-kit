@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.10.0
 
 ---@class ReflectionProbe : VisualInstance3D
 ---@field update_mode integer

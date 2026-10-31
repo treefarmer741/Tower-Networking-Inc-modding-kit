@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@param classname "AESContext"
 ---@param param string
@@ -736,6 +736,11 @@ function create_node(classname, param) end
 ---@return CSGPrimitive3D
 function create_node(classname, param) end
 
+---@param classname "CSGProductionBaker"
+---@param param string
+---@return CSGProductionBaker
+function create_node(classname, param) end
+
 ---@param classname "CSGShape3D"
 ---@param param string
 ---@return CSGShape3D
@@ -819,6 +824,11 @@ function create_node(classname, param) end
 ---@param classname "CanvasItemEditor"
 ---@param param string
 ---@return CanvasItemEditor
+function create_node(classname, param) end
+
+---@param classname "CanvasItemEditorSelectedItem"
+---@param param string
+---@return CanvasItemEditorSelectedItem
 function create_node(classname, param) end
 
 ---@param classname "CanvasItemEditorViewport"
@@ -1251,6 +1261,16 @@ function create_node(classname, param) end
 ---@return DependencyRemoveDialog
 function create_node(classname, param) end
 
+---@param classname "DeterministicMath"
+---@param param string
+---@return DeterministicMath
+function create_node(classname, param) end
+
+---@param classname "DeterministicRoll"
+---@param param string
+---@return DeterministicRoll
+function create_node(classname, param) end
+
 ---@param classname "DirectionalLight2D"
 ---@param param string
 ---@return DirectionalLight2D
@@ -1471,11 +1491,6 @@ function create_node(classname, param) end
 ---@return EditorFileSystemImportFormatSupportQuery
 function create_node(classname, param) end
 
----@param classname "EditorHelp"
----@param param string
----@return EditorHelp
-function create_node(classname, param) end
-
 ---@param classname "EditorHelpBit"
 ---@param param string
 ---@return EditorHelpBit
@@ -1566,6 +1581,11 @@ function create_node(classname, param) end
 ---@return EditorObjectSelector
 function create_node(classname, param) end
 
+---@param classname "EditorPaginator"
+---@param param string
+---@return EditorPaginator
+function create_node(classname, param) end
+
 ---@param classname "EditorPaths"
 ---@param param string
 ---@return EditorPaths
@@ -1591,9 +1611,19 @@ function create_node(classname, param) end
 ---@return EditorProperty
 function create_node(classname, param) end
 
+---@param classname "EditorPropertyArrayObject"
+---@param param string
+---@return EditorPropertyArrayObject
+function create_node(classname, param) end
+
 ---@param classname "EditorPropertyDictionaryObject"
 ---@param param string
 ---@return EditorPropertyDictionaryObject
+function create_node(classname, param) end
+
+---@param classname "EditorPropertyLayersGrid"
+---@param param string
+---@return EditorPropertyLayersGrid
 function create_node(classname, param) end
 
 ---@param classname "EditorPropertyNameProcessor"
@@ -1746,6 +1776,11 @@ function create_node(classname, param) end
 ---@return EditorVariantTypeOptionButton
 function create_node(classname, param) end
 
+---@param classname "EditorVariantTypePopupMenu"
+---@param param string
+---@return EditorVariantTypePopupMenu
+function create_node(classname, param) end
+
 ---@param classname "EditorVersionButton"
 ---@param param string
 ---@return EditorVersionButton
@@ -1829,11 +1864,6 @@ function create_node(classname, param) end
 ---@param classname "FileSystemList"
 ---@param param string
 ---@return FileSystemList
-function create_node(classname, param) end
-
----@param classname "FindBar"
----@param param string
----@return FindBar
 function create_node(classname, param) end
 
 ---@param classname "FindInFilesDialog"
@@ -1949,6 +1979,11 @@ function create_node(classname, param) end
 ---@param classname "GDScriptWorkspace"
 ---@param param string
 ---@return GDScriptWorkspace
+function create_node(classname, param) end
+
+---@param classname "GDShaderSyntaxHighlighter"
+---@param param string
+---@return GDShaderSyntaxHighlighter
 function create_node(classname, param) end
 
 ---@param classname "GLTFAccessor"
@@ -2089,6 +2124,16 @@ function create_node(classname, param) end
 ---@param classname "GameView"
 ---@param param string
 ---@return GameView
+function create_node(classname, param) end
+
+---@param classname "GameWorld2DBase"
+---@param param string
+---@return GameWorld2DBase
+function create_node(classname, param) end
+
+---@param classname "GameWorld3DBase"
+---@param param string
+---@return GameWorld3DBase
 function create_node(classname, param) end
 
 ---@param classname "Generic6DOFJoint3D"
@@ -2594,6 +2639,11 @@ function create_node(classname, param) end
 ---@param classname "LocalizationEditor"
 ---@param param string
 ---@return LocalizationEditor
+function create_node(classname, param) end
+
+---@param classname "LockstepWatch"
+---@param param string
+---@return LockstepWatch
 function create_node(classname, param) end
 
 ---@param classname "Logger"
@@ -3686,6 +3736,16 @@ function create_node(classname, param) end
 ---@return PlaneMesh
 function create_node(classname, param) end
 
+---@param classname "PlayerInboxController"
+---@param param string
+---@return PlayerInboxController
+function create_node(classname, param) end
+
+---@param classname "PlayerInboxMessage"
+---@param param string
+---@return PlayerInboxMessage
+function create_node(classname, param) end
+
 ---@param classname "PluginConfigDialog"
 ---@param param string
 ---@return PluginConfigDialog
@@ -4131,6 +4191,11 @@ function create_node(classname, param) end
 ---@return SandboxFunctionState
 function create_node(classname, param) end
 
+---@param classname "SaveV2Controller"
+---@param param string
+---@return SaveV2Controller
+function create_node(classname, param) end
+
 ---@param classname "SceneCacheInterface"
 ---@param param string
 ---@return SceneCacheInterface
@@ -4301,6 +4366,11 @@ function create_node(classname, param) end
 ---@return ShaderCreateDialog
 function create_node(classname, param) end
 
+---@param classname "ShaderEditor"
+---@param param string
+---@return ShaderEditor
+function create_node(classname, param) end
+
 ---@param classname "ShaderGlobalsEditor"
 ---@param param string
 ---@return ShaderGlobalsEditor
@@ -4329,6 +4399,11 @@ function create_node(classname, param) end
 ---@param classname "ShaderMaterial"
 ---@param param string
 ---@return ShaderMaterial
+function create_node(classname, param) end
+
+---@param classname "ShaderTextEditor"
+---@param param string
+---@return ShaderTextEditor
 function create_node(classname, param) end
 
 ---@param classname "Shape2D"
@@ -4801,6 +4876,11 @@ function create_node(classname, param) end
 ---@return TextServerManager
 function create_node(classname, param) end
 
+---@param classname "TextShaderEditor"
+---@param param string
+---@return TextShaderEditor
+function create_node(classname, param) end
+
 ---@param classname "Texture"
 ---@param param string
 ---@return Texture
@@ -5014,6 +5094,11 @@ function create_node(classname, param) end
 ---@param classname "Time"
 ---@param param string
 ---@return Time
+function create_node(classname, param) end
+
+---@param classname "TimeController"
+---@param param string
+---@return TimeController
 function create_node(classname, param) end
 
 ---@param classname "Timer"
@@ -5864,6 +5949,11 @@ function create_node(classname, param) end
 ---@param classname "WorldBoundaryShape3D"
 ---@param param string
 ---@return WorldBoundaryShape3D
+function create_node(classname, param) end
+
+---@param classname "WorldDigest"
+---@param param string
+---@return WorldDigest
 function create_node(classname, param) end
 
 ---@param classname "WorldEnvironment"

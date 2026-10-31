@@ -1,9 +1,9 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class Panop : TerminalRoutine
 ---@field PROG_NAME string # Constant value: panop-mouthpiece
----@field ITALIC_FONT Object # Constant value: (res://scenes/screen/terminal/routines/panop_italic.tres):<FontVariation#-9223369624593032680>
+---@field ITALIC_FONT Object # Constant value: (res://scenes/screen/terminal/routines/panop_italic.tres):<FontVariation#-9223369598017922306>
 ---@field enabled boolean
 ---@field shell TerminalShell
 ---@field wide_output_shell boolean

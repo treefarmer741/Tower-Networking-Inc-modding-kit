@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLUG
 #define TNI_API_HEADER_PLUG
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -22,6 +22,7 @@ struct Plug : public PickableDevice {
 		POWERMA = 2,
 		PDC = 3,
 	};
+	PROPERTY(COLOR_SHADER_INSTANCED, Variant);  // Const value type was not supported.
 
 	PROPERTY(compatibles, Variant);
 	PROPERTY(ripped_cable_ps, PackedScene);
@@ -53,6 +54,7 @@ struct Plug : public PickableDevice {
 	inline void set_highlight(bool enabled);
 	inline void apply_color(Variant color_val);
 	inline void apply_label(String text, Variant color, bool labelled);
+	inline void wake_loose_tick();
 	inline void plug_in(Variant a);
 	inline bool drop(Variant impulse, bool skip_autoplug);
 	inline void srv_handle_pickup(const Socket& a);
@@ -71,6 +73,7 @@ inline PackedScene Plug::get_cable_make_scene() { return PackedScene(this->opera
 inline void Plug::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline void Plug::apply_color(Variant color_val) { this->voidcall("apply_color", color_val); }
 inline void Plug::apply_label(String text, Variant color, bool labelled) { this->voidcall("apply_label", text, color, labelled); }
+inline void Plug::wake_loose_tick() { this->voidcall("wake_loose_tick"); }
 inline void Plug::plug_in(Variant a) { this->voidcall("plug_in", a); }
 inline bool Plug::drop(Variant impulse, bool skip_autoplug) { return this->operator()("drop", impulse, skip_autoplug); }
 inline void Plug::srv_handle_pickup(const Socket& a) { this->voidcall("srv_handle_pickup", Object(reinterpret_cast<const Object*>(&a)->address())); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class DebugConsoleHelper : Node
 local DebugConsoleHelper = {}
@@ -100,6 +100,14 @@ function DebugConsoleHelper.test_decentro_worm(args) end
 ---@param _args Object
 ---@return Object
 function DebugConsoleHelper.test_secretariat_audit(_args) end
+
+---@param args Object
+---@return Object
+function DebugConsoleHelper.test_fb_theft(args) end
+
+---@param _args Object
+---@return Object
+function DebugConsoleHelper.test_fb_theft_now(_args) end
 
 ---@param _args Object
 ---@return Object

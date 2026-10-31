@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class Whiteboard : Area2D
 ---@field ZINDEX integer # Constant value: 1500

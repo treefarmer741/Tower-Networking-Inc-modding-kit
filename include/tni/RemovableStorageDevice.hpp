@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_REMOVABLESTORAGEDEVICE
 #define TNI_API_HEADER_REMOVABLESTORAGEDEVICE
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -69,6 +69,7 @@ struct RemovableStorageDevice : public PeripheralPlug {
 	inline void set_highlight(bool enabled);
 	inline void apply_color(Variant color_val);
 	inline void apply_label(String text, Variant color, bool labelled);
+	inline void wake_loose_tick();
 	inline void plug_in(Variant a);
 	inline bool drop(Variant impulse, bool skip_autoplug);
 	inline void srv_handle_pickup(const Socket& a);
@@ -98,6 +99,7 @@ inline PackedScene RemovableStorageDevice::get_cable_make_scene() { return Packe
 inline void RemovableStorageDevice::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline void RemovableStorageDevice::apply_color(Variant color_val) { this->voidcall("apply_color", color_val); }
 inline void RemovableStorageDevice::apply_label(String text, Variant color, bool labelled) { this->voidcall("apply_label", text, color, labelled); }
+inline void RemovableStorageDevice::wake_loose_tick() { this->voidcall("wake_loose_tick"); }
 inline void RemovableStorageDevice::plug_in(Variant a) { this->voidcall("plug_in", a); }
 inline bool RemovableStorageDevice::drop(Variant impulse, bool skip_autoplug) { return this->operator()("drop", impulse, skip_autoplug); }
 inline void RemovableStorageDevice::srv_handle_pickup(const Socket& a) { this->voidcall("srv_handle_pickup", Object(reinterpret_cast<const Object*>(&a)->address())); }

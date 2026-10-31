@@ -1,10 +1,13 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class TerminalOutputDisplay : RichTextLabel
 local TerminalOutputDisplay = {}
 
 function TerminalOutputDisplay.print_horizontal_sep() end
+
+---@return integer
+function TerminalOutputDisplay.get_line_letters() end
 
 ---@param s Object
 function TerminalOutputDisplay.print_success(s) end

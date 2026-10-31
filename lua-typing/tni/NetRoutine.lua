@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class NetRoutine : TerminalRoutine
 ---@field ADDR_SUBCOM Array<any> # Constant value: ["address", "addr", "a"]

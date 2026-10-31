@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class LiveUSB : RemovableStorageDevice
 ---@field program_scene PackedScene
@@ -105,6 +105,8 @@ function LiveUSB.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function LiveUSB.apply_label(text, color, labelled) end
+
+function LiveUSB.wake_loose_tick() end
 
 ---@param a Object
 function LiveUSB.plug_in(a) end

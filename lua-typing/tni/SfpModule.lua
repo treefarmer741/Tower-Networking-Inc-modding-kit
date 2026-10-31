@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class SfpModule : DeviceUnit
 ---@field port_type Socket.Type

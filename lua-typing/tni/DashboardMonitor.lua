@@ -1,10 +1,13 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class DashboardMonitor : DeviceUnit
 ---@field back_buffer_copy Object
 ---@field crt_sprite Object
 ---@field extra_screen Object
+---@field launcher_app_scene PackedScene
+---@field launcher_title string
+---@field launcher_icon_texture Texture2D
 ---@field product_name string
 ---@field description string
 ---@field text string

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class GameWorldUtils : Object
 ---@field GW_RESERVED_GROUP_NAME string # Constant value: __pgc_game_world

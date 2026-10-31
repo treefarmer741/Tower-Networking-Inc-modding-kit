@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SLAWARNINGPANEL
 #define TNI_API_HEADER_SLAWARNINGPANEL
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,6 +15,7 @@ struct SLAWarningPanel : public VBoxContainer {
 	SLAWarningPanel(Variant variant) : SLAWarningPanel{variant.as_object().address()} {}
 
 	static constexpr double MAX_LIST_HEIGHT = 300.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double MAX_LIST_HEIGHT_SCALED = 220.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(item_scene, PackedScene);
 	PROPERTY(scroll, ScrollContainer);

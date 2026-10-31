@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_RIPPEDSPOOL
 #define TNI_API_HEADER_RIPPEDSPOOL
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -60,6 +60,7 @@ struct RippedSpool : public PeripheralPlug {
 	inline PackedScene get_cable_make_scene();
 	inline void set_highlight(bool enabled);
 	inline void apply_label(String text, Variant color, bool labelled);
+	inline void wake_loose_tick();
 	inline void plug_in(Variant a);
 	inline bool drop(Variant impulse, bool skip_autoplug);
 	inline void srv_handle_pickup(const Socket& a);
@@ -84,6 +85,7 @@ inline void RippedSpool::remove_and_free_object() { this->voidcall("remove_and_f
 inline PackedScene RippedSpool::get_cable_make_scene() { return PackedScene(this->operator()("get_cable_make_scene").as_object().address()); }
 inline void RippedSpool::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline void RippedSpool::apply_label(String text, Variant color, bool labelled) { this->voidcall("apply_label", text, color, labelled); }
+inline void RippedSpool::wake_loose_tick() { this->voidcall("wake_loose_tick"); }
 inline void RippedSpool::plug_in(Variant a) { this->voidcall("plug_in", a); }
 inline bool RippedSpool::drop(Variant impulse, bool skip_autoplug) { return this->operator()("drop", impulse, skip_autoplug); }
 inline void RippedSpool::srv_handle_pickup(const Socket& a) { this->voidcall("srv_handle_pickup", Object(reinterpret_cast<const Object*>(&a)->address())); }

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class BarlineController : Control
 ---@field chart_title string
@@ -12,11 +12,14 @@
 ---@field bar_spacing number
 ---@field group_width_ratio number
 ---@field vertical_x_labels boolean
+---@field stack_bars boolean
+---@field fit_bar_axis boolean
 ---@field show_line_chart boolean
 ---@field line_color Color
 ---@field line_width number
 ---@field show_line_points boolean
 ---@field line_point_radius number
+---@field line_max_value number
 ---@field axis_vertical_y_labels boolean
 ---@field axis_x_label_margin number
 ---@field axis_x_label_height number
@@ -40,13 +43,24 @@
 ---@field line_label Object
 ---@field colors Object
 ---@field legend_bottom_margin Object
+---@field legend_columns Object
+---@field legend_item_height Object
 local BarlineController = {}
+
+---@return number
+function BarlineController.get_drawn_height() end
 
 ---@param pos Object
 ---@param text Object
 ---@param alignment Object?  # Default = 0
 ---@param img_size Object?  # Default = 16
 function BarlineController.draw_text_at(pos, text, alignment, img_size) end
+
+---@param pos Object
+---@param text Object
+---@param alignment Object?  # Default = 0
+---@param img_size Object?  # Default = 16
+function BarlineController.draw_text_outlined(pos, text, alignment, img_size) end
 
 ---@param new_categories Object
 ---@param new_values Object

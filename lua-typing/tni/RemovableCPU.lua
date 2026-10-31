@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class RemovableCPU : PeripheralPlug
 ---@field available_cpu integer
@@ -66,6 +66,8 @@ function RemovableCPU.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function RemovableCPU.apply_label(text, color, labelled) end
+
+function RemovableCPU.wake_loose_tick() end
 
 ---@param a Object
 function RemovableCPU.plug_in(a) end

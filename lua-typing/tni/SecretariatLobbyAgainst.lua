@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class SecretariatLobbyAgainst : PropMod
 ---@field DECENTRO_WORM_RATE_FACTOR number # Constant value: 0.75

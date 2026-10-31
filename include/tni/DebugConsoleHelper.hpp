@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEBUGCONSOLEHELPER
 #define TNI_API_HEADER_DEBUGCONSOLEHELPER
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -41,6 +41,8 @@ struct DebugConsoleHelper : public Node {
 	inline Variant test_rebel_worm(Variant args);
 	inline Variant test_decentro_worm(Variant args);
 	inline Variant test_secretariat_audit(Variant _args);
+	inline Variant test_fb_theft(Variant args);
+	inline Variant test_fb_theft_now(Variant _args);
 	inline Variant trigger_free_play(Variant _args);
 	inline Variant list_panopticon_status(Variant _args);
 	inline Variant set_playopt(Variant args);
@@ -79,6 +81,8 @@ inline Variant DebugConsoleHelper::test_secretariat_attack(Variant args) { retur
 inline Variant DebugConsoleHelper::test_rebel_worm(Variant args) { return this->operator()("test_rebel_worm", args); }
 inline Variant DebugConsoleHelper::test_decentro_worm(Variant args) { return this->operator()("test_decentro_worm", args); }
 inline Variant DebugConsoleHelper::test_secretariat_audit(Variant _args) { return this->operator()("test_secretariat_audit", _args); }
+inline Variant DebugConsoleHelper::test_fb_theft(Variant args) { return this->operator()("test_fb_theft", args); }
+inline Variant DebugConsoleHelper::test_fb_theft_now(Variant _args) { return this->operator()("test_fb_theft_now", _args); }
 inline Variant DebugConsoleHelper::trigger_free_play(Variant _args) { return this->operator()("trigger_free_play", _args); }
 inline Variant DebugConsoleHelper::list_panopticon_status(Variant _args) { return this->operator()("list_panopticon_status", _args); }
 inline Variant DebugConsoleHelper::set_playopt(Variant args) { return this->operator()("set_playopt", args); }

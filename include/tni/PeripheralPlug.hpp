@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PERIPHERALPLUG
 #define TNI_API_HEADER_PERIPHERALPLUG
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -58,6 +58,7 @@ struct PeripheralPlug : public Plug {
 	inline void set_highlight(bool enabled);
 	inline void apply_color(Variant color_val);
 	inline void apply_label(String text, Variant color, bool labelled);
+	inline void wake_loose_tick();
 	inline void plug_in(Variant a);
 	inline bool drop(Variant impulse, bool skip_autoplug);
 	inline void srv_handle_pickup(const Socket& a);
@@ -82,6 +83,7 @@ inline PackedScene PeripheralPlug::get_cable_make_scene() { return PackedScene(t
 inline void PeripheralPlug::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
 inline void PeripheralPlug::apply_color(Variant color_val) { this->voidcall("apply_color", color_val); }
 inline void PeripheralPlug::apply_label(String text, Variant color, bool labelled) { this->voidcall("apply_label", text, color, labelled); }
+inline void PeripheralPlug::wake_loose_tick() { this->voidcall("wake_loose_tick"); }
 inline void PeripheralPlug::plug_in(Variant a) { this->voidcall("plug_in", a); }
 inline bool PeripheralPlug::drop(Variant impulse, bool skip_autoplug) { return this->operator()("drop", impulse, skip_autoplug); }
 inline void PeripheralPlug::srv_handle_pickup(const Socket& a) { this->voidcall("srv_handle_pickup", Object(reinterpret_cast<const Object*>(&a)->address())); }

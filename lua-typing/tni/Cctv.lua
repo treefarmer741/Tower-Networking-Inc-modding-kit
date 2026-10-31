@@ -1,12 +1,27 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class Cctv : ScreenApp
+---@field GUARD_LIST_HEIGHT number # Constant value: 100.0
+---@field GUARD_LIST_HEIGHT_SCALED number # Constant value: 70.0
 ---@field cctv_viewport Object
 ---@field cctv_server_option Object
 ---@field cctv_camera_connection Object
+---@field hint_label Label
 ---@field connection_status_label Object
+---@field confirm_button Button
+---@field camera_panel PanelContainer
+---@field maximize_button Button
+---@field guard_panel VBoxContainer
+---@field guard_scroll ScrollContainer
+---@field guard_rows VBoxContainer
+---@field installed_camera_scn PackedScene
+---@field camera_ghost_scn PackedScene
+---@field guard_item_scn PackedScene
 ---@field selected_server LogicController
+---@field curr_ghost Area2D
+---@field placed_ghost Area2D
+---@field rm_target CctvCameraOutlet
 ---@field main_pane MainPane
 ---@field dynamic_container_path string
 ---@field dynamic_container Container
@@ -33,6 +48,12 @@ function Cctv.populate_cctv_server_option() end
 function Cctv.launch() end
 
 function Cctv.minimize() end
+
+---@param campos Vector2
+function Cctv.install_camera(campos) end
+
+---@param campath string
+function Cctv.remove_camera(campath) end
 
 function Cctv.clear_dynamic() end
 

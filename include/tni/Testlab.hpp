@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TESTLAB
 #define TNI_API_HEADER_TESTLAB
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -32,6 +32,8 @@ struct Testlab : public ScreenApp {
 	PROPERTY(worm_status_label, Label);
 	PROPERTY(device_address_input, LineEdit);
 	PROPERTY(copod_status_label, Label);
+	PROPERTY(theft_floor_selector, OptionButton);
+	PROPERTY(theft_status_label, Label);
 	PROPERTY(user_type_selector, OptionButton);
 	PROPERTY(user_socket_selector, OptionButton);
 	PROPERTY(user_count_spinner, SpinBox);

@@ -1,9 +1,10 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class GraphicsSettings : VBoxContainer
 ---@field vsync Object
 ---@field window_mode Object
+---@field ui_scale Object
 ---@field animation_option Object
 ---@field rgb_shift_factor Object
 ---@field crt_monitor_fx Object

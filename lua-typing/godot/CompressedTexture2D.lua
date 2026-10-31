@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.10.0
 
 ---@class CompressedTexture2D : Texture2D
 ---@field load_path string

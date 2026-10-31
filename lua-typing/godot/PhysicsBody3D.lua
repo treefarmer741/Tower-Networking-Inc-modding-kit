@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.10.0
 
 ---@class PhysicsBody3D : CollisionObject3D
 ---@field axis_lock_linear_x boolean

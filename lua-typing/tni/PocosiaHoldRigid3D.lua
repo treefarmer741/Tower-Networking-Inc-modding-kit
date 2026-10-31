@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PocosiaHoldRigid3D : Node3D
 ---@field hold_body_collision_exception string

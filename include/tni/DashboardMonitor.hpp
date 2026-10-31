@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DASHBOARDMONITOR
 #define TNI_API_HEADER_DASHBOARDMONITOR
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,6 +19,9 @@ struct DashboardMonitor : public DeviceUnit {
 	PROPERTY(back_buffer_copy, Variant);
 	PROPERTY(crt_sprite, Variant);
 	PROPERTY(extra_screen, Variant);
+	PROPERTY(launcher_app_scene, PackedScene);
+	PROPERTY(launcher_title, String);
+	PROPERTY(launcher_icon_texture, Texture2D);
 	PROPERTY(product_name, String);
 	PROPERTY(description, String);
 	PROPERTY(text, String);

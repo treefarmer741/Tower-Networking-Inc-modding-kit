@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class NetopsResearch : PropMod
 ---@field techv string # Constant value: netops_v1

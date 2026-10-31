@@ -1,10 +1,10 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class BotnetsResearch : PropMod
 ---@field techv string # Constant value: botnets
 ---@field MIN_COMPUTE_SERVERS integer # Constant value: 5
----@field prereq_ps Array<any> # Constant value: [(res://scenes/graph_network_simulation/programs/early_access/botnets/user_traffic_analyzer.tscn):<PackedScene#-9223365853829828841>]
+---@field prereq_ps Array<any> # Constant value: [(res://scenes/graph_network_simulation/programs/early_access/botnets/user_traffic_analyzer.tscn):<PackedScene#-9223366089566477929>]
 ---@field cost integer
 ---@field submitted boolean
 ---@field locked boolean

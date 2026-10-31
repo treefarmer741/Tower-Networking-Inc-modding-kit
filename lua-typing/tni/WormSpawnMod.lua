@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class WormSpawnMod : Node
 ---@field DISCOVERY_POLL_SECONDS integer # Constant value: 10

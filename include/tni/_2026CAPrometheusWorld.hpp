@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER__2026CAPROMETHEUSWORLD
 #define TNI_API_HEADER__2026CAPROMETHEUSWORLD
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -50,6 +50,8 @@ struct _2026CAPrometheusWorld : public GameWorld {
 	PROPERTY(auto_complete_candidate_list, Variant);
 	PROPERTY(migration_srack_c, int64_t);
 	PROPERTY(migration_lrack_c, int64_t);
+	PROPERTY(migration_prack_c, int64_t);
+	PROPERTY(rack_mount_redirect, Variant);
 	PROPERTY(fbcntr, int64_t);
 	PROPERTY(difficulty_hash, int64_t);
 	PROPERTY(unlocks_or_achievements_allowed, bool);

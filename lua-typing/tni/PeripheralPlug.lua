@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PeripheralPlug : Plug
 ---@field product_name string
@@ -62,6 +62,8 @@ function PeripheralPlug.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function PeripheralPlug.apply_label(text, color, labelled) end
+
+function PeripheralPlug.wake_loose_tick() end
 
 ---@param a Object
 function PeripheralPlug.plug_in(a) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class SimpleGaugeGizmo3D : Area3D
 ---@field needle_base Node3D

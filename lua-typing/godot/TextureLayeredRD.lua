@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.10.0
 
 ---@class TextureLayeredRD : TextureLayered
 ---@field texture_rd_rid RID

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BARLINECHART
 #define TNI_API_HEADER_BARLINECHART
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -32,6 +32,7 @@ struct BarlineChart : public Node2D {
 	PROPERTY(line_label_format, String);
 	PROPERTY(line_color, Variant);
 	PROPERTY(bar_colors, Variant);
+	PROPERTY(steady_bar_colors, bool);
 	PROPERTY(show_line_chart, bool);
 
 	inline void generate_dataset_colors();

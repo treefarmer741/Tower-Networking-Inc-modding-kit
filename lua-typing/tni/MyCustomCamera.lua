@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class MyCustomCamera : Camera2D
 ---@field DEFAULT_ZOOM number # Constant value: 0.5

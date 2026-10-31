@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PocosiaR3DMMGhostPlacement : PocosiaRaycast3DMouseMapperFeature
 ---@field placement_ghost Node3D

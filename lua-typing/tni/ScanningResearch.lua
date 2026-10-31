@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class ScanningResearch : PropMod
 ---@field techv string # Constant value: scans_bypass_routers

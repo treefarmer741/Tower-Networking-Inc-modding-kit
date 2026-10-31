@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PLAYMENU
 #define TNI_API_HEADER_PLAYMENU
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -38,6 +38,7 @@ struct PlayMenu : public Control {
 	PROPERTY(datacenter_sel_container, MarginContainer);
 	PROPERTY(selected_starting_datacenter_scene, PackedScene);
 	PROPERTY(last_selected_itemlist, ItemList);
+	PROPERTY(opts_box, ScrollContainer);
 	PROPERTY(current_selected_scenario, String);
 
 	inline void show_lan_joining_options();

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class TestDhcpBasic : TestBase
 ---@field BOULDER string # Constant value: /root/Main/GameWorld/DeviceSpawner/BoulderPlus

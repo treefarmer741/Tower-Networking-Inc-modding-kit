@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PickableDevice : PickableRigidBody2D
 ---@field hard_contact_tolerance number

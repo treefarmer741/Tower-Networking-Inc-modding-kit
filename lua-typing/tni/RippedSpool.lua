@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class RippedSpool : PeripheralPlug
 ---@field ripped_length integer
@@ -67,6 +67,8 @@ function RippedSpool.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function RippedSpool.apply_label(text, color, labelled) end
+
+function RippedSpool.wake_loose_tick() end
 
 ---@param a Object
 function RippedSpool.plug_in(a) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class SanInitiator : TraversalBase
 ---@field SHAREABLE_CONFIGS Array<any> # Constant value: ["/etc/routes.conf", "/etc/dhcpd.conf", "/etc/nftables.conf", "/etc/dns.zone", "/etc/vlan.tags", "/etc/mangling.conf"]

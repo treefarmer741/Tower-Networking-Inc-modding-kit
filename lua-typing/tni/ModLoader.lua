@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class ModLoader : Node
 ---@field PRESET_FILE string # Constant value: user://mod_preset.json

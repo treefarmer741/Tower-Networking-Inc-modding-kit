@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PocosiaQuadBBLineDrawer3D : PocosiaMultiLineDrawer3D
 ---@field redraw_frame_interval integer

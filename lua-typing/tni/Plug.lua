@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class Plug : PickableDevice
 ---@field ZINDEX integer # Constant value: 500
+---@field COLOR_SHADER_INSTANCED Object # Constant value: (res://shaders/sprite-effects/color_change_instanced.gdshader):<Shader#-9223369671971890797>
 ---@field compatibles Array<any>
 ---@field ripped_cable_ps PackedScene
 ---@field cable_make_type Plug.CableMakeType
@@ -50,6 +51,8 @@ function Plug.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function Plug.apply_label(text, color, labelled) end
+
+function Plug.wake_loose_tick() end
 
 ---@param a Object
 function Plug.plug_in(a) end

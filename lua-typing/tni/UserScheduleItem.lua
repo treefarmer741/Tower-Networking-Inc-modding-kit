@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class UserScheduleItem : VBoxContainer
 ---@field ACTIVE_COLOR Color # Constant value: (0.2902, 0.5647, 0.851, 1.0)

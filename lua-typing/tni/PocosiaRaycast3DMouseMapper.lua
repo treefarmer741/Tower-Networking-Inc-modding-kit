@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PocosiaRaycast3DMouseMapper : Node3D
 ---@field hover_events_every_frame boolean

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class UnterminatedSpool : PeripheralPlug
 ---@field start_termination_ps PackedScene
@@ -82,6 +82,8 @@ function UnterminatedSpool.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function UnterminatedSpool.apply_label(text, color, labelled) end
+
+function UnterminatedSpool.wake_loose_tick() end
 
 ---@param a Object
 function UnterminatedSpool.plug_in(a) end

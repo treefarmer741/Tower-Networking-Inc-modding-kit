@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class Transactions : ScrollContainer
 ---@field MAX_DISPLAY_ITEMS integer # Constant value: 600

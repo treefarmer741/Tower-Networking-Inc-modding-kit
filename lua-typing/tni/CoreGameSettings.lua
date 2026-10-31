@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class CoreGameSettings : BaseSettings
 ---@field mouse_pan_speed number
@@ -37,6 +37,7 @@
 ---@field user_stampbook table<any,any>
 ---@field wiki_favorites table<any,any>
 ---@field lighting_presets Array<any>
+---@field ui_scale number
 ---@field keybindings table<any,any>
 ---@field fullscreen_mode boolean
 ---@field vsync integer

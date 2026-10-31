@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class DataWiperUSB : PeripheralPlug
 ---@field product_name string
@@ -68,6 +68,8 @@ function DataWiperUSB.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function DataWiperUSB.apply_label(text, color, labelled) end
+
+function DataWiperUSB.wake_loose_tick() end
 
 ---@param a Object
 function DataWiperUSB.plug_in(a) end

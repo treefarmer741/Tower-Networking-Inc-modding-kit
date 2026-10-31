@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GRAPHICSSETTINGS
 #define TNI_API_HEADER_GRAPHICSSETTINGS
-// Generated API for game version 0.13.3
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct GraphicsSettings : public VBoxContainer {
 
 	PROPERTY(vsync, Variant);
 	PROPERTY(window_mode, Variant);
+	PROPERTY(ui_scale, Variant);
 	PROPERTY(animation_option, Variant);
 	PROPERTY(rgb_shift_factor, Variant);
 	PROPERTY(crt_monitor_fx, Variant);

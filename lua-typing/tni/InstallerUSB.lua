@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class InstallerUSB : PeripheralPlug
 ---@field program_scene PackedScene
@@ -69,6 +69,8 @@ function InstallerUSB.apply_color(color_val) end
 ---@param color Color
 ---@param labelled boolean
 function InstallerUSB.apply_label(text, color, labelled) end
+
+function InstallerUSB.wake_loose_tick() end
 
 ---@param a Object
 function InstallerUSB.plug_in(a) end

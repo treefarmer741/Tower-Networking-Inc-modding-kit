@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class PlayMenu : Control
 ---@field SELECT_STARTING_LOCATION_DEFAULT_TEXT string # Constant value: Select starting location
@@ -25,6 +25,7 @@
 ---@field datacenter_sel_container MarginContainer
 ---@field selected_starting_datacenter_scene PackedScene
 ---@field last_selected_itemlist ItemList
+---@field opts_box ScrollContainer
 ---@field current_selected_scenario string
 local PlayMenu = {}
 

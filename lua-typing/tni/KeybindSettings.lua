@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class KeybindSettings : VBoxContainer
 ---@field MODIFIER_KEYS Array<any> # Constant value: [4194326, 4194325, 4194328, 4194327]
