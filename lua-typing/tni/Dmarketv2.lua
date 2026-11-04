@@ -1,21 +1,32 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Dmarketv2 : ScreenApp
 ---@field lstv2scn PackedScene
+---@field cart_item_scene PackedScene
 ---@field togsrchbtn Button
 ---@field searchdtype OptionButton
 ---@field searchctn Container
+---@field mounttype OptionButton
 ---@field mrchtype OptionButton
 ---@field chkoctl Container
 ---@field lstctn Container
 ---@field keyworde LineEdit
+---@field cond_new_btn Button
+---@field cond_all_btn Button
+---@field cond_refurb_btn Button
 ---@field merchinfopan Container
 ---@field geneinfopan Container
 ---@field final_screen Container
 ---@field delivery_floor_sel ItemList
 ---@field fwd_button Button
 ---@field clr_button Button
+---@field cart_preview_overlay PanelContainer
+---@field cart_preview_scroll ScrollContainer
+---@field toggle_cart_btn Button
+---@field pager Container
+---@field prev_page_btn Button
+---@field next_page_btn Button
 ---@field current_local_cart table<any,any>
 ---@field dlist Array<any>
 ---@field main_pane MainPane

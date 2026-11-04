@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_COREGAMESETTINGS
 #define TNI_API_HEADER_COREGAMESETTINGS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,30 +15,49 @@ struct CoreGameSettings : public BaseSettings {
 	constexpr CoreGameSettings(Object obj) : CoreGameSettings{obj.address()} {}
 	CoreGameSettings(Variant variant) : CoreGameSettings{variant.as_object().address()} {}
 
+	enum struct PhySimLevel : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+		LOW = 0,
+		NORMAL = 1,
+		HIGH = 2,
+	};
 
 	PROPERTY(mouse_pan_speed, double);
 	PROPERTY(keyboard_pan_speed, double);
 	PROPERTY(drag_pan_speed, double);
+	PROPERTY(ambdevsfx_volume_linear, double);
+	PROPERTY(amblocsfx_volume_linear, double);
+	PROPERTY(ambmetsfx_volume_linear, double);
 	PROPERTY(rgb_shift_factor, double);
 	PROPERTY(autosave_freq_min, double);
 	PROPERTY(autosave_retention, int64_t);
 	PROPERTY(perf_phy_sim_mode, int64_t);
+	PROPERTY(perf_phy_sim_level, int64_t);
+	PROPERTY(perf_cable_sim_mode, int64_t);
 	PROPERTY(show_announcements, bool);
 	PROPERTY(shift_panning_enabled, bool);
 	PROPERTY(dmarkv2sel, bool);
 	PROPERTY(time_affects_phyanim, bool);
+	PROPERTY(breaktime_animations_enabled, bool);
 	PROPERTY(crt_filter_effect, bool);
 	PROPERTY(flickering_lights_effect, bool);
+	PROPERTY(lights_on, bool);
 	PROPERTY(show_username, bool);
 	PROPERTY(show_help_guides, bool);
 	PROPERTY(player_set_name, String);
 	PROPERTY(show_packet_animations, bool);
+	PROPERTY(packet_animation_style, String);
+	PROPERTY(default_user_dhcp, String);
+	PROPERTY(default_device_dhcp, String);
 	PROPERTY(addr_copy_mode, int64_t);
 	PROPERTY(last_sel_diffindex, int64_t);
 	PROPERTY(has_shown_difficulty_sel, bool);
 	PROPERTY(cmd_alias, Variant);
 	PROPERTY(floor_unlocks, Variant);
 	PROPERTY(user_stampbook, Variant);
+	PROPERTY(wiki_favorites, Variant);
+	PROPERTY(lighting_presets, Variant);
+	PROPERTY(ui_scale, double);
+	PROPERTY(keybindings, Variant);
 	PROPERTY(fullscreen_mode, bool);
 	PROPERTY(vsync, int64_t);
 	PROPERTY(last_joined_ip, String);
@@ -50,12 +69,16 @@ struct CoreGameSettings : public BaseSettings {
 
 	inline void apply();
 	inline void engine_perfpar_sync();
+	inline void sync_keybindings();
 	inline Variant map_float_to_volume_db(double inp);
+	inline void adjust_bus_volume(String abid_s, double linear_value);
 };
 
 
 inline void CoreGameSettings::apply() { this->voidcall("apply"); }
 inline void CoreGameSettings::engine_perfpar_sync() { this->voidcall("engine_perfpar_sync"); }
+inline void CoreGameSettings::sync_keybindings() { this->voidcall("sync_keybindings"); }
 inline Variant CoreGameSettings::map_float_to_volume_db(double inp) { return this->operator()("map_float_to_volume_db", inp); }
+inline void CoreGameSettings::adjust_bus_volume(String abid_s, double linear_value) { this->voidcall("adjust_bus_volume", abid_s, linear_value); }
 
 #endif

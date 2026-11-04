@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.10.0
 
 ---@class TileMapLayer : Node2D
 ---@field tile_map_data PackedByteArray

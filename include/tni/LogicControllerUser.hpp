@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERUSER
 #define TNI_API_HEADER_LOGICCONTROLLERUSER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,10 +15,11 @@ struct LogicControllerUser : public User {
 	constexpr LogicControllerUser(Object obj) : LogicControllerUser{obj.address()} {}
 	LogicControllerUser(Variant variant) : LogicControllerUser{variant.as_object().address()} {}
 
-	enum PaymentCalculationMethod : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct PaymentCalculationMethod : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		USAGE_FULFILMENT_TODAY = 0,
 		LOWEST_SATIETY_TODAY = 1,
 	};
+	static constexpr int64_t SLA_REASON_LIMIT = 3;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(behaviors, Variant);
@@ -28,6 +29,7 @@ struct LogicControllerUser : public User {
 	PROPERTY(consumption_payment_scaling, double);
 	PROPERTY(allow_hwreset, bool);
 	PROPERTY(bandwidth_used_last_tick, int64_t);
+	PROPERTY(ot_probability, double);
 	PROPERTY(program_manifest_rolls, Variant);
 	PROPERTY(bandwidth_used_this_tick, int64_t);
 	PROPERTY(consumption_total_this_tick, int64_t);
@@ -38,16 +40,19 @@ struct LogicControllerUser : public User {
 	PROPERTY(visitor_stats, Variant);
 	PROPERTY(visitor_stats_last_tick, Variant);
 	PROPERTY(surveyor_daily_incidents, Variant);
+	PROPERTY(sla_reasons, Variant);
 	PROPERTY(surveyor_msg_stra, Variant);
 	PROPERTY(payment_calculation_method, int64_t);
 	PROPERTY(payment_today, int64_t);
 	PROPERTY(user_hostings, Variant);
+	PROPERTY(is_producer, bool);
 	PROPERTY(required_visitation_satiety_per_tick, int64_t);
 	PROPERTY(csr, double);
 	PROPERTY(vsr, double);
 	PROPERTY(visitor_reset_modulo_n, int64_t);
 	PROPERTY(consumption_total_last_tick, int64_t);
 	PROPERTY(consumption_satiety_last_tick, int64_t);
+	PROPERTY(surveyed_behavior_count, int64_t);
 	PROPERTY(description, String);
 	PROPERTY(user_profile_name, String);
 	PROPERTY(base_use_period, double);
@@ -62,6 +67,7 @@ struct LogicControllerUser : public User {
 	PROPERTY(inactive_time_float, double);
 	PROPERTY(fulfilment_penalty_factor, double);
 	PROPERTY(icon_texture, Texture2D);
+	PROPERTY(custom_user_note, String);
 	PROPERTY(unknown_user, bool);
 	PROPERTY(satiety_ratio, double);
 	PROPERTY(is_active, bool);
@@ -75,11 +81,13 @@ struct LogicControllerUser : public User {
 	PROPERTY(location, Location);
 	PROPERTY(username_fixed, bool);
 	PROPERTY(username, String);
-	PROPERTY(previous_active_state, bool);
 
 	inline void push_surveyor_message(String msg);
+	inline void push_or_refresh_surveyor_message(String msg, String line_prefix);
 	inline double get_manifest_roll(String release_name);
 	inline Variant debug_monitor_callback();
+	inline void apply_satiety_penalty(double ratio_penalty);
+	inline void apply_satiety_boost(double ratio_boost, int64_t source_id);
 	inline void account_intent(const UserTraversal& utc);
 	inline void unaccount_intent(const UserTraversal& utc);
 	inline void account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt);
@@ -89,6 +97,7 @@ struct LogicControllerUser : public User {
 	inline void first_use();
 	inline void periodic_use();
 	inline void down();
+	inline void update_user_note(String new_value);
 };
 
 #include "LogicController.hpp"
@@ -98,8 +107,11 @@ struct LogicControllerUser : public User {
 #include "LogicControllerUser.hpp"
 
 inline void LogicControllerUser::push_surveyor_message(String msg) { this->voidcall("push_surveyor_message", msg); }
+inline void LogicControllerUser::push_or_refresh_surveyor_message(String msg, String line_prefix) { this->voidcall("push_or_refresh_surveyor_message", msg, line_prefix); }
 inline double LogicControllerUser::get_manifest_roll(String release_name) { return this->operator()("get_manifest_roll", release_name); }
 inline Variant LogicControllerUser::debug_monitor_callback() { return this->operator()("debug_monitor_callback"); }
+inline void LogicControllerUser::apply_satiety_penalty(double ratio_penalty) { this->voidcall("apply_satiety_penalty", ratio_penalty); }
+inline void LogicControllerUser::apply_satiety_boost(double ratio_boost, int64_t source_id) { this->voidcall("apply_satiety_boost", ratio_boost, source_id); }
 inline void LogicControllerUser::account_intent(const UserTraversal& utc) { this->voidcall("account_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
 inline void LogicControllerUser::unaccount_intent(const UserTraversal& utc) { this->voidcall("unaccount_intent", Object(reinterpret_cast<const Object*>(&utc)->address())); }
 inline void LogicControllerUser::account_consumption(const UserTraversal& utc, Variant _ctx_or_pkt) { this->voidcall("account_consumption", Object(reinterpret_cast<const Object*>(&utc)->address()), _ctx_or_pkt); }
@@ -109,5 +121,6 @@ inline void LogicControllerUser::finish_setup() { this->voidcall("finish_setup")
 inline void LogicControllerUser::first_use() { this->voidcall("first_use"); }
 inline void LogicControllerUser::periodic_use() { this->voidcall("periodic_use"); }
 inline void LogicControllerUser::down() { this->voidcall("down"); }
+inline void LogicControllerUser::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
 
 #endif

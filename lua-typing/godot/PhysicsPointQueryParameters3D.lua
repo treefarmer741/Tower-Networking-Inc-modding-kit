@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.10.0
 
 ---@class PhysicsPointQueryParameters3D : RefCounted
 ---@field position Vector3

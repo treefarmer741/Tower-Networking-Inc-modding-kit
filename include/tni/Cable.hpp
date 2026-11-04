@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CABLE
 #define TNI_API_HEADER_CABLE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -15,13 +15,16 @@ struct Cable : public Node2D {
 	Cable(Variant variant) : Cable{variant.as_object().address()} {}
 
 	static constexpr int64_t ZINDEX = 1000;  // NOTE: You should recompile your mod if this value changes!
+	inline static const String LEGACY_ROPES_SETTING = "application/cables/legacy_rapier_ropes";  // NOTE: You should recompile your mod if this value changes!
+//	// Inner class VerletRope exposed as CableVerletRope
+//	// Inner class LegacyRapierRope exposed as CableLegacyRapierRope
 	static constexpr int64_t TOUT_TICK_TOLERANCE = 10;  // NOTE: You should recompile your mod if this value changes!
-	PROPERTY(CablePieceScene10, Variant);  // Const value type was not supported.
-	PROPERTY(CablePieceScene30, Variant);  // Const value type was not supported.
-	PROPERTY(CablePieceScene50, Variant);  // Const value type was not supported.
-	PROPERTY(CablePieceScene25, Variant);  // Const value type was not supported.
+	PROPERTY(cable_highlight_effect, Variant);  // Const value type was not supported.
 	static constexpr double DELAY_TIMER_FLT = 0.3;  // NOTE: You should recompile your mod if this value changes!
 	static constexpr double LINVELT = 5.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr int64_t INITIAL_SETUP_GRACE_MS = 5000;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double TETHER_RATE = 12.0;  // NOTE: You should recompile your mod if this value changes!
+	static constexpr double TETHER_TIP_PX = 1.0;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(with_mouse_stretch_factor, Variant);
 	PROPERTY(without_mouse_stretch_factor, Variant);
@@ -29,22 +32,31 @@ struct Cable : public Node2D {
 	PROPERTY(cable_color, Variant);
 	PROPERTY(cable_length, double);
 	PROPERTY(blacklist_nodes_as_ends, Variant);
-	PROPERTY(pixels_per_cable_piece, int64_t);
-	PROPERTY(piece_scn, PackedScene);
 	PROPERTY(save_cable_length, bool);
 	PROPERTY(end_a, Node2D);
 	PROPERTY(end_b, Node2D);
-	PROPERTY(cable_pieces, Variant);
+	PROPERTY(rope, Variant);
 	PROPERTY(cable_idle, Timer);
 	PROPERTY(initial_setup_grace, Timer);
 	PROPERTY(delay_timer, Timer);
+	PROPERTY(cable_pieces, Variant);
+	PROPERTY(pixels_per_cable_piece, int64_t);
 	PROPERTY(smoothing_enabled, bool);
 	PROPERTY(mvtwn, Tween);
-	PROPERTY(smooth_positions, Variant);
-	PROPERTY(smooth_factor, double);
-	PROPERTY(smooth_initialized, bool);
 
+	inline void set_highlight(bool enabled);
+	inline Variant export_shape();
+	inline void import_shape(Variant packed);
+	inline void spawn_into(Node parent, Variant a, Variant b);
+	inline void remake();
 	inline Variant get_other_end(Variant end);
+	inline bool is_rope_ready();
+	inline PackedArray<Vector2> get_rope_points();
+	inline Node2D get_label_anchor(Variant end);
+	inline int64_t get_coil_segment_count();
+	inline void on_end_moved(Variant end);
+	inline bool tracks_loose_end(Variant _end);
+	inline void on_loose_end_tick(const Plug& end);
 	inline void reposition(Variant newpos);
 	inline void elevator_move(Variant pos_delta);
 	inline void force_cable_unidle();
@@ -52,8 +64,21 @@ struct Cable : public Node2D {
 	inline void unmake_cable();
 };
 
+#include "Plug.hpp"
 
+inline void Cable::set_highlight(bool enabled) { this->voidcall("set_highlight", enabled); }
+inline Variant Cable::export_shape() { return this->operator()("export_shape"); }
+inline void Cable::import_shape(Variant packed) { this->voidcall("import_shape", packed); }
+inline void Cable::spawn_into(Node parent, Variant a, Variant b) { this->voidcall("spawn_into", parent, a, b); }
+inline void Cable::remake() { this->voidcall("remake"); }
 inline Variant Cable::get_other_end(Variant end) { return this->operator()("get_other_end", end); }
+inline bool Cable::is_rope_ready() { return this->operator()("is_rope_ready"); }
+inline PackedArray<Vector2> Cable::get_rope_points() { return this->operator()("get_rope_points"); }
+inline Node2D Cable::get_label_anchor(Variant end) { return Node2D(this->operator()("get_label_anchor", end).as_object().address()); }
+inline int64_t Cable::get_coil_segment_count() { return this->operator()("get_coil_segment_count"); }
+inline void Cable::on_end_moved(Variant end) { this->voidcall("on_end_moved", end); }
+inline bool Cable::tracks_loose_end(Variant _end) { return this->operator()("tracks_loose_end", _end); }
+inline void Cable::on_loose_end_tick(const Plug& end) { this->voidcall("on_loose_end_tick", Object(reinterpret_cast<const Object*>(&end)->address())); }
 inline void Cable::reposition(Variant newpos) { this->voidcall("reposition", newpos); }
 inline void Cable::elevator_move(Variant pos_delta) { this->voidcall("elevator_move", pos_delta); }
 inline void Cable::force_cable_unidle() { this->voidcall("force_cable_unidle"); }

@@ -1,8 +1,7 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.10.0
 
 ---@class CableSpool : Area2D
----@field hook_joints Array<any>
----@field max_capacity integer
----@field hooked_pieces Array<RigidBody2D>
+---@field spooled_pieces Array<any>
+---@field spool_points PackedVector2Array
 local CableSpool = {}

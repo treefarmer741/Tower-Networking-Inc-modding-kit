@@ -1,8 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class MobileOSLayer : CanvasLayer
 ---@field TILT_RAD number # Constant value: 0.17453292519943
+---@field display_sprite_110 Sprite2D
+---@field display_sprite_125 Sprite2D
 ---@field second_monitor_enabled boolean
 ---@field screen Screen
 ---@field second_screen Screen

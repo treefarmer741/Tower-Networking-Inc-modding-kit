@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class WormSpawnController : RandomEvent
 ---@field min_warn_seconds integer
@@ -9,6 +9,7 @@
 ---@field hint_difficulty integer
 ---@field worm_zoo_ps Array<any>
 ---@field worm_zoo Object
+---@field last_target_fqdns Array<any>
 ---@field modps PackedScene
 ---@field min_trial_period_seconds number
 ---@field max_trial_period_seconds number
@@ -21,7 +22,8 @@ local WormSpawnController = {}
 ---@param locs Array<any>
 ---@param start_ts integer
 ---@param _end_ts integer
-function WormSpawnController.notify_worm_threat(worm, locs, start_ts, _end_ts) end
+---@param target_use string?  # Default = 
+function WormSpawnController.notify_worm_threat(worm, locs, start_ts, _end_ts, target_use) end
 
 function WormSpawnController.start() end
 

@@ -2,7 +2,7 @@
 	"id": "luajit-support",
 	"name": "LuaJIT Support",
 	"authors": [ "modding-kit" ],
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": [
 		"[font_size=22]The official LuaJIT support mod.[/font_size]",
 		"This allows other mods to use Lua, which is much easier and faster to work with than C++ based mods.",
@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		// See https://devhints.io/semver for syntax.
-		"tower-networking-inc": "^0.10.11"
+		"tower-networking-inc": "^0.12.4"
 	},
 	"dependencies_optional": {
 	},

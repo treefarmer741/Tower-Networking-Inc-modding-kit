@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class UserDetailPanel : VBoxContainer
 ---@field user User
@@ -26,3 +26,11 @@
 ---@field fllbl Label
 ---@field rcloopd Container
 local UserDetailPanel = {}
+
+---@param m string
+---@return string
+function UserDetailPanel.colorize_surveyor_msg(m) end
+
+---@param msgs Array<any>
+---@return string
+function UserDetailPanel.colorize_surveyor_lines(msgs) end

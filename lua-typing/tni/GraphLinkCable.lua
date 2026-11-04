@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class GraphLinkCable : Cable
 ---@field MAX_PRICE integer # Constant value: 1000000
@@ -20,25 +20,61 @@
 ---@field cable_color Color
 ---@field cable_length number
 ---@field blacklist_nodes_as_ends Array<any>
----@field pixels_per_cable_piece integer
----@field piece_scn PackedScene
 ---@field save_cable_length boolean
 ---@field end_a Node2D
 ---@field end_b Node2D
----@field cable_pieces Object
+---@field rope Object
 ---@field cable_idle Timer
 ---@field initial_setup_grace Timer
 ---@field delay_timer Timer
+---@field cable_pieces Object
+---@field pixels_per_cable_piece integer
 ---@field smoothing_enabled boolean
 ---@field mvtwn Tween
----@field smooth_positions Array<Vector2>
----@field smooth_factor number
----@field smooth_initialized boolean
 local GraphLinkCable = {}
+
+---@param enabled boolean
+function GraphLinkCable.set_highlight(enabled) end
+
+---@return Array<any>
+function GraphLinkCable.export_shape() end
+
+---@param packed Object
+function GraphLinkCable.import_shape(packed) end
+
+---@param parent Node
+---@param a Vector2
+---@param b Vector2
+function GraphLinkCable.spawn_into(parent, a, b) end
+
+function GraphLinkCable.remake() end
 
 ---@param end_ Object
 ---@return Object
 function GraphLinkCable.get_other_end(end_) end
+
+---@return boolean
+function GraphLinkCable.is_rope_ready() end
+
+---@return PackedVector2Array
+function GraphLinkCable.get_rope_points() end
+
+---@param end_ Object
+---@return Node2D
+function GraphLinkCable.get_label_anchor(end_) end
+
+---@return integer
+function GraphLinkCable.get_coil_segment_count() end
+
+---@param end_ Object
+function GraphLinkCable.on_end_moved(end_) end
+
+---@param _end Object
+---@return boolean
+function GraphLinkCable.tracks_loose_end(_end) end
+
+---@param end_ Plug
+function GraphLinkCable.on_loose_end_tick(end_) end
 
 ---@param newpos Vector2
 function GraphLinkCable.reposition(newpos) end

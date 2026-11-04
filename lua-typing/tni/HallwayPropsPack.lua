@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class HallwayPropsPack : Node2D
 ---@field background_assets Array<Sprite2D>

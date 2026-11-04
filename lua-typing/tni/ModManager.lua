@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class ModManager : Control
 ---@field mod_list VBoxContainer
 ---@field mod_preset_label Label
 ---@field preset_save_load_button MenuButton
+---@field misc_options_button MenuButton
 ---@field mod_info_container VBoxContainer
 ---@field mod_name_label RichTextLabel
 ---@field mod_tabs TabContainer
@@ -45,7 +46,7 @@ ModManager.DependencyStatus = {
 
 function ModManager.fade_in() end
 
-function ModManager.fade_out() end
+function ModManager.try_fade_out() end
 
 function ModManager.update_preset_label() end
 

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMESTATISTICS
 #define TNI_API_HEADER_GAMESTATISTICS
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct GameStatistics : public RefCounted {
 	constexpr GameStatistics(Object obj) : GameStatistics{obj.address()} {}
 	GameStatistics(Variant variant) : GameStatistics{variant.as_object().address()} {}
 
-	enum Stat : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Stat : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		TOTAL_SERVICE_FLOORS = 0,
 		TOTAL_DATACENTERS = 1,
 		TOTAL_USERS = 2,
@@ -33,8 +33,10 @@ struct GameStatistics : public RefCounted {
 		TOTAL_NETWORK_OUTAGES_SCHEDULED = 15,
 		TOTAL_DEVS_SURGED = 16,
 		TOTAL_CYBERATTACKS_ENCOUNTERED = 17,
+		TOTAL_SLA_BREACHES = 18,
+		FORGIVEN_SLA_BREACHES = 19,
 	};
-	enum Inte : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Inte : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		CUMUSAT = 0,
 	};
 

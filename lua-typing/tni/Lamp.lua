@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Lamp : Node2D
 ---@field pointlight2d PointLight2D

@@ -1,16 +1,20 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class TheSecretariat : ScreenApp
 ---@field proposal_item_scene PackedScene
 ---@field tab_title_item_scene PackedScene
 ---@field floor_queue_scene PackedScene
+---@field proposal_directory_item_scene PackedScene
 ---@field tab_container TabContainer
 ---@field proposals_container Container
 ---@field proposals_history_container Container
 ---@field floor_onboarding_container Container
+---@field directory_container Container
 ---@field fbind_tr TextureRect
 ---@field prind_tr TextureRect
+---@field credit_toggle HBoxContainer
+---@field credit_freeze_pane VBoxContainer
 ---@field main_pane MainPane
 ---@field dynamic_container_path string
 ---@field dynamic_container Container

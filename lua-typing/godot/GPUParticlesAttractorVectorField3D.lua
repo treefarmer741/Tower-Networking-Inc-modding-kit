@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.10.0
 
 ---@class GPUParticlesAttractorVectorField3D : GPUParticlesAttractor3D
 ---@field size Vector3

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MOBILEOSLAYER
 #define TNI_API_HEADER_MOBILEOSLAYER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -16,6 +16,8 @@ struct MobileOSLayer : public CanvasLayer {
 
 	static constexpr double TILT_RAD = 0.17453292519943;  // NOTE: You should recompile your mod if this value changes!
 
+	PROPERTY(display_sprite_110, Sprite2D);
+	PROPERTY(display_sprite_125, Sprite2D);
 	PROPERTY(second_monitor_enabled, bool);
 	PROPERTY(screen, Screen);
 	PROPERTY(second_screen, Screen);

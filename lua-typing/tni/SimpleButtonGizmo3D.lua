@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class SimpleButtonGizmo3D : Area3D
 ---@field button_base Node3D

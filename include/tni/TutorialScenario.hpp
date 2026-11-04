@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TUTORIALSCENARIO
 #define TNI_API_HEADER_TUTORIALSCENARIO
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -31,6 +31,7 @@ struct TutorialScenario : public GameWorld {
 	PROPERTY(time_mult, double);
 	PROPERTY(dns_lookup, Variant);
 	PROPERTY(nwaddr_lookup, Variant);
+	PROPERTY(tap_color_map_by_traffic, Variant);
 	PROPERTY(scene_res_path, String);
 	PROPERTY(elevator_fee_per_floor, int64_t);
 	PROPERTY(elevator_time_per_floor, double);
@@ -42,6 +43,9 @@ struct TutorialScenario : public GameWorld {
 	PROPERTY(day_opening_balance, int64_t);
 	PROPERTY(auto_complete_candidate_list, Variant);
 	PROPERTY(migration_srack_c, int64_t);
+	PROPERTY(migration_lrack_c, int64_t);
+	PROPERTY(migration_prack_c, int64_t);
+	PROPERTY(rack_mount_redirect, Variant);
 	PROPERTY(fbcntr, int64_t);
 	PROPERTY(difficulty_hash, int64_t);
 	PROPERTY(unlocks_or_achievements_allowed, bool);
@@ -56,9 +60,13 @@ struct TutorialScenario : public GameWorld {
 	PROPERTY(power_outage_controller, RandomEvent);
 	PROPERTY(power_surge_controller, RandomEvent);
 	PROPERTY(worm_spawn_controller, RandomEvent);
+	PROPERTY(t1_spam_attack_controller, RandomEvent);
+	PROPERTY(t2_spam_attack_controller, RandomEvent);
 	PROPERTY(loan_controller, LoanController);
 	PROPERTY(decentromarket_controller, DecentroMarketController);
+	PROPERTY(secretariat_credit_controller, SecretariatCreditController);
 	PROPERTY(playerhosting_controller, PlayerHostingController);
+	PROPERTY(ppksb_controller, KeystoneBridgeManager);
 	PROPERTY(player_hostings, Variant);
 	PROPERTY(propmod_controller, PropModController);
 	PROPERTY(available_programs, Variant);
@@ -110,7 +118,7 @@ struct TutorialScenario : public GameWorld {
 	inline void add_autocomplete_candidate(String candid);
 	inline void remove_autocomplete_candidate(String candid);
 	inline Variant get_loc_index(const Location& loc);
-	inline void add_location(String sfp);
+	inline void add_location(String sfp, bool suppress_notification);
 	inline MultiplayerMouse add_player(int64_t peer_id);
 	inline void try_resume_daycycle();
 	inline void master_timeout();
@@ -128,15 +136,17 @@ struct TutorialScenario : public GameWorld {
 	inline void trigger_day_elapse(Variant curr_day);
 	inline void acquire_app_license(String title, int64_t license_cost);
 	inline void modify_player_cash(Variant amount, Variant details, int64_t category);
-	inline void send_player_message(Variant title, Variant msg, int64_t tone_enum);
+	inline void send_player_message(Variant title, Variant msg, int64_t tone_enum, int64_t event_kind, int64_t event_ts);
 	inline void add_player_hosting(String fqdn, String use_spec_csv, double ppu);
 	inline void remove_player_hosting(String fqdn);
+	inline void set_tap_traffic_color(String traffic_class, String hex_rgb);
 	inline void put_dns_entry(Variant fqdn, Variant netaddr);
 	inline void update_server_timescale(double timescale_arg);
-	inline void submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg);
+	inline void submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg, int64_t event_kind);
 	inline void acquire_all_tech();
 	inline void enable_all_listings();
 	inline void enable_all_tech_and_listings();
+	inline double get_device_replacement_rate(const DeviceUnit& _device);
 };
 
 #include "PlayOptions.hpp"
@@ -147,7 +157,9 @@ struct TutorialScenario : public GameWorld {
 #include "RandomEvent.hpp"
 #include "LoanController.hpp"
 #include "DecentroMarketController.hpp"
+#include "SecretariatCreditController.hpp"
 #include "PlayerHostingController.hpp"
+#include "KeystoneBridgeManager.hpp"
 #include "PropModController.hpp"
 #include "LinkController.hpp"
 #include "OnboardingController.hpp"
@@ -156,6 +168,7 @@ struct TutorialScenario : public GameWorld {
 #include "Location.hpp"
 #include "MultiplayerMouse.hpp"
 #include "User.hpp"
+#include "DeviceUnit.hpp"
 
 inline void TutorialScenario::recompute_diff_hash() { this->voidcall("recompute_diff_hash"); }
 inline void TutorialScenario::update_player_msg(Variant msg_id, const GameMessage& gm) { this->voidcall("update_player_msg", msg_id, Object(reinterpret_cast<const Object*>(&gm)->address())); }
@@ -168,7 +181,7 @@ inline void TutorialScenario::try_release_program(PackedScene prog_scene, Varian
 inline void TutorialScenario::add_autocomplete_candidate(String candid) { this->voidcall("add_autocomplete_candidate", candid); }
 inline void TutorialScenario::remove_autocomplete_candidate(String candid) { this->voidcall("remove_autocomplete_candidate", candid); }
 inline Variant TutorialScenario::get_loc_index(const Location& loc) { return this->operator()("get_loc_index", Object(reinterpret_cast<const Object*>(&loc)->address())); }
-inline void TutorialScenario::add_location(String sfp) { this->voidcall("add_location", sfp); }
+inline void TutorialScenario::add_location(String sfp, bool suppress_notification) { this->voidcall("add_location", sfp, suppress_notification); }
 inline MultiplayerMouse TutorialScenario::add_player(int64_t peer_id) { return MultiplayerMouse(this->operator()("add_player", peer_id).as_object().address()); }
 inline void TutorialScenario::try_resume_daycycle() { this->voidcall("try_resume_daycycle"); }
 inline void TutorialScenario::master_timeout() { this->voidcall("master_timeout"); }
@@ -186,14 +199,16 @@ inline void TutorialScenario::update_last_node_spawn_ts_now() { this->voidcall("
 inline void TutorialScenario::trigger_day_elapse(Variant curr_day) { this->voidcall("trigger_day_elapse", curr_day); }
 inline void TutorialScenario::acquire_app_license(String title, int64_t license_cost) { this->voidcall("acquire_app_license", title, license_cost); }
 inline void TutorialScenario::modify_player_cash(Variant amount, Variant details, int64_t category) { this->voidcall("modify_player_cash", amount, details, category); }
-inline void TutorialScenario::send_player_message(Variant title, Variant msg, int64_t tone_enum) { this->voidcall("send_player_message", title, msg, tone_enum); }
+inline void TutorialScenario::send_player_message(Variant title, Variant msg, int64_t tone_enum, int64_t event_kind, int64_t event_ts) { this->voidcall("send_player_message", title, msg, tone_enum, event_kind, event_ts); }
 inline void TutorialScenario::add_player_hosting(String fqdn, String use_spec_csv, double ppu) { this->voidcall("add_player_hosting", fqdn, use_spec_csv, ppu); }
 inline void TutorialScenario::remove_player_hosting(String fqdn) { this->voidcall("remove_player_hosting", fqdn); }
+inline void TutorialScenario::set_tap_traffic_color(String traffic_class, String hex_rgb) { this->voidcall("set_tap_traffic_color", traffic_class, hex_rgb); }
 inline void TutorialScenario::put_dns_entry(Variant fqdn, Variant netaddr) { this->voidcall("put_dns_entry", fqdn, netaddr); }
 inline void TutorialScenario::update_server_timescale(double timescale_arg) { this->voidcall("update_server_timescale", timescale_arg); }
-inline void TutorialScenario::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg); }
+inline void TutorialScenario::submit_alert_with_lowpass(String normal_alert_title, String normal_alert_full_msg, String lowpass_alert_title, String lowpass_alert_full_msg, int64_t event_kind) { this->voidcall("submit_alert_with_lowpass", normal_alert_title, normal_alert_full_msg, lowpass_alert_title, lowpass_alert_full_msg, event_kind); }
 inline void TutorialScenario::acquire_all_tech() { this->voidcall("acquire_all_tech"); }
 inline void TutorialScenario::enable_all_listings() { this->voidcall("enable_all_listings"); }
 inline void TutorialScenario::enable_all_tech_and_listings() { this->voidcall("enable_all_tech_and_listings"); }
+inline double TutorialScenario::get_device_replacement_rate(const DeviceUnit& _device) { return this->operator()("get_device_replacement_rate", Object(reinterpret_cast<const Object*>(&_device)->address())); }
 
 #endif

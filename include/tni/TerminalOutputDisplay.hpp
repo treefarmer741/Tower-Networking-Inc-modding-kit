@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TERMINALOUTPUTDISPLAY
 #define TNI_API_HEADER_TERMINALOUTPUTDISPLAY
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct TerminalOutputDisplay : public RichTextLabel {
 
 
 	inline void print_horizontal_sep();
+	inline int64_t get_line_letters();
 	inline void print_success(Variant s);
 	inline void print_warn(Variant s);
 	inline void print_error(Variant s);
@@ -29,6 +30,7 @@ struct TerminalOutputDisplay : public RichTextLabel {
 
 
 inline void TerminalOutputDisplay::print_horizontal_sep() { this->voidcall("print_horizontal_sep"); }
+inline int64_t TerminalOutputDisplay::get_line_letters() { return this->operator()("get_line_letters"); }
 inline void TerminalOutputDisplay::print_success(Variant s) { this->voidcall("print_success", s); }
 inline void TerminalOutputDisplay::print_warn(Variant s) { this->voidcall("print_warn", s); }
 inline void TerminalOutputDisplay::print_error(Variant s) { this->voidcall("print_error", s); }

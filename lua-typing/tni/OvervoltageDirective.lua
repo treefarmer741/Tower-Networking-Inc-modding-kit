@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class OvervoltageDirective : OutageSurgePropMod
 ---@field surge_increase number
@@ -51,3 +51,9 @@ function OvervoltageDirective.get_proposal_name() end
 
 ---@return string
 function OvervoltageDirective.get_lore() end
+
+---@return string
+function OvervoltageDirective.get_tiered_display_name() end
+
+---@return string
+function OvervoltageDirective.get_unlock_condition_description() end

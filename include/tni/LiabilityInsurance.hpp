@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LIABILITYINSURANCE
 #define TNI_API_HEADER_LIABILITYINSURANCE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -19,6 +19,7 @@ struct LiabilityInsurance : public PropMod {
 	inline static const String litrk = "Liability insurance premium";  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(cost, int64_t);
+	PROPERTY(exp_base, double);
 	PROPERTY(submitted, bool);
 	PROPERTY(locked, bool);
 	PROPERTY(depends_on, PropMod);
@@ -40,6 +41,8 @@ struct LiabilityInsurance : public PropMod {
 	inline Variant test_adhoc_requirements();
 	inline void submit_and_apply();
 	inline void update_state();
+	inline String get_tiered_display_name();
+	inline String get_unlock_condition_description();
 };
 
 #include "PropMod.hpp"
@@ -52,5 +55,7 @@ inline String LiabilityInsurance::get_description() { return this->operator()("g
 inline Variant LiabilityInsurance::test_adhoc_requirements() { return this->operator()("test_adhoc_requirements"); }
 inline void LiabilityInsurance::submit_and_apply() { this->voidcall("submit_and_apply"); }
 inline void LiabilityInsurance::update_state() { this->voidcall("update_state"); }
+inline String LiabilityInsurance::get_tiered_display_name() { return this->operator()("get_tiered_display_name"); }
+inline String LiabilityInsurance::get_unlock_condition_description() { return this->operator()("get_unlock_condition_description"); }
 
 #endif

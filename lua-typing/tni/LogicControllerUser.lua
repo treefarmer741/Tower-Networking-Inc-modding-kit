@@ -1,7 +1,8 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class LogicControllerUser : User
+---@field SLA_REASON_LIMIT integer # Constant value: 3
 ---@field logic_controller LogicController
 ---@field behaviors Array<Program>
 ---@field hosting_behaviors Array<Program>
@@ -10,6 +11,7 @@
 ---@field consumption_payment_scaling number
 ---@field allow_hwreset boolean
 ---@field bandwidth_used_last_tick integer
+---@field ot_probability number
 ---@field program_manifest_rolls table<any,any>
 ---@field bandwidth_used_this_tick integer
 ---@field consumption_total_this_tick integer
@@ -20,16 +22,19 @@
 ---@field visitor_stats table<any,any>
 ---@field visitor_stats_last_tick table<any,any>
 ---@field surveyor_daily_incidents Array<any>
+---@field sla_reasons Array<any>
 ---@field surveyor_msg_stra Array<any>
 ---@field payment_calculation_method LogicControllerUser.PaymentCalculationMethod
 ---@field payment_today integer
 ---@field user_hostings Array<any>
+---@field is_producer boolean
 ---@field required_visitation_satiety_per_tick integer
 ---@field csr number
 ---@field vsr number
 ---@field visitor_reset_modulo_n integer
 ---@field consumption_total_last_tick integer
 ---@field consumption_satiety_last_tick integer
+---@field surveyed_behavior_count integer
 ---@field description string
 ---@field user_profile_name string
 ---@field base_use_period number
@@ -44,6 +49,7 @@
 ---@field inactive_time_float number
 ---@field fulfilment_penalty_factor number
 ---@field icon_texture Texture2D
+---@field custom_user_note string
 ---@field unknown_user boolean
 ---@field satiety_ratio number
 ---@field is_active boolean
@@ -57,7 +63,6 @@
 ---@field location Location
 ---@field username_fixed boolean
 ---@field username string
----@field previous_active_state boolean
 local LogicControllerUser = {}
 ---@enum LogicControllerUser.PaymentCalculationMethod
 LogicControllerUser.PaymentCalculationMethod = {
@@ -68,12 +73,23 @@ LogicControllerUser.PaymentCalculationMethod = {
 ---@param msg string
 function LogicControllerUser.push_surveyor_message(msg) end
 
+---@param msg string
+---@param line_prefix string
+function LogicControllerUser.push_or_refresh_surveyor_message(msg, line_prefix) end
+
 ---@param release_name string
 ---@return number
 function LogicControllerUser.get_manifest_roll(release_name) end
 
 ---@return Object
 function LogicControllerUser.debug_monitor_callback() end
+
+---@param ratio_penalty number
+function LogicControllerUser.apply_satiety_penalty(ratio_penalty) end
+
+---@param ratio_boost number
+---@param source_id integer
+function LogicControllerUser.apply_satiety_boost(ratio_boost, source_id) end
 
 ---@param utc UserTraversal
 function LogicControllerUser.account_intent(utc) end
@@ -100,3 +116,6 @@ function LogicControllerUser.first_use() end
 function LogicControllerUser.periodic_use() end
 
 function LogicControllerUser.down() end
+
+---@param new_value string
+function LogicControllerUser.update_user_note(new_value) end

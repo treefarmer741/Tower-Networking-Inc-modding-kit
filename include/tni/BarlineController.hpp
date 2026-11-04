@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_BARLINECONTROLLER
 #define TNI_API_HEADER_BARLINECONTROLLER
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -25,11 +25,14 @@ struct BarlineController : public Control {
 	PROPERTY(bar_spacing, double);
 	PROPERTY(group_width_ratio, double);
 	PROPERTY(vertical_x_labels, bool);
+	PROPERTY(stack_bars, bool);
+	PROPERTY(fit_bar_axis, bool);
 	PROPERTY(show_line_chart, bool);
 	PROPERTY(line_color, Variant);
 	PROPERTY(line_width, double);
 	PROPERTY(show_line_points, bool);
 	PROPERTY(line_point_radius, double);
+	PROPERTY(line_max_value, double);
 	PROPERTY(axis_vertical_y_labels, bool);
 	PROPERTY(axis_x_label_margin, double);
 	PROPERTY(axis_x_label_height, double);
@@ -53,8 +56,12 @@ struct BarlineController : public Control {
 	PROPERTY(line_label, Variant);
 	PROPERTY(colors, Variant);
 	PROPERTY(legend_bottom_margin, Variant);
+	PROPERTY(legend_columns, Variant);
+	PROPERTY(legend_item_height, Variant);
 
+	inline double get_drawn_height();
 	inline void draw_text_at(Variant pos, Variant text, Variant alignment, Variant img_size);
+	inline void draw_text_outlined(Variant pos, Variant text, Variant alignment, Variant img_size);
 	inline void set_data(Variant new_categories, Variant new_values, Variant new_colors, Variant new_title, Variant new_x_label, Variant new_y_label);
 	inline void set_bar_data(Variant new_categories, Variant new_datasets, Variant new_colors);
 	inline void set_line_data(Variant new_line_values, Variant new_line_label);
@@ -62,7 +69,9 @@ struct BarlineController : public Control {
 };
 
 
+inline double BarlineController::get_drawn_height() { return this->operator()("get_drawn_height"); }
 inline void BarlineController::draw_text_at(Variant pos, Variant text, Variant alignment, Variant img_size) { this->voidcall("draw_text_at", pos, text, alignment, img_size); }
+inline void BarlineController::draw_text_outlined(Variant pos, Variant text, Variant alignment, Variant img_size) { this->voidcall("draw_text_outlined", pos, text, alignment, img_size); }
 inline void BarlineController::set_data(Variant new_categories, Variant new_values, Variant new_colors, Variant new_title, Variant new_x_label, Variant new_y_label) { this->voidcall("set_data", new_categories, new_values, new_colors, new_title, new_x_label, new_y_label); }
 inline void BarlineController::set_bar_data(Variant new_categories, Variant new_datasets, Variant new_colors) { this->voidcall("set_bar_data", new_categories, new_datasets, new_colors); }
 inline void BarlineController::set_line_data(Variant new_line_values, Variant new_line_label) { this->voidcall("set_line_data", new_line_values, new_line_label); }

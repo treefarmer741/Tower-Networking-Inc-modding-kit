@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class BarlineChart : Node2D
 ---@field bar_chart Object
@@ -19,6 +19,7 @@
 ---@field line_label_format string
 ---@field line_color Color
 ---@field bar_colors Array<any>
+---@field steady_bar_colors boolean
 ---@field show_line_chart boolean
 local BarlineChart = {}
 

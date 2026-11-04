@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SOCKET
 #define TNI_API_HEADER_SOCKET
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,7 +14,7 @@ struct Socket : public Area2D {
 	constexpr Socket(Object obj) : Socket{obj.address()} {}
 	Socket(Variant variant) : Socket{variant.as_object().address()} {}
 
-	enum Type : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct Type : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		TEST = 1,
 		B_3PIN = 2,
 		UK_3PIN = 3,
@@ -30,8 +30,13 @@ struct Socket : public Area2D {
 		PCIE_SLOT = 103,
 		DDR3_SLOT = 110,
 		DDR4_SLOT = 111,
+		DRAM_SLOT = 112,
 		STORAGE_SLOT = 200,
 		SPOOL_HOOK = 250,
+		CABLE_O_MATIC_RJ45 = 251,
+		CABLE_O_MATIC_FIBO = 252,
+		CABLE_O_MATIC_PMA = 253,
+		CPU_SLOT = 120,
 	};
 
 	PROPERTY(connection, Variant);

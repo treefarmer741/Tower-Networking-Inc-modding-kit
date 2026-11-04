@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.3
 
 ---@class CharacterCreator : Node3D
 ---@field rotating Object

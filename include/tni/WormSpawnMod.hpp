@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_WORMSPAWNMOD
 #define TNI_API_HEADER_WORMSPAWNMOD
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,10 +14,13 @@ struct WormSpawnMod : public Node {
 	constexpr WormSpawnMod(Object obj) : WormSpawnMod{obj.address()} {}
 	WormSpawnMod(Variant variant) : WormSpawnMod{variant.as_object().address()} {}
 
+	static constexpr int64_t DISCOVERY_POLL_SECONDS = 10;  // NOTE: You should recompile your mod if this value changes!
 
 	PROPERTY(start_ts, int64_t);
 	PROPERTY(end_ts, int64_t);
 	PROPERTY(worm_path, String);
+	PROPERTY(target_fqdn, String);
+	PROPERTY(target_address, String);
 	PROPERTY(userlc, LogicController);
 	PROPERTY(orirn, String);
 

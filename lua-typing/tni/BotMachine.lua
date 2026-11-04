@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class BotMachine : Program
 ---@field VISIT_TRAFFIC string # Constant value: tcp/80
@@ -8,6 +8,7 @@
 ---@field oplogs Array<any>
 ---@field bot_id integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field code_size integer
 ---@field stack_size integer
 ---@field release_name string
@@ -20,6 +21,7 @@
 ---@field rendered_description string
 ---@field pkt_processing_priority integer
 ---@field is_running boolean
+---@field gw_playopt PlayOptions
 ---@field host_controller LogicController
 local BotMachine = {}
 
@@ -46,11 +48,16 @@ function BotMachine.install(install_opts) end
 ---@return Object
 function BotMachine.serialize_as_str() end
 
+---@param fdats string
+---@param existing BotMachine
+function BotMachine.update_from_str(fdats, existing) end
+
 ---@param _sz integer
 ---@param fdats string
 ---@param target_controller LogicController
+---@param requested_name string?  # Default = 
 ---@return Object
-function BotMachine.deserialize_from_str(_sz, fdats, target_controller) end
+function BotMachine.deserialize_from_str(_sz, fdats, target_controller, requested_name) end
 
 ---@param ds string
 ---@return string
@@ -69,9 +76,13 @@ function BotMachine.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
----@return boolean
+---@return Program.PacketHandling
 function BotMachine.process_network_packet(pktctl, packet) end
 
 ---@param packet table<any,any>
 ---@return boolean
 function BotMachine.is_pkt_for_self(packet) end
+
+---@param packet table<any,any>
+---@return boolean
+function BotMachine.test_routing_exemption(packet) end

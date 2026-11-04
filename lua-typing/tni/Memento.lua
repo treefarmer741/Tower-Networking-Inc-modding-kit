@@ -1,14 +1,19 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Memento : ScreenApp
 ---@field main_tab TabContainer
 ---@field dns_entries_ctl Container
 ---@field netaddr_assigns Container
 ---@field devunit_tracker Container
+---@field firewall_entries_ctl Container
+---@field route_entries_ctl Container
 ---@field cntop OptionButton
+---@field fee_preview_cb CheckButton
 ---@field ri_scn PackedScene
 ---@field dut_scn PackedScene
+---@field fir_scn PackedScene
+---@field rte_scn PackedScene
 ---@field main_pane MainPane
 ---@field dynamic_container_path string
 ---@field dynamic_container Container

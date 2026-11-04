@@ -1,7 +1,7 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.10.0
 
----@class InertPanel : DeviceUnit
+---@class InertPanel : RigidBody2D
 ---@field product_name string
 ---@field description string
 ---@field text string
@@ -26,7 +26,6 @@
 ---@field auto_servicing_enabled boolean
 ---@field auto_replacement_cost integer
 ---@field current_floor_num integer
----@field device_application_unlocks Array<any>
 ---@field device_hardware_class DeviceUnit.DeviceHardwareClass
 ---@field condition DeviceUnit.Condition
 ---@field mount_type DeviceUnit.MountType
@@ -58,15 +57,6 @@ function InertPanel.reposition(new_pos) end
 
 ---@param new_pos Vector2
 function InertPanel.elevator_move(new_pos) end
-
----@return number
-function InertPanel.get_device_bounding_height() end
-
----@return Vector2
-function InertPanel.get_global_y_range() end
-
----@return Vector2
-function InertPanel.get_local_y_range() end
 
 ---@return Object
 function InertPanel.debug_monitor_callback() end

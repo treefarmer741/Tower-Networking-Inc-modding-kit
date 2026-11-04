@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class PacketControlModule : LogicControlModule
 ---@field default_clock_period number # Constant value: 0.1
+---@field MAX_PACKETS_PER_TICK integer # Constant value: 2048
 ---@field clk_timer Timer
 ---@field packet_in_queue Array<Dictionary>
 ---@field packet_out_queue table<string,Array>
@@ -10,8 +11,24 @@
 ---@field nwaddr_required_for_sending boolean
 ---@field local_dns_mapping boolean
 ---@field parent_controller LogicController
+---@field vmconnect_portmap table<any,any>
 ---@field host_controller LogicController
 local PacketControlModule = {}
+
+---@param physical_port_id string
+---@param vm_release_name string
+function PacketControlModule.add_vmconnect(physical_port_id, vm_release_name) end
+
+---@param physical_port_id string
+---@param vm_release_name string
+function PacketControlModule.remove_vmconnect(physical_port_id, vm_release_name) end
+
+---@param vm_release_name string
+function PacketControlModule.remove_all_vmconnect_for_vm(vm_release_name) end
+
+---@param vm_release_name string
+---@return Array<any>
+function PacketControlModule.get_vmconnect_ports_for_vm(vm_release_name) end
 
 ---@return boolean
 function PacketControlModule.is_bandwidth_exceeded() end

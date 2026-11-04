@@ -1,10 +1,13 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class SettingsMenu : Control
+---@field PACKET_ANIM_OPTIONS Array<any> # Constant value: ["no_animation", "circular_packet", "stretched_glowing_packet"]
+---@field UI_SCALES Array<any> # Constant value: [1.0, 1.1, 1.25]
 ---@field game_settings Container
 ---@field audio_settings Container
 ---@field graphic_settings Container
+---@field keybind_settings Container
 ---@field is_in_game boolean
 local SettingsMenu = {}
 ---@enum SettingsMenu.locale_lang_map
@@ -19,6 +22,7 @@ SettingsMenu.locale_lang_map = {
 	["uk"] = "українська мова",
 	["pt_BR"] = "Português Brasileiro",
 	["de"] = "Deutsch",
+	["pl_PL"] = "polski",
 }
 
 ---@return Array<string>

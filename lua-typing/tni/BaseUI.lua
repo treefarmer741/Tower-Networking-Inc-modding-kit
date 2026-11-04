@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class BaseUI : CanvasLayer
 ---@field is_fully_unfaded boolean
@@ -46,8 +46,6 @@ function BaseUI.show_feedback() end
 function BaseUI.hide_feedback() end
 
 function BaseUI.show_mod_manager() end
-
-function BaseUI.hide_mod_manager() end
 
 function BaseUI.show_catalog() end
 

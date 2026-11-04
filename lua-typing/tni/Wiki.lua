@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Wiki : Control
 ---@field wiki_ei_scn string # Constant value: <PackedScene>
@@ -10,6 +10,8 @@
 ---@field animation_player AnimationPlayer
 ---@field afinp TextEdit
 ---@field stctimer Timer
+---@field all_tab Button
+---@field favorites_tab Button
 ---@field stub_article WikiEntryItem
 ---@field nav_history Array<WikiEntryItem>
 local Wiki = {}

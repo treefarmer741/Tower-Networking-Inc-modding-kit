@@ -1,7 +1,7 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
----@class CreditTransaction : Object
+---@class CreditTransaction : RefCounted
 ---@field amount integer
 ---@field details string
 ---@field date integer

@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class InertBox : DeviceUnit
 ---@field tear_sfx AudioStreamPlayer2D
+---@field preseated_delivery_objs Array<any>
 ---@field product_name string
 ---@field description string
 ---@field text string
@@ -12,6 +13,7 @@
 ---@field base_warranty_days integer
 ---@field base_warranty_cycles integer
 ---@field sale_warranty integer
+---@field terminal_failure_prob number
 ---@field recycle_price_factor number
 ---@field recycle_price integer
 ---@field force_auto_config_powctl_based_on_logctl boolean
@@ -25,7 +27,12 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field data_migration_enabled boolean
+---@field is_mount_locked boolean
+---@field screw_sprite Object
+---@field auto_replacement_multiplier integer
 ---@field auto_replacement_cost integer
+---@field memento_daily_fee integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
 ---@field device_hardware_class DeviceUnit.DeviceHardwareClass
@@ -33,6 +40,7 @@
 ---@field mount_type DeviceUnit.MountType
 ---@field bw_per_second number
 ---@field reliability_flt number
+---@field rng_fail_chance number
 ---@field device_rendered_description string
 ---@field logic_controller LogicController
 ---@field power_controller PowerController
@@ -61,6 +69,22 @@ function InertBox.is_empty() end
 
 ---@param destroy boolean?  # Default = false
 function InertBox.tear(destroy) end
+
+function InertBox.seat_delivery() end
+
+function InertBox.wake_clear_holes() end
+
+---@param base_val integer
+function InertBox.lift_child_z_index(base_val) end
+
+function InertBox.reset_child_z_index() end
+
+---@param new_pos Vector2
+function InertBox.elevator_move(new_pos) end
+
+---@param extra_devices integer?  # Default = 0
+---@return integer
+function InertBox.get_daily_cost_multiplier(extra_devices) end
 
 function InertBox.apply_autoconfig() end
 
@@ -101,8 +125,13 @@ function InertBox.reset_child_z_index() end
 ---@param new_state boolean
 function InertBox.set_autosvc(new_state) end
 
+---@param new_state boolean
+function InertBox.set_data_migration(new_state) end
+
 ---@param new_value string
 function InertBox.update_user_note(new_value) end
+
+function InertBox.toggle_mount_lock() end
 
 function InertBox.remove_and_free_object() end
 

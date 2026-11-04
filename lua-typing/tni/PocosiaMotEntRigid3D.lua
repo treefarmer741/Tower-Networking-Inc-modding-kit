@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class PocosiaMotEntRigid3D : RigidBody3D
 ---@field motcol_hit_mag number # Constant value: 0.5

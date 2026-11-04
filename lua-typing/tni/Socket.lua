@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Socket : Area2D
 ---@field connection Object
@@ -32,8 +32,13 @@ Socket.Type = {
 	["PCIE_SLOT"] = 103,
 	["DDR3_SLOT"] = 110,
 	["DDR4_SLOT"] = 111,
+	["DRAM_SLOT"] = 112,
 	["STORAGE_SLOT"] = 200,
 	["SPOOL_HOOK"] = 250,
+	["CABLE_O_MATIC_RJ45"] = 251,
+	["CABLE_O_MATIC_FIBO"] = 252,
+	["CABLE_O_MATIC_PMA"] = 253,
+	["CPU_SLOT"] = 120,
 }
 
 function Socket.block() end

@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class LogicController : GraphController
 ---@field default_tick_period number
 ---@field auto_cycle_enabled boolean
 ---@field installed_cpu integer
+---@field installed_gpu integer
 ---@field installed_mem integer
 ---@field installed_sto integer
 ---@field installed_nbw integer
@@ -15,6 +16,7 @@
 ---@field skip_autoconfig_cpu boolean
 ---@field allow_storage_mods boolean
 ---@field allow_process_mods boolean
+---@field keep_autoconfig_programs boolean
 ---@field auto_config_additional_cpu integer
 ---@field auto_config_additional_sto integer
 ---@field auto_config_additional_mem integer
@@ -63,13 +65,22 @@
 ---@field live_programs Array<Program>
 ---@field network_ports table<string,LogicControllerSocket>
 ---@field os_running boolean
+---@field san_reserved_storage integer
 ---@field free_storage integer
 ---@field total_storage_capacity integer
 ---@field extended_storage integer
+---@field total_gpu_capacity integer
+---@field extended_gpu integer
+---@field total_cpu_capacity integer
+---@field extended_cpu integer
+---@field total_mem_capacity integer
+---@field extended_mem integer
+---@field extended_power_draw integer
 ---@field used_storage integer
 ---@field free_memory integer
 ---@field used_memory integer
 ---@field cpu_load integer
+---@field gpu_load integer
 ---@field wasted_nbw integer
 ---@field free_nbw integer
 ---@field nbw_wasted_last_tick integer
@@ -113,6 +124,8 @@ function LogicController.time_mult_updated(_time_mult_delta) end
 
 function LogicController.wipe_all_data() end
 
+function LogicController.wipe_replaceable_data() end
+
 function LogicController.reboot_os() end
 
 function LogicController.autoconfigure_specs_based_on_installs() end
@@ -122,10 +135,11 @@ function LogicController.autoconfigure_specs_based_on_installs() end
 ---@param modify_cpu_abs integer?  # Default = -1
 ---@param modify_mem_abs integer?  # Default = -1
 ---@param modify_sto_abs integer?  # Default = -1
+---@param modify_gpu_abs integer?  # Default = -1
 ---@param modify_rel_nm string?  # Default = 
 ---@param extra_install_opts Object?  # Default = <null>
 ---@return Array<any>
-function LogicController.install_program(prg_path, bypass_restrictions, modify_cpu_abs, modify_mem_abs, modify_sto_abs, modify_rel_nm, extra_install_opts) end
+function LogicController.install_program(prg_path, bypass_restrictions, modify_cpu_abs, modify_mem_abs, modify_sto_abs, modify_gpu_abs, modify_rel_nm, extra_install_opts) end
 
 ---@param release_name string
 ---@return Program
@@ -155,8 +169,21 @@ function LogicController.start_all_programs() end
 ---@param install_callback boolean?  # Default = true
 function LogicController.add_peripheral(per, install_callback) end
 
+---@param per_np string
+---@param install_callback boolean?  # Default = true
+function LogicController.add_peripheral_at(per_np, install_callback) end
+
 ---@param per Object
 function LogicController.remove_peripheral(per) end
+
+---@param per_np string
+function LogicController.remove_peripheral_at(per_np) end
+
+function LogicController.enforce_storage_limit() end
+
+function LogicController.enforce_memory_limit() end
+
+function LogicController.enforce_cpu_limit() end
 
 function LogicController.reset() end
 

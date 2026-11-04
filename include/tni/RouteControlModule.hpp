@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ROUTECONTROLMODULE
 #define TNI_API_HEADER_ROUTECONTROLMODULE
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,7 +17,7 @@ struct RouteControlModule : public LogicControlModule {
 
 	inline static const String DEFAULT_DROP_CS = "drop";  // NOTE: You should recompile your mod if this value changes!
 	static constexpr int64_t MAX_PORT_GROUPS = 10;  // NOTE: You should recompile your mod if this value changes!
-	enum RVID : int64_t {  // NOTE: You should recompile your mod if this enum changes!
+	enum struct RVID : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		DST_PORT_ID = 0,
 		METRIC = 1,
 		CYCTL = 2,
@@ -29,6 +29,7 @@ struct RouteControlModule : public LogicControlModule {
 	PROPERTY(broadcast_forwarding, bool);
 	PROPERTY(rip_advertise_paths, Variant);
 	PROPERTY(rip_enabled, bool);
+	PROPERTY(rip_suppress_entries, Variant);
 	PROPERTY(port_groups, Variant);
 	PROPERTY(ha_hb_timer, Timer);
 	PROPERTY(rip_hb_timer, Timer);
@@ -56,6 +57,9 @@ struct RouteControlModule : public LogicControlModule {
 	inline void add_rip_config(int64_t type_s, String entry);
 	inline void remove_rip_config(int64_t type_s, String entry);
 	inline void set_rip_mode(bool new_mode);
+	inline void add_rip_suppress(String entry);
+	inline void remove_rip_suppress(String entry);
+	inline bool is_route_suppressed(String rte);
 	inline void refresh_route(String rte);
 	inline Variant is_route_expired(String rte);
 	inline void refresh();
@@ -85,6 +89,9 @@ inline void RouteControlModule::set_broadcast_policy(bool new_mode) { this->void
 inline void RouteControlModule::add_rip_config(int64_t type_s, String entry) { this->voidcall("add_rip_config", type_s, entry); }
 inline void RouteControlModule::remove_rip_config(int64_t type_s, String entry) { this->voidcall("remove_rip_config", type_s, entry); }
 inline void RouteControlModule::set_rip_mode(bool new_mode) { this->voidcall("set_rip_mode", new_mode); }
+inline void RouteControlModule::add_rip_suppress(String entry) { this->voidcall("add_rip_suppress", entry); }
+inline void RouteControlModule::remove_rip_suppress(String entry) { this->voidcall("remove_rip_suppress", entry); }
+inline bool RouteControlModule::is_route_suppressed(String rte) { return this->operator()("is_route_suppressed", rte); }
 inline void RouteControlModule::refresh_route(String rte) { this->voidcall("refresh_route", rte); }
 inline Variant RouteControlModule::is_route_expired(String rte) { return this->operator()("is_route_expired", rte); }
 inline void RouteControlModule::refresh() { this->voidcall("refresh"); }

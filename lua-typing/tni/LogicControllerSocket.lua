@@ -1,8 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class LogicControllerSocket : Socket
 ---@field PacketPlaceholderScene string # Constant value: <PackedScene>
+---@field StretchedGlowingPacketScene string # Constant value: <PackedScene>
 ---@field is_back_port boolean
 ---@field link_ind Node2D
 ---@field act_ind_rcache Node2D
@@ -13,6 +14,7 @@
 ---@field traversal_tc_counts_since_up table<any,any>
 ---@field is_up boolean
 ---@field virtual boolean
+---@field passthrough boolean
 ---@field port_num integer
 ---@field port_id string
 ---@field bliptimer Timer
@@ -31,6 +33,14 @@
 ---@field is_blocked boolean
 ---@field root_transformer RemoteTransform2D
 local LogicControllerSocket = {}
+
+---@param s string
+---@return boolean
+function LogicControllerSocket.is_port_id_like(s) end
+
+---@param s string
+---@return string
+function LogicControllerSocket.strip_port_prefix(s) end
 
 ---@param is_tx_dir boolean
 ---@param packet Object

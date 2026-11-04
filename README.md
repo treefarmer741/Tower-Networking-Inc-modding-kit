@@ -146,3 +146,5 @@ There also exists `copy-mods.cmd` (Windows) and `copy-mods.sh` (Linux & WSL) to 
 
 - It can be very helpful to launch the game via a console window. This allows to view the log output live! Otherwise you'll need to monitor `logs/godot.log` in a text editor.
 - For Lua mods, use one of [Sumneko's Lua extensions](https://github.com/LuaLS/lua-language-server) to get rich integration with your editor, allowing for error checking and auto-complete and more. (we provide the typing info in [`./lua-typing/`](./lua-typing/))
+- C++/Sandbox exceptions provide a cryptic location to the error, the following (on Linux/WSL) can convert to real source location;
+  `riscv64-unknown-elf-addr2line -e mods/luajit-support/entry.elf -f -p -i $(python3 -c 'print(hex(0x00000000000195D6 + 0x0b8))')`

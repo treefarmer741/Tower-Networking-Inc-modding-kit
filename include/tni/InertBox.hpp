@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_INERTBOX
 #define TNI_API_HEADER_INERTBOX
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -17,6 +17,7 @@ struct InertBox : public DeviceUnit {
 
 
 	PROPERTY(tear_sfx, AudioStreamPlayer2D);
+	PROPERTY(preseated_delivery_objs, Variant);
 	PROPERTY(product_name, String);
 	PROPERTY(description, String);
 	PROPERTY(text, String);
@@ -26,6 +27,7 @@ struct InertBox : public DeviceUnit {
 	PROPERTY(base_warranty_days, int64_t);
 	PROPERTY(base_warranty_cycles, int64_t);
 	PROPERTY(sale_warranty, int64_t);
+	PROPERTY(terminal_failure_prob, double);
 	PROPERTY(recycle_price_factor, double);
 	PROPERTY(recycle_price, int64_t);
 	PROPERTY(force_auto_config_powctl_based_on_logctl, bool);
@@ -39,7 +41,12 @@ struct InertBox : public DeviceUnit {
 	PROPERTY(custom_user_note, String);
 	PROPERTY(asset_registration_day, int64_t);
 	PROPERTY(auto_servicing_enabled, bool);
+	PROPERTY(data_migration_enabled, bool);
+	PROPERTY(is_mount_locked, bool);
+	PROPERTY(screw_sprite, Variant);
+	PROPERTY(auto_replacement_multiplier, int64_t);
 	PROPERTY(auto_replacement_cost, int64_t);
+	PROPERTY(memento_daily_fee, int64_t);
 	PROPERTY(current_floor_num, int64_t);
 	PROPERTY(device_application_unlocks, Variant);
 	PROPERTY(device_hardware_class, int64_t);
@@ -47,6 +54,7 @@ struct InertBox : public DeviceUnit {
 	PROPERTY(mount_type, int64_t);
 	PROPERTY(bw_per_second, double);
 	PROPERTY(reliability_flt, double);
+	PROPERTY(rng_fail_chance, double);
 	PROPERTY(device_rendered_description, String);
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(power_controller, PowerController);
@@ -68,9 +76,14 @@ struct InertBox : public DeviceUnit {
 	inline Variant get_slot(int64_t slotid);
 	inline Variant is_empty();
 	inline void tear(bool destroy);
+	inline void seat_delivery();
+	inline void wake_clear_holes();
+	inline void lift_child_z_index(int64_t base_val);
+	inline void reset_child_z_index();
+	inline void elevator_move(Variant new_pos);
+	inline int64_t get_daily_cost_multiplier(int64_t extra_devices);
 	inline void apply_autoconfig();
 	inline void reposition(Variant new_pos);
-	inline void elevator_move(Variant new_pos);
 	inline double get_device_bounding_height();
 	inline Variant get_global_y_range();
 	inline Variant get_local_y_range();
@@ -79,11 +92,11 @@ struct InertBox : public DeviceUnit {
 	inline Variant update_in_trolley_state();
 	inline bool pickup(Variant new_picker);
 	inline bool drop(Variant impulse);
-	inline void reset_child_z_index();
 	inline void set_autosvc(bool new_state);
+	inline void set_data_migration(bool new_state);
 	inline void update_user_note(String new_value);
+	inline void toggle_mount_lock();
 	inline void remove_and_free_object();
-	inline void lift_child_z_index(int64_t base_val);
 	inline Variant get_picker_type(Variant test_picker);
 	inline void setup_teleport(Variant gpos);
 };
@@ -94,9 +107,14 @@ struct InertBox : public DeviceUnit {
 inline Variant InertBox::get_slot(int64_t slotid) { return this->operator()("get_slot", slotid); }
 inline Variant InertBox::is_empty() { return this->operator()("is_empty"); }
 inline void InertBox::tear(bool destroy) { this->voidcall("tear", destroy); }
+inline void InertBox::seat_delivery() { this->voidcall("seat_delivery"); }
+inline void InertBox::wake_clear_holes() { this->voidcall("wake_clear_holes"); }
+inline void InertBox::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
+inline void InertBox::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
+inline void InertBox::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
+inline int64_t InertBox::get_daily_cost_multiplier(int64_t extra_devices) { return this->operator()("get_daily_cost_multiplier", extra_devices); }
 inline void InertBox::apply_autoconfig() { this->voidcall("apply_autoconfig"); }
 inline void InertBox::reposition(Variant new_pos) { this->voidcall("reposition", new_pos); }
-inline void InertBox::elevator_move(Variant new_pos) { this->voidcall("elevator_move", new_pos); }
 inline double InertBox::get_device_bounding_height() { return this->operator()("get_device_bounding_height"); }
 inline Variant InertBox::get_global_y_range() { return this->operator()("get_global_y_range"); }
 inline Variant InertBox::get_local_y_range() { return this->operator()("get_local_y_range"); }
@@ -105,11 +123,11 @@ inline Variant InertBox::debug_mux_setup() { return this->operator()("debug_mux_
 inline Variant InertBox::update_in_trolley_state() { return this->operator()("update_in_trolley_state"); }
 inline bool InertBox::pickup(Variant new_picker) { return this->operator()("pickup", new_picker); }
 inline bool InertBox::drop(Variant impulse) { return this->operator()("drop", impulse); }
-inline void InertBox::reset_child_z_index() { this->voidcall("reset_child_z_index"); }
 inline void InertBox::set_autosvc(bool new_state) { this->voidcall("set_autosvc", new_state); }
+inline void InertBox::set_data_migration(bool new_state) { this->voidcall("set_data_migration", new_state); }
 inline void InertBox::update_user_note(String new_value) { this->voidcall("update_user_note", new_value); }
+inline void InertBox::toggle_mount_lock() { this->voidcall("toggle_mount_lock"); }
 inline void InertBox::remove_and_free_object() { this->voidcall("remove_and_free_object"); }
-inline void InertBox::lift_child_z_index(int64_t base_val) { this->voidcall("lift_child_z_index", base_val); }
 inline Variant InertBox::get_picker_type(Variant test_picker) { return this->operator()("get_picker_type", test_picker); }
 inline void InertBox::setup_teleport(Variant gpos) { this->voidcall("setup_teleport", gpos); }
 

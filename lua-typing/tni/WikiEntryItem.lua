@@ -1,10 +1,11 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class WikiEntryItem : PanelContainer
 ---@field wiki_entry_packed_scene PackedScene
 ---@field wiki_display Container
 ---@field wiki_entry WikiEntry
+---@field favoriteable boolean
 ---@field main_scroll ScrollContainer
 ---@field keywords Array<string>
 local WikiEntryItem = {}

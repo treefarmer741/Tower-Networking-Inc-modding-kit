@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_SETTINGSMENU
 #define TNI_API_HEADER_SETTINGSMENU
-// Generated API for game version 0.10.11
+// Generated API for game version 0.13.4
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -14,11 +14,14 @@ struct SettingsMenu : public Control {
 	constexpr SettingsMenu(Object obj) : SettingsMenu{obj.address()} {}
 	SettingsMenu(Variant variant) : SettingsMenu{variant.as_object().address()} {}
 
+	PROPERTY(PACKET_ANIM_OPTIONS, Variant);  // Const value type was not supported.
 	PROPERTY(locale_lang_map, Dictionary);  // enum of non-integer type
+	PROPERTY(UI_SCALES, Variant);  // Const value type was not supported.
 
 	PROPERTY(game_settings, Container);
 	PROPERTY(audio_settings, Container);
 	PROPERTY(graphic_settings, Container);
+	PROPERTY(keybind_settings, Container);
 	PROPERTY(is_in_game, bool);
 
 	inline Variant get_loaded_langs();

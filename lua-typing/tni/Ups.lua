@@ -1,8 +1,15 @@
 ---@meta _
--- Generated API for game version 0.10.11
+-- Generated API for game version 0.13.4
 
 ---@class Ups : DeviceUnit
+---@field LOW_BATTERY_RATIO number # Constant value: 0.25
+---@field LOW_BATTERY_BEEP_CYCLE_MS integer # Constant value: 30000
+---@field LOW_BATTERY_BEEP_BURST_MS integer # Constant value: 600
 ---@field display RichTextLabel
+---@field show_status_leds boolean
+---@field online_led PoweredLight
+---@field battery_led PoweredLight
+---@field overload_led PoweredLight
 ---@field label_update_timer Timer
 ---@field product_name string
 ---@field description string
@@ -13,6 +20,7 @@
 ---@field base_warranty_days integer
 ---@field base_warranty_cycles integer
 ---@field sale_warranty integer
+---@field terminal_failure_prob number
 ---@field recycle_price_factor number
 ---@field recycle_price integer
 ---@field force_auto_config_powctl_based_on_logctl boolean
@@ -26,7 +34,12 @@
 ---@field custom_user_note string
 ---@field asset_registration_day integer
 ---@field auto_servicing_enabled boolean
+---@field data_migration_enabled boolean
+---@field is_mount_locked boolean
+---@field screw_sprite Object
+---@field auto_replacement_multiplier integer
 ---@field auto_replacement_cost integer
+---@field memento_daily_fee integer
 ---@field current_floor_num integer
 ---@field device_application_unlocks Array<any>
 ---@field device_hardware_class DeviceUnit.DeviceHardwareClass
@@ -34,6 +47,7 @@
 ---@field mount_type DeviceUnit.MountType
 ---@field bw_per_second number
 ---@field reliability_flt number
+---@field rng_fail_chance number
 ---@field device_rendered_description string
 ---@field logic_controller LogicController
 ---@field power_controller PowerController
@@ -55,6 +69,10 @@ local Ups = {}
 
 ---@param disptext string
 function Ups.set_disp(disptext) end
+
+---@param extra_devices integer?  # Default = 0
+---@return integer
+function Ups.get_daily_cost_multiplier(extra_devices) end
 
 function Ups.apply_autoconfig() end
 
@@ -95,8 +113,13 @@ function Ups.reset_child_z_index() end
 ---@param new_state boolean
 function Ups.set_autosvc(new_state) end
 
+---@param new_state boolean
+function Ups.set_data_migration(new_state) end
+
 ---@param new_value string
 function Ups.update_user_note(new_value) end
+
+function Ups.toggle_mount_lock() end
 
 function Ups.remove_and_free_object() end
 
