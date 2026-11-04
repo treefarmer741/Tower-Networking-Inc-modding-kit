@@ -97,7 +97,7 @@ Make sure the following is installed:
 
 ```sh
 # For Debian based systems like Ubuntu;
-sudo apt install git cmake ninja-build g++-riscv64-linux-gnu-14
+sudo apt install git cmake ninja-build g++-14-riscv64-linux-gnu
 ```
 
 Then in the root of this project, run the command:
