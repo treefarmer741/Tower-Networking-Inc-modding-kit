@@ -187,3 +187,6 @@ function Object.set_translation_domain(domain) end
 function Object.is_queued_for_deletion() end
 
 function Object.cancel_free() end
+
+---@return any
+function Object.get_script() end
