@@ -6,6 +6,11 @@
 local Object = {}
 
 
----@param target any  # One of; `Script` instance, script class_name, or resource path to the script file.
+--- Check if this object is or inherits from;
+--- - the given `Script`
+--- - the given `string` class name of GDScript or Godot/ClassDB class
+--- - the given `resource_path`
+--- Note that, autoloads like `ModApiV1` can not be checked for by class name.
+---@param target any
 ---@return integer
 function Object:is(target) end
