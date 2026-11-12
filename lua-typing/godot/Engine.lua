@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Engine : Object
 ---@field print_error_messages boolean
@@ -86,10 +86,6 @@ function Engine.is_in_physics_frame() end
 ---@param name string
 ---@return boolean
 function Engine.has_singleton(name) end
-
----@param name string
----@return Object
-function Engine.get_singleton(name) end
 
 ---@param name string
 ---@param instance Object

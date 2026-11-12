@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class SkeletonModification2DPhysicalBones : SkeletonModification2D
 ---@field physical_bone_chain_length integer
@@ -21,8 +21,8 @@ function SkeletonModification2DPhysicalBones.get_physical_bone_node(joint_idx) e
 
 function SkeletonModification2DPhysicalBones.fetch_physical_bones() end
 
----@param bones Array<StringName>?  # Default = []
+---@param bones Array<string>?  # Default = []
 function SkeletonModification2DPhysicalBones.start_simulation(bones) end
 
----@param bones Array<StringName>?  # Default = []
+---@param bones Array<string>?  # Default = []
 function SkeletonModification2DPhysicalBones.stop_simulation(bones) end

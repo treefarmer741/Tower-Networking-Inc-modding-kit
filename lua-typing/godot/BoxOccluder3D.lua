@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class BoxOccluder3D : Occluder3D
 ---@field size Vector3

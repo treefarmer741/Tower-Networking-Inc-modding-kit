@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class DirectionalLight3D : Light3D
 ---@field directional_shadow_mode integer

@@ -1,7 +1,7 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
----@class Object
+---@class Object : userdata
 local Object = {}
 
 function Object.free() end
@@ -53,10 +53,7 @@ function Object.to_string() end
 ---@return integer
 function Object.get_instance_id() end
 
----@param script Object
-function Object.set_script(script) end
-
----@return Object
+---@return Script?
 function Object.get_script() end
 
 ---@param name string
@@ -75,7 +72,7 @@ function Object.get_meta(name, default) end
 ---@return boolean
 function Object.has_meta(name) end
 
----@return Array<StringName>
+---@return Array<string>
 function Object.get_meta_list() end
 
 ---@param signal string

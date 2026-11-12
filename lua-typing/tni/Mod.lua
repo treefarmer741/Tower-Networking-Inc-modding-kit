@@ -43,3 +43,8 @@ function Mod.error_string_(e) end
 ---@param value Object
 ---@return string
 function Mod.str_(value) end
+
+---@param obj Object
+---@param target any
+---@return boolean
+function Mod.is_(obj, target) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.13.3
+-- Generated API for game version 0.13.4
 
 ---@class OpenXRSpatialComponentBounded2DList : OpenXRSpatialComponentData
 local OpenXRSpatialComponentBounded2DList = {}
