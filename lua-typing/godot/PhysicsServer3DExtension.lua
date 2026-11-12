@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class PhysicsServer3DExtension : PhysicsServer3D
 local PhysicsServer3DExtension = {}

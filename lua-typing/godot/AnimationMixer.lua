@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class AnimationMixer : Node
 ---@field active boolean
@@ -34,7 +34,7 @@ function AnimationMixer.has_animation_library(name) end
 ---@return AnimationLibrary
 function AnimationMixer.get_animation_library(name) end
 
----@return Array<StringName>
+---@return Array<string>
 function AnimationMixer.get_animation_library_list() end
 
 ---@param name string

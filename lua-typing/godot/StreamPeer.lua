@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class StreamPeer : RefCounted
 ---@field big_endian boolean
@@ -69,10 +69,6 @@ function StreamPeer.put_string(value) end
 ---@param value string
 function StreamPeer.put_utf8_string(value) end
 
----@param value Object
----@param full_objects boolean?  # Default = false
-function StreamPeer.put_var(value, full_objects) end
-
 ---@return integer
 function StreamPeer.get_8() end
 
@@ -113,7 +109,3 @@ function StreamPeer.get_string(bytes) end
 ---@param bytes integer?  # Default = -1
 ---@return string
 function StreamPeer.get_utf8_string(bytes) end
-
----@param allow_objects boolean?  # Default = false
----@return Object
-function StreamPeer.get_var(allow_objects) end

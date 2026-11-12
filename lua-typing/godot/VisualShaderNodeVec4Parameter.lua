@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class VisualShaderNodeVec4Parameter : VisualShaderNodeParameter
 ---@field default_value_enabled boolean

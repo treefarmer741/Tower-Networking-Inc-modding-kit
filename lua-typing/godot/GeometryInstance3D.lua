@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class GeometryInstance3D : VisualInstance3D
 ---@field material_override BaseMaterial3D,ShaderMaterial

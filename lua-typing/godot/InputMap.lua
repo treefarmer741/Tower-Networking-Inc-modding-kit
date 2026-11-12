@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class InputMap : Object
 local InputMap = {}
@@ -8,7 +8,7 @@ local InputMap = {}
 ---@return boolean
 function InputMap.has_action(action) end
 
----@return Array<StringName>
+---@return Array<string>
 function InputMap.get_actions() end
 
 ---@param action string

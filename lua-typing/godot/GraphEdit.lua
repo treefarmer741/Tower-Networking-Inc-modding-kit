@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class GraphEdit : Control
 ---@field scroll_offset Vector2
@@ -133,7 +133,7 @@ function GraphEdit.detach_graph_element_from_frame(element) end
 function GraphEdit.get_element_frame(element) end
 
 ---@param frame string
----@return Array<StringName>
+---@return Array<string>
 function GraphEdit.get_attached_nodes_of_frame(frame) end
 
 ---@param scheme GraphEdit.PanningScheme
