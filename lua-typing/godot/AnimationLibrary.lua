@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class AnimationLibrary : Resource
 local AnimationLibrary = {}
@@ -24,7 +24,7 @@ function AnimationLibrary.has_animation(name) end
 ---@return Animation
 function AnimationLibrary.get_animation(name) end
 
----@return Array<StringName>
+---@return Array<string>
 function AnimationLibrary.get_animation_list() end
 
 ---@return integer

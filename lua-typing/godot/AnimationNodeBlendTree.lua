@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class AnimationNodeBlendTree : AnimationRootNode
 ---@field graph_offset Vector2
@@ -34,7 +34,7 @@ function AnimationNodeBlendTree.connect_node(input_node, input_index, output_nod
 ---@param input_index integer
 function AnimationNodeBlendTree.disconnect_node(input_node, input_index) end
 
----@return Array<StringName>
+---@return Array<string>
 function AnimationNodeBlendTree.get_node_list() end
 
 ---@param name string

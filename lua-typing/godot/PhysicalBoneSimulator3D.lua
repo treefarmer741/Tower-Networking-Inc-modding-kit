@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class PhysicalBoneSimulator3D : SkeletonModifier3D
 local PhysicalBoneSimulator3D = {}
@@ -9,7 +9,7 @@ function PhysicalBoneSimulator3D.is_simulating_physics() end
 
 function PhysicalBoneSimulator3D.physical_bones_stop_simulation() end
 
----@param bones Array<StringName>?  # Default = []
+---@param bones Array<string>?  # Default = []
 function PhysicalBoneSimulator3D.physical_bones_start_simulation(bones) end
 
 ---@param exception RID

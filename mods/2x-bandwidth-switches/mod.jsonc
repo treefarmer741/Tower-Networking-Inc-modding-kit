@@ -2,7 +2,7 @@
 	"id": "2x-bandwidth-switches-example",
 	"name": "2x Bandwidth Switches (example mod)",
 	"authors": [ "modding-kit" ],
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": [
 		"Example mod which makes all switches have 2x the bandwidth when spawned in.",
 		"The change does not reflect in the shop or item description, but does show with `watch` etc."
@@ -13,7 +13,7 @@
 	"dependencies": {
 		// See https://devhints.io/semver for syntax.
 		"tower-networking-inc": "^0.10.7",
-		"luajit-support": "~0.2.0"
+		"luajit-support": "~0.2.2"
 	},
 	"dependencies_optional": {
 	},

@@ -1,10 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Node : Object
 ---@field name string
 ---@field unique_name_in_owner boolean
----@field scene_file_path string
 ---@field owner Node
 ---@field multiplayer MultiplayerAPI
 ---@field process_mode integer
@@ -135,7 +134,7 @@ function Node.is_in_group(group) end
 ---@param to_index integer
 function Node.move_child(child_node, to_index) end
 
----@return Array<StringName>
+---@return Array<string>
 function Node.get_groups() end
 
 ---@param owner Node
@@ -157,12 +156,6 @@ function Node.get_tree_string() end
 
 ---@return string
 function Node.get_tree_string_pretty() end
-
----@param scene_file_path string
-function Node.set_scene_file_path(scene_file_path) end
-
----@return string
-function Node.get_scene_file_path() end
 
 ---@param what integer
 function Node.propagate_notification(what) end

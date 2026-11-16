@@ -32,6 +32,7 @@ struct Mod : public Sandbox {
 	inline Variant instance_from_id_(int64_t id);
 	inline String error_string_(int64_t e);
 	inline String str_(Variant value);
+	inline bool is_(Object obj, Variant target);
 };
 
 #include "ModManifest.hpp"
@@ -48,5 +49,6 @@ inline bool Mod::array_value_allowed(Variant array, int64_t idx) { return this->
 inline Variant Mod::instance_from_id_(int64_t id) { return this->operator()("instance_from_id_", id); }
 inline String Mod::error_string_(int64_t e) { return this->operator()("error_string_", e); }
 inline String Mod::str_(Variant value) { return this->operator()("str_", value); }
+inline bool Mod::is_(Object obj, Variant target) { return this->operator()("is_", obj, target); }
 
 #endif

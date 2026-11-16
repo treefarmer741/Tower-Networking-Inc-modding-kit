@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class AnimationNodeStateMachine : AnimationRootNode
 ---@field state_machine_type integer
@@ -35,7 +35,7 @@ function AnimationNodeStateMachine.has_node(name) end
 ---@return string
 function AnimationNodeStateMachine.get_node_name(node) end
 
----@return Array<StringName>
+---@return Array<string>
 function AnimationNodeStateMachine.get_node_list() end
 
 ---@param name string

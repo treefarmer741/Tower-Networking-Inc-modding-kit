@@ -34,7 +34,7 @@ int push_gd_object(lua_State *L, Object object) {
     push_gd_object_metatable(L);
     lua_setmetatable(L, -2);
 
-    if (object.is_class("RefCounted")) {
+    if (object.is_class("RefCounted") && !object.is_class("Script")) {
         object("reference");
     }
 
@@ -50,11 +50,24 @@ void push_gd_object_metatable(lua_State *L) {
         lua_pushstring(L, "__index");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Object obj = check_gdobject(L, 1);
+
+            lua_getmetatable(L, 1);
+            // Stack: gdobject, index, GDObjectMetaTable
+            lua_pushvalue(L, 2);
+            // Stack: gdobject, index, GDObjectMetaTable, index
+            lua_gettable(L, -2);
+            // Stack: gdobject, index, GDObjectMetaTable, value
+            if (!lua_isnil(L, -1))
+                return 1;
+            lua_pop(L, 2);
+            // Stack: gdobject, index
+
             // Variant value = to_gd_variant(L, 2);
             if (lua_isstring(L, 2)) {
                 std::string name = lua_tostring(L, 2);
+
                 // We can't catch exceptions from the sandbox, so we check if we are allowed first.
-                if (!((Mod)get_node()).is_allowed_property(obj, name)) {
+                if (!((Mod)get_node()).is_allowed_property(obj, name, false)) {
                     return luaL_error(L, "Banned property accessed: %s", name.c_str());  // This does not return!
                 }
                 // TODO: We could temporarily cache GDCallable userdata during this VM call.
@@ -79,6 +92,9 @@ void push_gd_object_metatable(lua_State *L) {
             // Variant value = to_gd_variant(L, 2);
             if (lua_isstring(L, 2)) {
                 std::string name = lua_tostring(L, 2);
+                if (!((Mod)get_node()).is_allowed_property(obj, name, true)) {
+                    return luaL_error(L, "Banned property assignment: %s", name.c_str());  // This does not return!
+                }
                 Variant value = to_gd_variant(L, 3);
                 obj.set(name, value);
                 return 0;
@@ -103,10 +119,20 @@ void push_gd_object_metatable(lua_State *L) {
         lua_pushstring(L, "__gc");
         lua_pushcfunction(L, [](lua_State *L) -> int {
             Object obj = check_gdobject(L, 1);
-            if (obj.is_class("RefCounted")) {
+            if (obj.is_class("RefCounted") && !obj.is_class("Script")) {
                 obj("unreference");
             }
             return 0;
+        });
+        lua_settable(L, -3);
+
+        lua_pushstring(L, "is");
+        lua_pushcfunction(L, [](lua_State *L) -> int {
+            Object obj = check_gdobject(L, 1);
+            Variant target = to_gd_variant(L, 2);
+
+            lua_pushboolean(L, ((Mod)get_node()).is_(obj, target));
+            return 1;
         });
         lua_settable(L, -3);
     }

@@ -1,18 +1,8 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Marshalls : Object
 local Marshalls = {}
-
----@param variant Object
----@param full_objects boolean?  # Default = false
----@return string
-function Marshalls.variant_to_base64(variant, full_objects) end
-
----@param base64_str string
----@param allow_objects boolean?  # Default = false
----@return Object
-function Marshalls.base64_to_variant(base64_str, allow_objects) end
 
 ---@param array PackedByteArray
 ---@return string

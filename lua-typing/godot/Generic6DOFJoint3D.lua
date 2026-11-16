@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Generic6DOFJoint3D : Joint3D
 local Generic6DOFJoint3D = {

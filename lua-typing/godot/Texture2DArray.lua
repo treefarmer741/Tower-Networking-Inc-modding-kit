@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Texture2DArray : ImageTextureLayered
 local Texture2DArray = {}

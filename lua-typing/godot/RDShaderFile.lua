@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class RDShaderFile : Resource
 ---@field base_error string
@@ -13,7 +13,7 @@ function RDShaderFile.set_bytecode(bytecode, version) end
 ---@return RDShaderSPIRV
 function RDShaderFile.get_spirv(version) end
 
----@return Array<StringName>
+---@return Array<string>
 function RDShaderFile.get_version_list() end
 
 ---@param error string

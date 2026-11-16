@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class AnimationPlayer : AnimationMixer
 ---@field current_animation string
@@ -119,6 +119,9 @@ function AnimationPlayer.stop(keep_state) end
 ---@return boolean
 function AnimationPlayer.is_playing() end
 
+---@return boolean
+function AnimationPlayer.is_animation_active() end
+
 ---@param animation string
 function AnimationPlayer.set_current_animation(animation) end
 
@@ -134,7 +137,7 @@ function AnimationPlayer.get_assigned_animation() end
 ---@param name string
 function AnimationPlayer.queue(name) end
 
----@return PackedStringArray
+---@return Array<string>
 function AnimationPlayer.get_queue() end
 
 function AnimationPlayer.clear_queue() end

@@ -1,18 +1,9 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class PacketPeer : RefCounted
 ---@field encode_buffer_max_size integer
 local PacketPeer = {}
-
----@param allow_objects boolean?  # Default = false
----@return Object
-function PacketPeer.get_var(allow_objects) end
-
----@param var Object
----@param full_objects boolean?  # Default = false
----@return Error
-function PacketPeer.put_var(var, full_objects) end
 
 ---@return PackedByteArray
 function PacketPeer.get_packet() end

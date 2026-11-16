@@ -1,11 +1,10 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class SceneMultiplayer : MultiplayerAPI
 ---@field root_path string
 ---@field auth_callback (Callable|function)
 ---@field auth_timeout number
----@field allow_object_decoding boolean
 ---@field refuse_new_connections boolean
 ---@field server_relay boolean
 ---@field max_sync_packet_size integer
@@ -52,9 +51,6 @@ function SceneMultiplayer.set_refuse_new_connections(refuse) end
 
 ---@return boolean
 function SceneMultiplayer.is_refusing_new_connections() end
-
----@param enable boolean
-function SceneMultiplayer.set_allow_object_decoding(enable) end
 
 ---@return boolean
 function SceneMultiplayer.is_object_decoding_allowed() end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class Skeleton3D : Node3D
 ---@field motion_scale number
@@ -30,7 +30,7 @@ function Skeleton3D.set_bone_name(bone_idx, name) end
 function Skeleton3D.get_bone_meta(bone_idx, key) end
 
 ---@param bone_idx integer
----@return Array<StringName>
+---@return Array<string>
 function Skeleton3D.get_bone_meta_list(bone_idx) end
 
 ---@param bone_idx integer
@@ -196,7 +196,7 @@ function Skeleton3D.get_animate_physical_bones() end
 
 function Skeleton3D.physical_bones_stop_simulation() end
 
----@param bones Array<StringName>?  # Default = []
+---@param bones Array<string>?  # Default = []
 function Skeleton3D.physical_bones_start_simulation(bones) end
 
 ---@param exception RID

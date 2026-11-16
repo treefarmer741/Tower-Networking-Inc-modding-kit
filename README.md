@@ -36,10 +36,6 @@ The [Template mod](/programs/cpp-template/) is a template that contains the comm
 
 The [LuaJIT support mod](/programs/luajit-support/) adds Lua based mods. It is much more complex but may help with things the template doesn't have.
 
-### LuaJIT support mod (C/C++)
-
-The [LuaJIT support mod](/programs/luajit) adds Lua based mods. It is much more complex but may help with things the template doesn't have.
-
 ---
 
 ## Loading the mod

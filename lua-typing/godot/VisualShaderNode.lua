@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.10.0
+-- Generated API for game version 0.13.4
 
 ---@class VisualShaderNode : Resource
 ---@field output_port_for_preview integer
